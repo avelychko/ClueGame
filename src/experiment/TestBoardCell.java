@@ -4,12 +4,12 @@ import java.util.Set;
 
 public class TestBoardCell {
 	private int row;
-	private int column;
+	private int col;
 	
 	//A constructor that has passed into it the row and column for that cell
-	public TestBoardCell(int row, int column) {
+	public TestBoardCell(int row, int col) {
 		this.row = row;
-		this.column = column;
+		this.col = col;
 	}
 	
 	//A setter to add a cell to this cells adjacency list, void addAdjacency( TestBoardCell cell )

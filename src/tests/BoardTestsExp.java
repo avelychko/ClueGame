@@ -2,8 +2,12 @@ package tests;
 
 public class BoardTestsExp {
 	
-	//@BeforeEach method to set up your BoardExp.
+	public void testBoard() {
+		
+	}
 	
-	
+	public void testBoardCell() {
+		
+	}
 
 }
