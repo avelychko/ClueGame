@@ -5,7 +5,8 @@ import java.util.*;
 public class TestBoardCell {
 	private int row;
 	private int col;
-	private Set<TestBoardCell> getAdjlist = new HashSet<TestBoardCell>();
+	private Set<TestBoardCell> cellHolder = new HashSet<TestBoardCell>();
+	private TestBoardCell cell;
 	
 	//A constructor that has passed into it the row and column for that cell
 	public TestBoardCell(int row, int col) {
@@ -14,13 +15,13 @@ public class TestBoardCell {
 	}
 	
 	//A setter to add a cell to this cells adjacency list, void addAdjacency( TestBoardCell cell )
-	public void addAdjacecy(TestBoard cell) {
-		getAdjlist.add(cell);
+	public void addAdjacecy(TestBoardCell cell) {
+		cellHolder.add(cell);
 	}
 	
-	//Set<TestBoardCell> getAdjList() – returns the adjacency list for the cell
+	//Set<TestBoardCell> getAdjList() ï¿½ returns the adjacency list for the cell
 	public Set<TestBoardCell> getAdjList() {
-		for (TestBoardCell cell : getAdjlist) return cell;
+		return cellHolder;
 	}
 	
 	//A setter (and perhaps a getter) for indicating a cell is part of a room (void setRoom(boolean) and perhaps boolean isRoom())
