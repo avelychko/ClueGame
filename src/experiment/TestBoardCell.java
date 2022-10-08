@@ -26,7 +26,7 @@ public class TestBoardCell {
 	
 	//A setter (and perhaps a getter) for indicating a cell is part of a room (void setRoom(boolean) and perhaps boolean isRoom())
 	public void setRoom(boolean bool) {
-		getAdjlist.contains(bool);
+		cellHolder.contains(bool);
 	}
 	public boolean isRoom() {
 		return true;
