@@ -85,7 +85,7 @@ public class BoardTestsExp {
 	}
 	
 	/*
-	 * 
+	 * Test a complex situation where there may be a cell that represents a room and another that is occupied by an opponent
 	 */
 	@Test
 	public void testTargetsMixed() {
