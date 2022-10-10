@@ -3,9 +3,11 @@ package experiment;
 import java.util.*;
 
 public class TestBoardCell {
-	private int row;
-	private int col;
-	private Set<TestBoardCell> getAdjlist = new HashSet<TestBoardCell>();
+	private int row, col;
+	private Boolean isRoom, isOccupied;
+	Set<TestBoardCell> adjList;
+	
+	public TestBoardCell() { adjList = new TreeSet<TestBoardCell>(); }
 	
 	//A constructor that has passed into it the row and column for that cell
 	public TestBoardCell(int row, int col) {
@@ -14,29 +16,23 @@ public class TestBoardCell {
 	}
 	
 	//A setter to add a cell to this cells adjacency list, void addAdjacency( TestBoardCell cell )
-	public void addAdjacecy(TestBoard cell) {
-		getAdjlist.add(cell);
+	public void addAdjacency(TestBoardCell cell) {
+		adjList.add(cell);
 	}
 	
-	//Set<TestBoardCell> getAdjList() – returns the adjacency list for the cell
+	//Set<TestBoardCell> getAdjList() returns the adjacency list for the cell
 	public Set<TestBoardCell> getAdjList() {
-		for (TestBoardCell cell : getAdjlist) return cell;
+		return adjList;
 	}
 	
 	//A setter (and perhaps a getter) for indicating a cell is part of a room (void setRoom(boolean) and perhaps boolean isRoom())
 	public void setRoom(boolean bool) {
-		getAdjlist.contains(bool);
-	}
-	public boolean isRoom() {
-		return true;
+		isRoom = bool;
 	}
 	
-	//A setter and perhaps a getter for indicating a cell is occupied by another player (void setOccupied(boolean), boolean getOccupied()).
+	//A setter and perhaps a getter for indicating a cell is occupied 
+	//by another player (void setOccupied(boolean), boolean getOccupied()).
 	public void setOccupied(boolean bool) {
-		
-	}
-	
-	public boolean getOccupied() {
-		return false;
+		isOccupied = bool;
 	}
 }
