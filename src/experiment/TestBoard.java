@@ -24,7 +24,8 @@ public class TestBoard {
 	
 	//TestBoardCell getCell( int row, int col ) returns the cell from the board at row, col.
 	public TestBoardCell getCell(int row, int col) {
-		return grid[row][col];
+		return new TestBoardCell();
+		//return grid[row][col];
 	}
 	
 	//Set<TestBoardCell> getTargets() gets the targets last created by calcTargets()

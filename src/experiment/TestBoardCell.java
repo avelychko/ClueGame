@@ -5,7 +5,7 @@ import java.util.*;
 public class TestBoardCell {
 	private int row, col;
 	private Boolean isRoom, isOccupied;
-	Set<TestBoardCell> adjList;
+	Set<TestBoardCell> adjList = new TreeSet<TestBoardCell>();
 	
 	public TestBoardCell() { adjList = new TreeSet<TestBoardCell>(); }
 	
