@@ -22,6 +22,7 @@ public class BoardTestsExp {
 
 	@Test
 	public void testAdjacency() {
+		//TestBoardCell cell1 = new TestBoardCell( 0, 0) ;
 		TestBoardCell topLeftCorner = board.getCell(0, 0);
 		Set<TestBoardCell> testTLC = topLeftCorner.getAdjList();
 

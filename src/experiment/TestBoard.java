@@ -19,7 +19,7 @@ public class TestBoard {
 	//void calcTargets(TestBoardCell startCell, int pathlength) 
 	//calculates legal targets for a move from startCell of length pathlength.
 	public void calcTargets(TestBoardCell startCell, int pathlength) {
-		//targets.add(startCell);
+		targets.add(startCell);
 	}
 
 	//TestBoardCell getCell( int row, int col ) returns the cell from the board at row, col.
