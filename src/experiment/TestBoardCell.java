@@ -6,9 +6,9 @@ public class TestBoardCell {
 	private int row, col;
 	private Boolean isRoom, isOccupied;
 	Set<TestBoardCell> adjList;
-
+	
 	public TestBoardCell() { adjList = new HashSet<TestBoardCell>(); }
-
+	
 	//A constructor that has passed into it the row and column for that cell
 	public TestBoardCell(int row, int col) {
 		this.row = row;
