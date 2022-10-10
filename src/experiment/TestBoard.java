@@ -1,32 +1,34 @@
 package experiment;
 
-import java.util.Set;
+import java.util.*;
 
 public class TestBoard {
+	private TestBoardCell[][] grid;
+	private Set<TestBoardCell> targets;
+	private Set<TestBoardCell> visited;
+	final static int COLS = 4;
+	final static int ROWS = 4;
 	
 	//A constructor probably empty.
-	public TestBoard() {};
+	public TestBoard() {
+		grid = new TestBoardCell[COLS][ROWS];
+		targets = new TreeSet<TestBoardCell>();
+		visited = new TreeSet<TestBoardCell>();
+	};
 	
-	
-	//void calcTargets( TestBoardCell startCell, int pathlength) � calculates legal targets for a move from startCell of length pathlength.
-	public void calcTargets( TestBoardCell startCell, int pathlength) {
+	//void calcTargets(TestBoardCell startCell, int pathlength) 
+	//calculates legal targets for a move from startCell of length pathlength.
+	public void calcTargets(TestBoardCell startCell, int pathlength) {
+		//targets.add(startCell);
 	}
 	
-	//TestBoardCell getCell( int row, int col ) � returns the cell from the board at row, col.
-	public TestBoardCell getCell( int row, int col ) {
-		
-		
-		return null;
-		
-		
+	//TestBoardCell getCell( int row, int col ) returns the cell from the board at row, col.
+	public TestBoardCell getCell(int row, int col) {
+		return grid[row][col];
 	}
 	
-	//Set<TestBoardCell> getTargets() � gets the targets last created by calcTargets()
+	//Set<TestBoardCell> getTargets() gets the targets last created by calcTargets()
 	public Set<TestBoardCell> getTargets() {
-		
-		return null;
-		
+		return targets;
 	}
-	
-	
 }

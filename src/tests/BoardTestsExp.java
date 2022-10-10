@@ -1,12 +1,8 @@
 package tests;
 
 import java.util.Set;
-
-import static org.junit.Assert.*;
-
 import org.junit.Assert;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import experiment.*;
 
@@ -26,21 +22,21 @@ public class BoardTestsExp {
 	
 	@Test
 	public void testAdjacency() {
-		TestBoardCell topLeftCorner  = board.getCell(0,0);
+		TestBoardCell topLeftCorner = board.getCell(0, 0);
 		Set<TestBoardCell> testTLC = topLeftCorner.getAdjList();
 		
 		Assert.assertTrue(testTLC.contains(board.getCell(1, 0)));
 		Assert.assertTrue(testTLC.contains(board.getCell(0, 1)));
 		Assert.assertEquals(2, testTLC.size());
 		
-		TestBoardCell bottomRightCorner = board.getCell(3,3);
+		TestBoardCell bottomRightCorner = board.getCell(3, 3);
 		Set<TestBoardCell> testBRC = bottomRightCorner.getAdjList();
 		
 		Assert.assertTrue(testBRC.contains(board.getCell(2, 3)));
 		Assert.assertTrue(testBRC.contains(board.getCell(3, 2)));
 		Assert.assertEquals(2, testBRC.size());
 		
-		TestBoardCell rightEdge = board.getCell(1,3);
+		TestBoardCell rightEdge = board.getCell(1, 3);
 		Set<TestBoardCell> testRE = rightEdge.getAdjList();
 		
 		Assert.assertTrue(testRE.contains(board.getCell(0, 3)));
@@ -67,11 +63,11 @@ public class BoardTestsExp {
 	}
 	
 	/*
-	 * Test targets with serveral rolls and start locations
+	 * Test targets with several rolls and start locations
 	 */
 	@Test
 	public void testTargetsNormal() {
-	TestBoardCell cell = board.getCell(0,0);
+		TestBoardCell cell = board.getCell(0,0);
 		board.calcTargets(cell, 3);
 		Set<TestBoardCell> target = board.getTargets();
 		Assert.assertEquals(6, target.size());
@@ -81,7 +77,6 @@ public class BoardTestsExp {
 		Assert.assertTrue(target.contains(board.getCell(1, 2)));
 		Assert.assertTrue(target.contains(board.getCell(0, 3)));
 		Assert.assertTrue(target.contains(board.getCell(1, 0)));
-		
 	}
 	
 	/*
@@ -100,5 +95,4 @@ public class BoardTestsExp {
 		Assert.assertTrue(targets.contains(board.getCell(2, 2)));
 		Assert.assertTrue(targets.contains(board.getCell(3, 3)));
 	}
-
 }
