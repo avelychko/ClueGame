@@ -8,25 +8,25 @@ public class TestBoard {
 	private Set<TestBoardCell> visited;
 	final static int COLS = 4;
 	final static int ROWS = 4;
-	
+
 	//A constructor probably empty.
 	public TestBoard() {
 		grid = new TestBoardCell[COLS][ROWS];
 		targets = new TreeSet<TestBoardCell>();
 		visited = new TreeSet<TestBoardCell>();
 	};
-	
+
 	//void calcTargets(TestBoardCell startCell, int pathlength) 
 	//calculates legal targets for a move from startCell of length pathlength.
 	public void calcTargets(TestBoardCell startCell, int pathlength) {
 		//targets.add(startCell);
 	}
-	
+
 	//TestBoardCell getCell( int row, int col ) returns the cell from the board at row, col.
 	public TestBoardCell getCell(int row, int col) {
 		return grid[row][col];
 	}
-	
+
 	//Set<TestBoardCell> getTargets() gets the targets last created by calcTargets()
 	public Set<TestBoardCell> getTargets() {
 		return targets;
