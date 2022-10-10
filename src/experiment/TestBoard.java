@@ -12,8 +12,8 @@ public class TestBoard {
 	//A constructor probably empty.
 	public TestBoard() {
 		grid = new TestBoardCell[COLS][ROWS];
-		targets = new TreeSet<TestBoardCell>();
-		visited = new TreeSet<TestBoardCell>();
+		targets = new HashSet<TestBoardCell>();
+		visited = new HashSet<TestBoardCell>();
 	};
 
 	//void calcTargets(TestBoardCell startCell, int pathlength) 
@@ -24,7 +24,8 @@ public class TestBoard {
 
 	//TestBoardCell getCell( int row, int col ) returns the cell from the board at row, col.
 	public TestBoardCell getCell(int row, int col) {
-		return grid[row][col];
+		return new TestBoardCell();
+		//return grid[row][col];
 	}
 
 	//Set<TestBoardCell> getTargets() gets the targets last created by calcTargets()
