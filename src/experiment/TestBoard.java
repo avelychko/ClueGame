@@ -12,8 +12,8 @@ public class TestBoard {
 	//A constructor probably empty.
 	public TestBoard() {
 		grid = new TestBoardCell[COLS][ROWS];
-		targets = new TreeSet<TestBoardCell>();
-		visited = new TreeSet<TestBoardCell>();
+		targets = new HashSet<TestBoardCell>();
+		visited = new HashSet<TestBoardCell>();
 	};
 	
 	//void calcTargets(TestBoardCell startCell, int pathlength) 
