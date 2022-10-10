@@ -8,12 +8,14 @@ public class TestBoard {
 	private Set<TestBoardCell> visited;
 	final static int COLS = 4;
 	final static int ROWS = 4;
+	TestBoardCell cell = new TestBoardCell(); 
 
 	//A constructor probably empty.
 	public TestBoard() {
 		grid = new TestBoardCell[ROWS][COLS];
 		targets = new HashSet<TestBoardCell>();
 		visited = new HashSet<TestBoardCell>();
+		cell = new TestBoardCell();
 		
 		for (int i = 0; i < ROWS; i++) {
 			for (int j = 0; j < COLS; j++) {
@@ -21,11 +23,17 @@ public class TestBoard {
 			}
 		}
 		
-		for (int i = 0; i < ROWS; i++) {
+
+		cell.addAdjacency(getCell(0, 1));
+		cell.addAdjacency(getCell(1, 0));
+		
+		/*for (int i = 0; i < ROWS; i++) {
 			for (int j = 0; j < COLS; j++) {
-				
+				if ((i-1) >= 0)
+				    cell.addAdjacency(getCell(i+1, j));
+					cell.addAdjacency(getCell(i, j+1));
 			}
-		}
+		}*/
 		// Make all the adjacencies for the cells
 		// for i in rows, 
 		//	 for j in cols
