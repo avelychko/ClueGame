@@ -1,0 +1,78 @@
+commit e5f7379daf0543f085beeb960486068caf086a44
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Fri Oct 7 23:50:13 2022 -0600
+
+    cleaned up some things and added README file
+
+commit ece576b5c1e9f46dd6c95dfe90c4eb9c4611bb18
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Fri Oct 7 23:40:21 2022 -0600
+
+    add testTargetsNormal anad TargetsMixed
+
+commit 51a3a020b4ce4d0ad5de3ea4399628ab30fa165a
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Fri Oct 7 23:39:57 2022 -0600
+
+    add testTargetsNormal anad TargetsMixed
+
+commit 34cf302daded3e01e73f6d919a4df036e649d887
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Fri Oct 7 22:42:45 2022 -0600
+
+    finished up testAdjacency
+
+commit 58a3864abbc4816a37cc60a3dcee1dd8a7bc6597
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Fri Oct 7 21:27:00 2022 -0600
+
+    renamed set to cellHolder and fixed up getAdjList
+
+commit 11fd8a861b50fe91dda34f4bf216168902002fb1
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Fri Oct 7 13:58:15 2022 -0600
+
+    cleaned up boardtests
+
+commit 7ebf19e5c25b6ac76440f96d8c80e91517039630
+Merge: 71c8def 5d116b5
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Fri Oct 7 13:56:01 2022 -0600
+
+    worked on TestBoardCell methods
+
+commit 71c8deff2886943f6c6c12c329cf5d665f84dccb
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Fri Oct 7 13:53:51 2022 -0600
+
+    worked on TestBoardCell
+
+commit 5d116b56782c9fde01737d86d1d04aed8259dc86
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Fri Oct 7 13:53:29 2022 -0600
+
+    added public to functions and started on BoardTestsExp
+
+commit 45df26e6a6bc534861041d65bc3b1b5cfa1ecc75
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Fri Oct 7 13:30:40 2022 -0600
+
+    added JUnit 5
+
+commit 98d71c2bd8ba14cd9a0b491e13aaae82be963ee1
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Fri Oct 7 13:19:30 2022 -0600
+
+    added general assignment methods
+
+commit 25e25ed35145fe51322264a26c1768b04799520c
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 6 23:30:34 2022 -0600
+
+    created .gitignore
+
+commit 0f8fa69a41836697e9d39d97e5982432de54fcde
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 6 23:27:38 2022 -0600
+
+    created test classes
