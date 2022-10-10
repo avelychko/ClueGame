@@ -50,8 +50,13 @@ public class TestBoard {
 	//calculates legal targets for a move from startCell of length pathlength.
 	public void calcTargets(TestBoardCell startCell, int pathlength) {
 		visited.add(startCell);
-		if (pathlength == 1) targets.add(startCell);
-		else calcTargets(startCell, pathlength - 1);
+		for (TestBoardCell adjCell: cell.adjList) {
+			if (visited.contains(adjCell) == false) {
+				if (pathlength == 1) targets.add(adjCell);
+				else calcTargets(adjCell, pathlength - 1);
+				visited.remove(adjCell);
+			}
+		}
 	}
 
 	//TestBoardCell getCell( int row, int col ) returns the cell from the board at row, col.
