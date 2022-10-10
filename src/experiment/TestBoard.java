@@ -14,6 +14,23 @@ public class TestBoard {
 		grid = new TestBoardCell[COLS][ROWS];
 		targets = new HashSet<TestBoardCell>();
 		visited = new HashSet<TestBoardCell>();
+		
+		for (int i = 0; i < COLS; i++) {
+			for (int j = 0; j < ROWS; j++) {
+				grid[i][j] = new TestBoardCell(i, j);
+			}
+		}
+		
+		// Make all the board cells
+		// for i in rows, 
+		//	 for j in cols
+		//		make new cell
+		
+		
+		// Make all the adjacencies for the cells
+		// for i in rows, 
+		//	 for j in cols
+		//		find the 1-4 adjacencies for each cell
 	};
 
 	//void calcTargets(TestBoardCell startCell, int pathlength) 
@@ -24,8 +41,8 @@ public class TestBoard {
 
 	//TestBoardCell getCell( int row, int col ) returns the cell from the board at row, col.
 	public TestBoardCell getCell(int row, int col) {
-		return new TestBoardCell();
-		//return grid[row][col];
+		return grid[row][col];
+		//return new TestBoardCell(row, col);
 	}
 
 	//Set<TestBoardCell> getTargets() gets the targets last created by calcTargets()
