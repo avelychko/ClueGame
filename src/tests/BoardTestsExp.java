@@ -27,8 +27,8 @@ public class BoardTestsExp {
 		
 		Assert.assertTrue(testTLC.contains(board.getCell(1, 0)));
 		Assert.assertTrue(testTLC.contains(board.getCell(0, 1)));
-		Assert.assertEquals(2, testTLC.size()); 
-
+		Assert.assertEquals(2, testTLC.size());
+		
 		TestBoardCell bottomRightCorner = board.getCell(3, 3);
 		Set<TestBoardCell> testBRC = bottomRightCorner.getAdjList();
 
@@ -59,7 +59,7 @@ public class BoardTestsExp {
 		Assert.assertTrue(testMG.contains(board.getCell(2, 1)));
 		Assert.assertTrue(testMG.contains(board.getCell(2, 3)));
 		Assert.assertTrue(testMG.contains(board.getCell(3, 2)));
-		Assert.assertEquals(4, testMG.size());
+		Assert.assertEquals(4, testMG.size()); 
 	}
 
 	/*
@@ -95,4 +95,5 @@ public class BoardTestsExp {
 		Assert.assertTrue(targets.contains(board.getCell(2, 2)));
 		Assert.assertTrue(targets.contains(board.getCell(3, 3)));
 	}
+
 }
