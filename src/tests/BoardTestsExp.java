@@ -12,7 +12,7 @@ public class BoardTestsExp {
 	@BeforeEach 
 	//method to set up your BoardExp.
 	public void setUp() {
-		board = new TestBoard();	
+		board = new TestBoard();
 	}
 
 	/*
