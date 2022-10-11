@@ -1,3 +1,11 @@
+/**
+ * TestBoard Class
+ * 
+ * @author Anastasia Velyhko
+ * @author Gordon Dina
+ *
+ */
+
 package experiment;
 
 import java.util.*;
@@ -14,14 +22,14 @@ public class TestBoard {
 		grid = new TestBoardCell[ROWS][COLS]; //set grid at size ROWS and COLS
 		targets = new HashSet<TestBoardCell>(); //initialize targets
 		visited = new HashSet<TestBoardCell>(); //initialize visited
-		
+
 		//for loop that creates grid at rows and cols
 		for (int i = 0; i < ROWS; i++) {
 			for (int j = 0; j < COLS; j++) {
 				grid[i][j] = new TestBoardCell(i, j);
 			}
 		}
-		
+
 		//adds 4 adjacencies of rows and cols
 		for (int i = 0; i < ROWS; i++) {
 			for (int j = 0; j < COLS; j++) {
@@ -38,15 +46,12 @@ public class TestBoard {
 		visited.add(startCell); //adds visited cell to visited set
 		//for loop for each adjacency cell
 		for (TestBoardCell adjCell: startCell.adjList) {
-			//checks if adjacency cell has already been visited
-			if (adjCell.getRoom() == true) {
-				
-			}
-			
+			//checks if adjacency cell has already been visited	
 			if (visited.contains(adjCell) == false) {
 				//checks if cell is occupied
 				if (adjCell.getOccupied() == false) {
 					if (pathlength == 1) targets.add(adjCell); //checks if length is 1 then add adj cell to targets set
+					if (adjCell.getRoom() == true) targets.add(adjCell); //if is room add adj cell to targets
 					else calcTargets(adjCell, pathlength - 1);  //else call adj cell recursively
 					visited.remove(adjCell); //remove visited adj cell
 				}

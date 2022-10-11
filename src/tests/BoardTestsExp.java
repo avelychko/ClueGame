@@ -1,3 +1,11 @@
+/**
+ * BoardTestsExp class tests adjacency and targets
+ * 
+ * @author Anastasia Velyhko
+ * @author Gordon Dina
+ *
+ */
+
 package tests;
 
 import java.util.Set;

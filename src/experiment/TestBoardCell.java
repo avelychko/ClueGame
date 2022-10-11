@@ -1,3 +1,11 @@
+/**
+ * TestBoardCell Class
+ * 
+ * @author Anastasia Velyhko
+ * @author Gordon Dina
+ *
+ */
+
 package experiment;
 
 import java.util.*;
