@@ -22,7 +22,6 @@ public class TestBoardCell {
 	//A setter to add a cell to this cells adjacency list, void addAdjacency( TestBoardCell cell )
 	public void addAdjacency(TestBoardCell cell) {
 		this.adjList.add(cell);
-		//this.adjList.add(new TestBoardCell(1, 0));
 
 	}
 

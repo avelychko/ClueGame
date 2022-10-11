@@ -29,7 +29,7 @@ public class TestBoard {
 		
 		for (int i = 0; i < ROWS; i++) {
 			for (int j = 0; j < COLS; j++) {
-				if (i > 0) grid[i][j].addAdjacency(getCell(1, 0));
+				if (i > 0) grid[i][j].addAdjacency(getCell(i-1, 0));
 				if (j > 0) grid[i][j].addAdjacency(getCell(i, j-1));
 				if (i < ROWS-1) grid[i][j].addAdjacency(getCell(i+1, j));
 				if (j < COLS-1) grid[i][j].addAdjacency(getCell(i, j+1));
