@@ -12,13 +12,9 @@ public class Room {
 		this.name = name;
 	}
 	public BoardCell getLabelCell() {
-		// TODO Auto-generated method stub
-		return null;
+		return labelCell;
 	}
 	public BoardCell getCenterCell() {
-		// TODO Auto-generated method stub
-		return null;
+		return centerCell;
 	}
-
-
 }
