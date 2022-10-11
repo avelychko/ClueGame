@@ -5,20 +5,8 @@ public class Room {
 	private BoardCell centerCell;
 	private BoardCell labelCell;
 	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public BoardCell getLabelCell() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public BoardCell getCenterCell() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
+	public String getName() { return name; }
+	public void setName(String name) { this.name = name; }
+	public BoardCell getLabelCell() { return labelCell; }
+	public BoardCell getCenterCell() { return centerCell; }
 }
