@@ -15,7 +15,7 @@ public class TestBoard {
 		grid = new TestBoardCell[ROWS][COLS];
 		targets = new HashSet<TestBoardCell>();
 		visited = new HashSet<TestBoardCell>();
-		//cell = new TestBoardCell();
+		cell = new TestBoardCell();
 		
 		//makes our grid
 	
@@ -42,7 +42,7 @@ public class TestBoard {
 		for (TestBoardCell adjCell: cell.adjList) {
 			if (visited.contains(adjCell) == false) {
 				if (pathlength == 1) targets.add(adjCell);
-				else calcTargets(adjCell, pathlength - 1);
+				else calcTargets(adjCell, pathlength - 1); 
 				visited.remove(adjCell);
 			}
 		}
