@@ -29,7 +29,6 @@ public class TestBoard {
 				if ((j-1) >= 0) grid[i][j].addAdjacency(getCell(i, j-1)); //adjacency in y-1 direction
 				if ((i+1) < ROWS) grid[i][j].addAdjacency(getCell(i+1, j)); //adjacency in x+1 direction
 				if ((j+1) < COLS) grid[i][j].addAdjacency(getCell(i, j+1)); //adjacency in y+1 direction
-
 			}
 		}
 	}
@@ -40,6 +39,10 @@ public class TestBoard {
 		//for loop for each adjacency cell
 		for (TestBoardCell adjCell: startCell.adjList) {
 			//checks if adjacency cell has already been visited
+			if (adjCell.getRoom() == true) {
+				
+			}
+			
 			if (visited.contains(adjCell) == false) {
 				//checks if cell is occupied
 				if (adjCell.getOccupied() == false) {

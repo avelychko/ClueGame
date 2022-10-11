@@ -6,7 +6,7 @@ public class TestBoardCell {
 	private int row, col; //row and col variables
 	private Boolean isRoom = false; //isRoom boolean initialized to false
 	private Boolean isOccupied = false; //isOccupied initialized to false
-	Set<TestBoardCell> adjList = new HashSet<TestBoardCell>(); //initilized adjList set
+	Set<TestBoardCell> adjList = new HashSet<TestBoardCell>(); //initialized adjList set
 	
 	//constructor
 	public TestBoardCell() { adjList = new HashSet<TestBoardCell>(); }
@@ -34,7 +34,7 @@ public class TestBoardCell {
 	
 	//a getter for indicating a cell is part of a room 
 	public boolean getRoom() {
-		return isRoom;
+		return this.isRoom;
 	}
 
 	//a setter for indicating a cell is occupied by another player
@@ -44,6 +44,6 @@ public class TestBoardCell {
 	
 	//a getter for indicating a cell is occupied by another player
 	public boolean getOccupied() {
-		return isOccupied;
+		return this.isOccupied;
 	}
 }
