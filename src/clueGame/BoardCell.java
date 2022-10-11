@@ -8,7 +8,7 @@ public class BoardCell {
 	private DoorDirection doorDirection;
 	private boolean roomLabel;
 	private boolean roomCenter;
-	private char SecretPassage;
+	private char secretPassage;
 	Set<BoardCell> adjList = new HashSet<BoardCell>(); //initialized adjList set
 	
 	//constructor
@@ -28,5 +28,25 @@ public class BoardCell {
 	//returns the adjacency list for the cell
 	public Set<BoardCell> getAdjList() {
 		return adjList;
+	}
+
+	public DoorDirection getDoorDirection() {
+		return doorDirection;
+	}
+
+	public boolean isDoorway() {
+		return false;
+	}
+
+	public boolean isLabel() {
+		return roomLabel;
+	}
+
+	public boolean isRoomCenter() {
+		return roomCenter;
+	}
+
+	public char getSecretPassage() {
+		return secretPassage;
 	}
 }

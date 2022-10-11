@@ -11,6 +11,14 @@ public class Room {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public BoardCell getLabelCell() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public BoardCell getCenterCell() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 }
