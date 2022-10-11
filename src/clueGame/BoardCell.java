@@ -1,18 +1,25 @@
 package clueGame;
 
+/**
+ * BoardCell Class
+ * 
+ * @author Anastasia Velyhko
+ * @author Gordon Dina
+ *
+ */
+
 import java.util.*;
 
 public class BoardCell {
-	private int row, col; //row and col variables
-	private char initial;
-	private DoorDirection doorDirection;
-	private boolean roomLabel;
-	private boolean roomCenter;
-	private char secretPassage;
+	private int row, col; //row and col var
+	private char initial; //initial var
+	private DoorDirection doorDirection; //doorDirection enum objects
+	private boolean roomLabel; //roomLabel bool
+	private boolean roomCenter; //roomCenter bool
+	private char secretPassage; //secretPassage char
 	Set<BoardCell> adjList = new HashSet<BoardCell>(); //initialized adjList set
-	
-	//constructor
-	public BoardCell() { adjList = new HashSet<BoardCell>(); }
+
+	public BoardCell() { adjList = new HashSet<BoardCell>(); } //constructor
 	
 	//a constructor that has passed into it the row and column for that cell
 	public BoardCell(int row, int col) {
@@ -20,33 +27,12 @@ public class BoardCell {
 		this.col = col;
 	}
 
-	//a setter to add a cell to this cells adjacency list
-	public void addAdj(BoardCell adj) {
-		this.adjList.add(adj);
-	}
-
-	//returns the adjacency list for the cell
-	public Set<BoardCell> getAdjList() {
-		return adjList;
-	}
-
-	public DoorDirection getDoorDirection() {
-		return doorDirection;
-	}
-
-	public boolean isDoorway() {
-		return false;
-	}
-
-	public boolean isLabel() {
-		return roomLabel;
-	}
-
-	public boolean isRoomCenter() {
-		return roomCenter;
-	}
-
-	public char getSecretPassage() {
-		return secretPassage;
-	}
+	public void addAdj(BoardCell adj) { this.adjList.add(adj); } //a setter to add a cell to this cells adjacency list
+	public Set<BoardCell> getAdjList() { return adjList; } //returns the adjacency list for the cell
+	public DoorDirection getDoorDirection() { return doorDirection; } //returns direction of the door
+	//if doorDirection is NONE, return false
+	public boolean isDoorway() { return false; } //checks if cell is doorway
+	public boolean isLabel() { return roomLabel; } //checks if cell is label
+	public boolean isRoomCenter() { return roomCenter; } //checks if cell is room center
+	public char getSecretPassage() { return secretPassage; } //returns secretPassage
 }
