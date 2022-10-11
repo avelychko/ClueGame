@@ -9,13 +9,9 @@ package tests;
 import static org.junit.Assert.*;
 
 import org.junit.Assert;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
-import clueGame.Board;
-import clueGame.BoardCell;
-import clueGame.DoorDirection;
-import clueGame.Room;
+import clueGame.*;
 
 public class FileInitTests {
 	// Constants that I will use to test whether the file was loaded correctly
@@ -63,7 +59,7 @@ public class FileInitTests {
 	// three cells that are not a doorway, 2 are walkways and 1 is unused.
 	// These cells are dark blue on the planning spreadsheet
 	@Test
-	public void FourDoorDirections() {
+	public void FourDoorDirections() {	
 		// door to pool, left and up
 		BoardCell pool = board.getCell(3, 23); 
 		assertTrue(pool.isDoorway());
@@ -149,7 +145,7 @@ public class FileInitTests {
 		assertFalse( cell.isDoorway()) ;
 
 		// this is a label cell to test
-		cell = board.getCell(10, 14);
+		cell = board.getCell(9, 17);
 		room = board.getRoom( cell ) ;
 		assertTrue( room != null );
 		assertEquals( room.getName(), "Garden" ) ;
@@ -187,9 +183,7 @@ public class FileInitTests {
 		assertEquals( room.getName(), "Unused" ) ;
 		assertFalse( cell.isRoomCenter() );
 		assertFalse( cell.isLabel() );
-		
 	}
-
 }
 
 
