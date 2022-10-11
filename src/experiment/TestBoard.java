@@ -8,7 +8,7 @@ public class TestBoard {
 	private Set<TestBoardCell> visited;
 	final static int COLS = 4;
 	final static int ROWS = 4;
-	TestBoardCell cell = new TestBoardCell(); 
+	TestBoardCell cell;
 
 	//A constructor probably empty.
 	public TestBoard() {
@@ -25,20 +25,13 @@ public class TestBoard {
 		
 		for (int i = 0; i < ROWS; i++) {
 			for (int j = 0; j < COLS; j++) {
-
-				if ((i-1) >= 0) cell.addAdjacency(getCell(i-1, j));
-				if ((j-1) >= 0) cell.addAdjacency(getCell(i, j-1));
-				if ((i+1) <= ROWS -1) cell.addAdjacency(getCell(i+1, j));
-				if ((j+1) <= COLS -1) cell.addAdjacency(getCell(i, j+1));
+				if ((i-1) >= 0) grid[i][j].addAdjacency(getCell(i-1, j));
+				if ((j-1) >= 0) grid[i][j].addAdjacency(getCell(i, j-1));
+				if ((i+1) < ROWS) grid[i][j].addAdjacency(getCell(i+1, j));
+				if ((j+1) < COLS) grid[i][j].addAdjacency(getCell(i, j+1));
 			}
 		}
-
-				
-		// Make all the adjacencies for the cells
-		// for i in rows, 
-		//	 for j in cols
-		//		find the 1-4 adjacencies for each cell
-	};
+	}
 
 	//void calcTargets(TestBoardCell startCell, int pathlength) 
 	//calculates legal targets for a move from startCell of length pathlength.
@@ -55,8 +48,7 @@ public class TestBoard {
 
 	//TestBoardCell getCell( int row, int col ) returns the cell from the board at row, col.
 	public TestBoardCell getCell(int row, int col) {
-		//return grid[row][col];
-		return new TestBoardCell(row, col);
+		return grid[row][col];
 	}
 
 	//Set<TestBoardCell> getTargets() gets the targets last created by calcTargets()
