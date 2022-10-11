@@ -44,6 +44,10 @@ public class TestBoard {
 				//checks if cell is occupied
 				if (adjCell.getOccupied() == false) {
 					if (pathlength == 1) targets.add(adjCell); //checks if length is 1 then add adj cell to targets set
+					if (adjCell.getRoom() == true) {
+						targets.add(adjCell);
+						//calcTargets(adjCell, pathlength - 1);
+					}
 					else calcTargets(adjCell, pathlength - 1);  //else call adj cell recursively
 					visited.remove(adjCell); //remove visited adj cell
 				}
