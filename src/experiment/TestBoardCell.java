@@ -17,7 +17,7 @@ public class TestBoardCell {
 
 	//A setter to add a cell to this cells adjacency list, void addAdjacency( TestBoardCell cell )
 	public void addAdjacency(TestBoardCell cell) {
-		adjList.add(cell);
+		this.adjList.add(cell);
 	}
 
 	//Set<TestBoardCell> getAdjList() returns the adjacency list for the cell

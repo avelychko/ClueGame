@@ -15,8 +15,10 @@ public class TestBoard {
 		grid = new TestBoardCell[ROWS][COLS];
 		targets = new HashSet<TestBoardCell>();
 		visited = new HashSet<TestBoardCell>();
-		cell = new TestBoardCell();
+		//cell = new TestBoardCell();
 		
+		//makes our grid
+	
 		for (int i = 0; i < ROWS; i++) {
 			for (int j = 0; j < COLS; j++) {
 				grid[i][j] = new TestBoardCell(i, j);
