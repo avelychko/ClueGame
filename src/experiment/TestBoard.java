@@ -8,14 +8,12 @@ public class TestBoard {
 	private Set<TestBoardCell> visited;
 	final static int COLS = 4;
 	final static int ROWS = 4;
-	TestBoardCell cell;
 
 	//A constructor probably empty.
 	public TestBoard() {
 		grid = new TestBoardCell[ROWS][COLS];
 		targets = new HashSet<TestBoardCell>();
 		visited = new HashSet<TestBoardCell>();
-		cell = new TestBoardCell();
 		
 		//makes our grid
 	
