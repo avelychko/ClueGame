@@ -40,9 +40,11 @@ public class TestBoard {
 		visited.add(startCell);
 		for (TestBoardCell adjCell: startCell.adjList) {
 			if (visited.contains(adjCell) == false) {
-				if (pathlength == 1) targets.add(adjCell);
-				else calcTargets(adjCell, pathlength - 1);
-				visited.remove(adjCell);
+				if (adjCell.getOccupied() == false) {
+					if (pathlength == 1) targets.add(adjCell);
+					else calcTargets(adjCell, pathlength - 1); 
+					visited.remove(adjCell);
+				}
 			}
 		}
 	}
