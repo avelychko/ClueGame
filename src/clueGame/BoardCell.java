@@ -3,7 +3,7 @@ package clueGame;
 import java.util.HashSet;
 import java.util.Set;
 
-import experiment.TestBoardCell;
+//import experiment.TestBoardCell;
 
 public class BoardCell {
 	private int row, col; //row and col variables
