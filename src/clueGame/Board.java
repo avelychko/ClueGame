@@ -11,30 +11,45 @@ public class Board {
 	private Set<BoardCell> visited; //set of visited cells
 	final static int COLS = 4; //column size
 	final static int ROWS = 4; //row size
+	
+	 /*
+     * variable and methods used for singleton pattern
+     */
+     private static Board theInstance = new Board();
+     // constructor is private to ensure only one can be created
+     private Board() {
+            super() ;
+     }
+     // this method returns the only Board
+     public static Board getInstance() {
+            return theInstance;
+     }
+     /*
+      * initialize the board (since we are using singleton pattern)
+      */
+     public void initialize()
+     {
+ 		grid = new BoardCell[ROWS][COLS]; //set grid at size ROWS and COLS
+ 		targets = new HashSet<BoardCell>(); //initialize targets
+ 		visited = new HashSet<BoardCell>(); //initialize visited
 
-	//constructor
-	public Board() {
-		grid = new BoardCell[ROWS][COLS]; //set grid at size ROWS and COLS
-		targets = new HashSet<BoardCell>(); //initialize targets
-		visited = new HashSet<BoardCell>(); //initialize visited
+ 		//for loop that creates grid at rows and cols
+ 		for (int i = 0; i < ROWS; i++) {
+ 			for (int j = 0; j < COLS; j++) {
+ 				grid[i][j] = new BoardCell(i, j);
+ 			}
+ 		}
 
-		//for loop that creates grid at rows and cols
-		for (int i = 0; i < ROWS; i++) {
-			for (int j = 0; j < COLS; j++) {
-				grid[i][j] = new BoardCell(i, j);
-			}
-		}
-
-		//adds 4 adjacencies of rows and cols
-		for (int i = 0; i < ROWS; i++) {
-			for (int j = 0; j < COLS; j++) {
-				if ((i-1) >= 0) grid[i][j].addAdjacency(getCell(i-1, j)); //adjacency in x-1 direction
-				if ((j-1) >= 0) grid[i][j].addAdjacency(getCell(i, j-1)); //adjacency in y-1 direction
-				if ((i+1) < ROWS) grid[i][j].addAdjacency(getCell(i+1, j)); //adjacency in x+1 direction
-				if ((j+1) < COLS) grid[i][j].addAdjacency(getCell(i, j+1)); //adjacency in y+1 direction
-			}
-		}
-	}
+ 		//adds 4 adjacencies of rows and cols
+ 		for (int i = 0; i < ROWS; i++) {
+ 			for (int j = 0; j < COLS; j++) {
+ 				if ((i-1) >= 0) grid[i][j].addAdjacency(getCell(i-1, j)); //adjacency in x-1 direction
+ 				if ((j-1) >= 0) grid[i][j].addAdjacency(getCell(i, j-1)); //adjacency in y-1 direction
+ 				if ((i+1) < ROWS) grid[i][j].addAdjacency(getCell(i+1, j)); //adjacency in x+1 direction
+ 				if ((j+1) < COLS) grid[i][j].addAdjacency(getCell(i, j+1)); //adjacency in y+1 direction
+ 			}
+ 		}
+     }
 
 	//calculates legal targets for a move from startCell of length pathlength
 	public void calcTargets(BoardCell startCell, int pathlength) {
