@@ -6,13 +6,13 @@ import java.util.*;
 
 public class Board {
 	private BoardCell[][] grid; //2D array of object TestBoardCell
-	private Set<BoardCell> targets; //set of target cells
-	private Set<BoardCell> visited; //set of visited cells
-	int numColumns; //column size
-	int numRows; //row size
-	String layoutConfigFile; 
-	String setupConfigFile;
-	Map<Character, Room> roomMap;
+//	private Set<BoardCell> targets; //set of target cells
+//	private Set<BoardCell> visited; //set of visited cells
+	private int numColumns; //column size
+	private int numRows; //row size
+	private String layoutConfigFile; 
+	private String setupConfigFile;
+	private Map<Character, Room> roomMap;
 	
 	 /*
      * variable and methods used for singleton pattern
@@ -33,8 +33,8 @@ public class Board {
      public void initialize()
      {
  		grid = new BoardCell[numRows][numColumns]; //set grid at size ROWS and COLS
- 		targets = new HashSet<BoardCell>(); //initialize targets
- 		visited = new HashSet<BoardCell>(); //initialize visited
+// 		targets = new HashSet<BoardCell>(); //initialize targets
+// 		visited = new HashSet<BoardCell>(); //initialize visited
 
  		//for loop that creates grid at rows and cols
  		for (int i = 0; i < numRows; i++) {
@@ -46,10 +46,10 @@ public class Board {
  		//adds 4 adjacencies of rows and cols
  		for (int i = 0; i < numRows; i++) {
  			for (int j = 0; j < numColumns; j++) {
- 				if ((i-1) >= 0) grid[i][j].addAdjacency(getCell(i-1, j)); //adjacency in x-1 direction
- 				if ((j-1) >= 0) grid[i][j].addAdjacency(getCell(i, j-1)); //adjacency in y-1 direction
- 				if ((i+1) < numRows) grid[i][j].addAdjacency(getCell(i+1, j)); //adjacency in x+1 direction
- 				if ((j+1) < numColumns) grid[i][j].addAdjacency(getCell(i, j+1)); //adjacency in y+1 direction
+ 				if ((i-1) >= 0) grid[i][j].addAdj(getCell(i-1, j)); //adjacency in x-1 direction
+ 				if ((j-1) >= 0) grid[i][j].addAdj(getCell(i, j-1)); //adjacency in y-1 direction
+ 				if ((i+1) < numRows) grid[i][j].addAdj(getCell(i+1, j)); //adjacency in x+1 direction
+ 				if ((j+1) < numColumns) grid[i][j].addAdj(getCell(i, j+1)); //adjacency in y+1 direction
  			}
  		}
      }
