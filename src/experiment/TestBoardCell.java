@@ -6,8 +6,6 @@ public class TestBoardCell {
 	private int row, col;
 	private Boolean isRoom, isOccupied;
 	Set<TestBoardCell> adjList = new HashSet<TestBoardCell>();
-
-
 	
 	public TestBoardCell() { adjList = new HashSet<TestBoardCell>(); }
 	
@@ -15,8 +13,6 @@ public class TestBoardCell {
 	public TestBoardCell(int row, int col) {
 		this.row = row;
 		this.col = col;
-
-
 	}
 
 	//A setter to add a cell to this cells adjacency list, void addAdjacency( TestBoardCell cell )
