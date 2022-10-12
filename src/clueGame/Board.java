@@ -1,5 +1,6 @@
 package clueGame;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 /**
@@ -52,18 +53,28 @@ public class Board {
      } 
      
      //loads board setup 
-     public void loadSetupConfig() {
+     public void loadSetupConfig() throws FileNotFoundException {
     	//read setup file
     	FileReader reader = new FileReader(setupConfigFile); //reads file
  		Scanner in = new Scanner(reader);
+ 		in.useDelimiter(", ");
 
- 		while(in.hasNextLine()) {
- 			
+ 		while(in.hasNext()) {
+ 			in.next();
  		} in.close(); //close file after reading
      }
      
      //loads board layout 
-     public void loadLayoutConfig() {}
+     public void loadLayoutConfig() throws FileNotFoundException {
+     	//read setup file
+     	FileReader reader = new FileReader(layoutConfigFile); //reads file
+  		Scanner in = new Scanner(reader);
+  		in.useDelimiter(",");
+
+  		while(in.hasNext()) {
+  			in.next();
+  		} in.close(); //close file after reading
+     }
      
      //sets board setup and layout
  	public void setConfigFiles(String layout, String setup) {
@@ -74,7 +85,6 @@ public class Board {
 	public BoardCell getCell(int row, int col) { return grid[row][col]; } //returns the cell from the board at row, col
 	public int getNumRows() { return numRows; } //returns board row size
 	public int getNumColumns() { return numColumns; } //returns board column size
-	//note: return roomMap.get(room);
-	public Room getRoom(char room) { return new Room(); } //returns room at char
+	public Room getRoom(char room) { return roomMap.get(room); } //returns room at char
 	public Room getRoom(BoardCell cell) { return new Room(); } //return room at cell
 }

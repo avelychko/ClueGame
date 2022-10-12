@@ -30,8 +30,13 @@ public class BoardCell {
 	public void addAdj(BoardCell adj) { this.adjList.add(adj); } //a setter to add a cell to this cells adjacency list
 	public Set<BoardCell> getAdjList() { return adjList; } //returns the adjacency list for the cell
 	public DoorDirection getDoorDirection() { return doorDirection; } //returns direction of the door
-	//if doorDirection is NONE, return false
-	public boolean isDoorway() { return false; } //checks if cell is doorway
+	
+	//checks if cell is doorway
+	public boolean isDoorway() { 
+		if (getDoorDirection() == doorDirection.NONE) return false; 
+		return true;
+	} 
+	
 	public boolean isLabel() { return roomLabel; } //checks if cell is label
 	public boolean isRoomCenter() { return roomCenter; } //checks if cell is room center
 	public char getSecretPassage() { return secretPassage; } //returns secretPassage
