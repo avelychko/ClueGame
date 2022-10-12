@@ -1,6 +1,8 @@
 package clueGame;
 
 import java.io.*;
+import java.util.*;
+import java.util.Scanner;  
 
 /**
  * Board Class
@@ -14,12 +16,12 @@ import java.util.*;
 
 public class Board {
 	private BoardCell[][] grid; //2D array of object TestBoardCell
-	private int numColumns = 300; //column size
-	private int numRows = 300; //row size
+	private int numColumns; //column size
+	private int numRows; //row size
 	private String layoutConfigFile; //board layout
 	private String setupConfigFile; //board setup
 	private Map<Character, Room> roomMap; //map for board rooms
-	public Vector<String[]> layoutBuilder = new Vector<String[]>();
+	private String[][] layout; //grabs/makes the board from the csv file
 	
 	 /*
      * variable and methods used for singleton pattern
@@ -71,15 +73,22 @@ public class Board {
      }
      
      //loads board layout 
-     public void loadLayoutConfig() throws FileNotFoundException {
-     	//read setup file
-     	FileReader reader = new FileReader(layoutConfigFile); //reads file
-  		Scanner in = new Scanner(reader);
-  		in.useDelimiter(",");
-
-  		while(in.hasNext()) {
-  			in.next();
-  		} in.close(); //close file after reading
+     public void loadLayoutConfig(String layoutConfigFile) throws IOException {
+    	String data; 
+    	FileInputStream file = new FileInputStream(layoutConfigFile);
+ 		DataInputStream in = new DataInputStream(file);
+    	 
+ 		List<String[]> lines = new ArrayList<String[]>();
+		while ((data = in.readLine()) != null) {
+		     lines.add(data.split(","));
+		}
+		//in.close();
+		// convert our list to a String array.
+		layout = new String[lines.size()][0];
+		lines.toArray(layout); 
+		
+		numRows = layout.length;
+		numColumns = layout[0].length;
      }
      
      //sets board setup and layout
