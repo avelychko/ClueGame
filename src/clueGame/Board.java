@@ -54,15 +54,20 @@ public class Board {
      
      //loads board setup 
      public void loadSetupConfig() throws FileNotFoundException {
-    	//read setup file
-    	FileReader reader = new FileReader(setupConfigFile); //reads file
+ 		FileReader reader = new FileReader("ClueSetup306.txt"); //reads file
  		Scanner in = new Scanner(reader);
+ 		String line;
  		in.useDelimiter(", ");
 
- 		while(in.hasNext()) {
- 			if (in.next() == "Room") in.next();
- 			System.out.println(in.next());
- 		} in.close(); //close file after reading
+ 		while (in.hasNext()) {
+ 			line = in.next();
+ 			if (!line.contains("//")) {
+ 				Room room = new Room();
+				room.setName(line);
+ 				roomMap.put(in.next().charAt(0), room);
+ 				line = in.next();
+ 			}
+ 		} in.close();
      }
      
      //loads board layout 
