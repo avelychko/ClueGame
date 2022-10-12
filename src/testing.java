@@ -11,16 +11,6 @@ public class testing {
 		Scanner in = new Scanner(reader);
 		String line;
 		in.useDelimiter(", ");
-
-//		while (in.hasNext()) {
-//			line = in.next();
-//			if (!line.contains("//")) {
-//				System.out.println(line);
-//				line = Character.toString(in.next().charAt(0));
-//				System.out.println(line);
-//				in.next();
-//			}
-//		} in.close();
 		
  		while (in.hasNext()) {
  			line = in.next();
@@ -28,7 +18,7 @@ public class testing {
  				Room room = new Room();
 				room.setName(line);
 				line = in.next();
- 				roomMap.put(line.charAt(0), room);
+ 				roomMap.put(line.charAt(0), );
  			}
  		} in.close();
 		System.out.println(roomMap);
