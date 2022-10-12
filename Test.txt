@@ -1,11 +1,30 @@
+FourDoorDirections test:
 Pool has a door at row = 3, col = 23 that opens left. 
 Pool has a door at row = 4, col = 13 that opens up.
-Garden has a door at row = 7, col = 11 that opens right.
-Atrium has a door at row = 16, col = 15 that opens down.
-There is a walkway at row = 15, col = 3.
 
+Garden has a door at row = 15, col = 12 that opens up.
+Garden has a door at row = 15, col = 21 that opens up.
+Garden has a door at row = 7, col = 11 that opens right.
+Garden has a door at row = 2, col = 22 that opens left.
+
+Kitchen has a door at row = 5, col = 27 that opens right.
+
+Atrium has a door at row = 16, col = 15 that opens down.
+Atrium has a door at row = 16, col = 16 that opens down.
+Atrium has a door at row = 20, col = 20 that opens left.
+Atrium has a door at row = 21, col = 20 that opens left.
+Atrium has a door at row = 20, col = 11 that opens right.
+Atrium has a door at row = 21, col = 11 that opens right.
+
+There is a walkway at row = 11, col = 10, only next to other walkways.
+There is a walkway at row = 23, col = 29, next to unused and room.
+There is a walkway at row = 6, col = 7, right next to a door
+
+
+testNumberOfDoorways test:
 There are 20 doors total.
 
+testRooms:
 There is a standard Atrium location at row = 23, col = 15.
 There is a Garden label at row = 9, col = 17.
 There is a Dinning Room center at row = 16, col = 27,
