@@ -22,9 +22,10 @@ public class BoardCell {
 	public BoardCell() { adjList = new HashSet<BoardCell>(); } //constructor
 	
 	//a constructor that has passed into it the row and column for that cell
-	public BoardCell(int row, int col) {
+	public BoardCell(int row, int col, char initial) {
 		this.row = row;
 		this.col = col;
+		this.initial = initial;
 	}
 
 	public void addAdj(BoardCell adj) { this.adjList.add(adj); } //a setter to add a cell to this cells adjacency list
@@ -40,4 +41,13 @@ public class BoardCell {
 	public boolean isLabel() { return roomLabel; } //checks if cell is label
 	public boolean isRoomCenter() { return roomCenter; } //checks if cell is room center
 	public char getSecretPassage() { return secretPassage; } //returns secretPassage
+
+	public void setSecretPassage(char secretPassage) {
+		this.secretPassage = secretPassage;
+	}
+
+	public void setDoorDirection(DoorDirection doorDirection) {
+		this.doorDirection = doorDirection;
+	}
+	
 }

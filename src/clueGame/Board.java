@@ -2,7 +2,6 @@ package clueGame;
 
 import java.io.*;
 import java.util.*;
-import java.util.Scanner;  
 
 /**
  * Board Class
@@ -21,7 +20,7 @@ public class Board {
 	private String layoutConfigFile; //board layout
 	private String setupConfigFile; //board setup
 	private Map<Character, Room> roomMap; //map for board rooms
-	private String[][] layout; //grabs/makes the board from the csv file
+	 //grabs/makes the board from the csv file
 	
 	 /*
      * variable and methods used for singleton pattern
@@ -34,15 +33,19 @@ public class Board {
       * initialize the board (since we are using singleton pattern)
       */
      public void initialize() { 
-    	 grid = new BoardCell[numRows][numColumns]; //set grid size
+    	 try {
+			loadLayoutConfig();
+			loadSetupConfig();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	 //set grid size
     	 roomMap = new HashMap<Character, Room>(); //initilizes room map
     	 
     	//for loop that creates grid at rows and cols
-    	 for (int i = 0; i < numRows; i++) {
-    		 for (int j = 0; j < numColumns; j++) {
-    			 grid[i][j] = new BoardCell(i, j);
-    		 }
-    	 }
+    	 
+    	 
     	 //adds 4 adjacencies of rows and cols
     	 for (int i = 0; i < numRows; i++) {
     		 for (int j = 0; j < numColumns; j++) {
@@ -59,31 +62,66 @@ public class Board {
     	//read setup file
     	FileReader reader = new FileReader(setupConfigFile); //reads file
  		Scanner in = new Scanner(reader);
- 		in.useDelimiter(", ");
-
- 		while(in.hasNext()) {
- 			if (in.next() == "Room") in.next();
- 			System.out.println(in.next());
+ 		
+ 		
+ 		while(in.hasNextLine()) {
+ 			
+ 			String[] lines = in.nextLine().split(","); //grabs a line from txt, its already spilt
+ 			//next grab all the data, then put that data inside the map, make sure not to grab the comments 
+ 			if (lines[0] == "Room") {}
+ 			
  		} in.close(); //close file after reading
      }
      
      //loads board layout 
-     public void loadLayoutConfig(String layoutConfigFile) throws IOException {
-    	String data; 
-    	FileInputStream file = new FileInputStream(layoutConfigFile);
- 		DataInputStream in = new DataInputStream(file);
+     public void loadLayoutConfig() throws FileNotFoundException {
     	 
+    	FileReader reader = new FileReader(layoutConfigFile); //reads file
+ 		Scanner in = new Scanner(reader);
+ 	
+ 		in.useDelimiter(",");
+ 	 
  		List<String[]> lines = new ArrayList<String[]>();
-		while ((data = in.readLine()) != null) {
-		     lines.add(data.split(","));
-		}
-		//in.close();
-		// convert our list to a String array.
-		layout = new String[lines.size()][0];
-		lines.toArray(layout); 
+ 		
+ 		while(in.hasNextLine()) {
+ 			lines.add(in.nextLine().split(","));
+ 			}
+ 		
+ 		in.close();
+ 		numRows = lines.size();
+		numColumns = lines.get(0).length;
 		
-		numRows = layout.length;
-		numColumns = layout[0].length;
+		 grid = new BoardCell[numRows][numColumns];
+		
+		for (int i = 0; i < numRows; i++) {
+   		 for (int j = 0; j < numColumns; j++) {   			 
+   			 grid[i][j] = new BoardCell(i,j,lines.get(i)[j].charAt(0));
+   			 if(lines.get(i)[j].charAt(0) == 2) {
+   				 if(lines.get(i)[j].charAt(1) == '*') {
+   					 grid[i][j].isRoomCenter();
+   				 }
+   				 else if(lines.get(i)[j].charAt(1) == '#') {
+   					 grid[i][j].isLabel();
+   				 }
+   				else if(lines.get(i)[j].charAt(1) == '^') {
+  					 grid[i][j].setDoorDirection(DoorDirection.UP);
+  				 }
+   				else if(lines.get(i)[j].charAt(1) == '>') {
+ 					 grid[i][j].setDoorDirection(DoorDirection.RIGHT);
+   				}
+   				else if(lines.get(i)[j].charAt(1) == '<') {
+ 					 grid[i][j].setDoorDirection(DoorDirection.LEFT);
+   				}
+   				else if(lines.get(i)[j].charAt(1) == 'v') {
+					 grid[i][j].setDoorDirection(DoorDirection.DOWN);
+  				}
+   				 else {
+   					grid[i][j].setSecretPassage(lines.get(i)[j].charAt(1));
+   				 }
+   		 }
+		}
+	
+     }
      }
      
      //sets board setup and layout
