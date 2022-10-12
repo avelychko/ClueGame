@@ -15,7 +15,6 @@ public class Room {
 	private BoardCell labelCell;
 	
 	public Room() {} //constructor
-	public Room(String name) { this.name = name; } //parameterized constructor
 	public String getName() { return ""; } //returns room name
 	public void setName(String name) { this.name = name; } //sets room name
 	public BoardCell getLabelCell() { return labelCell; } //returns cell of label

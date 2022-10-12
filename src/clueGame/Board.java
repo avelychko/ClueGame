@@ -59,9 +59,9 @@ public class Board {
      
      //loads board setup 
      public void loadSetupConfig() throws FileNotFoundException {
-    	//read setup file
-    	FileReader reader = new FileReader(setupConfigFile); //reads file
+ 		FileReader reader = new FileReader(setupConfigFile); //reads file
  		Scanner in = new Scanner(reader);
+
  		
  		
  		while(in.hasNextLine()) {
@@ -73,9 +73,13 @@ public class Board {
  		} in.close(); //close file after reading
      }
      
+  
+   
      //loads board layout 
      public void loadLayoutConfig() throws FileNotFoundException {
-    	 
+    	 //read once to see how many rows and cols 
+    	 //and then read 2nd time to store cell information in grid[][]
+     	 
     	FileReader reader = new FileReader(layoutConfigFile); //reads file
  		Scanner in = new Scanner(reader);
  	
