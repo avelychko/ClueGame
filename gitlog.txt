@@ -1,3 +1,159 @@
+commit 92859096173b9fcedafa99062971d4f9ba315407
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Oct 11 17:54:25 2022 -0600
+
+    finished up Test.txt and changed somethings in testRooms
+
+commit c9e9ba76fd8eaefcff80cd5757ded5da0015f7df
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Oct 11 17:28:23 2022 -0600
+
+    modified tests, created Test.txt file
+
+commit 9967bd2efbcfeed61a713a53417e5fc097697d31
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Oct 11 16:46:05 2022 -0600
+
+    own test and 2 306 tests
+
+commit e661a67fc692ee18e96d6682e83ee789b19e415f
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Oct 11 16:37:45 2022 -0600
+
+    failing tests
+
+commit 3a31c9dfd73613f8504b3d61adf8b59f39095d57
+Merge: 9fc5a74 8615ae1
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Oct 11 15:14:02 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit 9fc5a74aa8d169b7bc20c579c9aa1c639fb1273a
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Oct 11 15:13:45 2022 -0600
+
+    changed FourDoorDirections test from default
+
+commit 8615ae15efb8cf134b3167b76b5a745afbaf1756
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Oct 11 14:43:19 2022 -0600
+
+    merge
+
+commit 5b53cd3859c4c8a600fa9f1eec3df5d438e76e84
+Merge: f647012 e81db67
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Oct 11 14:42:07 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit f647012e1ce5a27e83ff27a3b2bf2b4d29322a45
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Oct 11 14:41:52 2022 -0600
+
+    added getters in Room
+
+commit e81db679ecc711e9972ff955d4b6a98512132317
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Oct 11 14:19:31 2022 -0600
+
+    add 306 data
+
+commit 81e6a2063fb9944b5067dd9282add0db2ce49d14
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Oct 11 14:09:10 2022 -0600
+
+    undo changes on FileInitTests306 and made a seperate test class
+
+commit 3d79be94933c7a8d655761366882cd4f02aff15f
+Merge: 264827c 2ea55bc
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Oct 11 13:46:06 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit 264827c2191d93fe2b790d6823ac42811688e9b3
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Oct 11 13:45:59 2022 -0600
+
+    added setters and getters to Board and BoardCell
+
+commit 2ea55bcb3928f24fad1755ea274d6ce7f62f7f65
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Oct 11 13:45:39 2022 -0600
+
+    replaced default room names with our names, cell loctaion will be done later
+
+commit 0ea7833d147f998acd6bcb93a580ab1dad673e77
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Oct 11 13:27:32 2022 -0600
+
+    put basics for Room class
+
+commit 1aec79c7602fe3d34e880430bfec61fcdc5dec13
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Oct 11 13:26:56 2022 -0600
+
+    cleane up, failed ExceptionTests
+
+commit eeddb9d8b2cbf860edaabffbf42eb9e114c70247
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Oct 11 13:15:00 2022 -0600
+
+    modified Board and BoardCell skeleton
+
+commit 42cd3c98bea11da6c62a3b5b3b9ea2fb7475c178
+Merge: 05658a2 d95d4bd
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Oct 11 13:07:53 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit d95d4bd9cad17f6768ec6e8377bc050e20cd96ee
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Oct 11 13:07:28 2022 -0600
+
+    enumed Door directions
+
+commit 05658a2e5717cf9644234da35caa9beeef528ca1
+Merge: b6210f6 7614563
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Oct 11 13:06:25 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit b6210f6774ea39d10b3b95a57b08638949c6d247
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Oct 11 13:06:16 2022 -0600
+
+    modified Board
+
+commit 7614563c688c6b4def01a3f4f61007c85fcc269c
+Merge: 3d5adda 2dfb51d
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Oct 11 12:59:56 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit 3d5adda0a042e97b1c6833a4a3f4ab3c49c352b7
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Oct 11 12:59:27 2022 -0600
+
+    enumed Door directions
+
+commit 2dfb51de3775de44d2716a6b85af179d7ee1d1a1
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Oct 11 12:53:54 2022 -0600
+
+    changed class types
+
+commit 700a3668476762415ca3b5a7cc38e272fb4ee0e5
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Oct 11 12:48:21 2022 -0600
+
+    copy and pasted things from test to cluegame
+
 commit 326727727daa1e0122f9ca86f9c55c801c3f24f7
 Merge: a74f0f5 b94b650
 Author: Anastasia Velychko <avelychko@mines.edu>

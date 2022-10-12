@@ -20,6 +20,7 @@ public class Board {
 	private String layoutConfigFile; //board layout
 	private String setupConfigFile; //board setup
 	private Map<Character, Room> roomMap; //map for board rooms
+	public Vector<String[]> layoutBuilder = new Vector<String[]>();
 	
 	 /*
      * variable and methods used for singleton pattern
