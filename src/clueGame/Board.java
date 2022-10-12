@@ -1,7 +1,6 @@
 package clueGame;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 
 /**
  * Board Class
@@ -60,7 +59,8 @@ public class Board {
  		in.useDelimiter(", ");
 
  		while(in.hasNext()) {
- 			in.next();
+ 			if (in.next() == "Room") in.next();
+ 			System.out.println(in.next());
  		} in.close(); //close file after reading
      }
      
