@@ -56,24 +56,27 @@ public class Board {
      
      //loads board setup 
      public void loadSetupConfig() throws FileNotFoundException {
- 		FileReader reader = new FileReader("ClueSetup306.txt"); //reads file
+ 		FileReader reader = new FileReader(setupConfigFile); //reads file
  		Scanner in = new Scanner(reader);
  		String line;
  		in.useDelimiter(", ");
-
- 		while (in.hasNext()) {
- 			line = in.next();
- 			if (!line.contains("//")) {
- 				Room room = new Room();
-				room.setName(line);
- 				roomMap.put(in.next().charAt(0), room);
+ 		
+  		while (in.hasNext()) {
+  			line = in.next();
+  			if (!line.contains("//")) {
+  				Room room = new Room();
+ 				room.setName(line);
  				line = in.next();
- 			}
- 		} in.close();
+  				roomMap.put(line.charAt(0), room);
+  			}
+  		} in.close();
      }
      
      //loads board layout 
-     public void loadLayoutConfig(String layoutConfigFile) throws IOException {
+     public void loadLayoutConfig() throws IOException {
+    	 //read once to see how many rows and cols 
+    	 //and then read 2nd time to store cell information in grid[][]
+    	 
     	String data; 
     	FileInputStream file = new FileInputStream(layoutConfigFile);
  		DataInputStream in = new DataInputStream(file);
