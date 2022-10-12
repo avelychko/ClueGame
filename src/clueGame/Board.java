@@ -1,5 +1,7 @@
 package clueGame;
 
+import java.io.FileReader;
+
 /**
  * Board Class
  * 
@@ -49,8 +51,18 @@ public class Board {
     	 }
      } 
      
-     //loads board setup and layout
-     public void loadSetupConfig() {}
+     //loads board setup 
+     public void loadSetupConfig() {
+    	//read setup file
+    	FileReader reader = new FileReader(setupConfigFile); //reads file
+ 		Scanner in = new Scanner(reader);
+
+ 		while(in.hasNextLine()) {
+ 			
+ 		} in.close(); //close file after reading
+     }
+     
+     //loads board layout 
      public void loadLayoutConfig() {}
      
      //sets board setup and layout
