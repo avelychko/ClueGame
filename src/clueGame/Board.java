@@ -29,7 +29,11 @@ public class Board {
 	 */
 	private static Board theInstance = new Board();
 	private Board() { super(); } // constructor is private to ensure only one can be created
-	public static Board getInstance() { return theInstance; } // this method returns the only Board
+	public static Board getInstance() { 
+		if (theInstance == null) {
+			theInstance = new Board();
+		}
+		return theInstance; } // this method returns the only Board
 
 	/*
 	 * initialize the board (since we are using singleton pattern)
@@ -68,7 +72,7 @@ public class Board {
 	}
 
 	//loads board setup 
-	public void loadSetupConfig() throws Exception {
+	public void loadSetupConfig() throws BadConfigFormatException {
 		FileReader reader = null;
 		Scanner in = null;
 
@@ -92,9 +96,9 @@ public class Board {
 				e.getLocalizedMessage();
 			} in.close(); //close file
 		}
-
+	
 		//loads board layout 
-		public void loadLayoutConfig() throws Exception {
+		public void loadLayoutConfig() throws BadConfigFormatException {
 			FileReader reader = null;
 			Scanner in = null;
 			String[] nextCell; //stores layout lines
