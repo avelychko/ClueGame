@@ -41,9 +41,19 @@ public class Board {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		for (int i = 0; i < numRows; i++) {
+			for (int j = 0; j < numColumns; j++) {
+				if ((i-1) >= 0) grid[i][j].addAdj(getCell(i-1, j)); //adjacency in x-1 direction
+				if ((j-1) >= 0) grid[i][j].addAdj(getCell(i, j-1)); //adjacency in y-1 direction
+				if ((i+1) < numRows) grid[i][j].addAdj(getCell(i+1, j)); //adjacency in x+1 direction
+				if ((j+1) < numColumns) grid[i][j].addAdj(getCell(i, j+1)); //adjacency in y+1 direction
+			}
+		}
 
 		roomMap = new HashMap<Character, Room>(); //initilizes room map  	 
 	} 
+
 
 	//sets board setup and layout
 	public void setConfigFiles(String layout, String setup) {
