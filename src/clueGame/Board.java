@@ -82,7 +82,8 @@ public class Board {
 				//check if line is a comment
 				if (!setupLines[0].contains("//")) {
 					//If an entry in either file does not have the proper format.
-					if (!(setupLines[0].equals("Room") || setupLines[0].equals("Space"))) throw new BadConfigFormatException();
+					if (!(setupLines[0].equals("Room") || setupLines[0].equals("Space"))) 
+						throw new BadConfigFormatException("Error: Setup file doesn't have proper format");
 					Room room = new Room();
 					room.setName(setupLines[1]); //sets room name
 					roomMap.put(setupLines[2].charAt(0), room); //adds room name and initial to map
@@ -116,14 +117,14 @@ public class Board {
 			setGridSize(); //sets grid size
 		}
 
-		private void setGridSize() {
+		private void setGridSize() throws Exception {
 			numRows = layoutLines.size(); //set row size
 			numColumns = layoutLines.get(0).length; //set column size
 			grid = new BoardCell[numRows][numColumns]; //set grid size
 			setBoardCells(); //sets board cells
 		}
 
-		private void setBoardCells() {
+		private void setBoardCells() throws Exception {
 			//local variables
 			char initial, roomCenter, label, secretPassage;
 			DoorDirection doorDirection;
@@ -137,9 +138,11 @@ public class Board {
 					grid[i][j].setDoorDirection(DoorDirection.NONE); //set all cells to initial no door
 
 					//If the board layout refers to a room that is not in your setup file.
+					if(!(roomMap.containsKey(layoutLines.get(i)[j].charAt(0)))) 
+						throw new BadConfigFormatException("Error: Layout refers to room that is not in setup file");
 					//If the board layout file does not have the same number of columns in every row.
-					//if(layoutLines.get(i)[j].charAt(0) == 0) throw new BadConfigFormatException();
-					//if(!roomMap.containsKey(layoutLines.get(i)[j].charAt(0))) throw new BadConfigFormatException();
+					//if(layoutLines.get(i)[j].charAt(0) == 0) 
+					//throw new BadConfigFormatException("Error: layout file does not have the same number of columns in every row");
 
 					if(layoutLines.get(i)[j].length() == 2) {
 						if(layoutLines.get(i)[j].charAt(1) == '*') {
