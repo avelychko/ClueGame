@@ -99,10 +99,10 @@ public class Board {
 
 				grid[i][j].setDoorDirection(DoorDirection.NONE); //set all cells to initial no door
 
-				if(lines.get(i)[j].charAt(0) == 0) throw new BadConfigFormatException();
-				if(!roomMap.containsKey(lines.get(i)[j].charAt(0))) throw new BadConfigFormatException();
+				//if(lines.get(i)[j].charAt(0) == 0) throw new BadConfigFormatException();
+				//if(!roomMap.containsKey(lines.get(i)[j].charAt(0))) throw new BadConfigFormatException();
 
-				if(lines.get(i)[j].charAt(0) == 2) {
+				if(lines.get(i)[j].length() == 2) {
 					if(lines.get(i)[j].charAt(1) == '*') {
 						grid[i][j].isRoomCenter();
 					}

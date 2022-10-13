@@ -8,11 +8,11 @@ public class Layouttest {
 	
 
 	public static void main(String[] args) throws Exception {
-		FileReader reader = new FileReader("ClueLayout.csv"); //reads file
+		FileReader reader = new FileReader("ClueLayout306.csv"); //reads file
 		Scanner in = new Scanner(reader);
 	
 		in.useDelimiter(",");
-		int i = 0;
+		//int i = 0;
 		
 		String thisLine = ""; 
 		List<String[]> lines = new ArrayList<String[]>();
@@ -33,7 +33,7 @@ public class Layouttest {
 		System.out.println(i);*/
 		
 		//System.out.print(lines.get(0).length);
-		System.out.print(lines.get(1)[4].charAt(1));
+		System.out.print(lines.get(4)[6].charAt(1));
 		/*for (int k=0; k < lines.size(); k++) {
 			System.out.print(lines.get(k).length + " ");
 		for(int j=0; j < lines.get(k).length; j++) {
@@ -53,11 +53,43 @@ public class Layouttest {
 		//System.out.println(array[1][0]);
 		System.out.println(array.length);
 		System.out.println(array[0].length);*/
-		in.close(); //close file after reading	
+		//in.close(); //close file after reading	
 		 
 		
-
 		
+		for (int i = 0; i < lines.size(); i++) {
+			for (int j = 0; j <  lines.get(0).length; j++) {   			 
+				
+				if(lines.get(i)[j].length() == 2) {
+					if(lines.get(i)[j].charAt(1) == '*') {
+						System.out.println("Center of room");
+					}
+					else if(lines.get(i)[j].charAt(1) == '#') {
+						System.out.println("Label of room");
+					}
+					else if(lines.get(i)[j].charAt(1) == '^') {
+						System.out.println("Is door");
+						System.out.println("Up door");
+					}
+					else if(lines.get(i)[j].charAt(1) == '>') {
+						System.out.println("Is door");
+						System.out.println("Right door");
+					}
+					else if(lines.get(i)[j].charAt(1) == '<') {
+						System.out.println("Is door");
+						System.out.println("Left door");
+					}
+					else if(lines.get(i)[j].charAt(1) == 'v') {
+						System.out.println("Is door");
+						System.out.println("Down door");
+					}
+					else {
+						System.out.println("Secret at " + lines.get(i)[j].charAt(1));
+					}
+				}
+			}
+		}
+		in.close();
 		
 		
 		/*String data; 
