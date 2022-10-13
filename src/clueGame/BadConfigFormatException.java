@@ -9,6 +9,6 @@ package clueGame;
  */
 
 public class BadConfigFormatException extends Exception {
-	public BadConfigFormatException() { super("Error: Incorrect Board Layout"); }
-	public BadConfigFormatException(String message) { super(message); }
+	public BadConfigFormatException() { super("Error: Incorrect Board Layout"); } //default message
+	public BadConfigFormatException(String message) { super(message); } //custom message
 }

@@ -31,19 +31,18 @@ public class BoardCell {
 	public Set<BoardCell> getAdjList() { return adjList; } //returns the adjacency list for the cell
 	public DoorDirection getDoorDirection() { return doorDirection; } //returns direction of the door
 	
+	public char getInitial() { return initial; } //return initial
+	public void setInitial(char initial) { this.initial = initial; } //set initial
+	public boolean isLabel() { return roomLabel; } //checks if cell is label
+	public void setLabel() { roomLabel = true; } //set room label
+	public boolean isRoomCenter() { return roomCenter; } //checks if cell is room center
+	public void setRoomCenter() { roomCenter = true; } //set room center
+	public char getSecretPassage() { return secretPassage; } //returns secretPassage
+	public void setSecretPassage(char secretPassage) { this.secretPassage = secretPassage; } //set secret passage
 	//checks if cell is doorway
 	public boolean isDoorway() { 
 		if (getDoorDirection() == doorDirection.NONE) return false; 
 		return true;
 	} 
-	
-	public char getInitial() { return initial; }
-	public void setInitial(char initial) { this.initial = initial; }
-	public boolean isLabel() { return roomLabel; } //checks if cell is label
-	public void setLabel() { roomLabel = true; }
-	public boolean isRoomCenter() { return roomCenter; } //checks if cell is room center
-	public void setRoomCenter() { roomCenter = true; }
-	public char getSecretPassage() { return secretPassage; } //returns secretPassage
-	public void setSecretPassage(char secretPassage) { this.secretPassage = secretPassage; }
-	public void setDoorDirection(DoorDirection doorDirection) { this.doorDirection = doorDirection; }
+	public void setDoorDirection(DoorDirection doorDirection) { this.doorDirection = doorDirection; } //set door direction
 }
