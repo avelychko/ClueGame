@@ -52,8 +52,7 @@ public class Board {
 			}
 		}
 
-		roomMap = new HashMap<Character, Room>(); //initilizes room map  	 
-
+		
 	} 
 
 
@@ -73,18 +72,19 @@ public class Board {
 
 			//next grab all the data, then put that data inside the map, make sure not to grab the comments 
 			if (!lines[0].contains("//")) {
-				if (lines[0] != "Room" || lines[0] != "Space") throw new BadConfigFormatException();
+				if (lines[0] != "Room" || lines[0] != "Space") {//throw new BadConfigFormatException();
 					if (lines[0].equals("Room")) {
 						Room room = new Room();
 						room.setName(lines[1]);
 						roomMap.put(lines[2].charAt(0), room);
 				}
 			}
+			}
 		} in.close(); //close file after reading
 	}
 
 	//loads board layout 
-	public void loadLayoutConfig() throws FileNotFoundException, BadConfigFormatException {
+	public void loadLayoutConfig() throws FileNotFoundException{
 		//read once to see how many rows and cols 
 		//and then read 2nd time to store cell information in grid[][]
 
