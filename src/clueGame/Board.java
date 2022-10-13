@@ -50,6 +50,7 @@ public class Board {
 				if ((j+1) < numColumns) grid[i][j].addAdj(getCell(i, j+1)); //adjacency in y+1 direction
 			}
 		}
+		
 	} 
 
 
@@ -78,7 +79,7 @@ public class Board {
 	}
 
 	//loads board layout 
-	public void loadLayoutConfig() throws FileNotFoundException, BadConfigFormatException {
+	public void loadLayoutConfig() throws FileNotFoundException{
 		//read once to see how many rows and cols 
 		//and then read 2nd time to store cell information in grid[][]
 
@@ -120,20 +121,21 @@ public class Board {
 						roomMap.get(grid[i][j].getInitial()).setLabelCell(grid[i][j]);
 					}
 					else if(lines.get(i)[j].charAt(1) == '^') {
-						grid[i][j].isDoorway();
 						grid[i][j].setDoorDirection(DoorDirection.UP);
+						grid[i][j].isDoorway();
 					}
 					else if(lines.get(i)[j].charAt(1) == '>') {
-						grid[i][j].isDoorway();
 						grid[i][j].setDoorDirection(DoorDirection.RIGHT);
+						grid[i][j].isDoorway();
 					}
 					else if(lines.get(i)[j].charAt(1) == '<') {
-						grid[i][j].isDoorway();
 						grid[i][j].setDoorDirection(DoorDirection.LEFT);
+						grid[i][j].isDoorway();
+				
 					}
 					else if(lines.get(i)[j].charAt(1) == 'v') {
-						grid[i][j].isDoorway();
 						grid[i][j].setDoorDirection(DoorDirection.DOWN);
+						grid[i][j].isDoorway();
 					}
 					else {
 						grid[i][j].setSecretPassage(lines.get(i)[j].charAt(1));
