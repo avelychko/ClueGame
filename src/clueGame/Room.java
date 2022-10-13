@@ -17,5 +17,7 @@ public class Room {
 	public String getName() { return name; } //returns room name
 	public void setName(String name) { this.name = name; } //sets room name
 	public BoardCell getLabelCell() { return labelCell; } //returns cell of label
+	public void setLabelCell(BoardCell labelCell) { this.labelCell = labelCell; }
 	public BoardCell getCenterCell() { return centerCell; } //returns cell of center room
+	public void setCenterCell(BoardCell centerCell) { this.centerCell = centerCell; }
 }

@@ -69,11 +69,9 @@ public class Board {
 
 			//next grab all the data, then put that data inside the map, make sure not to grab the comments 
 			if (!lines[0].contains("//")) {
-					//if (lines[0].equals("Room")) {
-						Room room = new Room();
-						room.setName(lines[1]);
-						roomMap.put(lines[2].charAt(0), room);
-				
+				Room room = new Room();
+				room.setName(lines[1]);
+				roomMap.put(lines[2].charAt(0), room);
 			}
 			//if (lines[0] != "Room" || lines[0] != "Space") throw new BadConfigFormatException();
 		} in.close(); //close file after reading
@@ -105,7 +103,7 @@ public class Board {
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numColumns; j++) {   			 
 				grid[i][j] = new BoardCell(i,j);
-				boardCell.setInitial(lines.get(i)[j].charAt(0));
+				grid[i][j].setInitial((lines.get(i))[j].charAt(0));
 
 				grid[i][j].setDoorDirection(DoorDirection.NONE); //set all cells to initial no door
 
@@ -114,10 +112,12 @@ public class Board {
 
 				if(lines.get(i)[j].length() == 2) {
 					if(lines.get(i)[j].charAt(1) == '*') {
-						grid[i][j].isRoomCenter();
+						grid[i][j].setRoomCenter();
+						roomMap.get(grid[i][j].getInitial()).setCenterCell(grid[i][j]);
 					}
 					else if(lines.get(i)[j].charAt(1) == '#') {
-						grid[i][j].isLabel();
+						grid[i][j].setLabel();
+						roomMap.get(grid[i][j].getInitial()).setLabelCell(grid[i][j]);
 					}
 					else if(lines.get(i)[j].charAt(1) == '^') {
 						grid[i][j].isDoorway();

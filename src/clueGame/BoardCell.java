@@ -40,7 +40,9 @@ public class BoardCell {
 	public char getInitial() { return initial; }
 	public void setInitial(char initial) { this.initial = initial; }
 	public boolean isLabel() { return roomLabel; } //checks if cell is label
+	public void setLabel() { roomLabel = true; }
 	public boolean isRoomCenter() { return roomCenter; } //checks if cell is room center
+	public void setRoomCenter() { roomCenter = true; }
 	public char getSecretPassage() { return secretPassage; } //returns secretPassage
 	public void setSecretPassage(char secretPassage) { this.secretPassage = secretPassage; }
 	public void setDoorDirection(DoorDirection doorDirection) { this.doorDirection = doorDirection; }
