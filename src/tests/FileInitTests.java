@@ -155,7 +155,7 @@ public class FileInitTests {
 		BoardCell cellDR = board.getCell(16, 27);
 		Room roomDR = board.getRoom( cellDR ) ;
 		assertTrue( roomDR != null );
-		assertEquals( roomDR.getName(), "Dinning Room" ) ;
+		assertEquals( roomDR.getName(), "Dining Room" ) ;
 		assertTrue( cellDR.isRoomCenter() );
 		assertTrue( roomDR.getCenterCell() == cellDR );
 		
