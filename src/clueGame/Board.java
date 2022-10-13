@@ -34,15 +34,13 @@ public class Board {
 	 * initialize the board (since we are using singleton pattern)
 	 */
 	public void initialize() { 
-		//DO WE NEED THIS?
+		roomMap = new HashMap<Character, Room>(); //initilizes room map  
 		try {
-			loadLayoutConfig();
 			loadSetupConfig();
+			loadLayoutConfig();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		roomMap = new HashMap<Character, Room>(); //initilizes room map  	 
 	} 
 
 	//sets board setup and layout
@@ -52,7 +50,7 @@ public class Board {
 	}
 
 	//loads board setup 
-	public void loadSetupConfig() throws FileNotFoundException {
+	public void loadSetupConfig() throws FileNotFoundException, BadConfigFormatException {
 		FileReader reader = new FileReader(setupConfigFile); //reads file
 		Scanner in = new Scanner(reader);
 
@@ -61,12 +59,11 @@ public class Board {
 
 			//next grab all the data, then put that data inside the map, make sure not to grab the comments 
 			if (!lines[0].contains("//")) {
-				if (lines[0] != "Room" || lines[0] != "Space") {
-					if (lines[0] == "Room") {
+				if (lines[0] != "Room" || lines[0] != "Space") throw new BadConfigFormatException();
+					if (lines[0].equals("Room")) {
 						Room room = new Room();
 						room.setName(lines[1]);
 						roomMap.put(lines[2].charAt(0), room);
-					}
 				}
 			}
 		} in.close(); //close file after reading
@@ -99,7 +96,7 @@ public class Board {
 			for (int j = 0; j < numColumns; j++) {   			 
 				grid[i][j] = new BoardCell(i,j);
 				boardCell.setInitial(lines.get(i)[j].charAt(0));
-				
+
 				grid[i][j].setDoorDirection(DoorDirection.NONE); //set all cells to initial no door
 
 				if(lines.get(i)[j].charAt(0) == 0) throw new BadConfigFormatException();
