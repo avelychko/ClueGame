@@ -82,7 +82,7 @@ public class Board {
 				//check if line is a comment
 				if (!setupLines[0].contains("//")) {
 					//If an entry in either file does not have the proper format.
-					//if (setupLines[0] != "Room" || setupLines[0] != "Space") throw new BadConfigFormatException();
+					if (!(setupLines[0].equals("Room") || setupLines[0].equals("Space"))) throw new BadConfigFormatException();
 					Room room = new Room();
 					room.setName(setupLines[1]); //sets room name
 					roomMap.put(setupLines[2].charAt(0), room); //adds room name and initial to map
