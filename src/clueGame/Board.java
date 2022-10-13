@@ -42,7 +42,6 @@ public class Board {
 			e.printStackTrace();
 		}
 
-		
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numColumns; j++) {
 				if ((i-1) >= 0) grid[i][j].addAdj(getCell(i-1, j)); //adjacency in x-1 direction
@@ -51,7 +50,6 @@ public class Board {
 				if ((j+1) < numColumns) grid[i][j].addAdj(getCell(i, j+1)); //adjacency in y+1 direction
 			}
 		}
-
 		
 	} 
 
@@ -72,14 +70,13 @@ public class Board {
 
 			//next grab all the data, then put that data inside the map, make sure not to grab the comments 
 			if (!lines[0].contains("//")) {
-				if (lines[0] != "Room" || lines[0] != "Space") {//throw new BadConfigFormatException();
-					if (lines[0].equals("Room")) {
-						Room room = new Room();
-						room.setName(lines[1]);
-						roomMap.put(lines[2].charAt(0), room);
-				}
+				Room room = new Room();
+				room.setName(lines[1]);
+				roomMap.put(lines[2].charAt(0), room);
+
 			}
-			}
+			//if (lines[0] != "Room" || lines[0] != "Space") throw new BadConfigFormatException();
+
 		} in.close(); //close file after reading
 	}
 
@@ -124,20 +121,21 @@ public class Board {
 						grid[i][j].isLabel();
 					}
 					else if(lines.get(i)[j].charAt(1) == '^') {
-						grid[i][j].isDoorway();
 						grid[i][j].setDoorDirection(DoorDirection.UP);
+						grid[i][j].isDoorway();
 					}
 					else if(lines.get(i)[j].charAt(1) == '>') {
-						grid[i][j].isDoorway();
 						grid[i][j].setDoorDirection(DoorDirection.RIGHT);
+						grid[i][j].isDoorway();
 					}
 					else if(lines.get(i)[j].charAt(1) == '<') {
-						grid[i][j].isDoorway();
 						grid[i][j].setDoorDirection(DoorDirection.LEFT);
+						grid[i][j].isDoorway();
+				
 					}
 					else if(lines.get(i)[j].charAt(1) == 'v') {
-						grid[i][j].isDoorway();
 						grid[i][j].setDoorDirection(DoorDirection.DOWN);
+						grid[i][j].isDoorway();
 					}
 					else {
 						grid[i][j].setSecretPassage(lines.get(i)[j].charAt(1));

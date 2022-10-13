@@ -78,7 +78,7 @@ public class FileInitTests {
 		garden = board.getCell(7, 11);
 		assertTrue(garden.isDoorway());
 		assertEquals(DoorDirection.RIGHT, garden.getDoorDirection());
-		garden = board.getCell(2, 22);
+		garden = board.getCell(7, 22);
 		assertTrue(garden.isDoorway());
 		assertEquals(DoorDirection.LEFT, garden.getDoorDirection());
 		
