@@ -8,7 +8,7 @@ public class Layouttest {
 	
 
 	public static void main(String[] args) throws Exception {
-		FileReader reader = new FileReader("ClueLayout306.csv"); //reads file
+		/*FileReader reader = new FileReader("ClueLayout306.csv"); //reads file
 		Scanner in = new Scanner(reader);
 	
 		in.useDelimiter(",");
@@ -24,7 +24,7 @@ public class Layouttest {
 			lines.add(in.nextLine().split(","));
 			
 		
-			}
+			}*/
 		
 		/*for (int k=0; k < lines.size(); k++) {
 			System.out.print(lines.get(k).length + " ");
@@ -33,7 +33,7 @@ public class Layouttest {
 		System.out.println(i);*/
 		
 		//System.out.print(lines.get(0).length);
-		System.out.print(lines.get(4)[6].charAt(1));
+		//System.out.print(lines.get(4)[6].charAt(1));
 		/*for (int k=0; k < lines.size(); k++) {
 			System.out.print(lines.get(k).length + " ");
 		for(int j=0; j < lines.get(k).length; j++) {
@@ -57,7 +57,7 @@ public class Layouttest {
 		 
 		
 		
-		for (int i = 0; i < lines.size(); i++) {
+		/*for (int i = 0; i < lines.size(); i++) {
 			for (int j = 0; j <  lines.get(0).length; j++) {   			 
 				
 				if(lines.get(i)[j].length() == 2) {
@@ -108,9 +108,29 @@ public class Layouttest {
 		
 		System.out.println(layout.length);
 		System.out.println(layout[0].length);*/
-		
+		List<String[]> layoutLines = new ArrayList<String[]>();
+		FileReader reader = null;
+		Scanner in = null;
+		String[] nextCell; //stores layout lines
+		//read once to see how many rows and cols 
+		//and then read 2nd time to store cell information in grid[][]
+		try {
+			reader = new FileReader("ClueLayout.csv"); //reads file
+			in = new Scanner(reader);
+			// layoutLines = new ArrayList<String[]>(); //holds file lines
+
+			//reads each line and adds to array
+			while(in.hasNextLine()) {
+				nextCell = in.nextLine().split(","); //adds split cell to array
+				layoutLines.add(nextCell); //stores each cell in array list
+			}
+		} catch (FileNotFoundException e) {
+			e.getLocalizedMessage();
+		} in.close(); //close file
 		
 	
+		System.out.println(layoutLines.get(0).length);
+		
 	}
 	
 }

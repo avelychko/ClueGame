@@ -19,7 +19,7 @@ public class Board {
 	private String setupConfigFile; //board setup
 	private Map<Character, Room> roomMap; //map for board rooms
 	public BoardCell boardCell; //board cell
-	List<String[]> layoutLines; //array list stores layout cells
+	public List<String[]> layoutLines =  new ArrayList<String[]>(); //array list stores layout cells
 	String[] setupLines; //array stores setup lines
 
 	//grabs/makes the board from the csv file
@@ -75,7 +75,8 @@ public class Board {
 	public void loadSetupConfig() throws BadConfigFormatException {
 		FileReader reader = null;
 		Scanner in = null;
-
+		
+		
 		try {
 			reader = new FileReader(setupConfigFile); //reads file
 			in = new Scanner(reader);
@@ -92,14 +93,16 @@ public class Board {
 					room.setName(setupLines[1]); //sets room name
 					roomMap.put(setupLines[2].charAt(0), room); //adds room name and initial to map
 				}
+				in.close(); //close file
 			} 
+			
 		} catch (FileNotFoundException e) {
 				e.getLocalizedMessage();
 			} in.close(); //close file
 		}
 	
 		//loads board layout 
-		public void loadLayoutConfig() throws BadConfigFormatException {
+		public void loadLayoutConfig() throws Exception {
 			FileReader reader = null;
 			Scanner in = null;
 			String[] nextCell; //stores layout lines
@@ -108,7 +111,7 @@ public class Board {
 			try {
 				reader = new FileReader(layoutConfigFile); //reads file
 				in = new Scanner(reader);
-				layoutLines = new ArrayList<String[]>(); //holds file lines
+				//layoutLines = new ArrayList<String[]>(); //holds file lines
 
 				//reads each line and adds to array
 				while(in.hasNextLine()) {
