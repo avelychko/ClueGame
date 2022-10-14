@@ -1,3 +1,15 @@
+commit 238698137e8be30098d9cf9d4203b6b09e6fb9e8
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 13 18:57:31 2022 -0600
+
+    refactor
+
+commit 864390f389e1fc2dde776511a743d1b2458e97c1
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 13 18:44:55 2022 -0600
+
+    minor organization changes
+
 commit e8d7d019bbae24efdce857183ad317b55c0df4c7
 Merge: ca8aee9 4c430cd
 Author: Anastasia Velychko <avelychko@mines.edu>

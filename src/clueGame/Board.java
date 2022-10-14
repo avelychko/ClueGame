@@ -40,6 +40,8 @@ public class Board {
 	 */
 	public void initialize() { 
 		roomMap = new HashMap<Character, Room>(); //initilizes room map  
+		targets = new HashSet<BoardCell>();
+		visited = new HashSet<BoardCell>();
 
 		//load setup and layout
 		try {
@@ -59,12 +61,7 @@ public class Board {
 				if ((j+1) < numColumns) grid[i][j].addAdj(getCell(i, j+1)); //adjacency in y+1 direction
 			}
 		}
-
-	} 
-	
-	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList();} 
-
-
+	}  
 
 	//sets board setup and layout
 	public void setConfigFiles(String layout, String setup) {
@@ -122,7 +119,7 @@ public class Board {
 		setGridSize();
 		setGridCell();
 	}
-	
+
 	private void setGridCell() throws Exception {
 		DoorDirection doorDirection;
 		//identifies if cell is center, label, door (which way), or secret passage
@@ -185,6 +182,7 @@ public class Board {
 			}
 		}
 	}
+	
 	private void setGridSize() throws Exception {
 		numRows = layoutLines.size(); //set row size
 		numColumns = layoutLines.get(0).length; //set column size
@@ -197,32 +195,26 @@ public class Board {
 		}
 	}
 
-	
-	
-	
 	//calculates legal targets for a move from startCell of length pathlength
-		public void calcTargets(BoardCell startCell, int pathlength) {
-			visited.add(startCell); //adds visited cell to visited set
-			//for loop for each adjacency cell
-			for (BoardCell adjCell: startCell.adjList) {
-				//checks if adjacency cell has already been visited	
-				if (visited.contains(adjCell) == false) {
-					//checks if cell is occupied
-					if (adjCell.getOccupied() == false) {
-						if (pathlength == 1) targets.add(adjCell); //checks if length is 1 then add adj cell to targets set
-						if (adjCell.getRoom() == true) targets.add(adjCell); //if is room add adj cell to targets
-						else calcTargets(adjCell, pathlength - 1);  //else call adj cell recursively
-						visited.remove(adjCell); //remove visited adj cell
-					}
+	public void calcTargets(BoardCell startCell, int pathlength) {
+		visited.add(startCell); //adds visited cell to visited set
+		//for loop for each adjacency cell
+		for (BoardCell adjCell: startCell.adjList) {
+			//checks if adjacency cell has already been visited	
+			if (visited.contains(adjCell) == false) {
+				//checks if cell is occupied
+				if (adjCell.getOccupied() == false) {
+					if (pathlength == 1) targets.add(adjCell); //checks if length is 1 then add adj cell to targets set
+					if (adjCell.getRoom() == true) targets.add(adjCell); //if is room add adj cell to targets
+					else calcTargets(adjCell, pathlength - 1);  //else call adj cell recursively
+					visited.remove(adjCell); //remove visited adj cell
 				}
 			}
 		}
-		
-		//gets the targets last created by calcTargets()
-		public Set<BoardCell> getTargets() {
-			return targets;
-		}
-	
+	}
+
+	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); }
+	public Set<BoardCell> getTargets() { return targets; } //gets the targets last created by calcTargets()
 	public BoardCell getCell(int row, int col) { return grid[row][col]; } //returns the cell from the board at row, col
 	public int getNumRows() { return numRows; } //returns board row size
 	public int getNumColumns() { return numColumns; } //returns board column size
