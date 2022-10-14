@@ -40,8 +40,8 @@ public class Board {
 	 */
 	public void initialize() { 
 		roomMap = new HashMap<Character, Room>(); //initilizes room map  
-		targets = new HashSet<BoardCell>();
-		visited = new HashSet<BoardCell>();
+//		targets = new HashSet<BoardCell>();
+//		visited = new HashSet<BoardCell>();
 
 		//load setup and layout
 		try {
@@ -223,8 +223,10 @@ public class Board {
 	public Set<BoardCell> getTargets() { return targets; } //gets the targets last created by calcTargets()
 
 	public BoardCell getCell(int row, int col) { return grid[row][col]; } //returns the cell from the board at row, col
+	
 	public int getNumRows() { return numRows; } //returns board row size
 	public int getNumColumns() { return numColumns; } //returns board column size
+	
 	public Room getRoom(char room) { return roomMap.get(room); } //returns room at char
 	public Room getRoom(BoardCell cell) { return roomMap.get(cell.getInitial()); } //return room at cell 
 }
