@@ -17,10 +17,9 @@ public class Board {
 	private int numRows; //row size
 	private String layoutConfigFile; //board layout
 	private String setupConfigFile; //board setup
-	private Map<Character, Room> roomMap; //map for board rooms
-	public BoardCell boardCell; //board cell
-	List<String[]> layoutLines; //array list stores layout cells
-	String[] setupLines; //array stores setup lines
+	private Map<Character, Room> roomMap = new HashMap<Character, Room>(); //map for board rooms
+	List<String[]> layoutLines = null; //array list stores layout cells
+	 //array stores setup lines
 
 	//grabs/makes the board from the csv file
 
@@ -30,9 +29,7 @@ public class Board {
 	private static Board theInstance = new Board();
 	private Board() { super(); } // constructor is private to ensure only one can be created
 	public static Board getInstance() { 
-		if (theInstance == null) {
-			theInstance = new Board();
-		}
+		if (theInstance == null) theInstance = new Board();
 		return theInstance; } // this method returns the only Board
 
 	/*
@@ -40,7 +37,6 @@ public class Board {
 	 */
 	public void initialize() { 
 		roomMap = new HashMap<Character, Room>(); //initilizes room map  
-		boardCell = new BoardCell();
 
 		//load setup and layout
 		try {
@@ -72,7 +68,7 @@ public class Board {
 	}
 
 	//loads board setup 
-	public void loadSetupConfig() throws BadConfigFormatException {
+	public void loadSetupConfig() throws Exception {
 		FileReader reader = null;
 		Scanner in = null;
 
@@ -81,7 +77,7 @@ public class Board {
 			in = new Scanner(reader);
 
 			while(in.hasNextLine()) {
-				setupLines = in.nextLine().split(", "); //adds split line to array
+				String[] setupLines = in.nextLine().split(", "); //adds split line to array
 
 				//check if line is a comment
 				if (!setupLines[0].contains("//")) {
@@ -99,10 +95,10 @@ public class Board {
 		}
 	
 		//loads board layout 
-		public void loadLayoutConfig() throws BadConfigFormatException {
+		public void loadLayoutConfig() throws Exception {
 			FileReader reader = null;
 			Scanner in = null;
-			String[] nextCell; //stores layout lines
+			String[] nextCell = null; //stores layout lines
 			//read once to see how many rows and cols 
 			//and then read 2nd time to store cell information in grid[][]
 			try {
