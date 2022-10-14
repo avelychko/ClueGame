@@ -1,3 +1,6 @@
 Error: Layout file does not have the same number of columns in every row
 Error: Layout refers to room that is not in setup file
 Error: Setup file doesn't have proper format
+Error: Layout file does not have the same number of columns in every row
+Error: Layout refers to room that is not in setup file
+Error: Setup file doesn't have proper format
