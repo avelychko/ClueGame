@@ -21,8 +21,6 @@ public class Board {
 	public List<String[]> layoutLines; //array list stores layout cells
 	String[] setupLines; //array stores setup lines
 
-	//grabs/makes the board from the csv file
-
 	/*
 	 * variable and methods used for singleton pattern
 	 */
@@ -45,11 +43,7 @@ public class Board {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		setAdj(); //calls adjacencies
-	}
-
-	//calculates cell adjacencies
-	private void setAdj() {
+		
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numColumns; j++) {
 				if ((i-1) >= 0) grid[i][j].addAdj(getCell(i-1, j)); //adjacency in x-1 direction
@@ -58,8 +52,7 @@ public class Board {
 				if ((j+1) < numColumns) grid[i][j].addAdj(getCell(i, j+1)); //adjacency in y+1 direction
 			}
 		}
-	} 
-
+	}
 
 	//sets board setup and layout
 	public void setConfigFiles(String layout, String setup) {
@@ -116,10 +109,7 @@ public class Board {
 		} catch (FileNotFoundException e) {
 			e.getLocalizedMessage();
 		} in.close(); //close file
-		setGridSize(); //sets grid size
-	}
 
-	private void setGridSize() throws Exception {
 		numRows = layoutLines.size(); //set row size
 		numColumns = layoutLines.get(0).length; //set column size
 		grid = new BoardCell[numRows][numColumns]; //set grid size
@@ -129,21 +119,13 @@ public class Board {
 			if (layoutLines.get(k).length != numColumns) 
 				throw new BadConfigFormatException("Error: Layout file does not have the same number of columns in every row");
 		}
-		setBoardCells(); //sets board cells
-	}
-
-	private void setBoardCells() throws Exception {
-		//local variables
-		char initial, roomCenter, label, secretPassage;
-		DoorDirection doorDirection;
 
 		//identifies if cell is center, label, door (which way), or secret passage
 		//adds each cell to grid
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numColumns; j++) {   			 
 				grid[i][j] = new BoardCell(i,j); //sets board sells
-				initial = layoutLines.get(i)[j].charAt(0); //gets char from cell
-				grid[i][j].setInitial(initial); //set cell initial
+				grid[i][j].setInitial(layoutLines.get(i)[j].charAt(0)); //set cell initial
 				grid[i][j].setDoorDirection(DoorDirection.NONE); //set all cells to initial no door
 
 				//If the board layout refers to a room that is not in your setup file.
@@ -155,48 +137,40 @@ public class Board {
 					//if cell char contains *, set to room center
 					if(layoutLines.get(i)[j].charAt(1) == '*') {
 						grid[i][j].setRoomCenter(); //set cell to center
-						roomCenter = grid[i][j].getInitial(); 
-						roomMap.get(roomCenter).setCenterCell(grid[i][j]); 
+						roomMap.get(grid[i][j].getInitial()).setCenterCell(grid[i][j]); 
 					}
 					//if cell char contains #, set to label
 					else if(layoutLines.get(i)[j].charAt(1) == '#') {
 						grid[i][j].setLabel(); //set cell to label
-						label = grid[i][j].getInitial();
-						roomMap.get(label).setLabelCell(grid[i][j]);
+						roomMap.get(grid[i][j].getInitial()).setLabelCell(grid[i][j]);
 					}
 					//if cell char contains ^, set door direction
 					else if(layoutLines.get(i)[j].charAt(1) == '^') {
-						doorDirection = DoorDirection.UP;
-						grid[i][j].setDoorDirection(doorDirection);
+						grid[i][j].setDoorDirection(DoorDirection.UP);
 						grid[i][j].isDoorway();
 					}
 					//if cell char contains >, set door direction
 					else if(layoutLines.get(i)[j].charAt(1) == '>') {
-						doorDirection = DoorDirection.RIGHT;
-						grid[i][j].setDoorDirection(doorDirection);
+						grid[i][j].setDoorDirection(DoorDirection.RIGHT);
 						grid[i][j].isDoorway();
 					}
 					//if cell char contains <, set door direction
 					else if(layoutLines.get(i)[j].charAt(1) == '<') {
-						doorDirection = DoorDirection.LEFT;
-						grid[i][j].setDoorDirection(doorDirection);
+						grid[i][j].setDoorDirection(DoorDirection.LEFT);
 						grid[i][j].isDoorway();
 					}
 					//if cell char contains v, set door direction
 					else if(layoutLines.get(i)[j].charAt(1) == 'v') {
-						doorDirection = DoorDirection.DOWN;
-						grid[i][j].setDoorDirection(doorDirection);
+						grid[i][j].setDoorDirection(DoorDirection.DOWN);
 						grid[i][j].isDoorway();
 					}
 					//if cell char contains another char, set secret passage
 					else {
-						secretPassage = layoutLines.get(i)[j].charAt(1);
-						grid[i][j].setSecretPassage(secretPassage);
+						grid[i][j].setSecretPassage(layoutLines.get(i)[j].charAt(1));
 					}
 				}
 			}
 		}
-
 	}
 
 	public BoardCell getCell(int row, int col) { return grid[row][col]; } //returns the cell from the board at row, col

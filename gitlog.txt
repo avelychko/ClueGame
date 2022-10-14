@@ -1,3 +1,224 @@
+commit e8d7d019bbae24efdce857183ad317b55c0df4c7
+Merge: ca8aee9 4c430cd
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 13 18:30:52 2022 -0600
+
+    organize/last changes
+
+commit ca8aee9f44248328e48cb550a59f82ae176f95f9
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 13 18:24:36 2022 -0600
+
+    added comments
+
+commit 4c430cda7eeb13fdfb8afc34bf026fa2c5b77540
+Merge: 87e7f6a b87bafa
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Oct 13 18:24:15 2022 -0600
+
+    got testBadColumns to work
+
+commit 87e7f6a71fd4fa5c2366149e00eb270caaacebab
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Oct 13 18:07:11 2022 -0600
+
+    minor changes
+
+commit b87bafa2c15719cec6ba416e591eab455e4a4607
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 13 18:06:46 2022 -0600
+
+    passed two exception tests
+
+commit d7c3727ce4b56cc5d461e10546d4256d78b5ebcb
+Merge: 2cd1aa4 8b6f98a
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 13 17:35:11 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit 2cd1aa4fd76f312217f5e0dc418392f67732de08
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 13 17:35:08 2022 -0600
+
+    worked on exceptions
+
+commit 8b6f98a0d863023f35ef819de97847482cdc0515
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Oct 13 17:34:59 2022 -0600
+
+    changed getInstance
+
+commit 13cfcd563f285a5f8b08fa1ab1529c9d0183010f
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 13 17:10:44 2022 -0600
+
+    worked on exceptions
+
+commit a7d98cae25386a98f357d45a07cd475fe6c08ca4
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 13 16:47:45 2022 -0600
+
+    refactored, added comments
+
+commit a445f3aaef7c2d573d8dd686805c6edd9bff8cae
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 13 14:52:59 2022 -0600
+
+    passed FileInitTests
+
+commit a97564830961b65cee6e437133c58886d9bff391
+Merge: 246ed1c 62bff01
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 13 14:49:27 2022 -0600
+
+    merge
+
+commit 246ed1c7c7dbe055ab6a22595a6ed702de686c46
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 13 14:48:35 2022 -0600
+
+    passing FileInitTests306
+
+commit 62bff01bd294189bee68883ae60c7d55a0973a3c
+Merge: 83ebfb6 a101f2f
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Oct 13 13:51:54 2022 -0600
+
+    fixed our cluelayout, < needs to be right of character
+
+commit 83ebfb66409029d32d3ed83dd5a7de1d3f69cf43
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Oct 13 13:33:10 2022 -0600
+
+    minor changes
+
+commit a101f2f47f570f7e86075a4a9f8b6f4d393f1f84
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 13 13:32:48 2022 -0600
+
+    passed testRoomLabels()
+
+commit e627d926bbe8966afa6f905e05d4eb08e3f74bb2
+Merge: 05934af 503c759
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Oct 13 13:22:26 2022 -0600
+
+    added adj list
+
+commit 05934af64b00d2e1f2f85bb734fdf837d2607f2d
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Oct 13 13:20:40 2022 -0600
+
+    added adj list
+
+commit 503c7599ce96b3cf77bcd8bb87fa3628b5741cb7
+Merge: 3844fbc 5eb22e5
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 13 13:15:32 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit 3844fbcdf8dd82ddf204577d912ef204f5c72d13
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 13 13:15:22 2022 -0600
+
+    passed exception tests
+
+commit 5eb22e5cad42b3f476e7265878e95dc87bdb8415
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Oct 13 13:12:55 2022 -0600
+
+    got tesnumberofdoorsways and 4doordirections passing
+
+commit 1ca92c3cced8a9b9140f543a33c8548aa3515163
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 13 00:18:36 2022 -0600
+
+    finalized loadSetupConfig(), loadLayoutConfig(); modified getRoom(char), getRoom(BoardCell), added initial getter and setter
+
+commit 3c1a85873adf9c3e6acfa58248065aa4cbfea3af
+Merge: a212da6 96b89e1
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Oct 12 16:47:51 2022 -0600
+
+    added setters for door directions and secret passage, alomst finished with loadLayoutConfig function and moved the making of grid inside that function. fixed issues with load set up
+
+commit a212da6841a27ebdcff88e0f0429960cd898978a
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Oct 12 16:43:11 2022 -0600
+
+    added setters for door directions and secret passage, alomst finished with loadLayoutConfig function and moved the making of grid inside that function. fixed issues with load set up
+
+commit 96b89e1e5461b5025973bdc783b272f709607b06
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Oct 12 12:59:08 2022 -0600
+
+    finished loadSetupConfig()
+
+commit 4aa9e39efc48f44ace7515ce4672f81ee0ef7a07
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Oct 12 02:42:10 2022 -0600
+
+    worked on loading setup
+
+commit a2a5cb6ec795103c8181f23303bb18f6631e0d6f
+Merge: fc5a1cc fade7a2
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Oct 12 02:39:03 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit fc5a1ccbda535529a3a87ec5616c9f77d2d34698
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Oct 12 02:38:56 2022 -0600
+
+    worked on loading setup
+
+commit fade7a23e47204cc6e3e72b24b52446f2665ff91
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Oct 11 22:49:49 2022 -0600
+
+    added to loadlayoutconfig from layout test
+
+commit 77f4970477fa023ca02dbc77c87095dcfc9f5069
+Merge: 83b8e2a c7e2952
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Oct 11 20:05:18 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit 83b8e2afa657cee34edaa28227ea7341c6fd5803
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Oct 11 20:05:12 2022 -0600
+
+    worked on loading setup
+
+commit c7e295229cbde20037d816f67265d394d5b6abaa
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Oct 11 20:05:07 2022 -0600
+
+    added class for testing reading layout
+
+commit 04578023ca8618a328fcc9e3481411e69db9dae6
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Oct 11 18:14:15 2022 -0600
+
+    worked on loading and isDoorway()
+
+commit 8fca566680d9ab11bb1e5e846e6489a47402e1de
+Merge: bcc3182 9285909
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Oct 11 18:03:28 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit bcc3182fcef5278e7bcaada8a6835b54113b2a66
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Oct 11 18:03:22 2022 -0600
+
+    modified ClueLayout.csv and worked on loading files
+
 commit 92859096173b9fcedafa99062971d4f9ba315407
 Author: FloorismadeoutofFloor <gwdina@gmail.com>
 Date:   Tue Oct 11 17:54:25 2022 -0600
