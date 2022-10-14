@@ -12,13 +12,14 @@ import java.io.*;
 
 public class BadConfigFormatException extends Exception {
 	public BadConfigFormatException() { super("Error: Incorrect Board Layout"); } //default message
-	public BadConfigFormatException(String message) {
+	public BadConfigFormatException(String message) throws Exception {
 		super(message); 
+		logMessage(message);
 	}
 	
-	public void logMessage() throws Exception {
-		PrintWriter message = new PrintWriter(new FileWriter("logfile.txt", true));
-		message.println(message);
-		message.close(); //custom message
+	public void logMessage(String message) throws Exception {
+		PrintWriter pw = new PrintWriter(new FileWriter("logfile.txt", true));
+		pw.println(message);
+		pw.close(); //custom message
 	}
 }
