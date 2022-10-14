@@ -17,10 +17,11 @@ public class Board {
 	private int numRows; //row size
 	private String layoutConfigFile; //board layout
 	private String setupConfigFile; //board setup
-	private Map<Character, Room> roomMap; //map for board rooms
+	private Map<Character, Room> roomMap = new HashMap<Character, Room>(); //map for board rooms
 	public BoardCell boardCell; //board cell
-	public List<String[]> layoutLines =  new ArrayList<String[]>(); //array list stores layout cells
+	public List<String[]> layoutLines; //array list stores layout cells
 	String[] setupLines; //array stores setup lines
+	 //array stores setup lines
 
 	//grabs/makes the board from the csv file
 
@@ -30,9 +31,7 @@ public class Board {
 	private static Board theInstance = new Board();
 	private Board() { super(); } // constructor is private to ensure only one can be created
 	public static Board getInstance() { 
-		if (theInstance == null) {
-			theInstance = new Board();
-		}
+		if (theInstance == null) theInstance = new Board();
 		return theInstance; } // this method returns the only Board
 
 	/*
@@ -40,7 +39,6 @@ public class Board {
 	 */
 	public void initialize() { 
 		roomMap = new HashMap<Character, Room>(); //initilizes room map  
-		boardCell = new BoardCell();
 
 		//load setup and layout
 		try {
@@ -72,7 +70,7 @@ public class Board {
 	}
 
 	//loads board setup 
-	public void loadSetupConfig() throws BadConfigFormatException {
+	public void loadSetupConfig() throws Exception {
 		FileReader reader = null;
 		Scanner in = null;
 		
@@ -82,7 +80,7 @@ public class Board {
 			in = new Scanner(reader);
 
 			while(in.hasNextLine()) {
-				setupLines = in.nextLine().split(", "); //adds split line to array
+				String[] setupLines = in.nextLine().split(", "); //adds split line to array
 
 				//check if line is a comment
 				if (!setupLines[0].contains("//")) {
@@ -93,7 +91,7 @@ public class Board {
 					room.setName(setupLines[1]); //sets room name
 					roomMap.put(setupLines[2].charAt(0), room); //adds room name and initial to map
 				}
-				in.close(); //close file
+				
 			} 
 			
 		} catch (FileNotFoundException e) {
@@ -105,13 +103,13 @@ public class Board {
 		public void loadLayoutConfig() throws Exception {
 			FileReader reader = null;
 			Scanner in = null;
-			String[] nextCell; //stores layout lines
+			String[] nextCell = null; //stores layout lines
 			//read once to see how many rows and cols 
 			//and then read 2nd time to store cell information in grid[][]
 			try {
 				reader = new FileReader(layoutConfigFile); //reads file
 				in = new Scanner(reader);
-				//layoutLines = new ArrayList<String[]>(); //holds file lines
+				layoutLines = new ArrayList<String[]>(); //holds file lines
 
 				//reads each line and adds to array
 				while(in.hasNextLine()) {
@@ -128,6 +126,13 @@ public class Board {
 			numRows = layoutLines.size(); //set row size
 			numColumns = layoutLines.get(0).length; //set column size
 			grid = new BoardCell[numRows][numColumns]; //set grid size
+			
+			for(int k=0; k < layoutLines.size(); k++) {
+				if (layoutLines.get(k).length != numColumns) {
+					throw new BadConfigFormatException("Error: Layout refers to room that is not in setup file");
+			}
+			}
+			
 			setBoardCells(); //sets board cells
 		}
 
@@ -148,9 +153,7 @@ public class Board {
 					if(!(roomMap.containsKey(layoutLines.get(i)[j].charAt(0)))) 
 						throw new BadConfigFormatException("Error: Layout refers to room that is not in setup file");
 					//If the board layout file does not have the same number of columns in every row.
-					//if(layoutLines.get(i)[j].charAt(0) == 0) 
-					//throw new BadConfigFormatException("Error: layout file does not have the same number of columns in every row");
-
+					
 					if(layoutLines.get(i)[j].length() == 2) {
 						if(layoutLines.get(i)[j].charAt(1) == '*') {
 							grid[i][j].setRoomCenter();
@@ -190,6 +193,7 @@ public class Board {
 					}
 				}
 			}
+				
 		}
 
 		public BoardCell getCell(int row, int col) { return grid[row][col]; } //returns the cell from the board at row, col
