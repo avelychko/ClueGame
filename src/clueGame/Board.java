@@ -199,19 +199,6 @@ public class Board {
 	public void calcTargets(BoardCell startCell, int pathlength) {
 		visited.add(startCell); //adds visited cell to visited set
 		targets.add(startCell);
-//		//for loop for each adjacency cell
-//		for (BoardCell adjCell: startCell.adjList) {
-//			//checks if adjacency cell has already been visited	
-//			if (visited.contains(adjCell) == false) {
-//				//checks if cell is occupied
-//				if (adjCell.getOccupied() == false) {
-//					if (pathlength == 1) targets.add(adjCell); //checks if length is 1 then add adj cell to targets set
-//					//if (adjCell.getRoom() == true) targets.add(adjCell); //if is room add adj cell to targets
-//					else calcTargets(adjCell, pathlength - 1);  //else call adj cell recursively
-//					visited.remove(adjCell); //remove visited adj cell
-//				}
-//			}
-//		}
 	}
 
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); }
