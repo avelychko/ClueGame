@@ -18,6 +18,8 @@ public class BoardCell {
 	private boolean roomCenter; //roomCenter bool
 	private char secretPassage; //secretPassage char
 	Set<BoardCell> adjList = new HashSet<BoardCell>(); //initialized adjList set
+	private Boolean isRoom = false; //isRoom boolean initialized to false
+	private Boolean isOccupied = false; //isOccupied initialized to false
 
 	public BoardCell() { adjList = new HashSet<BoardCell>(); } //constructor
 	
@@ -28,7 +30,7 @@ public class BoardCell {
 	}
 
 	public void addAdj(BoardCell adj) { this.adjList.add(adj); } //a setter to add a cell to this cells adjacency list
-	public Set<BoardCell> getAdjList() { return adjList; } //returns the adjacency list for the cell
+	public Set<BoardCell> grabAdjList() { return adjList; } //returns the adjacency list for the cell
 	public DoorDirection getDoorDirection() { return doorDirection; } //returns direction of the door
 	
 	public char getInitial() { return initial; } //return initial
@@ -45,4 +47,27 @@ public class BoardCell {
 		return true;
 	} 
 	public void setDoorDirection(DoorDirection doorDirection) { this.doorDirection = doorDirection; } //set door direction
+		
+	
+			//a setter for indicating a cell is part of a room 
+			public void setRoom(boolean bool) {
+				this.isRoom = bool;
+			}
+			
+			//a getter for indicating a cell is part of a room 
+			public boolean getRoom() {
+				return this.isRoom;
+			}
+			
+		//a setter for indicating a cell is occupied by another player
+		public void setOccupied(boolean bool) {
+			this.isOccupied = bool;
+		}
+		
+		//a getter for indicating a cell is occupied by another player
+		public boolean getOccupied() {
+			return this.isOccupied;
+		}
+		
+		
 }

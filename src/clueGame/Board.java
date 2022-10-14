@@ -3,6 +3,8 @@ package clueGame;
 import java.io.*;
 import java.util.*;
 
+import experiment.TestBoardCell;
+
 /**
  * Board Class
  * 
@@ -20,6 +22,8 @@ public class Board {
 	private Map<Character, Room> roomMap = new HashMap<Character, Room>(); //map for board rooms
 	public List<String[]> layoutLines; //array list stores layout cells
 	String[] setupLines; //array stores setup lines
+	private Set<BoardCell> targets; //set of target cells
+	private Set<BoardCell> visited; //set of visited cells
 
 	//grabs/makes the board from the csv file
 
@@ -59,6 +63,8 @@ public class Board {
 			}
 		}
 	} 
+	
+	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList();} 
 
 
 	//sets board setup and layout
@@ -72,7 +78,7 @@ public class Board {
 		FileReader reader = null;
 		Scanner in = null;
 
-
+		
 		try {
 			reader = new FileReader(setupConfigFile); //reads file
 			in = new Scanner(reader);
@@ -89,9 +95,9 @@ public class Board {
 					room.setName(setupLines[1]); //sets room name
 					roomMap.put(setupLines[2].charAt(0), room); //adds room name and initial to map
 				}
-
+				
 			} 
-
+			
 		} catch (FileNotFoundException e) {
 			e.getLocalizedMessage();
 		} in.close(); //close file
@@ -199,6 +205,32 @@ public class Board {
 
 	}
 
+	
+	
+	
+	//calculates legal targets for a move from startCell of length pathlength
+		public void calcTargets(BoardCell startCell, int pathlength) {
+			visited.add(startCell); //adds visited cell to visited set
+			//for loop for each adjacency cell
+			for (BoardCell adjCell: startCell.adjList) {
+				//checks if adjacency cell has already been visited	
+				if (visited.contains(adjCell) == false) {
+					//checks if cell is occupied
+					if (adjCell.getOccupied() == false) {
+						if (pathlength == 1) targets.add(adjCell); //checks if length is 1 then add adj cell to targets set
+						if (adjCell.getRoom() == true) targets.add(adjCell); //if is room add adj cell to targets
+						else calcTargets(adjCell, pathlength - 1);  //else call adj cell recursively
+						visited.remove(adjCell); //remove visited adj cell
+					}
+				}
+			}
+		}
+		
+		//gets the targets last created by calcTargets()
+		public Set<BoardCell> getTargets() {
+			return targets;
+		}
+	
 	public BoardCell getCell(int row, int col) { return grid[row][col]; } //returns the cell from the board at row, col
 	public int getNumRows() { return numRows; } //returns board row size
 	public int getNumColumns() { return numColumns; } //returns board column size
