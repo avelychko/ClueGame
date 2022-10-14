@@ -19,7 +19,6 @@ public class Board {
 	private String setupConfigFile; //board setup
 	private Map<Character, Room> roomMap = new HashMap<Character, Room>(); //map for board rooms
 	List<String[]> layoutLines = null; //array list stores layout cells
-	 //array stores setup lines
 
 	//grabs/makes the board from the csv file
 
@@ -99,8 +98,7 @@ public class Board {
 			FileReader reader = null;
 			Scanner in = null;
 			String[] nextCell = null; //stores layout lines
-			//read once to see how many rows and cols 
-			//and then read 2nd time to store cell information in grid[][]
+
 			try {
 				reader = new FileReader(layoutConfigFile); //reads file
 				in = new Scanner(reader);
@@ -128,6 +126,7 @@ public class Board {
 			//local variables
 			char initial, roomCenter, label, secretPassage;
 			DoorDirection doorDirection;
+			
 			//identifies if cell is center, label, door (which way), or secret passage
 			//adds each cell to grid
 			for (int i = 0; i < numRows; i++) {
@@ -138,44 +137,50 @@ public class Board {
 					grid[i][j].setDoorDirection(DoorDirection.NONE); //set all cells to initial no door
 
 					//If the board layout refers to a room that is not in your setup file.
-					if(!(roomMap.containsKey(layoutLines.get(i)[j].charAt(0)))) 
+					if(!roomMap.containsKey(layoutLines.get(i)[j].charAt(0))) 
 						throw new BadConfigFormatException("Error: Layout refers to room that is not in setup file");
 					//If the board layout file does not have the same number of columns in every row.
-					//if(layoutLines.get(i)[j].charAt(0) == 0) 
-					//throw new BadConfigFormatException("Error: layout file does not have the same number of columns in every row");
-
+						//throw new BadConfigFormatException("Error: Layout file does not have the same number of columns in every row");
+					
+					//check if cell char contains a sign
 					if(layoutLines.get(i)[j].length() == 2) {
+						//if cell char contains *, set to room center
 						if(layoutLines.get(i)[j].charAt(1) == '*') {
-							grid[i][j].setRoomCenter();
-							roomCenter = grid[i][j].getInitial();
-							roomMap.get(roomCenter).setCenterCell(grid[i][j]);
+							grid[i][j].setRoomCenter(); //set cell to center
+							roomCenter = grid[i][j].getInitial(); 
+							roomMap.get(roomCenter).setCenterCell(grid[i][j]); 
 						}
+						//if cell char contains #, set to label
 						else if(layoutLines.get(i)[j].charAt(1) == '#') {
-							grid[i][j].setLabel();
+							grid[i][j].setLabel(); //set cell to label
 							label = grid[i][j].getInitial();
 							roomMap.get(label).setLabelCell(grid[i][j]);
 						}
+						//if cell char contains ^, set door direction
 						else if(layoutLines.get(i)[j].charAt(1) == '^') {
 							doorDirection = DoorDirection.UP;
 							grid[i][j].setDoorDirection(doorDirection);
 							grid[i][j].isDoorway();
 						}
+						//if cell char contains >, set door direction
 						else if(layoutLines.get(i)[j].charAt(1) == '>') {
 							doorDirection = DoorDirection.RIGHT;
 							grid[i][j].setDoorDirection(doorDirection);
 							grid[i][j].isDoorway();
 						}
+						//if cell char contains <, set door direction
 						else if(layoutLines.get(i)[j].charAt(1) == '<') {
 							doorDirection = DoorDirection.LEFT;
 							grid[i][j].setDoorDirection(doorDirection);
 							grid[i][j].isDoorway();
-
 						}
+						//if cell char contains v, set door direction
 						else if(layoutLines.get(i)[j].charAt(1) == 'v') {
 							doorDirection = DoorDirection.DOWN;
 							grid[i][j].setDoorDirection(doorDirection);
 							grid[i][j].isDoorway();
 						}
+						//if cell char contains another char, set secret passage
 						else {
 							secretPassage = layoutLines.get(i)[j].charAt(1);
 							grid[i][j].setSecretPassage(secretPassage);
