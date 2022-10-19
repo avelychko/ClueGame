@@ -41,11 +41,13 @@ public class BoardAdjTargetTest {
 		
 		//testing atrium 
 		testList = board.getAdjList(20, 16);
-		assertEquals(4, testList.size());
+		assertEquals(6, testList.size());
 		assertTrue(testList.contains(board.getCell(20, 11)));
 		assertTrue(testList.contains(board.getCell(21, 11)));
 		assertTrue(testList.contains(board.getCell(20, 20)));
 		assertTrue(testList.contains(board.getCell(21, 20)));
+		assertTrue(testList.contains(board.getCell(16, 15)));
+		assertTrue(testList.contains(board.getCell(16, 16)));
 	}
 
 	
@@ -78,16 +80,17 @@ public class BoardAdjTargetTest {
 		
 		//testing atrium down door
 		testList = board.getAdjList(16, 15);
-		assertEquals(3, testList.size());
+		assertEquals(4, testList.size());
 		assertTrue(testList.contains(board.getCell(20, 16)));
 		assertTrue(testList.contains(board.getCell(16, 14)));
+		assertTrue(testList.contains(board.getCell(16, 16)));
 		assertTrue(testList.contains(board.getCell(15, 15)));
 		
 		//testing dinner right door
 		testList = board.getAdjList(21, 26);
 		assertEquals(3, testList.size());
-		assertTrue(testList.contains(board.getCell(22, 25)));
 		assertTrue(testList.contains(board.getCell(21, 25)));
+		assertTrue(testList.contains(board.getCell(16, 27)));
 		assertTrue(testList.contains(board.getCell(22, 26)));
 
 		//testing bathroom down door
