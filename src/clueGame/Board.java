@@ -52,18 +52,73 @@ public class Board {
 		}
 		setAdj();
 	}
-
+	
 	private void setAdj() {
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numColumns; j++) {
-				if ((i-1) >= 0) grid[i][j].addAdj(getCell(i-1, j)); //adjacency in x-1 direction
-				if ((j-1) >= 0) grid[i][j].addAdj(getCell(i, j-1)); //adjacency in y-1 direction
-				if ((i+1) < numRows) grid[i][j].addAdj(getCell(i+1, j)); //adjacency in x+1 direction
-				if ((j+1) < numColumns) grid[i][j].addAdj(getCell(i, j+1)); //adjacency in y+1 direction
+				
+				if(grid[i][j].getSecretPassage() != 0) {
+					BoardCell currentRoom = roomMap.get(grid[i][j].getInitial()).getCenterCell();
+					currentRoom.addAdj(roomMap.get(grid[i][j].getSecretPassage()).getCenterCell());
+				}
+				if(grid[i][j].isDoorway()) {
+					BoardCell roomCell;
+					if(grid[i][j].getDoorDirection() == DoorDirection.UP) {
+						roomCell = roomMap.get(grid[i-1][j].getInitial()).getCenterCell();
+						roomCell.addAdj(grid[i][j]);
+						grid[i][j].addAdj(roomCell);
+					}
+					if(grid[i][j].getDoorDirection() == DoorDirection.DOWN) {
+						roomCell = roomMap.get(grid[i+1][j].getInitial()).getCenterCell();
+						roomCell.addAdj(grid[i][j]);
+						grid[i][j].addAdj(roomCell);
+					}
+					if(grid[i][j].getDoorDirection() == DoorDirection.LEFT) {
+						roomCell = roomMap.get(grid[i][j-1].getInitial()).getCenterCell();
+						roomCell.addAdj(grid[i][j]);
+						grid[i][j].addAdj(roomCell);
+					}
+					if(grid[i][j].getDoorDirection() == DoorDirection.RIGHT) {
+						roomCell = roomMap.get(grid[i][j+1].getInitial()).getCenterCell();
+						roomCell.addAdj(grid[i][j]);
+						grid[i][j].addAdj(roomCell);
+					}
+				}
+				
+				
+
+				if ((i-1) >= 0) {
+					if((grid[i-1][j].getInitial() == 'W')) {
+						grid[i][j].addAdj(getCell(i-1, j));
+					}
+					
+				} //adjacency in x-1 direction
+
+				if ((j-1) >= 0) {
+					if(grid[i][j-1].getInitial() == 'W') {
+						grid[i][j].addAdj(getCell(i, j-1));
+					}
+					
+				} //adjacency in y-1 direction
+
+				if ((i+1) < numRows) {
+					if(grid[i+1][j].getInitial() == 'W') {
+						grid[i][j].addAdj(getCell(i+1, j));
+					}
+					
+				} //adjacency in x+1 direction
+
+				if ((j+1) < numColumns) {
+					if(grid[i][j+1].getInitial() == 'W') {
+						grid[i][j].addAdj(getCell(i, j+1));
+					}
+					
+				} //adjacency in y+1 direction
 			}
 		}
 	}
 
+	// if it's a room adj will be only doors and secret rooms(room center)
 
 	//sets board setup and layout
 	public void setConfigFiles(String layout, String setup) {
@@ -131,6 +186,11 @@ public class Board {
 				grid[i][j] = new BoardCell(i,j); //sets board sells
 				char ch = layoutLines.get(i)[j].charAt(0);
 				grid[i][j].setInitial(ch); //set cell initial
+				
+				if((grid[i][j].getInitial() != 'W') || (grid[i][j].getInitial() !='X')) {
+					grid[i][j].setRoom(true);
+				}
+				
 				doorDirection = DoorDirection.NONE;
 				grid[i][j].setDoorDirection(doorDirection); //set all cells to initial no door
 
@@ -184,7 +244,7 @@ public class Board {
 			}
 		}
 	}
-	
+
 	private void setGridSize() throws Exception {
 		numRows = layoutLines.size(); //set row size
 		numColumns = layoutLines.get(0).length; //set column size
@@ -204,17 +264,17 @@ public class Board {
 	}
 
 
-	
+
 
 
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); }
 	public Set<BoardCell> getTargets() { return targets; } //gets the targets last created by calcTargets()
 
 	public BoardCell getCell(int row, int col) { return grid[row][col]; } //returns the cell from the board at row, col
-	
+
 	public int getNumRows() { return numRows; } //returns board row size
 	public int getNumColumns() { return numColumns; } //returns board column size
-	
+
 	public Room getRoom(char room) { return roomMap.get(room); } //returns room at char
 	public Room getRoom(BoardCell cell) { return roomMap.get(cell.getInitial()); } //return room at cell 
 }

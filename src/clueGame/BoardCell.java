@@ -16,7 +16,10 @@ public class BoardCell {
 	private DoorDirection doorDirection; //doorDirection enum objects
 	private boolean roomLabel; //roomLabel bool
 	private boolean roomCenter; //roomCenter bool
-	private char secretPassage; //secretPassage char
+	private char secretPassage = 0; //secretPassage char
+	private boolean isRoom = false;
+	
+	
 	Set<BoardCell> adjList = new HashSet<BoardCell>(); //initialized adjList set
 	private Boolean isOccupied = false; //isOccupied initialized to false
 
@@ -53,4 +56,12 @@ public class BoardCell {
 	
 	public void setOccupied(boolean bool) { this.isOccupied = bool; } //a setter for indicating a cell is occupied by another player
 	public boolean getOccupied() { return this.isOccupied; } //a getter for indicating a cell is occupied by another player
+	
+	public boolean isRoom() {
+		return isRoom;
+	}
+
+	public void setRoom(boolean isRoom) {
+		this.isRoom = isRoom;
+	}
 }
