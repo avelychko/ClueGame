@@ -53,11 +53,11 @@ public class Board {
 		setAdj();
 	}
 
-	
+
 	private void setAdj() {
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numColumns; j++) {
-				
+
 				if(grid[i][j].getSecretPassage() != 0) {
 					BoardCell currentRoom = roomMap.get(grid[i][j].getInitial()).getCenterCell();
 					currentRoom.addAdj(roomMap.get(grid[i][j].getSecretPassage()).getCenterCell());
@@ -85,35 +85,35 @@ public class Board {
 						grid[i][j].addAdj(roomCell);
 					}
 				}
-				
-				
+
+
 
 				if ((i-1) >= 0) {
 					if((grid[i-1][j].getInitial() == 'W')) {
 						grid[i][j].addAdj(getCell(i-1, j));
 					}
-					
+
 				} //adjacency in x-1 direction
 
 				if ((j-1) >= 0) {
 					if(grid[i][j-1].getInitial() == 'W') {
 						grid[i][j].addAdj(getCell(i, j-1));
 					}
-					
+
 				} //adjacency in y-1 direction
 
 				if ((i+1) < numRows) {
 					if(grid[i+1][j].getInitial() == 'W') {
 						grid[i][j].addAdj(getCell(i+1, j));
 					}
-					
+
 				} //adjacency in x+1 direction
 
 				if ((j+1) < numColumns) {
 					if(grid[i][j+1].getInitial() == 'W') {
 						grid[i][j].addAdj(getCell(i, j+1));
 					}
-					
+
 				} //adjacency in y+1 direction
 			}
 		}
@@ -188,11 +188,11 @@ public class Board {
 				grid[i][j] = new BoardCell(i,j); //sets board sells
 				char ch = layoutLines.get(i)[j].charAt(0);
 				grid[i][j].setInitial(ch); //set cell initial
-				
+
 				if((grid[i][j].getInitial() != 'W') || (grid[i][j].getInitial() !='X')) {
 					grid[i][j].setRoom(true);
 				}
-				
+
 				doorDirection = DoorDirection.NONE;
 				grid[i][j].setDoorDirection(doorDirection); //set all cells to initial no door
 
@@ -262,19 +262,18 @@ public class Board {
 	//calculates legal targets for a move from startCell of length pathlength
 	public void calcTargets(BoardCell startCell, int pathlength) {
 		visited.add(startCell); //adds visited cell to visited set
-		targets.add(startCell);
-		//		for (TestBoardCell adjCell: startCell.adjList) {
-		//			//checks if adjacency cell has already been visited	
-		//			if (visited.contains(adjCell) == false) {
-		//				//checks if cell is occupied
-		//				if (adjCell.getOccupied() == false) {
-		//					if (pathlength == 1) targets.add(adjCell); //checks if length is 1 then add adj cell to targets set
-		//					if (adjCell.getRoom() == true) targets.add(adjCell); //if is room add adj cell to targets
-		//					else calcTargets(adjCell, pathlength - 1);  //else call adj cell recursively
-		//					visited.remove(adjCell); //remove visited adj cell
-		//				}
-		//			}
-		//		}
+		for (BoardCell adjCell: startCell.adjList) {
+			//checks if adjacency cell has already been visited	
+			if (visited.contains(adjCell) == false) {
+				//checks if cell is occupied
+				if (adjCell.getOccupied() == false) {
+					if (pathlength == 1) targets.add(adjCell); //checks if length is 1 then add adj cell to targets set
+					if (adjCell.isRoom() == true) targets.add(adjCell); //if is room add adj cell to targets
+					else calcTargets(adjCell, pathlength - 1);  //else call adj cell recursively
+					visited.remove(adjCell); //remove visited adj cell
+				}
+			}
+		}
 	}
 
 
