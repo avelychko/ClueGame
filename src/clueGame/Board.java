@@ -50,15 +50,31 @@ public class Board {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		setAdj();
+		calcAdj();
 	}
-	private void setAdj() {
-		for (int i = 0; i < numRows; i++) {
-			for (int j = 0; j < numColumns; j++) {
-				if ((i-1) >= 0) grid[i][j].addAdj(getCell(i-1, j)); //adjacency in x-1 direction
-				if ((j-1) >= 0) grid[i][j].addAdj(getCell(i, j-1)); //adjacency in y-1 direction
-				if ((i+1) < numRows) grid[i][j].addAdj(getCell(i+1, j)); //adjacency in x+1 direction
-				if ((j+1) < numColumns) grid[i][j].addAdj(getCell(i, j+1)); //adjacency in y+1 direction
+
+	//calculate adjacency
+	private void calcAdj() {
+		for (int x = 0; x < numRows; x++) {
+			for (int y = 0; y < numColumns; y++) {
+				//rooms
+				if (grid [x][y].isRoomCenter()) {
+					//if (check if room contains secret passage) else
+
+				}
+
+				//door
+				else if (grid[x][y].isDoorway()) {
+
+				}
+
+				//walkways
+				else {
+					if ((x-1) >= 0) grid[x][y].addAdj(getCell(x-1, y)); //adjacency in x-1 direction
+					if ((y-1) >= 0) grid[x][y].addAdj(getCell(x, y-1)); //adjacency in y-1 direction
+					if ((x+1) < numRows) grid[x][y].addAdj(getCell(x+1, y)); //adjacency in x+1 direction
+					if ((y+1) < numColumns) grid[x][y].addAdj(getCell(x, y+1)); //adjacency in y+1 direction
+				}
 			}
 		}
 	}  
@@ -182,7 +198,7 @@ public class Board {
 			}
 		}
 	}
-	
+
 	private void setGridSize() throws Exception {
 		numRows = layoutLines.size(); //set row size
 		numColumns = layoutLines.get(0).length; //set column size
@@ -199,15 +215,27 @@ public class Board {
 	public void calcTargets(BoardCell startCell, int pathlength) {
 		visited.add(startCell); //adds visited cell to visited set
 		targets.add(startCell);
+		//		for (TestBoardCell adjCell: startCell.adjList) {
+		//			//checks if adjacency cell has already been visited	
+		//			if (visited.contains(adjCell) == false) {
+		//				//checks if cell is occupied
+		//				if (adjCell.getOccupied() == false) {
+		//					if (pathlength == 1) targets.add(adjCell); //checks if length is 1 then add adj cell to targets set
+		//					if (adjCell.getRoom() == true) targets.add(adjCell); //if is room add adj cell to targets
+		//					else calcTargets(adjCell, pathlength - 1);  //else call adj cell recursively
+		//					visited.remove(adjCell); //remove visited adj cell
+		//				}
+		//			}
+		//		}
 	}
 
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); }
 	public Set<BoardCell> getTargets() { return targets; } //gets the targets last created by calcTargets()
 	public BoardCell getCell(int row, int col) { return grid[row][col]; } //returns the cell from the board at row, col
-	
+
 	public int getNumRows() { return numRows; } //returns board row size
 	public int getNumColumns() { return numColumns; } //returns board column size
-	
+
 	public Room getRoom(char room) { return roomMap.get(room); } //returns room at char
 	public Room getRoom(BoardCell cell) { return roomMap.get(cell.getInitial()); } //return room at cell 
 }

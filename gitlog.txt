@@ -1,3 +1,58 @@
+commit ca1d739ce589be52003f0b1da5af5a48ce876c50
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Fri Oct 14 13:35:49 2022 -0600
+
+    finished BoardAdjTargetTest
+
+commit 445eab7c3beb6f248fa8bc7d7f18c4162bbb57c3
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Fri Oct 14 11:59:51 2022 -0600
+
+    modified BoardAdjTargetTest
+
+commit aebddab7b11248370a1e893e292340a5c81dbc7c
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 13 20:01:20 2022 -0600
+
+    created BoardAdjTargetTest class
+
+commit 2286b2b64874711904f151e8dab77d2e46b5ede8
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 13 19:55:38 2022 -0600
+
+    failing tests
+
+commit 1a807db5406ba0a038840358945410c87e034dec
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 13 19:45:03 2022 -0600
+
+    organized
+
+commit e564e6b77bcc172ad0da634b1578b797048aee42
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 13 19:38:05 2022 -0600
+
+    initialized sets
+
+commit 229a0cb4e010d880b02ca7a5d4a846ff516c1063
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Oct 13 19:18:04 2022 -0600
+
+    resend BoardAdjTargetTest306
+
+commit 395919bf4877659d61be2bf1d0268e0d6aedb44c
+Merge: 808700a 2386981
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Oct 13 19:14:29 2022 -0600
+
+    added BoardAdjTargetTest306 and added things from expirment
+
+commit 808700a3db7bba77a6de1bac847d5f6b37e778aa
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Oct 13 19:12:42 2022 -0600
+
+    added BoardAdjTargetTest306 and added things from expirment
+
 commit 238698137e8be30098d9cf9d4203b6b09e6fb9e8
 Author: Anastasia Velychko <avelychko@mines.edu>
 Date:   Thu Oct 13 18:57:31 2022 -0600
