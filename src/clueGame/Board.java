@@ -52,6 +52,7 @@ public class Board {
 		}
 		setAdj();
 	}
+
 	
 	private void setAdj() {
 		for (int i = 0; i < numRows; i++) {
@@ -117,6 +118,7 @@ public class Board {
 			}
 		}
 	}
+
 
 	// if it's a room adj will be only doors and secret rooms(room center)
 
@@ -261,6 +263,18 @@ public class Board {
 	public void calcTargets(BoardCell startCell, int pathlength) {
 		visited.add(startCell); //adds visited cell to visited set
 		targets.add(startCell);
+		//		for (TestBoardCell adjCell: startCell.adjList) {
+		//			//checks if adjacency cell has already been visited	
+		//			if (visited.contains(adjCell) == false) {
+		//				//checks if cell is occupied
+		//				if (adjCell.getOccupied() == false) {
+		//					if (pathlength == 1) targets.add(adjCell); //checks if length is 1 then add adj cell to targets set
+		//					if (adjCell.getRoom() == true) targets.add(adjCell); //if is room add adj cell to targets
+		//					else calcTargets(adjCell, pathlength - 1);  //else call adj cell recursively
+		//					visited.remove(adjCell); //remove visited adj cell
+		//				}
+		//			}
+		//		}
 	}
 
 
