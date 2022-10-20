@@ -265,7 +265,7 @@ public class Board {
 		visited.add(startCell);
 		findAllTargets(startCell, pathlength);
 	}
-	
+
 	private void findAllTargets(BoardCell thisCell, int numSteps) {
 		for (BoardCell adjCell: thisCell.adjList) {
 			//checks if adjacency cell has already been visited	
@@ -273,10 +273,12 @@ public class Board {
 				visited.add(adjCell); //adds visited cell to visited set
 				if (!(adjCell.getWalkway() || adjCell.getUnused())) targets.add(adjCell); //if is room add adj cell to targets
 				//checks if cell is occupied
-				if (adjCell.getOccupied() == false) {
-					if (numSteps == 1) targets.add(adjCell); //checks if length is 1 then add adj cell to targets set
-					else findAllTargets(adjCell, numSteps - 1);  //else call adj cell recursively
-					visited.remove(adjCell); //remove visited adj cell
+				else {
+					if (adjCell.getOccupied() == false) {
+						if (numSteps == 1) targets.add(adjCell); //checks if length is 1 then add adj cell to targets set
+						else findAllTargets(adjCell, numSteps - 1);  //else call adj cell recursively
+						visited.remove(adjCell); //remove visited adj cell
+					}
 				}
 			}
 		}
