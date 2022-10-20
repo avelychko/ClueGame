@@ -1,16 +1,17 @@
 package tests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
+import static org.junit.Assert.*;
 import java.util.Set;
+import org.junit.jupiter.api.*;
+import clueGame.*;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-
-import clueGame.Board;
-import clueGame.BoardCell;
+/**
+ * Board Adjacency and Target Test
+ * 
+ * @author Anastasia Velyhko
+ * @author Gordon Dina
+ *
+ */
 
 public class BoardAdjTargetTest {
 	// We make the Board static because we can load it one time and 

@@ -39,7 +39,7 @@ public class Board {
 	 * initialize the board (since we are using singleton pattern)
 	 */
 	public void initialize() { 
-		roomMap = new HashMap<Character, Room>(); //initilizes room map  
+		roomMap = new HashMap<Character, Room>(); 
 		targets = new HashSet<BoardCell>();
 		visited = new HashSet<BoardCell>();
 
@@ -86,41 +86,36 @@ public class Board {
 					}
 				}
 
-
-
+				//adjacency in x-1 direction
 				if ((i-1) >= 0) {
 					if((grid[i-1][j].getInitial() == 'W')) {
 						grid[i][j].addAdj(getCell(i-1, j));
 					}
+				} 
 
-				} //adjacency in x-1 direction
-
+				//adjacency in y-1 direction
 				if ((j-1) >= 0) {
 					if(grid[i][j-1].getInitial() == 'W') {
 						grid[i][j].addAdj(getCell(i, j-1));
 					}
+				} 
 
-				} //adjacency in y-1 direction
-
+				//adjacency in x+1 direction
 				if ((i+1) < numRows) {
 					if(grid[i+1][j].getInitial() == 'W') {
 						grid[i][j].addAdj(getCell(i+1, j));
 					}
+				} 
 
-				} //adjacency in x+1 direction
-
+				//adjacency in y+1 direction
 				if ((j+1) < numColumns) {
 					if(grid[i][j+1].getInitial() == 'W') {
 						grid[i][j].addAdj(getCell(i, j+1));
 					}
-
-				} //adjacency in y+1 direction
+				} 
 			}
 		}
 	}
-
-
-	// if it's a room adj will be only doors and secret rooms(room center)
 
 	//sets board setup and layout
 	public void setConfigFiles(String layout, String setup) {
@@ -189,8 +184,8 @@ public class Board {
 				char ch = layoutLines.get(i)[j].charAt(0);
 				grid[i][j].setInitial(ch); //set cell initial
 
-				if(grid[i][j].getInitial() == 'W') grid[i][j].setWalkway(true);
-				if (grid[i][j].getInitial() =='X') grid[i][j].setUnused(true);
+				if(grid[i][j].getInitial() == 'W') grid[i][j].setWalkway(true); //check if walkway
+				if (grid[i][j].getInitial() =='X') grid[i][j].setUnused(true); //check if unused
 
 				doorDirection = DoorDirection.NONE;
 				grid[i][j].setDoorDirection(doorDirection); //set all cells to initial no door
@@ -260,10 +255,10 @@ public class Board {
 
 	//calculates legal targets for a move from startCell of length pathlength
 	public void calcTargets(BoardCell startCell, int pathlength) {
-		visited.clear();
-		targets.clear();
-		visited.add(startCell);
-		findAllTargets(startCell, pathlength);
+		visited.clear(); //empty visited set
+		targets.clear(); //empty targets set
+		visited.add(startCell); //add startCell to visited
+		findAllTargets(startCell, pathlength); 
 	}
 
 	private void findAllTargets(BoardCell thisCell, int numSteps) {
@@ -274,6 +269,7 @@ public class Board {
 				if (!(adjCell.getWalkway() || adjCell.getUnused())) targets.add(adjCell); //if is room add adj cell to targets
 				//checks if cell is occupied
 				else {
+					//check if cell is occupied
 					if (adjCell.getOccupied() == false) {
 						if (numSteps == 1) targets.add(adjCell); //checks if length is 1 then add adj cell to targets set
 						else findAllTargets(adjCell, numSteps - 1);  //else call adj cell recursively
@@ -284,8 +280,8 @@ public class Board {
 		}
 	}
 
-	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); }
-	public Set<BoardCell> getTargets() { return targets; } //gets the targets last created by calcTargets()
+	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); } 
+	public Set<BoardCell> getTargets() { return targets; } //returns the targets last created by calcTargets()
 
 	public BoardCell getCell(int row, int col) { return grid[row][col]; } //returns the cell from the board at row, col
 
