@@ -17,8 +17,9 @@ public class BoardCell {
 	private boolean roomLabel; //roomLabel bool
 	private boolean roomCenter; //roomCenter bool
 	private char secretPassage = 0; //secretPassage char
-	private boolean isRoom = false;
-	
+	private boolean isRoom = true;
+	private boolean isUnused = false;
+	private boolean isWalkway = false;
 	
 	Set<BoardCell> adjList = new HashSet<BoardCell>(); //initialized adjList set
 	private Boolean isOccupied = false; //isOccupied initialized to false
@@ -57,11 +58,12 @@ public class BoardCell {
 	public void setOccupied(boolean bool) { this.isOccupied = bool; } //a setter for indicating a cell is occupied by another player
 	public boolean getOccupied() { return this.isOccupied; } //a getter for indicating a cell is occupied by another player
 	
-	public boolean isRoom() {
-		return isRoom;
-	}
-
-	public void setRoom(boolean isRoom) {
-		this.isRoom = isRoom;
-	}
+	public boolean getRoom() { return this.isRoom; }
+	public void setRoom(boolean isRoom) { this.isRoom = isRoom; }
+	
+	public boolean getUnused() { return this.isUnused; }
+	public void setUnused(boolean isUnused) { this.isUnused = isUnused; }
+	
+	public boolean getWalkway() { return this.isWalkway; }
+	public void setWalkway(boolean isWalkway) { this.isWalkway = isWalkway; }
 }
