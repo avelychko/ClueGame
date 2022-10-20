@@ -260,15 +260,22 @@ public class Board {
 
 	//calculates legal targets for a move from startCell of length pathlength
 	public void calcTargets(BoardCell startCell, int pathlength) {
-		visited.add(startCell); //adds visited cell to visited set
-		for (BoardCell adjCell: startCell.adjList) {
+		visited.clear();
+		targets.clear();
+		visited.add(startCell);
+		findAllTargets(startCell, pathlength);
+	}
+	
+	private void findAllTargets(BoardCell thisCell, int numSteps) {
+		for (BoardCell adjCell: thisCell.adjList) {
 			//checks if adjacency cell has already been visited	
 			if (visited.contains(adjCell) == false) {
+				visited.add(adjCell); //adds visited cell to visited set
 				if (!(adjCell.getWalkway() || adjCell.getUnused())) targets.add(adjCell); //if is room add adj cell to targets
 				//checks if cell is occupied
 				if (adjCell.getOccupied() == false) {
-					if (pathlength == 1) targets.add(adjCell); //checks if length is 1 then add adj cell to targets set
-					else calcTargets(adjCell, pathlength - 1);  //else call adj cell recursively
+					if (numSteps == 1) targets.add(adjCell); //checks if length is 1 then add adj cell to targets set
+					else findAllTargets(adjCell, numSteps - 1);  //else call adj cell recursively
 					visited.remove(adjCell); //remove visited adj cell
 				}
 			}
