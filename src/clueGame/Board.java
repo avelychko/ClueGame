@@ -58,29 +58,37 @@ public class Board {
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numColumns; j++) {
 
-				if(grid[i][j].getSecretPassage() != 0) {
-					BoardCell currentRoom = roomMap.get(grid[i][j].getInitial()).getCenterCell();
-					currentRoom.addAdj(roomMap.get(grid[i][j].getSecretPassage()).getCenterCell());
+				char initial;
+				char secretPassage = grid[i][j].getSecretPassage();
+				
+				if(secretPassage != 0) {
+					initial = grid[i][j].getInitial();
+					BoardCell currentRoom = roomMap.get(initial).getCenterCell();
+					currentRoom.addAdj(roomMap.get(secretPassage).getCenterCell());
 				}
 				if(grid[i][j].isDoorway()) {
 					BoardCell roomCell;
 					if(grid[i][j].getDoorDirection() == DoorDirection.UP) {
-						roomCell = roomMap.get(grid[i-1][j].getInitial()).getCenterCell();
+						initial = grid[i-1][j].getInitial();
+						roomCell = roomMap.get(initial).getCenterCell();
 						roomCell.addAdj(grid[i][j]);
 						grid[i][j].addAdj(roomCell);
 					}
 					if(grid[i][j].getDoorDirection() == DoorDirection.DOWN) {
-						roomCell = roomMap.get(grid[i+1][j].getInitial()).getCenterCell();
+						initial = grid[i+1][j].getInitial();
+						roomCell = roomMap.get(initial).getCenterCell();
 						roomCell.addAdj(grid[i][j]);
 						grid[i][j].addAdj(roomCell);
 					}
 					if(grid[i][j].getDoorDirection() == DoorDirection.LEFT) {
-						roomCell = roomMap.get(grid[i][j-1].getInitial()).getCenterCell();
+						initial = grid[i][j-1].getInitial();
+						roomCell = roomMap.get(initial).getCenterCell();
 						roomCell.addAdj(grid[i][j]);
 						grid[i][j].addAdj(roomCell);
 					}
 					if(grid[i][j].getDoorDirection() == DoorDirection.RIGHT) {
-						roomCell = roomMap.get(grid[i][j+1].getInitial()).getCenterCell();
+						initial = grid[i][j+1].getInitial();
+						roomCell = roomMap.get(initial).getCenterCell();
 						roomCell.addAdj(grid[i][j]);
 						grid[i][j].addAdj(roomCell);
 					}
@@ -88,29 +96,37 @@ public class Board {
 
 				//adjacency in x-1 direction
 				if ((i-1) >= 0) {
-					if((grid[i-1][j].getInitial() == 'W')) {
-						grid[i][j].addAdj(getCell(i-1, j));
+					initial = grid[i-1][j].getInitial();
+					if(initial == 'W') {
+						BoardCell cell = getCell(i-1, j);
+						grid[i][j].addAdj(cell);
 					}
 				} 
 
 				//adjacency in y-1 direction
 				if ((j-1) >= 0) {
-					if(grid[i][j-1].getInitial() == 'W') {
-						grid[i][j].addAdj(getCell(i, j-1));
+					initial = grid[i][j-1].getInitial();
+					if(initial == 'W') {
+						BoardCell cell = getCell(i, j-1);
+						grid[i][j].addAdj(cell);
 					}
 				} 
 
 				//adjacency in x+1 direction
 				if ((i+1) < numRows) {
-					if(grid[i+1][j].getInitial() == 'W') {
-						grid[i][j].addAdj(getCell(i+1, j));
+					initial = grid[i+1][j].getInitial();
+					if(initial == 'W') {
+						BoardCell cell = getCell(i+1, j);
+						grid[i][j].addAdj(cell);
 					}
 				} 
 
 				//adjacency in y+1 direction
 				if ((j+1) < numColumns) {
-					if(grid[i][j+1].getInitial() == 'W') {
-						grid[i][j].addAdj(getCell(i, j+1));
+					initial = grid[i][j+1].getInitial();
+					if(initial == 'W') {
+						BoardCell cell = getCell(i, j+1);
+						grid[i][j].addAdj(cell);
 					}
 				} 
 			}
