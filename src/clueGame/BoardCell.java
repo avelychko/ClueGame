@@ -11,20 +11,19 @@ package clueGame;
 import java.util.*;
 
 public class BoardCell {
-	private int row, col; //row and col var
-	private char initial; //initial var
-	private DoorDirection doorDirection; //doorDirection enum objects
-	private boolean roomLabel; //roomLabel bool
-	private boolean roomCenter; //roomCenter bool
-	private char secretPassage = 0; //secretPassage char
+	private int row, col; 
+	private char initial; 
+	private DoorDirection doorDirection; 
+	private boolean roomLabel; 
+	private boolean roomCenter; 
+	private char secretPassage = 0; 
 	private boolean isRoom = true;
 	private boolean isUnused = false;
 	private boolean isWalkway = false;
-	
-	Set<BoardCell> adjList = new HashSet<BoardCell>(); //initialized adjList set
-	private Boolean isOccupied = false; //isOccupied initialized to false
+	private Boolean isOccupied = false; 
+	Set<BoardCell> adjList = new HashSet<BoardCell>(); 
 
-	public BoardCell() { adjList = new HashSet<BoardCell>(); } //constructor
+	public BoardCell() { adjList = new HashSet<BoardCell>(); } 
 
 	//a constructor that has passed into it the row and column for that cell
 	public BoardCell(int row, int col) {
@@ -32,38 +31,48 @@ public class BoardCell {
 		this.col = col;
 	}
 	
-	public void addAdj(BoardCell adj) { this.adjList.add(adj); } //a setter to add a cell to this cells adjacency list
-	public Set<BoardCell> grabAdjList() { return adjList; } //returns the adjacency list for the cell
+	//adjList setter and getter
+	public void addAdj(BoardCell adj) { this.adjList.add(adj); } 
+	public Set<BoardCell> grabAdjList() { return adjList; } 
 
-	public char getInitial() { return initial; } //return initial
-	public void setInitial(char initial) { this.initial = initial; } //set initial
+	//initial setter and getter
+	public char getInitial() { return initial; } 
+	public void setInitial(char initial) { this.initial = initial; } 
 	
-	public boolean isLabel() { return roomLabel; } //checks if cell is label
-	public void setLabel() { roomLabel = true; } //set room label
+	//label setter and getter
+	public boolean isLabel() { return roomLabel; } 
+	public void setLabel() { roomLabel = true; } 
 	
-	public boolean isRoomCenter() { return roomCenter; } //checks if cell is room center
-	public void setRoomCenter() { roomCenter = true; } //set room center
+	//roomCenter setter and getter
+	public boolean isRoomCenter() { return roomCenter; } 
+	public void setRoomCenter() { roomCenter = true; } 
 	
-	public char getSecretPassage() { return secretPassage; } //returns secretPassage
-	public void setSecretPassage(char secretPassage) { this.secretPassage = secretPassage; } //set secret passage
+	//secretPassage setter and getter
+	public char getSecretPassage() { return secretPassage; } 
+	public void setSecretPassage(char secretPassage) { this.secretPassage = secretPassage; } 
 	
-	public DoorDirection getDoorDirection() { return doorDirection; } //returns direction of the door
-	public void setDoorDirection(DoorDirection doorDirection) { this.doorDirection = doorDirection; } //set door direction 
+	//doorDirection setter and getter
+	public DoorDirection getDoorDirection() { return doorDirection; } 
+	public void setDoorDirection(DoorDirection doorDirection) { this.doorDirection = doorDirection; } 
 	//checks if cell is doorway
 	public boolean isDoorway() { 
 		if (getDoorDirection() == doorDirection.NONE) return false; 
 		return true;
 	} 
 	
-	public void setOccupied(boolean bool) { this.isOccupied = bool; } //a setter for indicating a cell is occupied by another player
-	public boolean getOccupied() { return this.isOccupied; } //a getter for indicating a cell is occupied by another player
+	//isOccupied setter and getter
+	public void setOccupied(boolean bool) { this.isOccupied = bool; } 
+	public boolean getOccupied() { return this.isOccupied; } 
 	
+	//isRoom setter and getter
 	public boolean getRoom() { return this.isRoom; }
 	public void setRoom(boolean isRoom) { this.isRoom = isRoom; }
 	
+	//isUnused setter and getter
 	public boolean getUnused() { return this.isUnused; }
 	public void setUnused(boolean isUnused) { this.isUnused = isUnused; }
 	
+	//isWalkway setter and getter
 	public boolean getWalkway() { return this.isWalkway; }
 	public void setWalkway(boolean isWalkway) { this.isWalkway = isWalkway; }
 }
