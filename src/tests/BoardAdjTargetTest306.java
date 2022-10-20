@@ -269,6 +269,8 @@ public class BoardAdjTargetTest306 {
 		assertFalse( targets.contains( board.getCell(15, 7))) ;
 		assertFalse( targets.contains( board.getCell(17, 7))) ;
 	
+		targets.clear();
+		
 		// we want to make sure we can get into a room, even if flagged as occupied
 		board.getCell(12, 20).setOccupied(true);
 		board.getCell(8, 18).setOccupied(true);
@@ -279,7 +281,9 @@ public class BoardAdjTargetTest306 {
 		assertEquals(3, targets.size());
 		assertTrue(targets.contains(board.getCell(7, 17)));	
 		assertTrue(targets.contains(board.getCell(8, 16)));	
-		assertTrue(targets.contains(board.getCell(12, 20)));	
+		assertTrue(targets.contains(board.getCell(12, 20)));
+		
+		targets.clear();
 		
 		// check leaving a room with a blocked doorway
 		board.getCell(12, 15).setOccupied(true);

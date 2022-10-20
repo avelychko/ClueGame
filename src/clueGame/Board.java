@@ -189,9 +189,8 @@ public class Board {
 				char ch = layoutLines.get(i)[j].charAt(0);
 				grid[i][j].setInitial(ch); //set cell initial
 
-				if((grid[i][j].getInitial() != 'W') || (grid[i][j].getInitial() !='X')) {
-					grid[i][j].setRoom(true);
-				}
+				if(grid[i][j].getInitial() == 'W') grid[i][j].setWalkway(true);
+				if (grid[i][j].getInitial() =='X') grid[i][j].setUnused(true);
 
 				doorDirection = DoorDirection.NONE;
 				grid[i][j].setDoorDirection(doorDirection); //set all cells to initial no door
@@ -265,20 +264,16 @@ public class Board {
 		for (BoardCell adjCell: startCell.adjList) {
 			//checks if adjacency cell has already been visited	
 			if (visited.contains(adjCell) == false) {
+				if (!(adjCell.getWalkway() || adjCell.getUnused())) targets.add(adjCell); //if is room add adj cell to targets
 				//checks if cell is occupied
 				if (adjCell.getOccupied() == false) {
 					if (pathlength == 1) targets.add(adjCell); //checks if length is 1 then add adj cell to targets set
-					if (adjCell.isRoom() == true) targets.add(adjCell); //if is room add adj cell to targets
 					else calcTargets(adjCell, pathlength - 1);  //else call adj cell recursively
 					visited.remove(adjCell); //remove visited adj cell
 				}
 			}
 		}
 	}
-
-
-
-
 
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); }
 	public Set<BoardCell> getTargets() { return targets; } //gets the targets last created by calcTargets()
