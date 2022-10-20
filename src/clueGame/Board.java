@@ -192,7 +192,7 @@ public class Board {
 				if((grid[i][j].getInitial() != 'W') || (grid[i][j].getInitial() !='X')) {
 					grid[i][j].setRoom(true);
 				}
-
+				
 				doorDirection = DoorDirection.NONE;
 				grid[i][j].setDoorDirection(doorDirection); //set all cells to initial no door
 
