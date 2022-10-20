@@ -60,7 +60,7 @@ public class Board {
 
 				char initial;
 				char secretPassage = grid[i][j].getSecretPassage();
-				
+
 				if(secretPassage != 0) {
 					initial = grid[i][j].getInitial();
 					BoardCell currentRoom = roomMap.get(initial).getCenterCell();
