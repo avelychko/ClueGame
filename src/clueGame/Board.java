@@ -68,32 +68,36 @@ public class Board {
 				}
 				if(grid[i][j].isDoorway()) {
 					BoardCell roomCell;
-					if(grid[i][j].getDoorDirection() == DoorDirection.UP) {
+					switch(grid[i][j].getDoorDirection()) {
+					case UP:
 						initial = grid[i-1][j].getInitial();
 						roomCell = roomMap.get(initial).getCenterCell();
 						roomCell.addAdj(grid[i][j]);
 						grid[i][j].addAdj(roomCell);
-					}
-					if(grid[i][j].getDoorDirection() == DoorDirection.DOWN) {
+						break;
+					case DOWN:
 						initial = grid[i+1][j].getInitial();
 						roomCell = roomMap.get(initial).getCenterCell();
 						roomCell.addAdj(grid[i][j]);
 						grid[i][j].addAdj(roomCell);
-					}
-					if(grid[i][j].getDoorDirection() == DoorDirection.LEFT) {
+						break;
+					case LEFT:
 						initial = grid[i][j-1].getInitial();
 						roomCell = roomMap.get(initial).getCenterCell();
 						roomCell.addAdj(grid[i][j]);
 						grid[i][j].addAdj(roomCell);
-					}
-					if(grid[i][j].getDoorDirection() == DoorDirection.RIGHT) {
+						break;
+					case RIGHT: 
 						initial = grid[i][j+1].getInitial();
 						roomCell = roomMap.get(initial).getCenterCell();
 						roomCell.addAdj(grid[i][j]);
 						grid[i][j].addAdj(roomCell);
+						break;
+					default:
+						break;
 					}
 				}
-
+				
 				//adjacency in x-1 direction
 				if ((i-1) >= 0) {
 					initial = grid[i-1][j].getInitial();
@@ -206,9 +210,9 @@ public class Board {
 				}
 				
 
-				if(grid[i][j].getInitial() == 'W') grid[i][j].setWalkway(true);
-				if (grid[i][j].getInitial() =='X') grid[i][j].setUnused(true);
-
+				/*if(grid[i][j].getInitial() == 'W') grid[i][j].setWalkway(true);
+				if (grid[i][j].getInitial() =='X') grid[i][j].setUnused(true);*/
+				
 				if(grid[i][j].getInitial() == 'W') grid[i][j].setWalkway(true); //check if walkway
 				if (grid[i][j].getInitial() =='X') grid[i][j].setUnused(true); //check if unused
 
@@ -225,43 +229,41 @@ public class Board {
 					//if cell char contains *, set to room center
 					char initial = grid[i][j].getInitial();
 					char identifier = layoutLines.get(i)[j].charAt(1);
-					if(identifier == '*') {
+					
+					switch(identifier) {
+					case '*': //if cell char contains *, set to center
 						grid[i][j].setRoomCenter(); //set cell to center
 						roomMap.get(initial).setCenterCell(grid[i][j]); 
-					}
-					//if cell char contains #, set to label
-					else if(identifier == '#') {
+						break;
+					case '#': //if cell char contains #, set to label
 						grid[i][j].setLabel(); //set cell to label
 						roomMap.get(initial).setLabelCell(grid[i][j]);
-					}
-					//if cell char contains ^, set door direction
-					else if(identifier == '^') {
+						break;
+					case '^': //if cell char contains ^, set door direction
 						doorDirection = DoorDirection.UP;
 						grid[i][j].setDoorDirection(doorDirection);
 						grid[i][j].isDoorway();
-					}
-					//if cell char contains >, set door direction
-					else if(identifier == '>') {
+						break;
+					case '>': //if cell char contains >, set door direction
 						doorDirection = DoorDirection.RIGHT;
 						grid[i][j].setDoorDirection(doorDirection);
 						grid[i][j].isDoorway();
-					}
-					//if cell char contains <, set door direction
-					else if(identifier == '<') {
+						break;
+					case '<': //if cell char contains <, set door direction
 						doorDirection = DoorDirection.LEFT;
 						grid[i][j].setDoorDirection(doorDirection);
 						grid[i][j].isDoorway();
-					}
-					//if cell char contains v, set door direction
-					else if(identifier == 'v') {
+						break;
+					case 'v': //if cell char contains v, set door direction
 						doorDirection = DoorDirection.DOWN;
 						grid[i][j].setDoorDirection(doorDirection);
 						grid[i][j].isDoorway();
-					}
-					//if cell char contains another char, set secret passage
-					else {
+						break;
+					default: //if cell char contains another char, set secret passage
 						grid[i][j].setSecretPassage(identifier);
+						break;
 					}
+					
 				}
 			}
 		}
@@ -278,7 +280,7 @@ public class Board {
 				throw new BadConfigFormatException("Error: Layout file does not have the same number of columns in every row");
 		}
 	}
-
+	
 	//calculates legal targets for a move from startCell of length pathlength
 	public void calcTargets(BoardCell startCell, int pathlength) {
 		visited.clear(); //empty visited set
