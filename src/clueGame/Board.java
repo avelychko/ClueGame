@@ -53,7 +53,7 @@ public class Board {
 		setAdj();
 	}
 
-
+	
 	private void setAdj() {
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numColumns; j++) {
@@ -66,6 +66,8 @@ public class Board {
 					BoardCell currentRoom = roomMap.get(initial).getCenterCell();
 					currentRoom.addAdj(roomMap.get(secretPassage).getCenterCell());
 				}
+				
+				//sets adj for both the doorway and the center of the room its pointing to 
 				if(grid[i][j].isDoorway()) {
 					BoardCell roomCell;
 					switch(grid[i][j].getDoorDirection()) {
@@ -97,6 +99,7 @@ public class Board {
 						break;
 					}
 				}
+				
 				
 				//adjacency in x-1 direction
 				if ((i-1) >= 0) {
@@ -209,9 +212,6 @@ public class Board {
 					grid[i][j].setRoom(true);
 				}
 				
-
-				/*if(grid[i][j].getInitial() == 'W') grid[i][j].setWalkway(true);
-				if (grid[i][j].getInitial() =='X') grid[i][j].setUnused(true);*/
 				
 				if(grid[i][j].getInitial() == 'W') grid[i][j].setWalkway(true); //check if walkway
 				if (grid[i][j].getInitial() =='X') grid[i][j].setUnused(true); //check if unused
