@@ -1,3 +1,83 @@
+commit 390b4c525e92f50129de46a05e7f853c12af49c7
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 20 11:41:58 2022 -0600
+
+    indent
+
+commit 5f485d2349bef94397165f5d2583f349716b8d88
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 20 11:36:39 2022 -0600
+
+    refactored
+
+commit 22efb7b29f3d642279603d4e2ea2472ba4673123
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 20 11:18:50 2022 -0600
+
+    comments
+
+commit d20ff1fd644a61fd6dfa9ffc7fb558720597ef1f
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 20 11:01:26 2022 -0600
+
+    passed all our BoardAdjTargetTest tests
+
+commit c31640823082e7507be6d9a90452c5ca87fe8403
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 20 10:24:53 2022 -0600
+
+    passed all BoardAdjTargetTest tests
+
+commit 096926c8af9d1ab9b2f647e6522834e86d992f34
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Oct 20 10:04:40 2022 -0600
+
+    passed some Target tests, added findAllTargets method
+
+commit 062e1e52076134a42cea7a8a838ecf796afc3b4e
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Oct 19 21:48:40 2022 -0600
+
+    worked on calcTargets()
+
+commit bf61670ccc347f58775a980057b6a72dd6a0faaf
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Oct 19 17:36:58 2022 -0600
+
+    worked on calcTargets()
+
+commit 35d8e173805aa7bc9ac6ff8e4f91f23e77ae925b
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Oct 19 16:42:48 2022 -0600
+
+    fixed up our BoardAdjTest
+
+commit 6ec6b0b0acddaaf4145ddc7e6d6baec762d45f98
+Merge: e502dff 800be60
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Oct 19 16:22:13 2022 -0600
+
+    modfied adjlist and got the adj to pass
+
+commit e502dff2dc722cb372ff91f0a5ab3df96dcb2dcc
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Oct 19 16:20:11 2022 -0600
+
+    modfied adjlist and got the adj to pass
+
+commit 800be60b77d7b52acd8d7a0a5b5107bf0cb37ec7
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Oct 19 15:34:30 2022 -0600
+
+    started on calcAdj()
+
+commit 30865ad6e36a6e72a7d62b049889d7f4f6e90dab
+Merge: 866bb09 ca1d739
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Oct 19 13:59:34 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
 commit ca1d739ce589be52003f0b1da5af5a48ce876c50
 Author: Anastasia Velychko <avelychko@mines.edu>
 Date:   Fri Oct 14 13:35:49 2022 -0600
@@ -10,11 +90,25 @@ Date:   Fri Oct 14 11:59:51 2022 -0600
 
     modified BoardAdjTargetTest
 
+commit 866bb09a7076f6ac35096345557316f731cbe040
+Merge: a6c09f4 aebddab
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Oct 13 20:03:43 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
 commit aebddab7b11248370a1e893e292340a5c81dbc7c
 Author: Anastasia Velychko <avelychko@mines.edu>
 Date:   Thu Oct 13 20:01:20 2022 -0600
 
     created BoardAdjTargetTest class
+
+commit a6c09f41e223dfc2ee449e8ab32f9590e3bea730
+Merge: 0ae60dc 2286b2b
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Oct 13 19:55:50 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
 
 commit 2286b2b64874711904f151e8dab77d2e46b5ede8
 Author: Anastasia Velychko <avelychko@mines.edu>
@@ -22,11 +116,31 @@ Date:   Thu Oct 13 19:55:38 2022 -0600
 
     failing tests
 
+commit 0ae60dc3a5c75779253a650b1f1b4986393dced0
+Merge: a74d134 1a807db
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Oct 13 19:45:25 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit a74d13419be4e5932f185acfeff56c1cc46b1899
+Merge: 20fa959 e564e6b
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Oct 13 19:45:21 2022 -0600
+
+    minor changes
+
 commit 1a807db5406ba0a038840358945410c87e034dec
 Author: Anastasia Velychko <avelychko@mines.edu>
 Date:   Thu Oct 13 19:45:03 2022 -0600
 
     organized
+
+commit 20fa959318e2974febc2e0aee9b24896a17b3032
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Oct 13 19:38:27 2022 -0600
+
+    minor changes
 
 commit e564e6b77bcc172ad0da634b1578b797048aee42
 Author: Anastasia Velychko <avelychko@mines.edu>

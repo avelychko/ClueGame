@@ -20,7 +20,8 @@ public class Board {
 	private String layoutConfigFile; //board layout
 	private String setupConfigFile; //board setup
 	private Map<Character, Room> roomMap = new HashMap<Character, Room>(); //map for board rooms
-	public List<String[]> layoutLines; //array list stores layout cells
+	//note: BETTERNAME
+	public List<String[]> layoutLines; //array list stores layout cells 
 	String[] setupLines; //array stores setup lines
 	private Set<BoardCell> targets; //set of target cells
 	private Set<BoardCell> visited; //set of visited cells
@@ -53,7 +54,7 @@ public class Board {
 		setAdj();
 	}
 
-
+	//note: SWITCH STATEMENT
 	private void setAdj() {
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numColumns; j++) {
@@ -152,6 +153,7 @@ public class Board {
 				String[] setupLines = in.nextLine().split(", "); //adds split line to array
 
 				//check if line is a comment
+				//NOTE: handle blank lines
 				if (!setupLines[0].contains("//")) {
 					//If an entry in either file does not have the proper format.
 					if (!(setupLines[0].equals("Room") || setupLines[0].equals("Space"))) 
