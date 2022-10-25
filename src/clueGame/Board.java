@@ -71,14 +71,14 @@ public class Board {
 				int left = col-1;
 				int right = col+1;
 
-				if(secretPassage != 0) {
+				if (secretPassage != 0) {
 					initial = grid[row][col].getInitial();
 					BoardCell currentRoom = roomMap.get(initial).getCenterCell();
 					currentRoom.addAdj(roomMap.get(secretPassage).getCenterCell());
 				}
 
 				//sets adj for both the doorway and the center of the room its pointing to 
-				if(doorway) {
+				if (doorway) {
 					BoardCell roomCell;
 					switch(grid[row][col].getDoorDirection()) {
 					case UP:
@@ -114,7 +114,7 @@ public class Board {
 				//adjacency in x-1 direction
 				if (up >= 0) {
 					initial = grid[up][col].getInitial();
-					if(initial == 'W') {
+					if (initial == 'W') {
 						BoardCell cell = getCell(up, col);
 						grid[row][col].addAdj(cell);
 					}
@@ -123,7 +123,7 @@ public class Board {
 				//adjacency in y-1 direction
 				if (left >= 0) {
 					initial = grid[row][left].getInitial();
-					if(initial == 'W') {
+					if (initial == 'W') {
 						BoardCell cell = getCell(row, left);
 						grid[row][col].addAdj(cell);
 					}
@@ -132,7 +132,7 @@ public class Board {
 				//adjacency in x+1 direction
 				if (down < numRows) {
 					initial = grid[down][col].getInitial();
-					if(initial == 'W') {
+					if (initial == 'W') {
 						BoardCell cell = getCell(down, col);
 						grid[row][col].addAdj(cell);
 					}
@@ -141,7 +141,7 @@ public class Board {
 				//adjacency in y+1 direction
 				if (right < numColumns) {
 					initial = grid[row][right].getInitial();
-					if(initial == 'W') {
+					if (initial == 'W') {
 						BoardCell cell = getCell(row, right);
 						grid[row][col].addAdj(cell);
 					}
@@ -211,19 +211,19 @@ public class Board {
 				int numOfChar = layoutFile.get(row)[col].length();
 				grid[row][col].setInitial(ch); //set cell initial
 
-				if((grid[row][col].getInitial() != 'W') || (grid[row][col].getInitial() !='X')) grid[row][col].setRoom(true);
-				if(grid[row][col].getInitial() == 'W') grid[row][col].setWalkway(true); //check if walkway
-				if(grid[row][col].getInitial() =='X') grid[row][col].setUnused(true); //check if unused
+				if ((grid[row][col].getInitial() != 'W') || (grid[row][col].getInitial() !='X')) grid[row][col].setRoom(true);
+				if (grid[row][col].getInitial() == 'W') grid[row][col].setWalkway(true); //check if walkway
+				if (grid[row][col].getInitial() =='X') grid[row][col].setUnused(true); //check if unused
 
 				doorDirection = DoorDirection.NONE;
 				grid[row][col].setDoorDirection(doorDirection); //set all cells to initial no door
 
 				//If the board layout refers to a room that is not in your setup file.
-				if(!roomMap.containsKey(ch)) 
+				if (!roomMap.containsKey(ch)) 
 					throw new BadConfigFormatException("Error: Layout refers to room that is not in setup file");
 
 				//check if cell char contains a sign
-				if(numOfChar == 2) {
+				if (numOfChar == 2) {
 					//if cell char contains *, set to room center
 					char initial = grid[row][col].getInitial();
 					char identifier = layoutFile.get(row)[col].charAt(1);
