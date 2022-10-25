@@ -48,10 +48,12 @@ public class Board {
 			loadSetupConfig();
 			loadLayoutConfig();
 		} catch (NullPointerException e) {
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		} catch (BadConfigFormatException e) {
 			System.out.println(e.getLocalizedMessage());
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
 		setAdj();
@@ -63,6 +65,11 @@ public class Board {
 
 				char initial;
 				char secretPassage = grid[row][col].getSecretPassage();
+				boolean doorway = grid[row][col].isDoorway();
+				int up = row-1;
+				int down = row+1;
+				int left = col-1;
+				int right = col+1;
 
 				if(secretPassage != 0) {
 					initial = grid[row][col].getInitial();
@@ -71,30 +78,29 @@ public class Board {
 				}
 
 				//sets adj for both the doorway and the center of the room its pointing to 
-				boolean doorway = grid[row][col].isDoorway();
 				if(doorway) {
 					BoardCell roomCell;
 					switch(grid[row][col].getDoorDirection()) {
 					case UP:
-						initial = grid[row-1][col].getInitial();
+						initial = grid[up][col].getInitial();
 						roomCell = roomMap.get(initial).getCenterCell();
 						roomCell.addAdj(grid[row][col]);
 						grid[row][col].addAdj(roomCell);
 						break;
 					case DOWN:
-						initial = grid[row+1][col].getInitial();
+						initial = grid[down][col].getInitial();
 						roomCell = roomMap.get(initial).getCenterCell();
 						roomCell.addAdj(grid[row][col]);
 						grid[row][col].addAdj(roomCell);
 						break;
 					case LEFT:
-						initial = grid[row][col-1].getInitial();
+						initial = grid[row][left].getInitial();
 						roomCell = roomMap.get(initial).getCenterCell();
 						roomCell.addAdj(grid[row][col]);
 						grid[row][col].addAdj(roomCell);
 						break;
 					case RIGHT: 
-						initial = grid[row][col+1].getInitial();
+						initial = grid[row][right].getInitial();
 						roomCell = roomMap.get(initial).getCenterCell();
 						roomCell.addAdj(grid[row][col]);
 						grid[row][col].addAdj(roomCell);
@@ -106,37 +112,37 @@ public class Board {
 
 
 				//adjacency in x-1 direction
-				if ((row-1) >= 0) {
-					initial = grid[row-1][col].getInitial();
+				if (up >= 0) {
+					initial = grid[up][col].getInitial();
 					if(initial == 'W') {
-						BoardCell cell = getCell(row-1, col);
+						BoardCell cell = getCell(up, col);
 						grid[row][col].addAdj(cell);
 					}
 				} 
 
 				//adjacency in y-1 direction
-				if ((col-1) >= 0) {
-					initial = grid[row][col-1].getInitial();
+				if (left >= 0) {
+					initial = grid[row][left].getInitial();
 					if(initial == 'W') {
-						BoardCell cell = getCell(row, col-1);
+						BoardCell cell = getCell(row, left);
 						grid[row][col].addAdj(cell);
 					}
 				} 
 
 				//adjacency in x+1 direction
-				if ((row+1) < numRows) {
-					initial = grid[row+1][col].getInitial();
+				if (down < numRows) {
+					initial = grid[down][col].getInitial();
 					if(initial == 'W') {
-						BoardCell cell = getCell(row+1, col);
+						BoardCell cell = getCell(down, col);
 						grid[row][col].addAdj(cell);
 					}
 				} 
 
 				//adjacency in y+1 direction
-				if ((col+1) < numColumns) {
-					initial = grid[row][col+1].getInitial();
+				if (right < numColumns) {
+					initial = grid[row][right].getInitial();
 					if(initial == 'W') {
-						BoardCell cell = getCell(row, col+1);
+						BoardCell cell = getCell(row, right);
 						grid[row][col].addAdj(cell);
 					}
 				} 
@@ -160,6 +166,8 @@ public class Board {
 		}
 		in.close(); //close file
 	}
+	
+	//reads board setup
 	private void readSetupConfig(Scanner in) throws BadConfigFormatException, Exception {
 		String[] setupLines = in.nextLine().split(", "); //adds split line to array
 
@@ -196,19 +204,19 @@ public class Board {
 		DoorDirection doorDirection;
 		//identifies if cell is center, label, door (which way), or secret passage
 		//adds each cell to grid
-		for (int i = 0; i < numRows; i++) {
-			for (int j = 0; j < numColumns; j++) {   			 
-				grid[i][j] = new BoardCell(i,j); //sets board sells
-				char ch = layoutFile.get(i)[j].charAt(0);
-				int numOfChar = layoutFile.get(i)[j].length();
-				grid[i][j].setInitial(ch); //set cell initial
+		for (int row = 0; row < numRows; row++) {
+			for (int col = 0; col < numColumns; col++) {   			 
+				grid[row][col] = new BoardCell(row,col); //sets board sells
+				char ch = layoutFile.get(row)[col].charAt(0);
+				int numOfChar = layoutFile.get(row)[col].length();
+				grid[row][col].setInitial(ch); //set cell initial
 
-				if((grid[i][j].getInitial() != 'W') || (grid[i][j].getInitial() !='X')) grid[i][j].setRoom(true);
-				if(grid[i][j].getInitial() == 'W') grid[i][j].setWalkway(true); //check if walkway
-				if(grid[i][j].getInitial() =='X') grid[i][j].setUnused(true); //check if unused
+				if((grid[row][col].getInitial() != 'W') || (grid[row][col].getInitial() !='X')) grid[row][col].setRoom(true);
+				if(grid[row][col].getInitial() == 'W') grid[row][col].setWalkway(true); //check if walkway
+				if(grid[row][col].getInitial() =='X') grid[row][col].setUnused(true); //check if unused
 
 				doorDirection = DoorDirection.NONE;
-				grid[i][j].setDoorDirection(doorDirection); //set all cells to initial no door
+				grid[row][col].setDoorDirection(doorDirection); //set all cells to initial no door
 
 				//If the board layout refers to a room that is not in your setup file.
 				if(!roomMap.containsKey(ch)) 
@@ -217,40 +225,40 @@ public class Board {
 				//check if cell char contains a sign
 				if(numOfChar == 2) {
 					//if cell char contains *, set to room center
-					char initial = grid[i][j].getInitial();
-					char identifier = layoutFile.get(i)[j].charAt(1);
+					char initial = grid[row][col].getInitial();
+					char identifier = layoutFile.get(row)[col].charAt(1);
 
 					switch(identifier) {
 					case '*': //if cell char contains *, set to center
-						grid[i][j].setRoomCenter(); //set cell to center
-						roomMap.get(initial).setCenterCell(grid[i][j]); 
+						grid[row][col].setRoomCenter(); //set cell to center
+						roomMap.get(initial).setCenterCell(grid[row][col]); 
 						break;
 					case '#': //if cell char contains #, set to label
-						grid[i][j].setLabel(); //set cell to label
-						roomMap.get(initial).setLabelCell(grid[i][j]);
+						grid[row][col].setLabel(); //set cell to label
+						roomMap.get(initial).setLabelCell(grid[row][col]);
 						break;
 					case '^': //if cell char contains ^, set door direction
 						doorDirection = DoorDirection.UP;
-						grid[i][j].setDoorDirection(doorDirection);
-						grid[i][j].isDoorway();
+						grid[row][col].setDoorDirection(doorDirection);
+						grid[row][col].isDoorway();
 						break;
 					case '>': //if cell char contains >, set door direction
 						doorDirection = DoorDirection.RIGHT;
-						grid[i][j].setDoorDirection(doorDirection);
-						grid[i][j].isDoorway();
+						grid[row][col].setDoorDirection(doorDirection);
+						grid[row][col].isDoorway();
 						break;
 					case '<': //if cell char contains <, set door direction
 						doorDirection = DoorDirection.LEFT;
-						grid[i][j].setDoorDirection(doorDirection);
-						grid[i][j].isDoorway();
+						grid[row][col].setDoorDirection(doorDirection);
+						grid[row][col].isDoorway();
 						break;
 					case 'v': //if cell char contains v, set door direction
 						doorDirection = DoorDirection.DOWN;
-						grid[i][j].setDoorDirection(doorDirection);
-						grid[i][j].isDoorway();
+						grid[row][col].setDoorDirection(doorDirection);
+						grid[row][col].isDoorway();
 						break;
 					default: //if cell char contains another char, set secret passage
-						grid[i][j].setSecretPassage(identifier);
+						grid[row][col].setSecretPassage(identifier);
 						break;
 					}
 				}
@@ -280,20 +288,19 @@ public class Board {
 
 	private void findAllTargets(BoardCell thisCell, int numSteps) {
 		for (BoardCell adjCell: thisCell.adjList) {
-			//checks if adjacency cell has already been visited	
-			if (visited.contains(adjCell) == false) {
-				visited.add(adjCell); //adds visited cell to visited set
-				if (!(adjCell.getWalkway() || adjCell.getUnused())) targets.add(adjCell); //if is room add adj cell to targets
-				//checks if cell is occupied
-				else {
-					//check if cell is occupied
-					if (adjCell.getOccupied() == false) {
-						if (numSteps == 1) targets.add(adjCell); //checks if length is 1 then add adj cell to targets set
-						else findAllTargets(adjCell, numSteps - 1);  //else call adj cell recursively
-						visited.remove(adjCell); //remove visited adj cell
-					}
-				}
+			boolean isRoom = !(adjCell.getWalkway() || adjCell.getUnused());
+			//checks if adjacency cell has been visited, or is occupied but not room
+			if (visited.contains(adjCell) || (adjCell.getOccupied() && !isRoom)) continue; //continue onto next cell
+			//if is room add adj cell to targets
+			if (isRoom) {
+				targets.add(adjCell);
+				continue; //continue onto next cell
 			}
+			visited.add(adjCell); //adds visited cell to visited set
+			//check if cell is occupied
+			if (numSteps == 1) targets.add(adjCell); //checks if length is 1 then add adj cell to targets set
+			else findAllTargets(adjCell, numSteps - 1);  //else call adj cell recursively
+			visited.remove(adjCell); //remove visited adj cell
 		}
 	}
 
