@@ -1,3 +1,48 @@
+commit c29d307c37a231f4c3e9948a663d008ef18472e2
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Oct 24 22:40:03 2022 -0600
+
+    fully refactored
+
+commit e2fac3e176bf1dbc47ac14432c40d3f24dd3d00c
+Merge: 46bdba8 ef33a18
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Oct 24 21:38:02 2022 -0600
+
+    setup refactor, other minor refactors
+
+commit 46bdba839481a8c31280611ac812087e2bf11ed1
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Oct 24 20:39:49 2022 -0600
+
+    minor changes
+
+commit ef33a1882603a421233084cebb5d4ddd3e21c74b
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Oct 24 17:42:57 2022 -0600
+
+    removed two duplicate if statements in setGridCell, the one that sets walkways and unused, add some comments
+
+commit 5aaf590713511f07164e11c44ff0b9b6401d1f81
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Oct 24 17:25:16 2022 -0600
+
+    replaced if states in setAdj and setGridCell to swtich statement
+
+commit 697f943b5de0423ed786db2577bf305569c4daee
+Merge: c23d70a 390b4c5
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Oct 20 12:37:03 2022 -0600
+
+    minor changes
+
+commit c23d70a7ae9ed8bf523d3e1c9a1431580433e0b3
+Merge: 174161d 062e1e5
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Oct 20 12:31:44 2022 -0600
+
+    minor changes
+
 commit 390b4c525e92f50129de46a05e7f853c12af49c7
 Author: Anastasia Velychko <avelychko@mines.edu>
 Date:   Thu Oct 20 11:41:58 2022 -0600
@@ -33,6 +78,12 @@ Author: Anastasia Velychko <avelychko@mines.edu>
 Date:   Thu Oct 20 10:04:40 2022 -0600
 
     passed some Target tests, added findAllTargets method
+
+commit 174161dc8308adf80d05255917647ae1cecee134
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Oct 20 00:25:51 2022 -0600
+
+    minor changes
 
 commit 062e1e52076134a42cea7a8a838ecf796afc3b4e
 Author: Anastasia Velychko <avelychko@mines.edu>
