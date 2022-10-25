@@ -20,9 +20,8 @@ public class Board {
 	private String layoutConfigFile; //board layout
 	private String setupConfigFile; //board setup
 	private Map<Character, Room> roomMap = new HashMap<Character, Room>(); //map for board rooms
-	//note: BETTERNAME
-	public List<String[]> layoutLines; //array list stores layout cells 
-	String[] setupLines; //array stores setup lines
+	public List<String[]> layoutFile; //array list stores layout cells 
+	String[] setupFile; //array stores setup lines
 	private Set<BoardCell> targets; //set of target cells
 	private Set<BoardCell> visited; //set of visited cells
 
@@ -48,86 +47,97 @@ public class Board {
 		try {
 			loadSetupConfig();
 			loadLayoutConfig();
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		} catch (BadConfigFormatException e) {
+			System.out.println(e.getLocalizedMessage());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		setAdj();
 	}
 
-	//note: SWITCH STATEMENT
 	private void setAdj() {
-		for (int i = 0; i < numRows; i++) {
-			for (int j = 0; j < numColumns; j++) {
+		for (int row = 0; row < numRows; row++) {
+			for (int col = 0; col < numColumns; col++) {
 
 				char initial;
-				char secretPassage = grid[i][j].getSecretPassage();
+				char secretPassage = grid[row][col].getSecretPassage();
 
 				if(secretPassage != 0) {
-					initial = grid[i][j].getInitial();
+					initial = grid[row][col].getInitial();
 					BoardCell currentRoom = roomMap.get(initial).getCenterCell();
 					currentRoom.addAdj(roomMap.get(secretPassage).getCenterCell());
 				}
-				if(grid[i][j].isDoorway()) {
+
+				//sets adj for both the doorway and the center of the room its pointing to 
+				boolean doorway = grid[row][col].isDoorway();
+				if(doorway) {
 					BoardCell roomCell;
-					if(grid[i][j].getDoorDirection() == DoorDirection.UP) {
-						initial = grid[i-1][j].getInitial();
+					switch(grid[row][col].getDoorDirection()) {
+					case UP:
+						initial = grid[row-1][col].getInitial();
 						roomCell = roomMap.get(initial).getCenterCell();
-						roomCell.addAdj(grid[i][j]);
-						grid[i][j].addAdj(roomCell);
-					}
-					if(grid[i][j].getDoorDirection() == DoorDirection.DOWN) {
-						initial = grid[i+1][j].getInitial();
+						roomCell.addAdj(grid[row][col]);
+						grid[row][col].addAdj(roomCell);
+						break;
+					case DOWN:
+						initial = grid[row+1][col].getInitial();
 						roomCell = roomMap.get(initial).getCenterCell();
-						roomCell.addAdj(grid[i][j]);
-						grid[i][j].addAdj(roomCell);
-					}
-					if(grid[i][j].getDoorDirection() == DoorDirection.LEFT) {
-						initial = grid[i][j-1].getInitial();
+						roomCell.addAdj(grid[row][col]);
+						grid[row][col].addAdj(roomCell);
+						break;
+					case LEFT:
+						initial = grid[row][col-1].getInitial();
 						roomCell = roomMap.get(initial).getCenterCell();
-						roomCell.addAdj(grid[i][j]);
-						grid[i][j].addAdj(roomCell);
-					}
-					if(grid[i][j].getDoorDirection() == DoorDirection.RIGHT) {
-						initial = grid[i][j+1].getInitial();
+						roomCell.addAdj(grid[row][col]);
+						grid[row][col].addAdj(roomCell);
+						break;
+					case RIGHT: 
+						initial = grid[row][col+1].getInitial();
 						roomCell = roomMap.get(initial).getCenterCell();
-						roomCell.addAdj(grid[i][j]);
-						grid[i][j].addAdj(roomCell);
+						roomCell.addAdj(grid[row][col]);
+						grid[row][col].addAdj(roomCell);
+						break;
+					default:
+						break;
 					}
 				}
 
+
 				//adjacency in x-1 direction
-				if ((i-1) >= 0) {
-					initial = grid[i-1][j].getInitial();
+				if ((row-1) >= 0) {
+					initial = grid[row-1][col].getInitial();
 					if(initial == 'W') {
-						BoardCell cell = getCell(i-1, j);
-						grid[i][j].addAdj(cell);
+						BoardCell cell = getCell(row-1, col);
+						grid[row][col].addAdj(cell);
 					}
 				} 
 
 				//adjacency in y-1 direction
-				if ((j-1) >= 0) {
-					initial = grid[i][j-1].getInitial();
+				if ((col-1) >= 0) {
+					initial = grid[row][col-1].getInitial();
 					if(initial == 'W') {
-						BoardCell cell = getCell(i, j-1);
-						grid[i][j].addAdj(cell);
+						BoardCell cell = getCell(row, col-1);
+						grid[row][col].addAdj(cell);
 					}
 				} 
 
 				//adjacency in x+1 direction
-				if ((i+1) < numRows) {
-					initial = grid[i+1][j].getInitial();
+				if ((row+1) < numRows) {
+					initial = grid[row+1][col].getInitial();
 					if(initial == 'W') {
-						BoardCell cell = getCell(i+1, j);
-						grid[i][j].addAdj(cell);
+						BoardCell cell = getCell(row+1, col);
+						grid[row][col].addAdj(cell);
 					}
 				} 
 
 				//adjacency in y+1 direction
-				if ((j+1) < numColumns) {
-					initial = grid[i][j+1].getInitial();
+				if ((col+1) < numColumns) {
+					initial = grid[row][col+1].getInitial();
 					if(initial == 'W') {
-						BoardCell cell = getCell(i, j+1);
-						grid[i][j].addAdj(cell);
+						BoardCell cell = getCell(row, col+1);
+						grid[row][col].addAdj(cell);
 					}
 				} 
 			}
@@ -142,52 +152,42 @@ public class Board {
 
 	//loads board setup 
 	public void loadSetupConfig() throws Exception {
-		FileReader reader = null;
-		Scanner in = null;
+		FileReader reader = new FileReader(setupConfigFile); //reads file
+		Scanner in = new Scanner(reader);
 
-		try {
-			reader = new FileReader(setupConfigFile); //reads file
-			in = new Scanner(reader);
+		while(in.hasNextLine()) {
+			readSetupConfig(in);
+		}
+		in.close(); //close file
+	}
+	private void readSetupConfig(Scanner in) throws BadConfigFormatException, Exception {
+		String[] setupLines = in.nextLine().split(", "); //adds split line to array
 
-			while(in.hasNextLine()) {
-				String[] setupLines = in.nextLine().split(", "); //adds split line to array
-
-				//check if line is a comment
-				//NOTE: handle blank lines
-				if (!setupLines[0].contains("//")) {
-					//If an entry in either file does not have the proper format.
-					if (!(setupLines[0].equals("Room") || setupLines[0].equals("Space"))) 
-						throw new BadConfigFormatException("Error: Setup file doesn't have proper format");
-					Room room = new Room();
-					room.setName(setupLines[1]); //sets room name
-					char initial = setupLines[2].charAt(0);
-					roomMap.put(initial, room); //adds room name and initial to map
-				}
-			}
-		} catch (FileNotFoundException e) {
-			e.getLocalizedMessage();
-		} in.close(); //close file
+		//check if line is a comment or line in empty
+		if (!(setupLines[0].contains("//") || setupLines[0].isEmpty())) {
+			//If an entry in either file does not have the proper format.
+			if (!(setupLines[0].equals("Room") || setupLines[0].equals("Space"))) 
+				throw new BadConfigFormatException("Error: Setup file doesn't have proper format");
+			Room room = new Room();
+			room.setName(setupLines[1]); //sets room name
+			char initial = setupLines[2].charAt(0);
+			roomMap.put(initial, room); //adds room name and initial to map
+		}
 	}
 
 	//loads board layout 
 	public void loadLayoutConfig() throws Exception {
-		FileReader reader = null;
-		Scanner in = null;
+		FileReader reader = new FileReader(layoutConfigFile);
+		Scanner in = new Scanner(reader);
 		String[] nextCell = null; //stores layout lines
+		layoutFile = new ArrayList<String[]>(); //holds file lines
 
-		try {
-			reader = new FileReader(layoutConfigFile); //reads file
-			in = new Scanner(reader);
-			layoutLines = new ArrayList<String[]>(); //holds file lines
-
-			//reads each line and adds to array
-			while(in.hasNextLine()) {
-				nextCell = in.nextLine().split(","); //adds split cell to array
-				layoutLines.add(nextCell); //stores each cell in array list
-			}
-		} catch (FileNotFoundException e) {
-			e.getLocalizedMessage();
-		} in.close(); //close file
+		//reads each line and adds to array
+		while(in.hasNextLine()) {
+			nextCell = in.nextLine().split(","); //adds split cell to array
+			layoutFile.add(nextCell); //stores each cell in array list
+		}
+		in.close(); //close file
 		setGridSize();
 		setGridCell();
 	}
@@ -199,11 +199,13 @@ public class Board {
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numColumns; j++) {   			 
 				grid[i][j] = new BoardCell(i,j); //sets board sells
-				char ch = layoutLines.get(i)[j].charAt(0);
+				char ch = layoutFile.get(i)[j].charAt(0);
+				int numOfChar = layoutFile.get(i)[j].length();
 				grid[i][j].setInitial(ch); //set cell initial
 
+				if((grid[i][j].getInitial() != 'W') || (grid[i][j].getInitial() !='X')) grid[i][j].setRoom(true);
 				if(grid[i][j].getInitial() == 'W') grid[i][j].setWalkway(true); //check if walkway
-				if (grid[i][j].getInitial() =='X') grid[i][j].setUnused(true); //check if unused
+				if(grid[i][j].getInitial() =='X') grid[i][j].setUnused(true); //check if unused
 
 				doorDirection = DoorDirection.NONE;
 				grid[i][j].setDoorDirection(doorDirection); //set all cells to initial no door
@@ -213,46 +215,43 @@ public class Board {
 					throw new BadConfigFormatException("Error: Layout refers to room that is not in setup file");
 
 				//check if cell char contains a sign
-				if(layoutLines.get(i)[j].length() == 2) {
+				if(numOfChar == 2) {
 					//if cell char contains *, set to room center
 					char initial = grid[i][j].getInitial();
-					char identifier = layoutLines.get(i)[j].charAt(1);
-					if(identifier == '*') {
+					char identifier = layoutFile.get(i)[j].charAt(1);
+
+					switch(identifier) {
+					case '*': //if cell char contains *, set to center
 						grid[i][j].setRoomCenter(); //set cell to center
 						roomMap.get(initial).setCenterCell(grid[i][j]); 
-					}
-					//if cell char contains #, set to label
-					else if(identifier == '#') {
+						break;
+					case '#': //if cell char contains #, set to label
 						grid[i][j].setLabel(); //set cell to label
 						roomMap.get(initial).setLabelCell(grid[i][j]);
-					}
-					//if cell char contains ^, set door direction
-					else if(identifier == '^') {
+						break;
+					case '^': //if cell char contains ^, set door direction
 						doorDirection = DoorDirection.UP;
 						grid[i][j].setDoorDirection(doorDirection);
 						grid[i][j].isDoorway();
-					}
-					//if cell char contains >, set door direction
-					else if(identifier == '>') {
+						break;
+					case '>': //if cell char contains >, set door direction
 						doorDirection = DoorDirection.RIGHT;
 						grid[i][j].setDoorDirection(doorDirection);
 						grid[i][j].isDoorway();
-					}
-					//if cell char contains <, set door direction
-					else if(identifier == '<') {
+						break;
+					case '<': //if cell char contains <, set door direction
 						doorDirection = DoorDirection.LEFT;
 						grid[i][j].setDoorDirection(doorDirection);
 						grid[i][j].isDoorway();
-					}
-					//if cell char contains v, set door direction
-					else if(identifier == 'v') {
+						break;
+					case 'v': //if cell char contains v, set door direction
 						doorDirection = DoorDirection.DOWN;
 						grid[i][j].setDoorDirection(doorDirection);
 						grid[i][j].isDoorway();
-					}
-					//if cell char contains another char, set secret passage
-					else {
+						break;
+					default: //if cell char contains another char, set secret passage
 						grid[i][j].setSecretPassage(identifier);
+						break;
 					}
 				}
 			}
@@ -260,13 +259,13 @@ public class Board {
 	}
 
 	private void setGridSize() throws Exception {
-		numRows = layoutLines.size(); //set row size
-		numColumns = layoutLines.get(0).length; //set column size
+		numRows = layoutFile.size(); //set row size
+		numColumns = layoutFile.get(0).length; //set column size
 		grid = new BoardCell[numRows][numColumns]; //set grid size
 
 		//If the board layout file does not have the same number of columns in every row.
-		for(int k=0; k < layoutLines.size(); k++) {
-			if (layoutLines.get(k).length != numColumns) 
+		for(int k=0; k < layoutFile.size(); k++) {
+			if (layoutFile.get(k).length != numColumns) 
 				throw new BadConfigFormatException("Error: Layout file does not have the same number of columns in every row");
 		}
 	}
