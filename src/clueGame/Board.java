@@ -303,11 +303,16 @@ public class Board {
 			visited.remove(adjCell); //remove visited adj cell
 		}
 	}
+	
+	public void deal() {
+		
+	}
 
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); } 
 	public Set<BoardCell> getTargets() { return targets; } //returns the targets last created by calcTargets()
 
 	public BoardCell getCell(int row, int col) { return grid[row][col]; } //returns the cell from the board at row, col
+	public Card getCard() { return new Card(); }
 
 	public int getNumRows() { return numRows; } //returns board row size
 	public int getNumColumns() { return numColumns; } //returns board column size
