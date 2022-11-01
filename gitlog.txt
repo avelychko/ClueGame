@@ -1,3 +1,15 @@
+commit 1b3b83f1388141758f75c6351fb740e7f35db8cb
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Oct 24 22:49:13 2022 -0600
+
+    added setAdj variables up, down, left, right
+
+commit 9bc51d8462a24bbe770f3ad2d1a606af46dcfd84
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Oct 24 22:47:07 2022 -0600
+
+    cleared if statements in findAllTargets
+
 commit c29d307c37a231f4c3e9948a663d008ef18472e2
 Author: Anastasia Velychko <avelychko@mines.edu>
 Date:   Mon Oct 24 22:40:03 2022 -0600
