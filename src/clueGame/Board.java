@@ -1,5 +1,6 @@
 package clueGame;
 
+import java.awt.Color;
 import java.io.*;
 import java.util.*;
 
@@ -186,10 +187,10 @@ public class Board {
 			else if (setupLines[0].equals("Person")) {
 				new Card(setupLines[1], CardType.PERSON);
 				if (setupLines[5].isEmpty()) {
-					new ComputerPlayer(setupLines[1], setupLines[2], Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
+					new ComputerPlayer(setupLines[1], Color.getColor(setupLines[2]), Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
 				}
 				else {
-					new HumanPlayer(setupLines[1], setupLines[2], Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
+					new HumanPlayer(setupLines[1], Color.getColor(setupLines[2]), Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
 				}
 			}
 			else if (setupLines[0].equals("Weapon")) {
@@ -328,7 +329,7 @@ public class Board {
 	public Set<BoardCell> getTargets() { return targets; } //returns the targets last created by calcTargets()
 
 	public BoardCell getCell(int row, int col) { return grid[row][col]; } //returns the cell from the board at row, col
-	public Card getCard() { return new Card(); }
+	public Card getCard(String name, CardType cardType) { return new Card(name, cardType); }
 
 	public int getNumRows() { return numRows; } //returns board row size
 	public int getNumColumns() { return numColumns; } //returns board column size
