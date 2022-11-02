@@ -174,7 +174,8 @@ public class Board {
 		//check if line is a comment or line in empty
 		if (!(setupLines[0].contains("//") || setupLines[0].isEmpty())) {
 			//If an entry in either file does not have the proper format.
-			if (!(setupLines[0].equals("Room") || setupLines[0].equals("Space"))) 
+			if (!(setupLines[0].equals("Room") || setupLines[0].equals("Space") 
+					|| setupLines[0].equals("Player") || setupLines[0].equals("Weapon"))) 
 				throw new BadConfigFormatException("Error: Setup file doesn't have proper format");
 			Room room = new Room();
 			room.setName(setupLines[1]); //sets room name

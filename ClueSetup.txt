@@ -11,3 +11,14 @@ Room, Pool, P
 // other spaces on board
 Space, Unused, X
 Space, Walkway, W
+// players
+Player, Al Capone, Cyan, 23, 10
+Player, Kenichi Shinoda, Yellow, 24, 4
+Player, Pablo Escobar, Blue, 23, 20
+Player, Eddie McGrath, Green, 0, 10
+Player, Benjamin Siegel, Magenta, 23, 29
+Player, Matteo Denaro, Yellow, 8, 30
+// weapons
+Weapon, Pistol
+Weapon, Poison
+Weapon, Katana
