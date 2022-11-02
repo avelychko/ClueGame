@@ -1,12 +1,14 @@
 package clueGame;
 
+import java.awt.Color;
+
 //Name, Color, Human/Computer, Starting Location
 public abstract class Player {
 	private String name;
-	private String color;
+	private Color color;
 	private int row, col;
 	
-	public Player(String name, String color, int row, int col) {
+	public Player(String name, Color color, int row, int col) {
 		super();
 		this.name = name;
 		this.color = color;
@@ -17,6 +19,7 @@ public abstract class Player {
 	public void updateHand(Card card) {
 		
 	}
+<<<<<<< HEAD
 
 	public String getName() {
 		return name;
@@ -34,3 +37,6 @@ public abstract class Player {
 		return col;
 	}
 }
+=======
+}
+>>>>>>> 0e8c28a2ac8cbf010629316d63cf5f35cba31a57
