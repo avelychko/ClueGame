@@ -25,4 +25,20 @@ Matteo Denaro
 	public void updateHand(Card card) {
 		
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public int getRow() {
+		return row;
+	}
+
+	public int getCol() {
+		return col;
+	}
 }
