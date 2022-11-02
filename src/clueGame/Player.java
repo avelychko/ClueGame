@@ -6,6 +6,14 @@ public abstract class Player {
 	private String color;
 	private int row, col;
 	
+	/*Al Capone (P)
+Kenichi Shinoda
+Pablo Escobar
+Eddie McGrath
+Benjamin Siegel
+Matteo Denaro
+*/
+	
 	public Player(String name, String color, int row, int col) {
 		super();
 		this.name = name;
