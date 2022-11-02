@@ -166,7 +166,7 @@ public class Board {
 		}
 		in.close(); //close file
 	}
-	
+
 	//reads board setup
 	private void readSetupConfig(Scanner in) throws BadConfigFormatException, Exception {
 		String[] setupLines = in.nextLine().split(", "); //adds split line to array
@@ -174,13 +174,28 @@ public class Board {
 		//check if line is a comment or line in empty
 		if (!(setupLines[0].contains("//") || setupLines[0].isEmpty())) {
 			//If an entry in either file does not have the proper format.
-			if (!(setupLines[0].equals("Room") || setupLines[0].equals("Space") 
-					|| setupLines[0].equals("Player") || setupLines[0].equals("Weapon"))) 
-				throw new BadConfigFormatException("Error: Setup file doesn't have proper format");
-			Room room = new Room();
-			room.setName(setupLines[1]); //sets room name
-			char initial = setupLines[2].charAt(0);
-			roomMap.put(initial, room); //adds room name and initial to map
+			if (setupLines[0].equals("Room") || setupLines[0].equals("Space")) {
+				Room room = new Room();
+				room.setName(setupLines[1]); //sets room name
+				char initial = setupLines[2].charAt(0);
+				roomMap.put(initial, room); //adds room name and initial to map
+				if (setupLines[0].equals("Room")) {
+					new Card(setupLines[1], CardType.ROOM);
+				}
+			}
+			else if (setupLines[0].equals("Person")) {
+				new Card(setupLines[1], CardType.PERSON);
+				if (setupLines[5].isEmpty()) {
+					new ComputerPlayer(setupLines[1], setupLines[2], Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
+				}
+				else {
+					new HumanPlayer(setupLines[1], setupLines[2], Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
+				}
+			}
+			else if (setupLines[0].equals("Weapon")) {
+				new Card(setupLines[1], CardType.WEAPON);
+			}
+			else throw new BadConfigFormatException("Error: Setup file doesn't have proper format");
 		}
 	}
 
@@ -304,9 +319,9 @@ public class Board {
 			visited.remove(adjCell); //remove visited adj cell
 		}
 	}
-	
+
 	public void deal() {
-		
+
 	}
 
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); } 
