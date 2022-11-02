@@ -12,7 +12,7 @@ Room, Pool, P
 Space, Unused, X
 Space, Walkway, W
 // players
-Person, Al Capone, Cyan, 23, 10
+Person, Al Capone, Cyan, 23, 10, *
 Person, Kenichi Shinoda, Yellow, 24, 4
 Person, Pablo Escobar, Blue, 23, 20
 Person, Eddie McGrath, Green, 0, 10

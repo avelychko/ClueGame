@@ -176,18 +176,24 @@ public class Board {
 			//If an entry in either file does not have the proper format.
 			if (setupLines[0].equals("Room") || setupLines[0].equals("Space")) {
 				Room room = new Room();
-				Card card = new Card();
 				room.setName(setupLines[1]); //sets room name
 				char initial = setupLines[2].charAt(0);
 				roomMap.put(initial, room); //adds room name and initial to map
+				if (setupLines[0].equals("Room")) {
+					new Card(setupLines[1], CardType.ROOM);
+				}
 			}
 			else if (setupLines[0].equals("Person")) {
-				Card card = new Card();
-				card.setCardType(CardType.PERSON);
-				card.setName(setupLines[1]);
+				new Card(setupLines[1], CardType.PERSON);
+				if (setupLines[5].isEmpty()) {
+					new ComputerPlayer(setupLines[1], setupLines[2], Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
+				}
+				else {
+					new HumanPlayer(setupLines[1], setupLines[2], Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
+				}
 			}
 			else if (setupLines[0].equals("Weapon")) {
-				
+				new Card(setupLines[1], CardType.WEAPON);
 			}
 			else throw new BadConfigFormatException("Error: Setup file doesn't have proper format");
 		}
