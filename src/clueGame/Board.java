@@ -350,32 +350,28 @@ public class Board {
 		roomDeck.remove(randomIndexWeapon);
 		
 		new Solution(randomRoomCard, randomPersonCard, randomWeaponCard);
+		
+		//adds all cards to total deck to be given to players
+		for (Card i: roomDeck) {
+				totalDeck.add(i);
+		}
+				
+		for (Card i: personDeck) {
+				totalDeck.add(i);
+		}
+				
+		for (Card i: weaponDeck) {
+				totalDeck.add(i);
+		}		
 	}
 	
 	public void deal() {
-		
-		for (Card i: roomDeck) {
-			totalDeck.add(i);
-		}
-		
-		for (Card i: personDeck) {
-			totalDeck.add(i);
-		}
-		
-		for (Card i: weaponDeck) {
-			totalDeck.add(i);
-		}
-		
-		
+			
 		Collections.shuffle(totalDeck);  //Create complete deck of cards (weapons, people and rooms)
 		//totalDeck.remove(randomIndexWeapon);
 		
 		//Deal cards to the Answer and the players (all cards dealt, players have roughly same # of cards, no card dealt twice)
-		for (int i = 0; i < deck.size(); i++) {
-			if (deck.get(i) = CardType.PERSON) {
-				
-			}
-		}
+		
 	}
 
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); } 
