@@ -1,4 +1,12 @@
 package clueGame;
+
+//Pistol
+//Poison
+//Katana
+//Ninja Spike
+//Throwing Stars
+//Wire
+
 public class Card {
 	private String cardName; 
 	private CardType cardType;
@@ -9,7 +17,10 @@ public class Card {
 		this.cardType = cardType;
 	}
 
+
 	public boolean equals(Card target) {
 		return false;
 	}
+
 }
+

@@ -25,6 +25,7 @@ public class Board {
 	String[] setupFile; //array stores setup lines
 	private Set<BoardCell> targets; //set of target cells
 	private Set<BoardCell> visited; //set of visited cells
+	private List<Card> deck = new ArrayList<Card>();
 
 	/*
 	 * variable and methods used for singleton pattern
@@ -43,6 +44,7 @@ public class Board {
 		roomMap = new HashMap<Character, Room>(); 
 		targets = new HashSet<BoardCell>();
 		visited = new HashSet<BoardCell>();
+		List<Card> deck = new ArrayList<Card>();
 
 		//load setup and layout
 		try {
@@ -181,11 +183,13 @@ public class Board {
 				char initial = setupLines[2].charAt(0);
 				roomMap.put(initial, room); //adds room name and initial to map
 				if (setupLines[0].equals("Room")) {
-					new Card(setupLines[1], CardType.ROOM);
+					Card roomCard = new Card(setupLines[1], CardType.ROOM);
+					deck.add(roomCard);
 				}
 			}
 			else if (setupLines[0].equals("Person")) {
-				new Card(setupLines[1], CardType.PERSON);
+				Card playerCard = new Card(setupLines[1], CardType.PERSON);
+				deck.add(playerCard);
 				if (setupLines[5].isEmpty()) {
 					new ComputerPlayer(setupLines[1], Color.getColor(setupLines[2]), Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
 				}
@@ -194,7 +198,8 @@ public class Board {
 				}
 			}
 			else if (setupLines[0].equals("Weapon")) {
-				new Card(setupLines[1], CardType.WEAPON);
+				Card weaponCard = new Card(setupLines[1], CardType.WEAPON);
+				deck.add(weaponCard);
 			}
 			else throw new BadConfigFormatException("Error: Setup file doesn't have proper format");
 		}
@@ -322,7 +327,7 @@ public class Board {
 	}
 
 	public void deal() {
-
+		Collections.shuffle(deck);
 	}
 
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); } 
