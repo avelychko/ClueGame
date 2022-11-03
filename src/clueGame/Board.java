@@ -25,11 +25,11 @@ public class Board {
 	String[] setupFile; //array stores setup lines
 	private Set<BoardCell> targets; //set of target cells
 	private Set<BoardCell> visited; //set of visited cells
-	private ArrayList<Card> roomDeck;
-	private ArrayList<Card> personDeck;
-	private ArrayList<Card> weaponDeck;
-	private ArrayList<Card> totalDeck;
-	private ArrayList<Player> player;
+	private ArrayList<Card> roomDeck; // array list stores room cards
+	private ArrayList<Card> personDeck; // array list stores person cards
+	private ArrayList<Card> weaponDeck; // array list stores weapon cards
+	private ArrayList<Card> totalDeck; // array list stores remainding cards
+	private ArrayList<Player> player; // array list stores players, human and computer
 
 	/*
 	 * variable and methods used for singleton pattern
@@ -194,24 +194,24 @@ public class Board {
 				roomMap.put(initial, room); //adds room name and initial to map
 				if (setupLines[0].equals("Room")) {
 					Card roomCard = new Card(setupLines[1], CardType.ROOM);
-					roomDeck.add(roomCard);
+					roomDeck.add(roomCard); // adds card to roomDeck
 				}
 			}
 			else if (setupLines[0].equals("Person")) {
 				Card personCard = new Card(setupLines[1], CardType.PERSON);
-				personDeck.add(personCard);
+				personDeck.add(personCard); // adds card to personDeck
 				if (setupLines.length < 6) {
 					Player computer = new ComputerPlayer(setupLines[1], setupLines[2], Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
-					player.add(computer);
+					player.add(computer); // adds computer player to player list
 				}
 				else {
 					Player human = new HumanPlayer(setupLines[1], setupLines[2], Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
-					player.add(human);
+					player.add(human); // adds human player to player list
 				}
 			}
 			else if (setupLines[0].equals("Weapon")) {
 				Card weaponCard = new Card(setupLines[1], CardType.WEAPON);
-				weaponDeck.add(weaponCard);
+				weaponDeck.add(weaponCard); // adds card to weaponDeck
 			}
 			else throw new BadConfigFormatException("Error: Setup file doesn't have proper format");
 		}
@@ -337,7 +337,8 @@ public class Board {
 			visited.remove(adjCell); //remove visited adj cell
 		}
 	}
-
+	
+	//grabs three random cards from each deck and puts it into solution, and removes it so it's not given to players, and makes the deck used to deal to players
 	public void setUpSolution() {
 		Random randRoom = new Random();
 		int randomIndexRoom = randRoom.nextInt(roomDeck.size());
@@ -372,38 +373,33 @@ public class Board {
 		Collections.shuffle(totalDeck);//Create complete deck of cards (weapons, people and rooms)
 	}
 	
+	//deals 3 random cards to each player from totalDeck and removes them to avoid dups
 	public void deal() {
 		for (int i = 0; i < player.size(); i++) {
+			//first card
 			Random randFirstCard = new Random();
 			int randomIndexFirstCard = randFirstCard.nextInt(totalDeck.size());
 			Card randomFirstCard = totalDeck.get(randomIndexFirstCard);
 			totalDeck.remove(randomIndexFirstCard);
 		
-			
 			player.get(i).setPlayerCards(randomFirstCard);
 			
+			//second card
 			Random randSecondCard = new Random();
 			int randomIndexSecondCard = randSecondCard.nextInt(totalDeck.size());
 			Card randomSecondCard = totalDeck.get(randomIndexSecondCard);
 			totalDeck.remove(randomIndexSecondCard);
 		
-			
 			player.get(i).setPlayerCards(randomSecondCard);
 			
+			//third card
 			Random randThirdCard = new Random();
 			int randomIndexThirdCard = randThirdCard.nextInt(totalDeck.size());
 			Card randomThirdCard = totalDeck.get(randomIndexThirdCard);
 			totalDeck.remove(randomIndexThirdCard);
 		
-			
 			player.get(i).setPlayerCards(randomThirdCard);
-			
-			
-			
-			
 		}
-		//totalDeck.remove(randomIndexWeapon);
-		//Deal cards to the Answer and the players (all cards dealt, players have roughly same # of cards, no card dealt twice)
 	}
 
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); } 
