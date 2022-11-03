@@ -367,9 +367,9 @@ public class Board {
 		}
 		
 		
+		Collections.shuffle(totalDeck);  //Create complete deck of cards (weapons, people and rooms)
+		//totalDeck.remove(randomIndexWeapon);
 		
-		
-		Collections.shuffle(deck); //Create complete deck of cards (weapons, people and rooms)
 		//Deal cards to the Answer and the players (all cards dealt, players have roughly same # of cards, no card dealt twice)
 		for (int i = 0; i < deck.size(); i++) {
 			if (deck.get(i) = CardType.PERSON) {
