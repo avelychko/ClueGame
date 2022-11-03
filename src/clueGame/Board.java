@@ -25,11 +25,11 @@ public class Board {
 	String[] setupFile; //array stores setup lines
 	private Set<BoardCell> targets; //set of target cells
 	private Set<BoardCell> visited; //set of visited cells
-	private List<Card> roomDeck;
-	private List<Card> personDeck;
-	private List<Card> weaponDeck;
-	private List<Card> totalDeck;
-	private List<Player> player;
+	private ArrayList<Card> roomDeck;
+	private ArrayList<Card> personDeck;
+	private ArrayList<Card> weaponDeck;
+	private ArrayList<Card> totalDeck;
+	private ArrayList<Player> player;
 
 	/*
 	 * variable and methods used for singleton pattern

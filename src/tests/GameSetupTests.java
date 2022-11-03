@@ -78,6 +78,9 @@ public class GameSetupTests {
 		assertEquals(10, player4.getCol());
 	}
 	
+	@Test
+	
+	
 	public void testDeckAndCards() {
 		
 	}
