@@ -11,11 +11,11 @@ public class Card {
 	}
 	
 	public String getCardName() {
-		return this.cardName;
+		return cardName;
 	}
 	
 	public CardType getCardType() {
-		return this.cardType;
+		return cardType;
 	}
 
 

@@ -58,7 +58,7 @@ public class GameSetupTests {
 		assertEquals("Pablo Escobar", pabloEscobar.getCardName());
 		assertEquals(CardType.PERSON, alCapone.getCardType());
 		assertEquals("Katana", katana.getCardName());
-		assertEquals();
+		
 	}
 	
 	public void testPersonCards() {

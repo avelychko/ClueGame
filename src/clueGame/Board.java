@@ -197,7 +197,7 @@ public class Board {
 			else if (setupLines[0].equals("Person")) {
 				Card personCard = new Card(setupLines[1], CardType.PERSON);
 				personDeck.add(personCard);
-				if (setupLines[5].isEmpty()) {
+				if (setupLines.length < 6) {
 					new ComputerPlayer(setupLines[1], Color.getColor(setupLines[2]), Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
 				}
 				else {
