@@ -200,10 +200,10 @@ public class Board {
 				Card personCard = new Card(setupLines[1], CardType.PERSON);
 				personDeck.add(personCard);
 				if (setupLines.length < 6) {
-					new ComputerPlayer(setupLines[1], Color.getColor(setupLines[2]), Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
+					new ComputerPlayer(setupLines[1], setupLines[2], Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
 				}
 				else {
-					new HumanPlayer(setupLines[1], Color.getColor(setupLines[2]), Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
+					new HumanPlayer(setupLines[1], setupLines[2], Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
 				}
 			}
 			else if (setupLines[0].equals("Weapon")) {
@@ -352,7 +352,6 @@ public class Board {
 		weaponDeck.remove(randomIndexWeapon);
 		
 		new Solution(randomRoomCard, randomPersonCard, randomWeaponCard); //Deal cards to the Answer
-		
 		
 		
 		//adds all cards to total deck to be given to players

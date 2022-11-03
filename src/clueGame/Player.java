@@ -5,13 +5,10 @@ import java.awt.Color;
 //Name, Color, Human/Computer, Starting Location
 public abstract class Player {
 	private String name;
-	private Color color;
+	private String color;
 	private int row, col;
-	private Card room;
-	private Card person;
-	private Card weapon;
 	
-	public Player(String name, Color color, int row, int col) {
+	public Player(String name, String color, int row, int col) {
 		super();
 		this.name = name;
 		this.color = color;
@@ -23,7 +20,7 @@ public abstract class Player {
 		return this.name;
 	}
 	
-	public Color getColor() {
+	public String getColor() {
 		return this.color;
 	}
 	
