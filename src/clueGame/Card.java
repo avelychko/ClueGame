@@ -9,6 +9,14 @@ public class Card {
 		this.cardName = cardName;
 		this.cardType = cardType;
 	}
+	
+	public String getCardName() {
+		return this.cardName;
+	}
+	
+	public CardType getCardType() {
+		return this.cardType;
+	}
 
 
 	public boolean equals(Card target) {

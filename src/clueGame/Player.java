@@ -31,6 +31,10 @@ public abstract class Player {
 	public int getCol() {
 		return this.col;
 	}
+	
+	public void setPlayerCards(Card person, Card room, Card weapon) {
+		
+	}
 
 	public void updateHand(Card card) {
 		
