@@ -6,11 +6,13 @@ import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.BeforeAll;
 
 import clueGame.Board;
+import clueGame.Card;
 
 public class GameSetupTests {
 	// We make the Board static because we can load it one time and 
 	// then do all the tests. 
 	private static Board board;
+	private static Card room;
 	
 	@BeforeAll
 	public static void setUp() {
@@ -20,6 +22,8 @@ public class GameSetupTests {
 		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");		
 		// Initialize will load config files 
 		board.initialize();
+		
+		
 	}
 	
 	public void testPlayerColor() {
