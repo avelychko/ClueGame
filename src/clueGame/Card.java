@@ -1,12 +1,5 @@
 package clueGame;
 
-//Pistol
-//Poison
-//Katana
-//Ninja Spike
-//Throwing Stars
-//Wire
-
 public class Card {
 	private String cardName; 
 	private CardType cardType;

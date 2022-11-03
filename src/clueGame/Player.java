@@ -35,24 +35,4 @@ public abstract class Player {
 	public void updateHand(Card card) {
 		
 	}
-<<<<<<< HEAD
-
-	public String getName() {
-		return name;
-	}
-
-	public String getColor() {
-		return color;
-	}
-
-	public int getRow() {
-		return row;
-	}
-
-	public int getCol() {
-		return col;
-	}
 }
-=======
-}
->>>>>>> 0e8c28a2ac8cbf010629316d63cf5f35cba31a57
