@@ -70,16 +70,14 @@ public class GameSetupTests {
 		assertEquals(CardType.WEAPON, wire.getCardType());
 	}
 	
-	public void testPlayerColor() {
-		
-	}
-	
-	public void testPlayerLocation() {
-		
-	}
-
-	public void testPlayerName() {
-		
+	@Test
+	public void testPlayers() {
+		assertEquals(Color.cyan, player1.getColor());
+		assertEquals(Color.magenta, player5.getColor());
+		assertEquals("Pablo Escobar", player3.getName());
+		assertEquals("Matteo Denaro", player6.getName());
+		assertEquals(23, player5.getRow());
+		assertEquals(10, player4.getCol());
 	}
 	
 	public void testDeckAndCards() {
