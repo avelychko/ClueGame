@@ -342,14 +342,16 @@ public class Board {
 		Random randPerson = new Random();
 		int randomIndexPerson = randPerson.nextInt(personDeck.size());
 		Card randomPersonCard = personDeck.get(randomIndexPerson);
-		roomDeck.remove(randomIndexPerson);
+		personDeck.remove(randomIndexPerson);
 		
 		Random randWeapon = new Random();
 		int randomIndexWeapon = randWeapon.nextInt(weaponDeck.size());
 		Card randomWeaponCard = weaponDeck.get(randomIndexWeapon);
-		roomDeck.remove(randomIndexWeapon);
+		weaponDeck.remove(randomIndexWeapon);
 		
-		new Solution(randomRoomCard, randomPersonCard, randomWeaponCard);
+		new Solution(randomRoomCard, randomPersonCard, randomWeaponCard); //Deal cards to the Answer
+		
+		
 		
 		//adds all cards to total deck to be given to players
 		for (Card i: roomDeck) {
@@ -366,12 +368,9 @@ public class Board {
 	}
 	
 	public void deal() {
-			
 		Collections.shuffle(totalDeck);  //Create complete deck of cards (weapons, people and rooms)
 		//totalDeck.remove(randomIndexWeapon);
-		
 		//Deal cards to the Answer and the players (all cards dealt, players have roughly same # of cards, no card dealt twice)
-		
 	}
 
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); } 

@@ -13,6 +13,7 @@ public class GameSetupTests {
 	private static Card livingroom, bedroom, kitchen, garden, diningroom, atrium, bathroom, office, pool,
 		alCapone, kenichiShinoda, pabloEscobar, eddieMcGrath, benjaminSiegel, matteoDenaro,
 		pistol, poison, katana, throwingStars, wire, golfClub;
+	private static Player player1, player2, player3, player4, player5, player6;
 	
 	@BeforeAll
 	public static void setUp() {
@@ -49,6 +50,14 @@ public class GameSetupTests {
 		throwingStars = new Card("Throwing Stars", CardType.WEAPON);
 		wire = new Card("Wire", CardType.WEAPON);
 		golfClub = new Card("Golf Club", CardType.WEAPON);
+		
+		//player
+		player1 = new HumanPlayer("Al Capone", Color.getColor("Cyan"), 23, 10);
+		player2 = new ComputerPlayer("Kenichi Shinoda", Color.getColor("Yellow"), 24, 4);
+		player3 = new ComputerPlayer("Pablo Escobar", Color.getColor("Blue"), 23, 20);
+		player4 = new ComputerPlayer("Eddie McGrath", Color.getColor("Green"), 0, 10);
+		player5 = new ComputerPlayer("Benjamin Siegel", Color.getColor("Magenta"), 23, 29);
+		player6 = new ComputerPlayer("Matteo Denaro", Color.getColor("Red"), 8, 30);
 	}
 	
 	@Test
@@ -58,27 +67,17 @@ public class GameSetupTests {
 		assertEquals("Pablo Escobar", pabloEscobar.getCardName());
 		assertEquals(CardType.PERSON, alCapone.getCardType());
 		assertEquals("Katana", katana.getCardName());
-		
+		assertEquals(CardType.WEAPON, wire.getCardType());
 	}
 	
-	public void testPersonCards() {
-		
-	}
-	
-	public void testWeaponCards() {
-		
-	}
-	
-	public void testPlayerColor() {
-		
-	}
-	
-	public void testPlayerLocation() {
-		
-	}
-
-	public void testPlayerName() {
-		
+	@Test
+	public void testPlayers() {
+		assertEquals(Color.cyan, player1.getColor());
+		assertEquals(Color.magenta, player5.getColor());
+		assertEquals("Pablo Escobar", player3.getName());
+		assertEquals("Matteo Denaro", player6.getName());
+		assertEquals(23, player5.getRow());
+		assertEquals(10, player4.getCol());
 	}
 	
 	public void testDeckAndCards() {
