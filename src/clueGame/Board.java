@@ -44,7 +44,7 @@ public class Board {
 		roomMap = new HashMap<Character, Room>(); 
 		targets = new HashSet<BoardCell>();
 		visited = new HashSet<BoardCell>();
-		List<Card> deck = new ArrayList<Card>();
+		deck = new ArrayList<Card>();
 
 		//load setup and layout
 		try {
@@ -188,8 +188,8 @@ public class Board {
 				}
 			}
 			else if (setupLines[0].equals("Person")) {
-				Card playerCard = new Card(setupLines[1], CardType.PERSON);
-				deck.add(playerCard);
+				Card personCard = new Card(setupLines[1], CardType.PERSON);
+				deck.add(personCard);
 				if (setupLines[5].isEmpty()) {
 					new ComputerPlayer(setupLines[1], Color.getColor(setupLines[2]), Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
 				}
@@ -327,7 +327,13 @@ public class Board {
 	}
 
 	public void deal() {
-		Collections.shuffle(deck);
+		Collections.shuffle(deck); //Create complete deck of cards (weapons, people and rooms)
+		//Deal cards to the Answer and the players (all cards dealt, players have roughly same # of cards, no card dealt twice)
+		for (int i = 0; i < deck.size(); i++) {
+			if (deck.get(i) = CardType.PERSON) {
+				
+			}
+		}
 	}
 
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); } 
