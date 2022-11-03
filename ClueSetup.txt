@@ -22,3 +22,6 @@ Person, Matteo Denaro, Yellow, 8, 30
 Weapon, Pistol
 Weapon, Poison
 Weapon, Katana
+Weapon, Throwing Stars
+Weapon, Wire
+Weapon, Golf Club
