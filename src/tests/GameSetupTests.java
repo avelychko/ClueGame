@@ -1,11 +1,10 @@
 package tests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.jupiter.api.BeforeAll;
-
-import clueGame.Board;
+import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
+import java.util.*;
+import clueGame.*;
+import java.awt.Color;
 
 public class GameSetupTests {
 	// We make the Board static because we can load it one time and 
@@ -32,6 +31,10 @@ public class GameSetupTests {
 	}
 
 	public void testPlayerName() {
+		
+	}
+	
+	public void testDeckandCards() {
 		
 	}
 }
