@@ -69,6 +69,7 @@ public class Board {
 		}
 		setAdj();
 		setUpSolution();
+		deal();
 	}
 
 	private void setAdj() {
@@ -200,10 +201,12 @@ public class Board {
 				Card personCard = new Card(setupLines[1], CardType.PERSON);
 				personDeck.add(personCard);
 				if (setupLines.length < 6) {
-					new ComputerPlayer(setupLines[1], Color.getColor(setupLines[2]), Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
+					Player computer = new ComputerPlayer(setupLines[1], Color.getColor(setupLines[2]), Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
+					player.add(computer);
 				}
 				else {
-					new HumanPlayer(setupLines[1], Color.getColor(setupLines[2]), Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
+					Player human = new HumanPlayer(setupLines[1], Color.getColor(setupLines[2]), Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
+					player.add(human);
 				}
 			}
 			else if (setupLines[0].equals("Weapon")) {
@@ -366,11 +369,12 @@ public class Board {
 				
 		for (Card i: weaponDeck) {
 				totalDeck.add(i);
-		}		
+		}	
+		Collections.shuffle(totalDeck);//Create complete deck of cards (weapons, people and rooms)
 	}
 	
 	public void deal() {
-		Collections.shuffle(totalDeck);  //Create complete deck of cards (weapons, people and rooms)
+		
 		//totalDeck.remove(randomIndexWeapon);
 		//Deal cards to the Answer and the players (all cards dealt, players have roughly same # of cards, no card dealt twice)
 	}
