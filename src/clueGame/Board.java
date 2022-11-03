@@ -374,7 +374,35 @@ public class Board {
 	}
 	
 	public void deal() {
+		for (int i = 0; i < player.size(); i++) {
+			Random randFirstCard = new Random();
+			int randomIndexFirstCard = randFirstCard.nextInt(totalDeck.size());
+			Card randomFirstCard = totalDeck.get(randomIndexFirstCard);
+			totalDeck.remove(randomIndexFirstCard);
 		
+			
+			player.get(i).setPlayerCards(randomFirstCard);
+			
+			Random randSecondCard = new Random();
+			int randomIndexSecondCard = randSecondCard.nextInt(totalDeck.size());
+			Card randomSecondCard = totalDeck.get(randomIndexSecondCard);
+			totalDeck.remove(randomIndexSecondCard);
+		
+			
+			player.get(i).setPlayerCards(randomSecondCard);
+			
+			Random randThirdCard = new Random();
+			int randomIndexThirdCard = randThirdCard.nextInt(totalDeck.size());
+			Card randomThirdCard = totalDeck.get(randomIndexThirdCard);
+			totalDeck.remove(randomIndexThirdCard);
+		
+			
+			player.get(i).setPlayerCards(randomThirdCard);
+			
+			
+			
+			
+		}
 		//totalDeck.remove(randomIndexWeapon);
 		//Deal cards to the Answer and the players (all cards dealt, players have roughly same # of cards, no card dealt twice)
 	}
