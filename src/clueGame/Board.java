@@ -342,14 +342,16 @@ public class Board {
 		Random randPerson = new Random();
 		int randomIndexPerson = randPerson.nextInt(personDeck.size());
 		Card randomPersonCard = personDeck.get(randomIndexPerson);
-		roomDeck.remove(randomIndexPerson);
+		personDeck.remove(randomIndexPerson);
 		
 		Random randWeapon = new Random();
 		int randomIndexWeapon = randWeapon.nextInt(weaponDeck.size());
 		Card randomWeaponCard = weaponDeck.get(randomIndexWeapon);
-		roomDeck.remove(randomIndexWeapon);
+		weaponDeck.remove(randomIndexWeapon);
 		
-		new Solution(randomRoomCard, randomPersonCard, randomWeaponCard);
+		new Solution(randomRoomCard, randomPersonCard, randomWeaponCard); //Deal cards to the Answer
+		
+		
 		
 		//adds all cards to total deck to be given to players
 		for (Card i: roomDeck) {

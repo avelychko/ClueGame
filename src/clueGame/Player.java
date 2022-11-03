@@ -7,6 +7,9 @@ public abstract class Player {
 	private String name;
 	private Color color;
 	private int row, col;
+	private Card room;
+	private Card person;
+	private Card weapon;
 	
 	public Player(String name, Color color, int row, int col) {
 		super();
@@ -32,8 +35,10 @@ public abstract class Player {
 		return this.col;
 	}
 	
-	public void setPlayerCards(Card person, Card room, Card weapon) {
-		
+	public void setPlayerCards(Card room, Card person, Card weapon) {
+		this.room = room;
+		this.person = person;
+		this.weapon = weapon;
 	}
 
 	public void updateHand(Card card) {
