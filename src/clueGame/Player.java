@@ -15,6 +15,22 @@ public abstract class Player {
 		this.row = row;
 		this.col = col;
 	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public Color getColor() {
+		return this.color;
+	}
+	
+	public int getRow() {
+		return this.row;
+	}
+	
+	public int getCol() {
+		return this.col;
+	}
 
 	public void updateHand(Card card) {
 		
