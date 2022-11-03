@@ -52,12 +52,12 @@ public class GameSetupTests {
 		golfClub = new Card("Golf Club", CardType.WEAPON);
 		
 		//player
-		player1 = new HumanPlayer("Al Capone", Color.getColor("Cyan"), 23, 10);
-		player2 = new ComputerPlayer("Kenichi Shinoda", Color.getColor("Yellow"), 24, 4);
-		player3 = new ComputerPlayer("Pablo Escobar", Color.getColor("Blue"), 23, 20);
-		player4 = new ComputerPlayer("Eddie McGrath", Color.getColor("Green"), 0, 10);
-		player5 = new ComputerPlayer("Benjamin Siegel", Color.getColor("Magenta"), 23, 29);
-		player6 = new ComputerPlayer("Matteo Denaro", Color.getColor("Red"), 8, 30);
+		player1 = new HumanPlayer("Al Capone", Color.getColor("cyan"), 23, 10);
+		player2 = new ComputerPlayer("Kenichi Shinoda", Color.getColor("yellow"), 24, 4);
+		player3 = new ComputerPlayer("Pablo Escobar", Color.getColor("blue"), 23, 20);
+		player4 = new ComputerPlayer("Eddie McGrath", Color.getColor("green"), 0, 10);
+		player5 = new ComputerPlayer("Benjamin Siegel", Color.getColor("magenta"), 23, 29);
+		player6 = new ComputerPlayer("Matteo Denaro", Color.getColor("red"), 8, 30);
 	}
 	
 	@Test

@@ -29,6 +29,7 @@ public class Board {
 	private List<Card> personDeck;
 	private List<Card> weaponDeck;
 	private List<Card> totalDeck;
+	private List<Player> player;
 
 	/*
 	 * variable and methods used for singleton pattern
@@ -51,6 +52,7 @@ public class Board {
 		personDeck = new ArrayList<Card>();
 		weaponDeck = new ArrayList<Card>();
 		totalDeck = new ArrayList<Card>();
+		player = new ArrayList<Player>();
 
 		//load setup and layout
 		try {

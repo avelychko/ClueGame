@@ -35,10 +35,8 @@ public abstract class Player {
 		return this.col;
 	}
 	
-	public void setPlayerCards(Card room, Card person, Card weapon) {
-		this.room = room;
-		this.person = person;
-		this.weapon = weapon;
+	public void setPlayerCards(Card card1, Card card2, Card card3) {
+
 	}
 
 	public void updateHand(Card card) {
