@@ -72,16 +72,24 @@ public class GameSetupTests {
 	
 	@Test
 	public void testPlayers() {
-		assertEquals("Pablo Escobar", player3.getName());
-		assertEquals("Matteo Denaro", player6.getName());
-		assertEquals(23, player5.getRow());
-		assertEquals(10, player4.getCol());
+		assertEquals("Pablo Escobar", player3.getName()); //test computer player
+		assertEquals("Al Capone", player1.getName()); //test human player
 	}
 	
 	@Test
-	
-	
-	public void testDeckAndCards() {
+	public void testSolutionCards() {
 		
+		
+	}
+	
+	@Test
+	public void testPlayerCards() {
+		//test that each player has 3 cards
+		assertEquals(player1.hand.size(), 3);
+		assertEquals(player2.hand.size(), 3);
+		assertEquals(player3.hand.size(), 3);
+		assertEquals(player4.hand.size(), 3);
+		assertEquals(player5.hand.size(), 3);
+		assertEquals(player6.hand.size(), 3);
 	}
 }
