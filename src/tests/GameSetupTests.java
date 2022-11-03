@@ -52,12 +52,12 @@ public class GameSetupTests {
 		golfClub = new Card("Golf Club", CardType.WEAPON);
 		
 		//player
-		player1 = new HumanPlayer("Al Capone", Color.getColor("cyan"), 23, 10);
-		player2 = new ComputerPlayer("Kenichi Shinoda", Color.getColor("yellow"), 24, 4);
-		player3 = new ComputerPlayer("Pablo Escobar", Color.getColor("blue"), 23, 20);
-		player4 = new ComputerPlayer("Eddie McGrath", Color.getColor("green"), 0, 10);
-		player5 = new ComputerPlayer("Benjamin Siegel", Color.getColor("magenta"), 23, 29);
-		player6 = new ComputerPlayer("Matteo Denaro", Color.getColor("red"), 8, 30);
+		player1 = new HumanPlayer("Al Capone", "Cyan", 23, 10);
+		player2 = new ComputerPlayer("Kenichi Shinoda", "Yellow", 24, 4);
+		player3 = new ComputerPlayer("Pablo Escobar", "Blue", 23, 20);
+		player4 = new ComputerPlayer("Eddie McGrath", "Green", 0, 10);
+		player5 = new ComputerPlayer("Benjamin Siegel", "Magenta", 23, 29);
+		player6 = new ComputerPlayer("Matteo Denaro", "Red", 8, 30);
 	}
 	
 	@Test
@@ -72,13 +72,14 @@ public class GameSetupTests {
 	
 	@Test
 	public void testPlayers() {
-		assertEquals(Color.cyan, player1.getColor());
-		assertEquals(Color.magenta, player5.getColor());
 		assertEquals("Pablo Escobar", player3.getName());
 		assertEquals("Matteo Denaro", player6.getName());
 		assertEquals(23, player5.getRow());
 		assertEquals(10, player4.getCol());
 	}
+	
+	@Test
+	
 	
 	public void testDeckAndCards() {
 		

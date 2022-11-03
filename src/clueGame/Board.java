@@ -25,11 +25,11 @@ public class Board {
 	String[] setupFile; //array stores setup lines
 	private Set<BoardCell> targets; //set of target cells
 	private Set<BoardCell> visited; //set of visited cells
-	private List<Card> roomDeck;
-	private List<Card> personDeck;
-	private List<Card> weaponDeck;
-	private List<Card> totalDeck;
-	private List<Player> player;
+	private ArrayList<Card> roomDeck;
+	private ArrayList<Card> personDeck;
+	private ArrayList<Card> weaponDeck;
+	private ArrayList<Card> totalDeck;
+	private ArrayList<Player> player;
 
 	/*
 	 * variable and methods used for singleton pattern
@@ -201,11 +201,11 @@ public class Board {
 				Card personCard = new Card(setupLines[1], CardType.PERSON);
 				personDeck.add(personCard);
 				if (setupLines.length < 6) {
-					Player computer = new ComputerPlayer(setupLines[1], Color.getColor(setupLines[2]), Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
+					Player computer = new ComputerPlayer(setupLines[1], setupLines[2], Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
 					player.add(computer);
 				}
 				else {
-					Player human = new HumanPlayer(setupLines[1], Color.getColor(setupLines[2]), Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
+					Player human = new HumanPlayer(setupLines[1], setupLines[2], Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
 					player.add(human);
 				}
 			}
@@ -355,7 +355,6 @@ public class Board {
 		weaponDeck.remove(randomIndexWeapon);
 		
 		new Solution(randomRoomCard, randomPersonCard, randomWeaponCard); //Deal cards to the Answer
-		
 		
 		
 		//adds all cards to total deck to be given to players
