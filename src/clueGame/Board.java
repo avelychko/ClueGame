@@ -44,6 +44,7 @@ public class Board {
 		roomMap = new HashMap<Character, Room>(); 
 		targets = new HashSet<BoardCell>();
 		visited = new HashSet<BoardCell>();
+		List<Card> deck = new ArrayList<Card>();
 
 		//load setup and layout
 		try {
