@@ -59,11 +59,14 @@ public class Board {
 		try {
 			loadSetupConfig();
 			loadLayoutConfig();
-		} catch (NullPointerException e) {
+		} catch (FileNotFoundException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		} catch (BadConfigFormatException e) {
 			System.out.println(e.getLocalizedMessage());
+		} catch (NullPointerException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
@@ -361,17 +364,9 @@ public class Board {
 		
 		
 		//adds all cards to total deck to be given to players
-		for (Card i: roomDeck) {
-				totalDeck.add(i);
-		}
-				
-		for (Card i: personDeck) {
-				totalDeck.add(i);
-		}
-				
-		for (Card i: weaponDeck) {
-				totalDeck.add(i);
-		}	
+		for (Card i: roomDeck) totalDeck.add(i);
+		for (Card i: personDeck) totalDeck.add(i);
+		for (Card i: weaponDeck) totalDeck.add(i);
 		Collections.shuffle(totalDeck);//Create complete deck of cards (weapons, people and rooms)
 	}
 	
@@ -410,7 +405,6 @@ public class Board {
 	public Set<BoardCell> getTargets() { return targets; } //returns the targets last created by calcTargets()
 
 	public BoardCell getCell(int row, int col) { return grid[row][col]; } //returns the cell from the board at row, col
-	public Card getCard(String name, CardType cardType) { return new Card(name, cardType); }
 
 	public int getNumRows() { return numRows; } //returns board row size
 	public int getNumColumns() { return numColumns; } //returns board column size
@@ -418,11 +412,8 @@ public class Board {
 	public Room getRoom(char room) { return roomMap.get(room); } //returns room at char
 	public Room getRoom(BoardCell cell) { return roomMap.get(cell.getInitial()); } //return room at cell 
 	
-	public ArrayList<Player> getPlayer() {
-		return player;
-	}
+	public Card getCard(String name, CardType cardType) { return new Card(name, cardType); }
 	
-	public Solution getSolution() {
-		return answer;
-	}
+	public ArrayList<Player> getPlayer() { return player; }
+	public Solution getSolution() { return answer; }
 }

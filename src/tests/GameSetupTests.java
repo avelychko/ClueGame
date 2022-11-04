@@ -4,7 +4,10 @@ import static org.junit.Assert.*;
 import org.junit.jupiter.api.*;
 import java.util.*;
 import clueGame.*;
-import java.awt.Color;
+
+
+/* ask about equals() method in Card class
+ask if we are testing everything we need to */
 
 public class GameSetupTests {
 	// We make the Board static because we can load it one time and 
@@ -78,6 +81,7 @@ public class GameSetupTests {
 	
 	@Test
 	public void testSolutionCards() {
+		//test that Answer has a card from each Card Type
 		assertEquals(CardType.ROOM, board.getSolution().getRoom().getCardType());
 		assertEquals(CardType.PERSON, board.getSolution().getPerson().getCardType());
 		assertEquals(CardType.WEAPON, board.getSolution().getWeapon().getCardType());
