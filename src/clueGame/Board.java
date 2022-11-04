@@ -30,6 +30,7 @@ public class Board {
 	private ArrayList<Card> weaponDeck; // array list stores weapon cards
 	private ArrayList<Card> totalDeck; // array list stores remainding cards
 	private ArrayList<Player> player; // array list stores players, human and computer
+	private Solution answer;
 
 	/*
 	 * variable and methods used for singleton pattern
@@ -356,7 +357,7 @@ public class Board {
 		Card randomWeaponCard = weaponDeck.get(randomIndexWeapon);
 		weaponDeck.remove(randomIndexWeapon);
 		
-		new Solution(randomRoomCard, randomPersonCard, randomWeaponCard); //Deal cards to the Answer
+		answer = new Solution(randomRoomCard, randomPersonCard, randomWeaponCard); //Deal cards to the Answer
 		
 		
 		//adds all cards to total deck to be given to players
@@ -419,5 +420,9 @@ public class Board {
 	
 	public ArrayList<Player> getPlayer() {
 		return player;
+	}
+	
+	public Solution getSolution() {
+		return answer;
 	}
 }
