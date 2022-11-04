@@ -11,7 +11,7 @@ public class Card {
 	}
 	
 	public String getCardName() {
-		return "";
+		return cardName;
 	}
 	
 	public CardType getCardType() {

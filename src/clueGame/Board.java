@@ -357,7 +357,7 @@ public class Board {
 		Card randomWeaponCard = weaponDeck.get(randomIndexWeapon);
 		weaponDeck.remove(randomIndexWeapon);
 		
-		answer = new Solution(randomWeaponCard, randomRoomCard, randomPersonCard); //Deal cards to the Answer
+		answer = new Solution(randomRoomCard, randomPersonCard, randomWeaponCard); //Deal cards to the Answer
 		
 		
 		//adds all cards to total deck to be given to players
