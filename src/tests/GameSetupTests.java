@@ -85,11 +85,11 @@ public class GameSetupTests {
 	@Test
 	public void testPlayerCards() {
 		//test that each player has 3 cards
-		assertEquals(player1.hand.size(), 3);
-		assertEquals(player2.hand.size(), 3);
-		assertEquals(player3.hand.size(), 3);
-		assertEquals(player4.hand.size(), 3);
-		assertEquals(player5.hand.size(), 3);
-		assertEquals(player6.hand.size(), 3);
+		assertEquals(3, board.getPlayer().get(0).hand.size());
+		assertEquals(3, board.getPlayer().get(1).hand.size());
+		assertEquals(3, board.getPlayer().get(2).hand.size());
+		assertEquals(3, board.getPlayer().get(3).hand.size());
+		assertEquals(3, board.getPlayer().get(4).hand.size());
+		assertEquals(3, board.getPlayer().get(5).hand.size());
 	}
 }

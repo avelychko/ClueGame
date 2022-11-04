@@ -72,6 +72,7 @@ public class Board {
 		deal();
 	}
 
+	
 	private void setAdj() {
 		for (int row = 0; row < numRows; row++) {
 			for (int col = 0; col < numColumns; col++) {
@@ -384,6 +385,7 @@ public class Board {
 		
 			player.get(i).setPlayerCards(randomFirstCard);
 			
+			
 			//second card
 			Random randSecondCard = new Random();
 			int randomIndexSecondCard = randSecondCard.nextInt(totalDeck.size());
@@ -392,6 +394,7 @@ public class Board {
 		
 			player.get(i).setPlayerCards(randomSecondCard);
 			
+			
 			//third card
 			Random randThirdCard = new Random();
 			int randomIndexThirdCard = randThirdCard.nextInt(totalDeck.size());
@@ -399,6 +402,7 @@ public class Board {
 			totalDeck.remove(randomIndexThirdCard);
 		
 			player.get(i).setPlayerCards(randomThirdCard);
+			System.out.println(player.get(i).hand.size());
 		}
 	}
 
@@ -413,4 +417,8 @@ public class Board {
 
 	public Room getRoom(char room) { return roomMap.get(room); } //returns room at char
 	public Room getRoom(BoardCell cell) { return roomMap.get(cell.getInitial()); } //return room at cell 
+	
+	public ArrayList<Player> getPlayer() {
+		return player;
+	}
 }
