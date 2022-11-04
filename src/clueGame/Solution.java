@@ -1,7 +1,5 @@
 package clueGame;
 
-import java.util.ArrayList;
-
 //who did it
 public class Solution {
 	private Card room;
