@@ -12,4 +12,16 @@ public class Solution {
 		this.person = person;
 		this.weapon = weapon;
 	}
+	
+	public Card getRoom() {
+		return this.room;
+	}
+	
+	public Card getPerson() {
+		return this.person;
+	}
+	
+	public Card getWeapon() {
+		return this.weapon;
+	}
 }

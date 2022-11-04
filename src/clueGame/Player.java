@@ -9,7 +9,7 @@ public abstract class Player {
 	private String color;
 	private int row, col;
 	private static final int CARD_AMOUNT = 3;
-	public ArrayList<Card> hand = new ArrayList<Card>(CARD_AMOUNT);
+	private ArrayList<Card> hand = new ArrayList<Card>(CARD_AMOUNT);
 	
 	public Player(String name, String color, int row, int col) {
 		super();
@@ -36,6 +36,10 @@ public abstract class Player {
 	}
 	
 	public void setPlayerCards(Card card) {
-		hand.add(card);
+		this.hand.add(card);
+	}
+	
+	public ArrayList<Card> getPlayerCards() {
+		return this.hand;
 	}
 }
