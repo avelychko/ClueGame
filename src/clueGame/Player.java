@@ -20,23 +20,23 @@ public abstract class Player {
 	}
 	
 	public String getName() {
-		return this.name;
+		return "";
 	}
 	
 	public String getColor() {
-		return this.color;
+		return "";
 	}
 	
 	public int getRow() {
-		return this.row;
+		return 0;
 	}
 	
 	public int getCol() {
-		return this.col;
+		return 0;
 	}
 	
 	public void setPlayerCards(Card card) {
-		this.hand.add(card);
+	
 	}
 	
 	public ArrayList<Card> getPlayerCards() {
