@@ -36,7 +36,7 @@ public abstract class Player {
 	}
 	
 	public void setPlayerCards(Card card) {
-		this.hand.add(card);
+		hand.add(card);
 	}
 	
 	public ArrayList<Card> getPlayerCards() {

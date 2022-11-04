@@ -17,12 +17,12 @@ public class GameSetupTests {
 	
 	@BeforeAll
 	public static void setUp() {
-//		// Board is singleton, get the only instance
-//		board = Board.getInstance();
-//		// set the file names to use my config files
-//		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");		
-//		// Initialize will load config files 
-//		board.initialize();
+		// Board is singleton, get the only instance
+		board = Board.getInstance();
+		// set the file names to use my config files
+		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");		
+		// Initialize will load config files 
+		board.initialize();
 		
 		//room cards
 		livingroom = new Card("Living Room", CardType.ROOM);
@@ -58,9 +58,6 @@ public class GameSetupTests {
 		player4 = new ComputerPlayer("Eddie McGrath", "Green", 0, 10);
 		player5 = new ComputerPlayer("Benjamin Siegel", "Magenta", 23, 29);
 		player6 = new ComputerPlayer("Matteo Denaro", "Red", 8, 30);
-		
-		board.setUpSolution();
-		board.deal();
 	}
 	
 	@Test
@@ -89,11 +86,11 @@ public class GameSetupTests {
 	@Test
 	public void testPlayerCards() {
 		//test that each player has 3 cards
-		assertEquals(player1.getPlayerCards().size(), 3);
-		assertEquals(player2.getPlayerCards().size(), 3);
-		assertEquals(player3.getPlayerCards().size(), 3);
-		assertEquals(player4.getPlayerCards().size(), 3);
-		assertEquals(player5.getPlayerCards().size(), 3);
-		assertEquals(player6.getPlayerCards().size(), 3);
+		assertEquals(3, board.getPlayer().get(0).getPlayerCards().size());
+		assertEquals(3, board.getPlayer().get(1).getPlayerCards().size());
+		assertEquals(3, board.getPlayer().get(2).getPlayerCards().size());
+		assertEquals(3, board.getPlayer().get(3).getPlayerCards().size());
+		assertEquals(3, board.getPlayer().get(4).getPlayerCards().size());
+		assertEquals(3, board.getPlayer().get(5).getPlayerCards().size());
 	}
 }
