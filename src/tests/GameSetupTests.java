@@ -23,6 +23,7 @@ public class GameSetupTests {
 		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");		
 		// Initialize will load config files 
 		board.initialize();
+
 		
 		//room cards
 		livingroom = new Card("Living Room", CardType.ROOM);
@@ -76,12 +77,12 @@ public class GameSetupTests {
 		assertEquals("Al Capone", player1.getName()); //test human player
 	}
 	
-//	@Test
-//	public void testSolutionCards() {
-//		assertEquals(CardType.ROOM, Solution.getRoom().getCardType());
-//		assertEquals(CardType.PERSON, Solution.getPerson().getCardType());
-//		assertEquals(CardType.WEAPON, Solution.getWeapon().getCardType());
-//	}
+	@Test
+	public void testSolutionCards() {
+		assertEquals(CardType.ROOM, Solution.getRoom().getCardType());
+		assertEquals(CardType.PERSON, Solution.getPerson().getCardType());
+		assertEquals(CardType.WEAPON, Solution.getWeapon().getCardType());
+	}
 	
 	@Test
 	public void testPlayerCards() {

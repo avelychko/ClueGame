@@ -14,14 +14,14 @@ public class Solution {
 	}
 	
 	public Card getRoom() {
-		return this.room;
+		return room;
 	}
 	
 	public Card getPerson() {
-		return this.person;
+		return person;
 	}
 	
 	public Card getWeapon() {
-		return this.weapon;
+		return weapon;
 	}
 }
