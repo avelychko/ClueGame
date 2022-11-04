@@ -76,12 +76,13 @@ public class GameSetupTests {
 		assertEquals("Al Capone", player1.getName()); //test human player
 	}
 	
-//	@Test
-//	public void testSolutionCards() {
-//		assertEquals(CardType.ROOM, Solution.getRoom().getCardType());
-//		assertEquals(CardType.PERSON, Solution.getPerson().getCardType());
-//		assertEquals(CardType.WEAPON, Solution.getWeapon().getCardType());
-//	}
+	@Test
+	public void testSolutionCards() {
+		assertEquals(3, board.getSolution().getSolutionCards().size());
+		assertEquals(CardType.ROOM, board.getSolution().getRoom().getCardType());
+		assertEquals(CardType.PERSON, board.getSolution().getPerson().getCardType());
+		assertEquals(CardType.WEAPON, board.getSolution().getWeapon().getCardType());
+	}
 	
 	@Test
 	public void testPlayerCards() {
