@@ -7,7 +7,6 @@ public class Solution {
 	private Card room;
 	private Card person;
 	private Card weapon;
-	private ArrayList<Card> hand = new ArrayList<Card>();
 	
 	public Solution(Card room, Card person, Card weapon) {
 		super();
@@ -26,15 +25,5 @@ public class Solution {
 	
 	public Card getWeapon() {
 		return this.weapon;
-	}
-	
-	public void setSolutionCards() {
-		this.hand.add(this.room);
-		this.hand.add(this.person);
-		this.hand.add(this.weapon);
-	}
-	
-	public ArrayList<Card> getSolutionCards() {
-		return this.hand;
 	}
 }
