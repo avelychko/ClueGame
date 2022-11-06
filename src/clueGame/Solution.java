@@ -13,15 +13,9 @@ public class Solution {
 		this.weapon = weapon;
 	}
 	
-	public Card getRoom() {
-		return room;
-	}
-	
-	public Card getPerson() {
-		return person;
-	}
-	
-	public Card getWeapon() {
-		return weapon;
-	}
+
+	public Card getRoom() { return this.room; }
+	public Card getPerson() { return this.person; }
+	public Card getWeapon() { return this.weapon; }
+
 }

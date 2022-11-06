@@ -1,6 +1,5 @@
 package clueGame;
 
-import java.awt.Color;
 import java.util.ArrayList;
 
 //Name, Color, Human/Computer, Starting Location
@@ -19,27 +18,11 @@ public abstract class Player {
 		this.col = col;
 	}
 	
-	public String getName() {
-		return this.name;
-	}
+	public String getName() { return this.name; }
+	public String getColor() { return this.color; }
+	public int getRow() { return this.row; }
+	public int getCol() { return this.col; }
 	
-	public String getColor() {
-		return this.color;
-	}
-	
-	public int getRow() {
-		return this.row;
-	}
-	
-	public int getCol() {
-		return this.col;
-	}
-	
-	public void setPlayerCards(Card card) {
-		this.hand.add(card);
-	}
-	
-	public ArrayList<Card> getPlayerCards() {
-		return this.hand;
-	}
+	public void setPlayerCards(Card card) { this.hand.add(card); }
+	public ArrayList<Card> getPlayerCards() { return this.hand; }
 }
