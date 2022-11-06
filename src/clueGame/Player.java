@@ -1,6 +1,6 @@
 package clueGame;
 
-import java.util.ArrayList;
+import java.util.*;
 
 //Name, Color, Human/Computer, Starting Location
 public abstract class Player {
@@ -9,6 +9,7 @@ public abstract class Player {
 	private int row, col;
 	private static final int CARD_AMOUNT = 3;
 	private ArrayList<Card> hand = new ArrayList<Card>(CARD_AMOUNT);
+	private Set<Card> seenCards = new HashSet<Card>();
 	
 	public Player(String name, String color, int row, int col) {
 		super();
@@ -23,6 +24,8 @@ public abstract class Player {
 	public int getRow() { return this.row; }
 	public int getCol() { return this.col; }
 	
-	public void setPlayerCards(Card card) { this.hand.add(card); }
+	public void updateHand(Card card) { this.hand.add(card); }
 	public ArrayList<Card> getPlayerCards() { return this.hand; }
+	public void updateSeen(Card seenCard) {}
+	public Card disproveSuggestion() { return null; }
 }
