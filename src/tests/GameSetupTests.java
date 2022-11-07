@@ -27,7 +27,6 @@ public class GameSetupTests {
 		// Initialize will load config files 
 		board.initialize();
 
-		
 		//room cards
 		livingroom = new Card("Living Room", CardType.ROOM);
 		bedroom = new Card("Bedroom", CardType.ROOM);

@@ -9,6 +9,10 @@ public class ComputerAITest {
 	// We make the Board static because we can load it one time and 
 	// then do all the tests. 
 	private static Board board;
+	private static ComputerPlayer player;
+	private static Solution solution;
+	private static BoardCell cell;
+	
 		
 	@BeforeAll
 	public static void setUp() {
@@ -18,20 +22,19 @@ public class ComputerAITest {
 		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");		
 		// Initialize will load config files 
 		board.initialize();
+		
+		solution = new Solution(new Card("Pablo Escobar", CardType.PERSON), new Card("Wire", CardType.WEAPON), new Card("Pool", CardType.ROOM));
+		player = new ComputerPlayer("Kenichi Shinoda", "yellow", 24, 4);
+		cell = new BoardCell(23, 20);
 	}
 	
 	@Test
 	public void selectTargets() {
-		ComputerPlayer player = new ComputerPlayer("Kenichi Shinoda", "yellow", 24, 4);
-		BoardCell cell = new BoardCell(23, 20);
 		assertEquals(cell, player.selectTarget());
 	}
 	
 	@Test
 	public void createSuggestion() {
-		ComputerPlayer player = new ComputerPlayer("Kenichi Shinoda", "yellow", 24, 4);
-		Solution solution = new Solution(new Card("Pablo Escobar", CardType.PERSON), new Card("Wire", CardType.WEAPON), new Card("Pool", CardType.ROOM));
 		assertEquals(solution, player.createSuggestion());
 	}
-
 }
