@@ -1,3 +1,364 @@
+commit bb041fcc3a9648ec88362cc4ec0a68c26c8473c9
+Merge: 5d46982 39a71ec
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 18:43:56 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit 5d46982347111c94cdf5018bbe22fc875d5844c8
+Merge: 3460c90 3d65aa3
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 18:43:43 2022 -0600
+
+    minor changes
+
+commit 39a71ecac5be92c9ea6c9ee594680649a2d32474
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 18:43:32 2022 -0600
+
+    minor changes
+
+commit 3460c90fdc0b74f66ce2eef62861a16fbae5f4ec
+Merge: c2ea596 1802dde
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 18:38:26 2022 -0600
+
+    minor changes
+
+commit 3d65aa330ab8ee9ccb41ac6e81d968a4a2e453a0
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 18:37:41 2022 -0600
+
+    modified testSolutionCards
+
+commit 1802dded9fc4b9839a04079c25a58b3ae095495f
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 18:35:29 2022 -0600
+
+    changed solution
+
+commit c2ea59679581be830139eb42af5c8e33810b49ad
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 18:35:17 2022 -0600
+
+    minor changes
+
+commit e46d62e226c19103c29fb972e4cc5a1ddcd4f030
+Merge: 2dce938 f8bff86
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 18:25:12 2022 -0600
+
+    created array for solution
+
+commit 2dce938044c3dd54689a630c67dc47eef0105b37
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 18:16:47 2022 -0600
+
+    added player cards test
+
+commit f8bff86d1c5a8476d9e3622994d2f99cd87c414e
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 18:16:18 2022 -0600
+
+    added getter for player list
+
+commit cdf2861cc39d37fd933ca44267aa1078bbd0178a
+Merge: 6cb847c 49467fe
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 17:58:07 2022 -0600
+
+    added comments to deal and setUpsoltion as well as others
+
+commit 49467fea2c5861bee72f167b5861e85f3eeb179b
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 17:57:12 2022 -0600
+
+    test for player cards size
+
+commit 6cb847c47b94db930e4e1f2ff4cace2cf52d62ab
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 17:57:10 2022 -0600
+
+    added comments to deal and setUpsoltion as well as others
+
+commit ec0a6ad25b3151278bd48b258d041f60cd92ca95
+Merge: 85ed84c eaeec49
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 17:42:19 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit 85ed84c8e2a1bfbd2e327aad0d20fc34712d2b89
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 17:42:14 2022 -0600
+
+    cards will be dealt to players
+
+commit eaeec49e532b5d2aeef66776696e3aa751f190ff
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 17:41:23 2022 -0600
+
+    created card arraylist in player
+
+commit 6edf86dd7b8d19ddb38d763a9515f305239693d4
+Merge: fa8f49f 228e9fb
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 17:28:42 2022 -0600
+
+    merge
+
+commit 228e9fb553cd9a2e2e4fe51cb18ae57d10532647
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 17:26:59 2022 -0600
+
+    have players add to player list
+
+commit fa8f49f219c4c62384edd584a222ce44b326ea89
+Merge: 3c6417a 3b141bd
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 17:25:37 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit 3c6417a7a984b22c283baa3f8e922745589cff74
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 17:25:32 2022 -0600
+
+    changed color to string
+
+commit 3b141bdc3ea4e443721d31663a02c030aae7d3a7
+Merge: ec4e484 0da7b33
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 17:23:38 2022 -0600
+
+    have players add to player list
+
+commit ec4e484a824c48c2f48ef2c52cdb0b87993d7fad
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 17:18:43 2022 -0600
+
+    minor changes
+
+commit 0da7b33c2809864cc0d078d41e3d53e99665ea4c
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 17:18:12 2022 -0600
+
+    added player list
+
+commit 3c49c0b110238308b1a4eefb23c651b884d837b8
+Merge: e324bba 5fc8c34
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 17:09:23 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit e324bba59d8a5557f0b3cfb3961589232cf8e290
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 17:09:18 2022 -0600
+
+    errors
+
+commit 5fc8c349f2c652d19e504305f52184a00ba31d26
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 16:50:34 2022 -0600
+
+    minor modifications
+
+commit 7ecbe37893ffd537f4262d2eeb291d0a91cf05a7
+Merge: afa1320 5096233
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 15:39:53 2022 -0600
+
+    merge
+
+commit afa1320b22798eaad3be29409b9a77b6c2b49903
+Merge: a98c8ac 52911e5
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 15:35:59 2022 -0600
+
+    merge
+
+commit 5096233592ff825c73b919ec880e27ee14a96748
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 13:50:53 2022 -0600
+
+    removed some this. form card class and fixed out of bound index when choosing computer player
+
+commit 998cb67ba33e9eb251ed5f343ecf2ef0bbf8235c
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 13:35:04 2022 -0600
+
+    remaining cards will be added to totaldeck inside solution method
+
+commit a98c8ac9d9da9151e7a7276eb7e65f34be3226bc
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 13:33:57 2022 -0600
+
+    created player objects in tests
+
+commit 52911e5ad4b095fa4db7ca0d2e7164346140f649
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 13:28:35 2022 -0600
+
+    added method named setUpSolution for adding cards to solution and started working of deal method
+
+commit cbdc0f5e46cbead7b2fc724d0ac3fa68db49e221
+Merge: 4200515 8b889d6
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 13:27:32 2022 -0600
+
+    errors
+
+commit 8b889d6871279704ea5185c85ec332534a3db847
+Merge: c40c0b6 3547733
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 13:25:18 2022 -0600
+
+    worked on tests and created getPlayerCards in Player
+
+commit 4200515085d635829370bcf91e5612ad1874fcd3
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 13:23:30 2022 -0600
+
+    added method named setUpSolution for adding cards to solution and started working of deal method
+
+commit c40c0b654612ea9a9338083dc986517c316b42fc
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 12:57:42 2022 -0600
+
+    created card variables to test
+
+commit 35477338a8b00b3cf212f8e23e705a0342b5d5cc
+Merge: 02c7164 a6a0211
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 12:53:32 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit a6a02117ca1517e8bdd699719b3bd10fc179ba6f
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 12:52:07 2022 -0600
+
+    added for loop over deck in deal
+
+commit 02c716449833a3cbab1f03775b018dc51f58ef45
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 12:47:01 2022 -0600
+
+    added imports to GameSetupTest and added testing for deck/cards
+
+commit 855a0c1147838a716b1316ca7ddba62b22e17585
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 12:39:00 2022 -0600
+
+    merge
+
+commit a3bcb5819de08517eceac64855690c9656bb20e2
+Merge: a53e3bf 4adbda9
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 12:36:39 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit a53e3bf4389df343915f1699e914b0c22c7a052d
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 12:36:32 2022 -0600
+
+    worked on tests
+
+commit 4adbda99385b172d694e20ea496785bab45a7981
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 3 12:35:36 2022 -0600
+
+    added deck to initialize to avoid future issues
+
+commit e09f7fe679b331ad0d21e05789b4551b1a510acc
+Merge: 734c955 0e8c28a
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Nov 2 16:53:28 2022 -0600
+
+    added deck and added cards to deck, shuffled deck in deal method
+
+commit 734c955cb8b7a41159ca400b63f794c05051c63f
+Merge: 9e8fdec e1e06d4
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Nov 2 16:47:07 2022 -0600
+
+    making deck
+
+commit 0e8c28a2ac8cbf010629316d63cf5f35cba31a57
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 2 16:46:28 2022 -0600
+
+    changed String color to Color color
+
+commit 9e8fdec79400823c525176d8485a44f6647c93e8
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Nov 2 16:22:44 2022 -0600
+
+    fixing error
+
+commit 31a4602d662428e2255aa694293d38ecaf41e686
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Nov 2 16:17:39 2022 -0600
+
+    added getters for player class
+
+commit e1e06d4317a9da8ae9f012b50d5eee4ef442873a
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 2 16:17:30 2022 -0600
+
+    created all cards
+
+commit 405b1bb94e136a1fe8c3895dd3d46f8a5c8e7fd4
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 2 15:54:32 2022 -0600
+
+    worked on loading cards and Card class
+
+commit 1b1147deb141e1675cfc2274a76a6342aecf912f
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 2 15:36:57 2022 -0600
+
+    modified setup file (added player and weapon cards)
+
+commit 6b9164b67cd17a0dd2c03115a341be375f6a1651
+Merge: 7176192 6dcc951
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 2 15:22:38 2022 -0600
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit 71761922085cce02012e2ef172b0d497c517b5aa
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 2 15:22:31 2022 -0600
+
+    added comments for weapon choice
+
+commit 6dcc951caf4f930c308dd77e419c27c165b83515
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Nov 2 15:21:06 2022 -0600
+
+    put down names of players
+
+commit d2a2943ad4b3782c27409b8638af127b4060d400
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Nov 1 13:45:23 2022 -0600
+
+    created card type methods in Card and constructor in Player and subclasses; created GameSetupTests class
+
+commit a8414816a8f65eaa14a09766bcf10f9edbb1792a
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Nov 1 13:16:38 2022 -0600
+
+    created UML methods and variables
+
+commit 3c8739b334aede1f12803e28d5634557e9c85202
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Nov 1 13:10:19 2022 -0600
+
+    created cardtype enum, and card, solution, player, human player, computer player classes
+
 commit 1b3b83f1388141758f75c6351fb740e7f35db8cb
 Author: Anastasia Velychko <avelychko@mines.edu>
 Date:   Mon Oct 24 22:49:13 2022 -0600

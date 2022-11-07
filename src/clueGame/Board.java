@@ -401,6 +401,16 @@ public class Board {
 		}
 	}
 
+	public boolean checkAccusation() {
+		return false;
+		
+	}
+	
+	public Card handleSuggestion() {
+		return null;
+		
+	}
+	
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); } 
 	public Set<BoardCell> getTargets() { return targets; } //returns the targets last created by calcTargets()
 

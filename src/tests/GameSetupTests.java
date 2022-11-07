@@ -26,6 +26,7 @@ public class GameSetupTests {
 		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");		
 		// Initialize will load config files 
 		board.initialize();
+
 		
 		//room cards
 		livingroom = new Card("Living Room", CardType.ROOM);
