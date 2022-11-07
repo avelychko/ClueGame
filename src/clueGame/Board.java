@@ -402,7 +402,7 @@ public class Board {
 	}
 
 	// if player makes an accusation and is correct then they will win, if not they will kick from the game
-	public boolean checkAccusation(Solution answer, Card room, Card person, Card weapon) {
+	public boolean checkAccusation(Card room, Card person, Card weapon) {
 	
 		if ((room == answer.getRoom()) && (person == answer.getPerson()) && (weapon == answer.getWeapon())) return true;
 		
@@ -413,14 +413,25 @@ public class Board {
 	}
 	
 	//goes through each player to see if they can dispute the suggestion, if they can return the card 
-	public Card handleSuggestion(Card room, Card person, Card weapon) {
-		for (Player character: player) {
-			if (character.disproveSuggestion(room, person, weapon) == null) continue;			
-			return character.disproveSuggestion(room, person, weapon);
+
+	public Card handleSuggestion(Player character,Card room, Card person, Card weapon) {
+		int indexPLayer = player.indexOf(character);
+	
+		while(true) {
+			indexPLayer++;
+			if (indexPLayer == player.size()) {
+				indexPLayer = 0;
+			}
+			if (indexPLayer == player.indexOf(character)) {
+				return null;
+			}
+			
+			if (player.get(indexPLayer).disproveSuggestion(room, person, weapon) != null) break;			
+			
 		}
-		return null;
-		
+		return player.get(indexPLayer).disproveSuggestion(room, person, weapon);
 	}
+	
 	
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); } 
 	public Set<BoardCell> getTargets() { return targets; } //returns the targets last created by calcTargets()
@@ -437,4 +448,6 @@ public class Board {
 	
 	public ArrayList<Player> getPlayer() { return player; }
 	public Solution getSolution() { return answer; }
+	public void setAnswer(Solution answer) {this.answer = answer;}
+
 }

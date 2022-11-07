@@ -54,6 +54,7 @@ public class GameSolutionTest {
 
 		//solution
 		solution = new Solution(pool, pabloEscobar, wire);
+		board.setAnswer(solution);
 		
 	}
 	
@@ -63,7 +64,7 @@ public class GameSolutionTest {
 		player.updateHand(pool);
 		player.updateHand(pabloEscobar);
 		player.updateHand(wire);
-		assertTrue(board.checkAccusation(solution, pool, pabloEscobar, wire));
+		assertTrue(board.checkAccusation(pool, pabloEscobar, wire));
 	}
 	
 	@Test
@@ -111,20 +112,20 @@ public class GameSolutionTest {
 		player.updateHand(garden);
 		player.updateHand(pabloEscobar);
 		player.updateHand(katana);
-		assertEquals(solution.getPerson(), board.handleSuggestion(pool, pabloEscobar, wire));
+		assertEquals(solution.getPerson(), board.handleSuggestion(player, pool, pabloEscobar, wire));
 		
 		//tests room suggestion
 		player.hand.clear();
 		player.updateHand(garden);
 		player.updateHand(pool);
 		player.updateHand(katana);
-		assertEquals(solution.getRoom(), board.handleSuggestion(pool, pabloEscobar, wire));
+		assertEquals(solution.getRoom(), board.handleSuggestion(player, pool, pabloEscobar, wire));
 		
 		//tests weapon suggestion
 		player.hand.clear();
 		player.updateHand(garden);
 		player.updateHand(wire);
 		player.updateHand(katana);
-		assertEquals(solution.getWeapon(), board.handleSuggestion(pool, pabloEscobar, wire));
+		assertEquals(solution.getWeapon(), board.handleSuggestion(player, pool, pabloEscobar, wire));
 	}
 }
