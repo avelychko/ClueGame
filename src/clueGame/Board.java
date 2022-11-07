@@ -407,7 +407,7 @@ public class Board {
 		if ((room == answer.getRoom()) && (person == answer.getPerson()) && (weapon == answer.getWeapon())) return true;
 		
 		// if the accusation is wrong
-		else return false;
+		return false;
 		
 	}
 	
