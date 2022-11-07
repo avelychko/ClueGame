@@ -28,6 +28,7 @@ public abstract class Player {
 	public ArrayList<Card> getPlayerCards() { return this.hand; }
 	public void updateSeen(Card seenCard) {}
 	
+	//checks if the player has the card and will return it in the end, if they have multiple then one will be chosen at random
 	public Card disproveSuggestion(Card room, Card person, Card weapon) { 
 		ArrayList<Card> disproveCards= new ArrayList<>();
 		
@@ -38,8 +39,8 @@ public abstract class Player {
 		if (hand.contains(weapon)) disproveCards.add(weapon);
 		
 		
-		
 		if (disproveCards.size() == 0) return null;
+		
 		
 		if (disproveCards.size() > 1) {
 			Random rand = new Random();
