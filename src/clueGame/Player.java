@@ -27,5 +27,26 @@ public abstract class Player {
 	public void updateHand(Card card) { this.hand.add(card); }
 	public ArrayList<Card> getPlayerCards() { return this.hand; }
 	public void updateSeen(Card seenCard) {}
-	public Card disproveSuggestion() { return null; }
+	
+	public Card disproveSuggestion(Card room, Card person, Card weapon) { 
+		ArrayList<Card> disproveCards= new ArrayList<>();
+		
+		if (hand.contains(room)) disproveCards.add(room);
+		
+		if (hand.contains(person)) disproveCards.add(person);
+			
+		if (hand.contains(weapon)) disproveCards.add(weapon);
+		
+		
+		
+		if (disproveCards.size() == 0) return null;
+		
+		if (disproveCards.size() > 1) {
+			Random rand = new Random();
+			int randomIndex = rand.nextInt(disproveCards.size());
+			return disproveCards.get(randomIndex);
+		}
+		
+		
+		return disproveCards.get(0); }
 }

@@ -411,7 +411,11 @@ public class Board {
 		
 	}
 	
-	public Card handleSuggestion() {
+	public Card handleSuggestion(Card room, Card person, Card weapon) {
+		for (Player character: player) {
+			
+		
+		}
 		return null;
 		
 	}
