@@ -56,7 +56,7 @@ public class ComputerAITest {
 		golfClub = new Card("Golf Club", CardType.WEAPON);
 		
 		//solution
-		solution = new Solution(pabloEscobar, wire, pool);
+		solution = new Solution(pool, pabloEscobar, wire);
 		
 		//cell
 		cell = new BoardCell(23, 20);
