@@ -52,13 +52,13 @@ public class GameSolutionTest {
 		wire = new Card("Wire", CardType.WEAPON);
 		golfClub = new Card("Golf Club", CardType.WEAPON);
 		
-		//solution
-		solution = new Solution(pabloEscobar, wire, pool);
+		//solution (room, person, weapon)
+		solution = new Solution(pool, pabloEscobar, wire);
 	}
 	
 	@Test
 	public void checkAccusation() {
-		assertTrue(board.checkAccusation(pabloEscobar, wire, pool));
+		assertTrue(board.checkAccusation(pool, pabloEscobar, wire));
 	}
 	
 	@Test
