@@ -418,6 +418,7 @@ public class Board {
 		int indexPLayer = player.indexOf(character);
 	
 		while(true) {
+			
 			indexPLayer++;
 			if (indexPLayer == player.size()) {
 				indexPLayer = 0;
@@ -426,11 +427,13 @@ public class Board {
 				return null;
 			}
 			
-			if (player.get(indexPLayer).disproveSuggestion(room, person, weapon) != null) break;			
+			if (player.get(indexPLayer).disproveSuggestion(room, person, weapon) != null) break;
+			
 			
 		}
 		return player.get(indexPLayer).disproveSuggestion(room, person, weapon);
 	}
+	
 	
 	
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); } 
@@ -449,5 +452,7 @@ public class Board {
 	public ArrayList<Player> getPlayer() { return player; }
 	public Solution getSolution() { return answer; }
 	public void setAnswer(Solution answer) {this.answer = answer;}
-
+	public void setPlayer(ArrayList<Player> player) {
+		this.player = player;
+	}
 }
