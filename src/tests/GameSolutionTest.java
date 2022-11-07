@@ -52,26 +52,55 @@ public class GameSolutionTest {
 		wire = new Card("Wire", CardType.WEAPON);
 		golfClub = new Card("Golf Club", CardType.WEAPON);
 		
-		//solution (room, person, weapon)
+
+		//solution
+		
 		solution = new Solution(pool, pabloEscobar, wire);
+		
 	}
 	
 	@Test
 	public void checkAccusation() {
-		assertTrue(board.checkAccusation(pool, pabloEscobar, wire));
+
+		player.hand.clear();
+		player.updateHand(pool);
+		player.updateHand(pabloEscobar);
+		player.updateHand(wire);
+
+		assertTrue(board.checkAccusation(solution, pool, pabloEscobar, wire));
 	}
 	
 	@Test
 	public void disproveSuggestion() {
-		assertEquals(solution.getPerson(), player.disproveSuggestion(pabloEscobar, wire, pool));
-		assertEquals(solution.getRoom(), player.disproveSuggestion(pabloEscobar, wire, pool));
-		assertEquals(solution.getWeapon(), player.disproveSuggestion(pabloEscobar, wire, pool));
+		//tests person suggestion
+		player.hand.clear();
+		player.updateHand(garden);
+		player.updateHand(pabloEscobar);
+		player.updateHand(katana);
+		assertEquals(solution.getPerson(), player.disproveSuggestion(pool, pabloEscobar, wire));
+		
+		//tests room suggestion
+		player.hand.clear();
+		player.updateHand(garden);
+		player.updateHand(pool);
+		player.updateHand(katana);
+		assertEquals(solution.getRoom(), player.disproveSuggestion(pool, pabloEscobar, wire));
+		
+		//tests weapon suggestion
+		player.hand.clear();
+		player.updateHand(garden);
+		player.updateHand(wire);
+		player.updateHand(katana);
+		assertEquals(solution.getWeapon(), player.disproveSuggestion(pool, pabloEscobar, wire));
+		
+		//test multiple suggestions
+		
 	}
 	
 	@Test
 	public void handleSuggestion() {
-		assertEquals(solution.getPerson(), board.handleSuggestion(pabloEscobar, wire, pool));
-		assertEquals(solution.getRoom(), board.handleSuggestion(pabloEscobar, wire, pool));
-		assertEquals(solution.getWeapon(), board.handleSuggestion(pabloEscobar, wire, pool));
+		assertEquals(solution.getPerson(), board.handleSuggestion(pool, pabloEscobar, wire));
+		assertEquals(solution.getRoom(), board.handleSuggestion(pool, pabloEscobar, wire));
+		assertEquals(solution.getWeapon(), board.handleSuggestion(pool, pabloEscobar, wire));
 	}
 }
