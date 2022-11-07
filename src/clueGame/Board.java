@@ -379,7 +379,7 @@ public class Board {
 			Card randomFirstCard = totalDeck.get(randomIndexFirstCard);
 			totalDeck.remove(randomIndexFirstCard);
 		
-			player.get(i).setPlayerCards(randomFirstCard);
+			player.get(i).updateHand(randomFirstCard);
 			
 			
 			//second card
@@ -388,7 +388,7 @@ public class Board {
 			Card randomSecondCard = totalDeck.get(randomIndexSecondCard);
 			totalDeck.remove(randomIndexSecondCard);
 		
-			player.get(i).setPlayerCards(randomSecondCard);
+			player.get(i).updateHand(randomSecondCard);
 			
 			
 			//third card
@@ -397,7 +397,7 @@ public class Board {
 			Card randomThirdCard = totalDeck.get(randomIndexThirdCard);
 			totalDeck.remove(randomIndexThirdCard);
 		
-			player.get(i).setPlayerCards(randomThirdCard);
+			player.get(i).updateHand(randomThirdCard);
 		}
 	}
 
