@@ -10,6 +10,7 @@ public abstract class Player {
 	private static final int CARD_AMOUNT = 3;
 	public ArrayList<Card> hand = new ArrayList<Card>(CARD_AMOUNT);
 	private Set<Card> seenCards = new HashSet<Card>();
+	private ArrayList<Card> disproveCards;
 	
 	public Player(String name, String color, int row, int col) {
 		super();
@@ -30,7 +31,7 @@ public abstract class Player {
 	
 	//checks if the player has the card and will return it in the end, if they have multiple then one will be chosen at random
 	public Card disproveSuggestion(Card room, Card person, Card weapon) { 
-		ArrayList<Card> disproveCards= new ArrayList<>();
+		disproveCards = new ArrayList<>();
 		
 		if (hand.contains(room)) disproveCards.add(room);
 		

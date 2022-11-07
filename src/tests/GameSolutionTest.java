@@ -89,7 +89,20 @@ public class GameSolutionTest {
 		assertEquals(solution.getWeapon(), player.disproveSuggestion(pool, pabloEscobar, wire));
 		
 		//test multiple suggestions
+		player.hand.clear();
+		player.updateHand(pool);
+		player.updateHand(wire);
+		player.updateHand(katana);
+		for (int i = 0; i < player.hand.size(); i++) {
+			assertEquals(player.hand.get(i), player.disproveSuggestion(pool, pabloEscobar, wire));
+		}
 		
+		//test null
+		player.hand.clear();
+		player.updateHand(garden);
+		player.updateHand(alCapone);
+		player.updateHand(katana);
+		assertEquals(null, player.disproveSuggestion(pool, pabloEscobar, wire));
 	}
 	
 	@Test
