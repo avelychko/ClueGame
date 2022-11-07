@@ -28,20 +28,20 @@ public class GameSolutionTest {
 	
 	@Test
 	public void checkAccusation() {
-		assertTrue(board.checkAccusation());
+		assertTrue(board.checkAccusation(new Card("Pablo Escobar", CardType.PERSON), new Card("Wire", CardType.WEAPON), new Card("Pool", CardType.ROOM)));
 	}
 	
 	@Test
 	public void disproveSuggestion() {
-		assertEquals(solution.getPerson(), player.disproveSuggestion());
-		assertEquals(solution.getRoom(), player.disproveSuggestion());
-		assertEquals(solution.getWeapon(), player.disproveSuggestion());
+		assertEquals(solution.getPerson(), player.disproveSuggestion(new Card("Pablo Escobar", CardType.PERSON), new Card("Wire", CardType.WEAPON), new Card("Pool", CardType.ROOM)));
+		assertEquals(solution.getRoom(), player.disproveSuggestion(new Card("Pablo Escobar", CardType.PERSON), new Card("Wire", CardType.WEAPON), new Card("Pool", CardType.ROOM)));
+		assertEquals(solution.getWeapon(), player.disproveSuggestion(new Card("Pablo Escobar", CardType.PERSON), new Card("Wire", CardType.WEAPON), new Card("Pool", CardType.ROOM)));
 	}
 	
 	@Test
 	public void handleSuggestion() {
-		assertEquals(solution.getPerson(), board.handleSuggestion());
-		assertEquals(solution.getRoom(), board.handleSuggestion());
-		assertEquals(solution.getWeapon(), board.handleSuggestion());
+		assertEquals(solution.getPerson(), board.handleSuggestion(new Card("Pablo Escobar", CardType.PERSON), new Card("Wire", CardType.WEAPON), new Card("Pool", CardType.ROOM)));
+		assertEquals(solution.getRoom(), board.handleSuggestion(new Card("Pablo Escobar", CardType.PERSON), new Card("Wire", CardType.WEAPON), new Card("Pool", CardType.ROOM)));
+		assertEquals(solution.getWeapon(), board.handleSuggestion(new Card("Pablo Escobar", CardType.PERSON), new Card("Wire", CardType.WEAPON), new Card("Pool", CardType.ROOM)));
 	}
 }
