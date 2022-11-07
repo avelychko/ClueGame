@@ -416,7 +416,7 @@ public class Board {
 	public Card handleSuggestion(Card room, Card person, Card weapon) {
 		for (Player character: player) {
 			if (character.disproveSuggestion(room, person, weapon) == null) continue;			
-			else return character.disproveSuggestion(room, person, weapon);
+			return character.disproveSuggestion(room, person, weapon);
 		}
 		return null;
 		

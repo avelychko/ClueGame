@@ -31,7 +31,7 @@ public abstract class Player {
 	
 	//checks if the player has the card and will return it in the end, if they have multiple then one will be chosen at random
 	public Card disproveSuggestion(Card room, Card person, Card weapon) { 
-		disproveCards = new ArrayList<>();
+		disproveCards = new ArrayList<Card>();
 		
 		if (hand.contains(room)) disproveCards.add(room);
 		
