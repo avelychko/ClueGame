@@ -54,6 +54,7 @@ public class GameSolutionTest {
 
 		//solution
 		solution = new Solution(pool, pabloEscobar, wire);
+		board.setAnswer(solution);
 		
 	}
 	
@@ -63,7 +64,7 @@ public class GameSolutionTest {
 		player.updateHand(pool);
 		player.updateHand(pabloEscobar);
 		player.updateHand(wire);
-		assertTrue(board.checkAccusation(solution, pool, pabloEscobar, wire));
+		assertTrue(board.checkAccusation(pool, pabloEscobar, wire));
 	}
 	
 	@Test
