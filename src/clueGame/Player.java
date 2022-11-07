@@ -26,10 +26,7 @@ public abstract class Player {
 	
 	public void updateHand(Card card) { this.hand.add(card); }
 	public ArrayList<Card> getPlayerCards() { return this.hand; }
-	
-	public void updateSeen(Card seenCard) {
-		
-	}
+	public void updateSeen(Card seenCard) { this.seenCards.add(seenCard); }
 	
 	public Card disproveSuggestion() { return null; }
 }
