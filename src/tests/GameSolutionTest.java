@@ -51,22 +51,18 @@ public class GameSolutionTest {
 		throwingStars = new Card("Throwing Stars", CardType.WEAPON);
 		wire = new Card("Wire", CardType.WEAPON);
 		golfClub = new Card("Golf Club", CardType.WEAPON);
-		
 
 		//solution
-		
 		solution = new Solution(pool, pabloEscobar, wire);
 		
 	}
 	
 	@Test
 	public void checkAccusation() {
-
 		player.hand.clear();
 		player.updateHand(pool);
 		player.updateHand(pabloEscobar);
 		player.updateHand(wire);
-
 		assertTrue(board.checkAccusation(solution, pool, pabloEscobar, wire));
 	}
 	
@@ -93,27 +89,42 @@ public class GameSolutionTest {
 		player.updateHand(katana);
 		assertEquals(solution.getWeapon(), player.disproveSuggestion(pool, pabloEscobar, wire));
 		
-		//test multiple suggestions
-		player.hand.clear();
-		player.updateHand(pool);
-		player.updateHand(wire);
-		player.updateHand(katana);
-		for (int i = 0; i < player.hand.size(); i++) {
-			assertEquals(player.hand.get(i), player.disproveSuggestion(pool, pabloEscobar, wire));
-		}
-		
 		//test null
 		player.hand.clear();
 		player.updateHand(garden);
 		player.updateHand(alCapone);
 		player.updateHand(katana);
 		assertEquals(null, player.disproveSuggestion(pool, pabloEscobar, wire));
+		
+		//test multiple suggestions
+		player.hand.clear();
+		player.updateHand(garden);
+		player.updateHand(pabloEscobar);
+		player.updateHand(pool);
+		assertTrue(player.hand.contains(player.disproveSuggestion(pool, pabloEscobar, wire)));
 	}
 	
 	@Test
 	public void handleSuggestion() {
+		//tests person suggestion
+		player.hand.clear();
+		player.updateHand(garden);
+		player.updateHand(pabloEscobar);
+		player.updateHand(katana);
 		assertEquals(solution.getPerson(), board.handleSuggestion(pool, pabloEscobar, wire));
+		
+		//tests room suggestion
+		player.hand.clear();
+		player.updateHand(garden);
+		player.updateHand(pool);
+		player.updateHand(katana);
 		assertEquals(solution.getRoom(), board.handleSuggestion(pool, pabloEscobar, wire));
+		
+		//tests weapon suggestion
+		player.hand.clear();
+		player.updateHand(garden);
+		player.updateHand(wire);
+		player.updateHand(katana);
 		assertEquals(solution.getWeapon(), board.handleSuggestion(pool, pabloEscobar, wire));
 	}
 }
