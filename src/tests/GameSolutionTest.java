@@ -126,5 +126,12 @@ public class GameSolutionTest {
 		player.updateHand(wire);
 		player.updateHand(katana);
 		assertEquals(solution.getWeapon(), board.handleSuggestion(player, pool, pabloEscobar, wire));
+		
+		//tests weapon suggestion
+		player.hand.clear();
+		player.updateHand(garden);
+		player.updateHand(alCapone);
+		player.updateHand(katana);
+		assertEquals(null, board.handleSuggestion(player, pool, pabloEscobar, wire));
 	}
 }
