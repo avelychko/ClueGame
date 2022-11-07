@@ -28,6 +28,7 @@ public abstract class Player {
 	public void updateHand(Card card) { this.hand.add(card); }
 	public ArrayList<Card> getPlayerCards() { return this.hand; }
 	public void updateSeen(Card seenCard) { this.seenCards.add(seenCard); }
+	public Set<Card> getSeenCards() { return this.seenCards; }
 	
 	//checks if the player has the card and will return it in the end, if they have multiple then one will be chosen at random
 	public Card disproveSuggestion(Card room, Card person, Card weapon) { 
