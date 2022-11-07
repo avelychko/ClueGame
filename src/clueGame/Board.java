@@ -401,12 +401,22 @@ public class Board {
 		}
 	}
 
-	public boolean checkAccusation() {
+	// if player makes an accusation and is correct then they will win, if not they will kick from the game
+	public boolean checkAccusation(Card room, Card person, Card weapon) {
+	
+		if ((room == answer.getRoom()) && (person == answer.getPerson()) && (weapon == answer.getWeapon())) return true;
+		
+		// if the accusation is wrong
 		return false;
 		
 	}
 	
-	public Card handleSuggestion() {
+	//goes through each player to see if they can dispute the suggestion, if they can return the card 
+	public Card handleSuggestion(Card room, Card person, Card weapon) {
+		for (Player character: player) {
+			if (character.disproveSuggestion(room, person, weapon) == null) continue;			
+			else return character.disproveSuggestion(room, person, weapon);
+		}
 		return null;
 		
 	}
