@@ -420,9 +420,6 @@ public class Board {
 		int indexPLayer = player.indexOf(character);
 	
 		while(true) {
-			//System.out.println(player.get(indexPLayer).getName());
-			
-			
 			
 			if (player.get(indexPLayer).disproveSuggestion(room, person, weapon) != null) return player.get(indexPLayer).disproveSuggestion(room, person, weapon);;
 			indexPLayer++;

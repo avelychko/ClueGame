@@ -39,14 +39,22 @@ public class ComputerPlayer extends Player {
 
 	// This is another simplified (i.e. read brain dead) AI, in which the computer 
 	//player selects that location he or she wishes to move to from the target list. 
-	public BoardCell selectTarget() { 
-		Set<BoardCell> cell = board.getTargets();
+	public BoardCell selectTarget(int movement) { 
+		board.calcTargets(board.getCell(super.getRow(), super.getCol()), movement);
+		Set<BoardCell> targets= board.getTargets();
 		
-		for (int i = 0; i < cell.size(); i++) {
-			
+		for (BoardCell location: targets) {
+			//needs to check seencards
+			if(location.getRoom()) {
+				return location;
+			}
 		}
-
-		return null; 
+		
+		BoardCell[] randomTarget = targets.toArray(new BoardCell[0]);
+		Random randLocation = new Random();
+		int randomIndexLocation = randLocation.nextInt(randomTarget.length);
+		
+		return randomTarget[randomIndexLocation];
 	}
-
 }
+
