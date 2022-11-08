@@ -79,7 +79,7 @@ public class GameSolutionTest {
 		player2.updateHand(pool);
 		player2.updateHand(katana);
 		//weapon card
-		player3.updateHand(garden);
+		player3.updateHand(kitchen);
 		player3.updateHand(wire);
 		player3.updateHand(livingroom);
 		//no card
@@ -112,7 +112,7 @@ public class GameSolutionTest {
 		assertEquals(solution.getRoom(), player2.disproveSuggestion(pool, pabloEscobar, wire));
 		
 		//tests weapon suggestion
-		assertEquals(solution.getWeapon(), player3.disproveSuggestion(pool, pabloEscobar, wire));
+		assertEquals(solution.getWeapon(), player3.disproveSuggestion(diningroom, pabloEscobar, wire));
 		
 		//test null
 		assertEquals(null, player4.disproveSuggestion(pool, pabloEscobar, wire));
