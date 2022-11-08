@@ -9,15 +9,16 @@ public class ComputerAITest {
 	// We make the Board static because we can load it one time and 
 	// then do all the tests. 
 	private static Board board;
-	private static ComputerPlayer player1, player2, player3;
+	private static ComputerPlayer player1, player2, player3, player4, player5, player6;
 	private static Solution solution;
-	private static BoardCell cell;
+	private static BoardCell cell1, cell2, cell3, cell4;
 	private static Card livingroom, bedroom, kitchen, garden, diningroom, atrium, bathroom, office, pool,
 	alCapone, kenichiShinoda, pabloEscobar, eddieMcGrath, benjaminSiegel, matteoDenaro,
 	pistol, poison, katana, throwingStars, wire, golfClub;
 	private static ArrayList<Card> roomDeck; // array list stores room cards
 	private static ArrayList<Card> personDeck; // array list stores person cards
 	private static ArrayList<Card> weaponDeck; // array list stores weapon cards
+	//private static Set<BoardCell> targets1, targets2, targets3;
 		
 	@BeforeAll
 	public static void setUp() {
@@ -31,7 +32,9 @@ public class ComputerAITest {
 		//player
 		player1 = new ComputerPlayer("Kenichi Shinoda", "yellow", 2, 17);
 		player2 = new ComputerPlayer("Benjamin Siegel", "Magenta", 2, 17);
-		player3 = new ComputerPlayer("Matteo Denaro", "Red", 2, 17);
+		player3 = new ComputerPlayer("Matteo Denaro", "Red", 0, 10);
+		player4 = new ComputerPlayer("Eddie McGrath", "Green", 14, 0);
+		player5 = new ComputerPlayer("Pablo Escobar", "Blue", 24, 4);
 		
 		//room cards
 		livingroom = new Card("Living Room", CardType.ROOM);
@@ -81,6 +84,7 @@ public class ComputerAITest {
 		weaponDeck.add(katana);
 		weaponDeck.add(wire);
 		
+		//hand and seen for player1
 		player1.updateHand(pabloEscobar);
 		player1.updateHand(pool);
 		player1.updateHand(wire);
@@ -92,6 +96,7 @@ public class ComputerAITest {
 		player1.updateSeen(pistol);
 		player1.updateSeen(alCapone);
 		
+		//hand and seen for player2
 		player2.updateHand(pabloEscobar);
 		player2.updateHand(katana);
 		player2.updateHand(wire);
@@ -101,13 +106,20 @@ public class ComputerAITest {
 		player2.updateSeen(office);
 		player2.updateSeen(pistol);
 		
-		//cell
-		cell = new BoardCell(23, 20);
+		//seen room
+		player5.updateSeen(livingroom);
 	}
 	
 	@Test
 	public void selectTargets() {
-		assertEquals(cell, player1.selectTarget());
+		//if no rooms in list, select randomly
+		assertTrue(board.getTargets().contains(player3.selectTarget(2)));
+		
+		//if room in list that has not been seen, select it
+		assertEquals(board.getCell(20, 1), player4.selectTarget(3));
+		
+		//if room in list that has been seen, each target (including room) selected randomly
+		assertTrue(board.getTargets().contains(player5.selectTarget(8)));
 	}
 	
 	@Test
