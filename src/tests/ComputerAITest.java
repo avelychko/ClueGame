@@ -106,6 +106,8 @@ public class ComputerAITest {
 		player2.updateSeen(katana);
 		player2.updateSeen(office);
 		player2.updateSeen(pistol);
+		player2.updateSeen(alCapone);
+		player2.updateSeen(pool);
 		
 		//hand and seen for player3
 		player3.updateHand(pabloEscobar);
@@ -116,6 +118,8 @@ public class ComputerAITest {
 		player3.updateSeen(eddieMcGrath);
 		player3.updateSeen(office);
 		player3.updateSeen(pistol);
+		player3.updateSeen(alCapone);
+		player3.updateSeen(pool);
 		
 		//seen room
 		player6.updateSeen(livingroom);

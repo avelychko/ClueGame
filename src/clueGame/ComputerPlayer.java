@@ -42,7 +42,7 @@ public class ComputerPlayer extends Player {
 		Set<BoardCell> targets= board.getTargets();
 		
 		for (BoardCell location: targets) {
-			//needs to check seencards
+			//if room and not seen, then go to
 			if(location.isRoomCenter() && !getSeenCards().contains(location)) {
 				return location;
 			}
