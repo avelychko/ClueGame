@@ -415,7 +415,6 @@ public class Board {
 	}
 	
 	//goes through each player to see if they can dispute the suggestion, if they can return the card 
-
 	public Card handleSuggestion(Player character,Card room, Card person, Card weapon) {
 		int indexPLayer = player.indexOf(character);
 		while(true) {
@@ -423,13 +422,12 @@ public class Board {
 			if (indexPLayer == player.size()) {
 				indexPLayer = 0;
 			}
-			
+			//reaches back to the player
 			if (indexPLayer == player.indexOf(character)) {
 				return null;
 			}
 			
-			if (player.get(indexPLayer).disproveSuggestion(room, person, weapon) != null) 
-				return player.get(indexPLayer).disproveSuggestion(room, person, weapon);
+			if (player.get(indexPLayer).disproveSuggestion(room, person, weapon) != null) return player.get(indexPLayer).disproveSuggestion(room, person, weapon);
 		
 		}
 		
