@@ -81,7 +81,7 @@ public class GameSolutionTest {
 		//weapon card
 		player3.updateHand(kitchen);
 		player3.updateHand(wire);
-		player3.updateHand(livingroom);
+		player3.updateHand(pool);
 		//no card
 		player4.updateHand(garden);
 		player4.updateHand(alCapone);

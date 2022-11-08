@@ -45,10 +45,17 @@ public class ComputerPlayer extends Player {
 		
 		for (BoardCell location: targets) {
 			//needs to check seencards
-			if(location.getRoom()) {
+			if(location.isRoomCenter() && !getSeenCards().contains(location)) {
 				return location;
 			}
 		}
+		
+//		for (BoardCell location: targets) {
+//			//needs to check seencards
+//			if(location.getRoom()) {
+//				return location;
+//			}
+//		}
 		
 		BoardCell[] randomTarget = targets.toArray(new BoardCell[0]);
 		Random randLocation = new Random();
