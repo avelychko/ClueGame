@@ -76,7 +76,7 @@ public class Board {
 		deal();
 	}
 
-	
+
 	private void setAdj() {
 		for (int row = 0; row < numRows; row++) {
 			for (int col = 0; col < numColumns; col++) {
@@ -342,34 +342,33 @@ public class Board {
 			visited.remove(adjCell); //remove visited adj cell
 		}
 	}
-	
+
 	//grabs three random cards from each deck and puts it into solution, and removes it so it's not given to players, and makes the deck used to deal to players
 	public void setUpSolution() {
 		Random randRoom = new Random();
 		int randomIndexRoom = randRoom.nextInt(roomDeck.size());
 		Card randomRoomCard = roomDeck.get(randomIndexRoom);
 		roomDeck.remove(randomIndexRoom);
-		
+
 		Random randPerson = new Random();
 		int randomIndexPerson = randPerson.nextInt(personDeck.size());
 		Card randomPersonCard = personDeck.get(randomIndexPerson);
 		personDeck.remove(randomIndexPerson);
-		
+
 		Random randWeapon = new Random();
 		int randomIndexWeapon = randWeapon.nextInt(weaponDeck.size());
 		Card randomWeaponCard = weaponDeck.get(randomIndexWeapon);
 		weaponDeck.remove(randomIndexWeapon);
-		
+
 		answer = new Solution(randomRoomCard, randomPersonCard, randomWeaponCard); //Deal cards to the Answer
-		
-		
+
 		//adds all cards to total deck to be given to players
 		for (Card i: roomDeck) totalDeck.add(i);
 		for (Card i: personDeck) totalDeck.add(i);
 		for (Card i: weaponDeck) totalDeck.add(i);
 		Collections.shuffle(totalDeck);//Create complete deck of cards (weapons, people and rooms)
 	}
-	
+
 	//deals 3 random cards to each player from totalDeck and removes them to avoid dups
 	public void deal() {
 		for (int i = 0; i < player.size(); i++) {
@@ -378,26 +377,25 @@ public class Board {
 			int randomIndexFirstCard = randFirstCard.nextInt(totalDeck.size());
 			Card randomFirstCard = totalDeck.get(randomIndexFirstCard);
 			totalDeck.remove(randomIndexFirstCard);
-		
+
 			player.get(i).updateHand(randomFirstCard);
 			player.get(i).updateSeen(randomFirstCard);
-			
+
 			//second card
 			Random randSecondCard = new Random();
 			int randomIndexSecondCard = randSecondCard.nextInt(totalDeck.size());
 			Card randomSecondCard = totalDeck.get(randomIndexSecondCard);
 			totalDeck.remove(randomIndexSecondCard);
-		
+
 			player.get(i).updateHand(randomSecondCard);
 			player.get(i).updateSeen(randomSecondCard);
-			
-			
+
 			//third card
 			Random randThirdCard = new Random();
 			int randomIndexThirdCard = randThirdCard.nextInt(totalDeck.size());
 			Card randomThirdCard = totalDeck.get(randomIndexThirdCard);
 			totalDeck.remove(randomIndexThirdCard);
-		
+
 			player.get(i).updateHand(randomThirdCard);
 			player.get(i).updateSeen(randomThirdCard);
 		}
@@ -405,36 +403,22 @@ public class Board {
 
 	// if player makes an accusation and is correct then they will win, if not they will kick from the game
 	public boolean checkAccusation(Card room, Card person, Card weapon) {
-	
 		if ((room == answer.getRoom()) && (person == answer.getPerson()) && (weapon == answer.getWeapon())) return true;
-		
-		
-		// if the accusation is wrong
-		return false;
-		
+		return false; // if the accusation is wrong
 	}
-	
+
 	//goes through each player to see if they can dispute the suggestion, if they can return the card 
 	public Card handleSuggestion(Player character,Card room, Card person, Card weapon) {
 		int indexPLayer = player.indexOf(character);
 		while(true) {
 			indexPLayer++;
-			if (indexPLayer == player.size()) {
-				indexPLayer = 0;
-			}
-			//reaches back to the player
-			if (indexPLayer == player.indexOf(character)) {
-				return null;
-			}
-			
-			if (player.get(indexPLayer).disproveSuggestion(room, person, weapon) != null) return player.get(indexPLayer).disproveSuggestion(room, person, weapon);
-		
+			if (indexPLayer == player.size()) indexPLayer = 0;
+			if (indexPLayer == player.indexOf(character)) return null; //reaches back to the player
+			if (player.get(indexPLayer).disproveSuggestion(room, person, weapon) != null) 
+				return player.get(indexPLayer).disproveSuggestion(room, person, weapon);
 		}
-		
 	}
-	
-	
-	
+
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); } 
 	public Set<BoardCell> getTargets() { return targets; } //returns the targets last created by calcTargets()
 
@@ -445,16 +429,12 @@ public class Board {
 
 	public Room getRoom(char room) { return roomMap.get(room); } //returns room at char
 	public Room getRoom(BoardCell cell) { return roomMap.get(cell.getInitial()); } //return room at cell 
-	
-	public Card getCard(String name, CardType cardType) { return new Card(name, cardType); }
-	
-	public ArrayList<Player> getPlayer() { return player; }
-	public Solution getSolution() { return answer; }
-	public void setAnswer(Solution answer) {this.answer = answer;}
-	public void setPlayer(ArrayList<Player> player) {
-		this.player = player;
-	}
-	public void setTargets(Set<BoardCell> taregts) {
-		this.targets = targets;
-	}
+
+	public Card getCard(String name, CardType cardType) { return new Card(name, cardType); } //return card
+
+	public ArrayList<Player> getPlayer() { return player; } //return player list
+	public Solution getSolution() { return answer; } //return answer
+
+	public void setAnswer(Solution answer) { this.answer = answer; } //set answer
+	public void setPlayer(ArrayList<Player> player) { this.player = player; } //set player list
 }

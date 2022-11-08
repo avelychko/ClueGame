@@ -129,10 +129,8 @@ public class ComputerAITest {
 	public void selectTargets() {
 		//if no rooms in list, select randomly
 		assertTrue(board.getTargets().contains(player4.selectTarget(2)));
-		
 		//if room in list that has not been seen, select it
 		assertEquals(board.getCell(20, 1), player5.selectTarget(3));
-		
 		//if room in list that has been seen, each target (including room) selected randomly
 		assertTrue(board.getTargets().contains(player6.selectTarget(8)));
 	}

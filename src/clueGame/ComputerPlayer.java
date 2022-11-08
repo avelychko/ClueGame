@@ -42,13 +42,13 @@ public class ComputerPlayer extends Player {
 		Set<BoardCell> targets= board.getTargets();
 		
 		for (BoardCell location: targets) {
-			//if room and not seen, then go to
+			//if room and not seen, then go to location
 			if(location.isRoomCenter() && !getSeenCards().contains(location)) {
 				return location;
 			}
 		}
 		
-		//if no room can be found then a random target will be choosen
+		//if no room can be found then a random target will be chosen
 		BoardCell[] randomTarget = targets.toArray(new BoardCell[0]);
 		Random randLocation = new Random();
 		int randomIndexLocation = randLocation.nextInt(randomTarget.length);

@@ -107,35 +107,26 @@ public class GameSolutionTest {
 	public void disproveSuggestion() {
 		//tests person suggestion
 		assertEquals(solution.getPerson(), player1.disproveSuggestion(pool, pabloEscobar, wire));
-		
 		//tests room suggestion
 		assertEquals(solution.getRoom(), player2.disproveSuggestion(pool, pabloEscobar, wire));
-		
 		//tests weapon suggestion
 		assertEquals(solution.getWeapon(), player3.disproveSuggestion(diningroom, pabloEscobar, wire));
-		
 		//test null
 		assertEquals(null, player4.disproveSuggestion(pool, pabloEscobar, wire));
-		
 		//test multiple suggestions
 		assertTrue(player5.getPlayerCards().contains(player5.disproveSuggestion(pool, pabloEscobar, wire)));
 	}
 	
 	@Test
 	public void handleSuggestion() {
-		
 		//tests person suggestion
 		assertEquals(solution.getPerson(), board.handleSuggestion(player1, atrium, pabloEscobar, throwingStars));
-	
 		//tests room suggestion
 		assertEquals(solution.getRoom(), board.handleSuggestion(player2, pool, kenichiShinoda, throwingStars));
-		
 		//tests weapon suggestion
 		assertEquals(solution.getWeapon(), board.handleSuggestion(player3, atrium, kenichiShinoda, wire));
-		
 		//tests null suggestion
 		assertEquals(null, board.handleSuggestion(player4, bedroom, benjaminSiegel, golfClub));
-		
 		assertEquals(null, board.handleSuggestion(player6, office, eddieMcGrath, poison));
 	}
 }

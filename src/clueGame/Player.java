@@ -11,7 +11,7 @@ public abstract class Player {
 	private ArrayList<Card> hand = new ArrayList<Card>(CARD_AMOUNT);
 	private Set<Card> seenCards = new HashSet<Card>();
 	private ArrayList<Card> disproveCards;
-	
+
 	public Player(String name, String color, int row, int col) {
 		super();
 		this.name = name;
@@ -19,39 +19,34 @@ public abstract class Player {
 		this.row = row;
 		this.col = col;
 	}
-	
+
 	public String getName() { return this.name; }
 	public String getColor() { return this.color; }
 	public int getRow() { return this.row; }
 	public int getCol() { return this.col; }
-	
+
 	public void updateHand(Card card) { this.hand.add(card); }
 	public ArrayList<Card> getPlayerCards() { return this.hand; }
 	public void updateSeen(Card seenCard) { this.seenCards.add(seenCard); }
 	public Set<Card> getSeenCards() { return this.seenCards; }
-
 	public void setSeenCards(Set<Card> seenCards) { this.seenCards = seenCards; }
 
-	//checks if the player has the card and will return it in the end, if they have multiple then one will be chosen at random
+	//checks if the player has the card and will return it in the end, 
+	//if they have multiple then one will be chosen at random
 	public Card disproveSuggestion(Card room, Card person, Card weapon) { 
 		disproveCards = new ArrayList<Card>();
-		
+
 		if (hand.contains(room)) disproveCards.add(room);
-		
-		if (hand.contains(person)) disproveCards.add(person);
-			
+		if (hand.contains(person)) disproveCards.add(person);	
 		if (hand.contains(weapon)) disproveCards.add(weapon);
-		
-		
+
 		if (disproveCards.size() == 0) return null;
-		
 
 		if (disproveCards.size() > 1) {
 			Random rand = new Random();
 			int randomIndex = rand.nextInt(disproveCards.size());
 			return disproveCards.get(randomIndex);
 		}
-		
-		
-		return disproveCards.get(0); }
+		return disproveCards.get(0); 
+	}
 }
