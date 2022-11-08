@@ -116,7 +116,7 @@ public class GameSolutionTest {
 		assertEquals(null, player4.disproveSuggestion(pool, pabloEscobar, wire));
 		
 		//test multiple suggestions
-		assertTrue(player5.hand.contains(player5.disproveSuggestion(pool, pabloEscobar, wire)));
+		assertTrue(player5.getPlayerCards().contains(player5.disproveSuggestion(pool, pabloEscobar, wire)));
 	}
 	
 	@Test
