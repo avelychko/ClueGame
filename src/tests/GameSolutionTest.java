@@ -100,33 +100,47 @@ public class GameSolutionTest {
 	
 	@Test
 	public void checkAccusation() {
+		//solution that is correct
 		assertTrue(board.checkAccusation(pool, pabloEscobar, wire));
+		//solution with wrong person
+		assertFalse(board.checkAccusation(pool, eddieMcGrath, wire));
+		//solution with wrong weapon
+		assertFalse(board.checkAccusation(pool, pabloEscobar, katana));
+		//solution with wrong room
+		assertFalse(board.checkAccusation(bedroom, pabloEscobar, wire));
 	}
 	
 	@Test
 	public void disproveSuggestion() {
+		//If player has only one matching card it should be returned
 		//tests person suggestion
 		assertEquals(solution.getPerson(), player1.disproveSuggestion(pool, pabloEscobar, wire));
 		//tests room suggestion
 		assertEquals(solution.getRoom(), player2.disproveSuggestion(pool, pabloEscobar, wire));
 		//tests weapon suggestion
 		assertEquals(solution.getWeapon(), player3.disproveSuggestion(diningroom, pabloEscobar, wire));
-		//test null
+	
+		//If player has no matching cards, null is returned
 		assertEquals(null, player4.disproveSuggestion(pool, pabloEscobar, wire));
-		//test multiple suggestions
+		
+		//If players has >1 matching card, returned card should be chosen randomly
+		//check if chosen card exists in hand
 		assertTrue(player5.getPlayerCards().contains(player5.disproveSuggestion(pool, pabloEscobar, wire)));
 	}
 	
 	@Test
 	public void handleSuggestion() {
-		//tests person suggestion
+		//Suggestion only human can disprove returns answer
 		assertEquals(solution.getPerson(), board.handleSuggestion(player1, atrium, pabloEscobar, throwingStars));
-		//tests room suggestion
+		
+		//Suggestion that two players can disprove, correct player returns answer
 		assertEquals(solution.getRoom(), board.handleSuggestion(player2, pool, kenichiShinoda, throwingStars));
-		//tests weapon suggestion
 		assertEquals(solution.getWeapon(), board.handleSuggestion(player3, atrium, kenichiShinoda, wire));
-		//tests null suggestion
+		
+		//Suggestion no one can disprove returns null
 		assertEquals(null, board.handleSuggestion(player4, bedroom, benjaminSiegel, golfClub));
+		
+		//Suggestion only suggesting player can disprove returns null
 		assertEquals(null, board.handleSuggestion(player6, office, eddieMcGrath, poison));
 	}
 }

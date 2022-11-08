@@ -19,7 +19,7 @@ public class ComputerAITest {
 	private static ArrayList<Card> personDeck; // array list stores person cards
 	private static ArrayList<Card> weaponDeck; // array list stores weapon cards
 	//private static Set<BoardCell> targets1, targets2, targets3;
-		
+
 	@BeforeAll
 	public static void setUp() {
 		// Board is singleton, get the only instance
@@ -28,7 +28,7 @@ public class ComputerAITest {
 		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");		
 		// Initialize will load config files 
 		board.initialize();
-		
+
 		//player
 		player1 = new ComputerPlayer("Kenichi Shinoda", "yellow", 2, 17);
 		player2 = new ComputerPlayer("Benjamin Siegel", "Magenta", 2, 17);
@@ -36,7 +36,7 @@ public class ComputerAITest {
 		player4 = new ComputerPlayer("Matteo Denaro", "Red", 0, 10);
 		player5 = new ComputerPlayer("Eddie McGrath", "Green", 14, 0);
 		player6 = new ComputerPlayer("Pablo Escobar", "Blue", 24, 4);
-		
+
 		//room cards
 		livingroom = new Card("Living Room", CardType.ROOM);
 		bedroom = new Card("Bedroom", CardType.ROOM);
@@ -47,7 +47,7 @@ public class ComputerAITest {
 		bathroom = new Card("Bathroom", CardType.ROOM);
 		office = new Card("Office", CardType.ROOM);
 		pool = new Card("Pool", CardType.ROOM);
-		
+
 		//person cards
 		alCapone = new Card("Al Capone", CardType.PERSON);
 		kenichiShinoda = new Card("Kenichi Shinoda", CardType.PERSON);
@@ -55,7 +55,7 @@ public class ComputerAITest {
 		eddieMcGrath = new Card("Eddie McGrath", CardType.PERSON);
 		benjaminSiegel = new Card("Benjamin Siegel", CardType.PERSON);
 		matteoDenaro = new Card("Matteo Denaro", CardType.PERSON);
-		
+
 		//weapon cards
 		pistol = new Card("Pistol", CardType.WEAPON);
 		poison = new Card("Poison", CardType.WEAPON);
@@ -63,16 +63,16 @@ public class ComputerAITest {
 		throwingStars = new Card("Throwing Stars", CardType.WEAPON);
 		wire = new Card("Wire", CardType.WEAPON);
 		golfClub = new Card("Golf Club", CardType.WEAPON);
-		
+
 		//solution
 		solution = new Solution(pool, pabloEscobar, wire);
 		board.setAnswer(solution);
-		
+
 		//card decks
 		roomDeck = new ArrayList<Card>();
 		personDeck = new ArrayList<Card>();
 		weaponDeck = new ArrayList<Card>();
-		
+
 		roomDeck.add(bedroom);
 		roomDeck.add(office);
 		roomDeck.add(pool);
@@ -80,76 +80,84 @@ public class ComputerAITest {
 		personDeck.add(alCapone);
 		personDeck.add(pabloEscobar);
 		personDeck.add(eddieMcGrath);
-		
+
 		weaponDeck.add(pistol);
 		weaponDeck.add(katana);
 		weaponDeck.add(wire);
-		
+
 		//hand and seen for player1
 		player1.updateHand(pabloEscobar);
 		player1.updateHand(pool);
 		player1.updateHand(wire);
-		
+
 		player1.updateSeen(bedroom);
 		player1.updateSeen(eddieMcGrath);
 		player1.updateSeen(office);
 		player1.updateSeen(katana);
 		player1.updateSeen(pistol);
 		player1.updateSeen(alCapone);
-		
+
 		//hand and seen for player2
 		player2.updateHand(pabloEscobar);
 		player2.updateHand(eddieMcGrath);
 		player2.updateHand(wire);
-		
+
 		player2.updateSeen(bedroom);
 		player2.updateSeen(katana);
 		player2.updateSeen(office);
 		player2.updateSeen(pistol);
 		player2.updateSeen(alCapone);
 		player2.updateSeen(pool);
-		
+
 		//hand and seen for player3
 		player3.updateHand(pabloEscobar);
 		player3.updateHand(katana);
 		player3.updateHand(wire);
-		
+
 		player3.updateSeen(bedroom);
 		player3.updateSeen(eddieMcGrath);
 		player3.updateSeen(office);
 		player3.updateSeen(pistol);
 		player3.updateSeen(alCapone);
 		player3.updateSeen(pool);
-		
+
 		//seen room
 		player6.updateSeen(livingroom);
 	}
-	
+
 	@Test
 	public void selectTargets() {
 		//if no rooms in list, select randomly
+		//check if target is in target list
 		assertTrue(board.getTargets().contains(player4.selectTarget(2)));
 		//if room in list that has not been seen, select it
+		//check if room is the target
 		assertEquals(board.getCell(20, 1), player5.selectTarget(3));
 		//if room in list that has been seen, each target (including room) selected randomly
+		//check if target is in target list
 		assertTrue(board.getTargets().contains(player6.selectTarget(8)));
 	}
-	
+
 	@Test
 	public void createSuggestion() {
-		//check if player location is in room
+		//Room matches current location
 		assertTrue(board.getCell(player1.getRow(), player1.getCol()).isRoomCenter());
-		
-		//check suggestion if only one not seen
+
+		//If only one person not seen, it's selected
 		assertEquals(solution.getPerson(), player1.createSuggestion(pool, personDeck, weaponDeck).getPerson());
+		//If only one weapon not seen, it's selected
 		assertEquals(solution.getWeapon(), player1.createSuggestion(pool, personDeck, weaponDeck).getWeapon());
-		
-		//check suggestion if multiple not seen
+
+		//If multiple weapons not seen, one of them is randomly selected
 		//check that suggested cards were not seen
-		assertFalse(player2.getSeenCards().contains(player2.createSuggestion(pool, personDeck, weaponDeck).getPerson()));
 		assertFalse(player3.getSeenCards().contains(player3.createSuggestion(pool, personDeck, weaponDeck).getWeapon()));
 		//check that one of the cards is in hand
-		assertTrue(player2.getPlayerCards().contains(player2.createSuggestion(pool, personDeck, weaponDeck).getPerson()));
 		assertTrue(player3.getPlayerCards().contains(player3.createSuggestion(pool, personDeck, weaponDeck).getWeapon()));
+
+		//If multiple persons not seen, one of them is randomly selected
+		//check that suggested cards were not seen
+		assertFalse(player2.getSeenCards().contains(player2.createSuggestion(pool, personDeck, weaponDeck).getPerson()));
+		//check that one of the cards is in hand
+		assertTrue(player2.getPlayerCards().contains(player2.createSuggestion(pool, personDeck, weaponDeck).getPerson()));
 	}
 }
