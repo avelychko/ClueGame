@@ -1,5 +1,7 @@
 package clueGame;
 
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class GameControlPanel extends JPanel {
@@ -25,6 +27,37 @@ public class GameControlPanel extends JPanel {
 		
 		
 	}
+	
+	private void setAccusationButton() {
+		JButton accusationButton = new JButton("Make Accusation");
+		JButton nextButton = new JButton("NEXT!");
+		add(accusationButton, BorderLayout.SOUTH);
+		add(nextButton, BorderLayout.SOUTH);
+		accusationButton.addActionListener(new ButtonListener());
+
+
+	}
+	
+	private class ButtonListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+//			String message = "Hello " + myName.getText(); //input text
+//			JOptionPane.showMessageDialog(null, message); //opens window with text
+//			String numStr = JOptionPane.showInputDialog("Enter your age"); //window where input text
+//			int num = Integer.parseInt(numStr);
+//			int yearsLeft = 100 - num;
+//			JOptionPane.showMessageDialog(null, 
+//					"You have " + yearsLeft + " years left");
+//			int ready = JOptionPane.showConfirmDialog(null, 
+//					"Are you ready to continue?"); //window with choice buttons
+//			if (ready == JOptionPane.YES_OPTION) //if you choose yes
+//				JOptionPane.showMessageDialog(gui, "Here we go!");
+//			else //if you choose no
+//				JOptionPane.showMessageDialog(gui, "OK, we'll wait");
+		}
+	}
+
 	
 	/**
 	 * Main to test the panel
