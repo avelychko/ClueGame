@@ -420,7 +420,11 @@ public class Board {
 		int indexPLayer = player.indexOf(character);
 	
 		while(true) {
+			//System.out.println(player.get(indexPLayer).getName());
 			
+			
+			
+			if (player.get(indexPLayer).disproveSuggestion(room, person, weapon) != null) return player.get(indexPLayer).disproveSuggestion(room, person, weapon);;
 			indexPLayer++;
 			if (indexPLayer == player.size()) {
 				indexPLayer = 0;
@@ -429,11 +433,8 @@ public class Board {
 				return null;
 			}
 			
-			if (player.get(indexPLayer).disproveSuggestion(room, person, weapon) != null) break;
-			
-			
 		}
-		return player.get(indexPLayer).disproveSuggestion(room, person, weapon);
+		
 	}
 	
 	

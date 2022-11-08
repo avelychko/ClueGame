@@ -43,7 +43,7 @@ public class ComputerPlayer extends Player {
 		Set<BoardCell> cell = board.getTargets();
 		
 		for (int i = 0; i < cell.size(); i++) {
-			if(cell[i])
+			
 		}
 
 		return null; 

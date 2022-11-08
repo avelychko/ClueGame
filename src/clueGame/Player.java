@@ -45,7 +45,7 @@ public abstract class Player {
 		
 		if (disproveCards.size() == 0) return null;
 		
-		
+
 		if (disproveCards.size() > 1) {
 			Random rand = new Random();
 			int randomIndex = rand.nextInt(disproveCards.size());
