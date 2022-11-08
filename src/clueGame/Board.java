@@ -457,4 +457,7 @@ public class Board {
 	public void setPlayer(ArrayList<Player> player) {
 		this.player = player;
 	}
+	public void setTargets(Set<BoardCell> taregts) {
+		this.targets = targets;
+	}
 }
