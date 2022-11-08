@@ -15,6 +15,9 @@ public class ComputerAITest {
 	private static Card livingroom, bedroom, kitchen, garden, diningroom, atrium, bathroom, office, pool,
 	alCapone, kenichiShinoda, pabloEscobar, eddieMcGrath, benjaminSiegel, matteoDenaro,
 	pistol, poison, katana, throwingStars, wire, golfClub;
+	private static ArrayList<Card> roomDeck; // array list stores room cards
+	private static ArrayList<Card> personDeck; // array list stores person cards
+	private static ArrayList<Card> weaponDeck; // array list stores weapon cards
 		
 	@BeforeAll
 	public static void setUp() {
@@ -26,7 +29,7 @@ public class ComputerAITest {
 		board.initialize();
 		
 		//player
-		player = new ComputerPlayer("Kenichi Shinoda", "yellow", 24, 4);
+		player = new ComputerPlayer("Kenichi Shinoda", "yellow", 2, 17);
 		
 		//room cards
 		livingroom = new Card("Living Room", CardType.ROOM);
@@ -57,6 +60,42 @@ public class ComputerAITest {
 		
 		//solution
 		solution = new Solution(pool, pabloEscobar, wire);
+		board.setAnswer(solution);
+		
+		//card decks
+		roomDeck = new ArrayList<Card>();
+		personDeck = new ArrayList<Card>();
+		weaponDeck = new ArrayList<Card>();
+		roomDeck.add(livingroom);
+		roomDeck.add(bedroom);
+		roomDeck.add(kitchen);
+		roomDeck.add(garden);
+		roomDeck.add(diningroom);
+		roomDeck.add(atrium);
+		roomDeck.add(bathroom);
+		roomDeck.add(office);
+		roomDeck.add(pool);
+
+		personDeck.add(alCapone);
+		personDeck.add(kenichiShinoda);
+		personDeck.add(pabloEscobar);
+		personDeck.add(eddieMcGrath);
+		personDeck.add(benjaminSiegel);
+		personDeck.add(matteoDenaro);
+		
+		weaponDeck.add(pistol);
+		weaponDeck.add(poison);
+		weaponDeck.add(katana);
+		weaponDeck.add(throwingStars);
+		weaponDeck.add(wire);
+		weaponDeck.add(golfClub);
+		
+		player.updateSeen(bedroom);
+		player.updateSeen(eddieMcGrath);
+		player.updateSeen(office);
+		player.updateSeen(katana);
+		player.updateSeen(pistol);
+		player.updateSeen(alCapone);
 		
 		//cell
 		cell = new BoardCell(23, 20);
@@ -69,6 +108,6 @@ public class ComputerAITest {
 	
 	@Test
 	public void createSuggestion() {
-		//assertEquals(solution, player.createSuggestion());
+		assertEquals(solution, player.createSuggestion(roomDeck, personDeck, weaponDeck));
 	}
 }
