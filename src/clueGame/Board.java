@@ -418,17 +418,19 @@ public class Board {
 
 	public Card handleSuggestion(Player character,Card room, Card person, Card weapon) {
 		int indexPLayer = player.indexOf(character);
-	
 		while(true) {
-			
-			if (player.get(indexPLayer).disproveSuggestion(room, person, weapon) != null) return player.get(indexPLayer).disproveSuggestion(room, person, weapon);;
 			indexPLayer++;
 			if (indexPLayer == player.size()) {
 				indexPLayer = 0;
 			}
+			
 			if (indexPLayer == player.indexOf(character)) {
 				return null;
 			}
+			
+			if (player.get(indexPLayer).disproveSuggestion(room, person, weapon) != null) 
+				return player.get(indexPLayer).disproveSuggestion(room, person, weapon);
+		
 			
 		}
 		

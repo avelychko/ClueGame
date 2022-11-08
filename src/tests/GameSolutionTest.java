@@ -81,7 +81,7 @@ public class GameSolutionTest {
 		//weapon card
 		player3.updateHand(garden);
 		player3.updateHand(wire);
-		player3.updateHand(katana);
+		player3.updateHand(pool);
 		//no card
 		player4.updateHand(garden);
 		player4.updateHand(alCapone);
@@ -89,7 +89,7 @@ public class GameSolutionTest {
 		//all cards
 		player5.updateHand(wire);
 		player5.updateHand(pabloEscobar);
-		player5.updateHand(pool);
+		player5.updateHand(matteoDenaro);
 		//no cards
 		player6.updateHand(poison);
 		player6.updateHand(eddieMcGrath);
@@ -125,15 +125,17 @@ public class GameSolutionTest {
 	public void handleSuggestion() {
 		
 		//tests person suggestion
-		assertEquals(solution.getPerson(), board.handleSuggestion(player1, pool, pabloEscobar, wire));
+		assertEquals(solution.getPerson(), board.handleSuggestion(player1, atrium, pabloEscobar, throwingStars));
 	
 		//tests room suggestion
-		assertEquals(solution.getRoom(), board.handleSuggestion(player2, pool, pabloEscobar, wire));
+		assertEquals(solution.getRoom(), board.handleSuggestion(player2, pool, kenichiShinoda, throwingStars));
 		
 		//tests weapon suggestion
-		assertEquals(solution.getWeapon(), board.handleSuggestion(player3, pool, pabloEscobar, wire));
+		assertEquals(solution.getWeapon(), board.handleSuggestion(player3, atrium, kenichiShinoda, wire));
 		
 		//tests null suggestion
 		assertEquals(null, board.handleSuggestion(player4, bedroom, benjaminSiegel, golfClub));
+		
+		assertEquals(null, board.handleSuggestion(player6, office, eddieMcGrath, poison));
 	}
 }
