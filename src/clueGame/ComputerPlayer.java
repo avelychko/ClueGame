@@ -1,6 +1,8 @@
 package clueGame;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Set;
 
 public class ComputerPlayer extends Player {
 
@@ -8,6 +10,17 @@ public class ComputerPlayer extends Player {
 		super(name, color, row, col);
 	}
 	
-	public Solution createSuggestion() { return null; }
+	//returns soln
+	// need current location (if room then make suggestion) (grid[row][col]getRoom)
+	//needs the seen cards
+	//needs the other cards and uses seen cards to make a decision
+	public Solution createSuggestion() {
+		if (grid[row][col].getRoom() == false) {
+			return null;
+		}
+		Solution suggestion = new Solution();
+		
+		return null; 
+		}
 	public BoardCell selectTarget() { return null; }
 }
