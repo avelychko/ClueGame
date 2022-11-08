@@ -1,8 +1,7 @@
 package clueGame;
 
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 public class ComputerPlayer extends Player {
 
@@ -16,18 +15,18 @@ public class ComputerPlayer extends Player {
 		
 		Card roomSuggestion = null, personSuggestion = null, weaponSuggestion = null;
 		
-		for (int i = 0; i < getSeenCards().size(); i++) {
-			for (int j = 0; j < roomDeck.size())
-			if (!getSeenCards().contains(room)) {
-				roomSuggestion = room;
-			}
-			if (!getSeenCards().contains(person)) {
-				personSuggestion = person;
-			}
-			if (!getSeenCards().contains(weapon)) {
-				weaponSuggestion = weapon;
-			}
-		}
+//		for (int i = 0; i < getSeenCards().size(); i++) {
+//			for (int j = 0; j < roomDeck.size())
+//			if (!getSeenCards().contains(room)) {
+//				roomSuggestion = room;
+//			}
+//			if (!getSeenCards().contains(person)) {
+//				personSuggestion = person;
+//			}
+//			if (!getSeenCards().contains(weapon)) {
+//				weaponSuggestion = weapon;
+//			}
+//		}
 		return new Solution(roomSuggestion, personSuggestion, weaponSuggestion); 
 	}
 	
