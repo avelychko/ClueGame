@@ -32,9 +32,10 @@ public class ComputerAITest {
 		//player
 		player1 = new ComputerPlayer("Kenichi Shinoda", "yellow", 2, 17);
 		player2 = new ComputerPlayer("Benjamin Siegel", "Magenta", 2, 17);
-		player3 = new ComputerPlayer("Matteo Denaro", "Red", 0, 10);
-		player4 = new ComputerPlayer("Eddie McGrath", "Green", 14, 0);
-		player5 = new ComputerPlayer("Pablo Escobar", "Blue", 24, 4);
+		player3 = new ComputerPlayer("Al Capone", "Cyan", 2, 17);
+		player4 = new ComputerPlayer("Matteo Denaro", "Red", 0, 10);
+		player5 = new ComputerPlayer("Eddie McGrath", "Green", 14, 0);
+		player6 = new ComputerPlayer("Pablo Escobar", "Blue", 24, 4);
 		
 		//room cards
 		livingroom = new Card("Living Room", CardType.ROOM);
@@ -98,28 +99,38 @@ public class ComputerAITest {
 		
 		//hand and seen for player2
 		player2.updateHand(pabloEscobar);
-		player2.updateHand(katana);
+		player2.updateHand(eddieMcGrath);
 		player2.updateHand(wire);
 		
 		player2.updateSeen(bedroom);
-		player2.updateSeen(eddieMcGrath);
+		player2.updateSeen(katana);
 		player2.updateSeen(office);
 		player2.updateSeen(pistol);
 		
+		//hand and seen for player3
+		player3.updateHand(pabloEscobar);
+		player3.updateHand(katana);
+		player3.updateHand(wire);
+		
+		player3.updateSeen(bedroom);
+		player3.updateSeen(eddieMcGrath);
+		player3.updateSeen(office);
+		player3.updateSeen(pistol);
+		
 		//seen room
-		player5.updateSeen(livingroom);
+		player6.updateSeen(livingroom);
 	}
 	
 	@Test
 	public void selectTargets() {
 		//if no rooms in list, select randomly
-		assertTrue(board.getTargets().contains(player3.selectTarget(2)));
+		assertTrue(board.getTargets().contains(player4.selectTarget(2)));
 		
 		//if room in list that has not been seen, select it
-		assertEquals(board.getCell(20, 1), player4.selectTarget(3));
+		assertEquals(board.getCell(20, 1), player5.selectTarget(3));
 		
 		//if room in list that has been seen, each target (including room) selected randomly
-		assertTrue(board.getTargets().contains(player5.selectTarget(8)));
+		assertTrue(board.getTargets().contains(player6.selectTarget(8)));
 	}
 	
 	@Test
@@ -134,8 +145,9 @@ public class ComputerAITest {
 		//check suggestion if multiple not seen
 		//check that suggested cards were not seen
 		assertFalse(player2.getSeenCards().contains(player2.createSuggestion(pool, personDeck, weaponDeck).getPerson()));
-		assertFalse(player2.getSeenCards().contains(player2.createSuggestion(pool, personDeck, weaponDeck).getWeapon()));
+		assertFalse(player3.getSeenCards().contains(player3.createSuggestion(pool, personDeck, weaponDeck).getWeapon()));
 		//check that one of the cards is in hand
-		assertTrue(player2.getPlayerCards().contains(player2.createSuggestion(pool, personDeck, weaponDeck).getWeapon()));
+		assertTrue(player2.getPlayerCards().contains(player2.createSuggestion(pool, personDeck, weaponDeck).getPerson()));
+		assertTrue(player3.getPlayerCards().contains(player3.createSuggestion(pool, personDeck, weaponDeck).getWeapon()));
 	}
 }
