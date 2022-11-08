@@ -14,13 +14,25 @@ public class GameControlPanel extends JPanel {
 	}
 	
 	private void setGuessResult(String string) {
-		
-		
+		JPanel panel = new JPanel();
+	 	// Use a grid layout, 1 row, 2 elements (label, text)
+		panel.setLayout(new GridLayout(1,2));
+	 	JLabel nameLabel = new JLabel("Guess");
+		panel.add(nameLabel);
+		JTextField textField = new JTextField();
+		textField.setText(string);
+		panel.add(textField);
 	}
 
 	private void setGuess(String string) {
-		
-		
+		JPanel panel = new JPanel();
+	 	// Use a grid layout, 1 row, 2 elements (label, text)
+		panel.setLayout(new GridLayout(1,2));
+	 	JLabel nameLabel = new JLabel("Guess Result");
+		panel.add(nameLabel);
+		JTextField textField = new JTextField();
+		textField.setText(string);
+		panel.add(textField);
 	}
 
 	private void setTurn(ComputerPlayer computerPlayer, int i) {
@@ -29,15 +41,14 @@ public class GameControlPanel extends JPanel {
 	}
 	
 	private void setAccusationButton() {
+		GameControlPanel panel = new GameControlPanel();
 		JButton accusationButton = new JButton("Make Accusation");
 		JButton nextButton = new JButton("NEXT!");
-		add(accusationButton, BorderLayout.SOUTH);
-		add(nextButton, BorderLayout.SOUTH);
-		accusationButton.addActionListener(new ButtonListener());
-
-
+		panel.add(accusationButton);
+		panel.add(nextButton);
 	}
 	
+<<<<<<< HEAD
 	private class ButtonListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e)
@@ -59,6 +70,8 @@ public class GameControlPanel extends JPanel {
 	}
 
 	
+=======
+>>>>>>> b8ba5bc4fd3ad589e4e33b049dcc5ca186cb4d4c
 	/**
 	 * Main to test the panel
 	 * 
@@ -76,5 +89,6 @@ public class GameControlPanel extends JPanel {
 		panel.setTurn(new ComputerPlayer( "Col. Mustard", "orange", 0, 0), 5);
 		panel.setGuess( "I have no guess!");
 		panel.setGuessResult( "So you have nothing?");
+		panel.setAccusationButton();
 	}
 }
