@@ -16,17 +16,15 @@ public class ComputerPlayer extends Player {
 	public Solution createSuggestion(Card room, ArrayList<Card> personDeck, ArrayList<Card> weaponDeck) { 
 		Card person = null, weapon = null;
 		BoardCell cell = board.getCell(super.getRow(), super.getCol());
-		
-		ArrayList<Solution> solutions = new ArrayList<Solution>();
-		
-		//BoardCell cell = new BoardCell(super.getRow(), super.getCol());
 
 		if (cell.isRoomCenter()) {
+			//will randomly grab a person card not in seen cards
 			while (getSeenCards().contains(person) || person == null) {
 				Random randPerson = new Random();
 				int randomIndexPerson = randPerson.nextInt(personDeck.size());
 				person = personDeck.get(randomIndexPerson);
 			}
+			//will randomly grab a weapon card not in seen cards
 			while (getSeenCards().contains(weapon) || weapon == null) {
 				Random randWeapon = new Random();
 				int randomIndexWeapon = randWeapon.nextInt(weaponDeck.size());
@@ -50,13 +48,7 @@ public class ComputerPlayer extends Player {
 			}
 		}
 		
-//		for (BoardCell location: targets) {
-//			//needs to check seencards
-//			if(location.getRoom()) {
-//				return location;
-//			}
-//		}
-		
+		//if no room can be found then a random target will be choosen
 		BoardCell[] randomTarget = targets.toArray(new BoardCell[0]);
 		Random randLocation = new Random();
 		int randomIndexLocation = randLocation.nextInt(randomTarget.length);
