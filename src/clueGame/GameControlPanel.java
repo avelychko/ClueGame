@@ -48,7 +48,7 @@ public class GameControlPanel extends JPanel {
 		panel.add(nextButton);
 	}
 	
-<<<<<<< HEAD
+
 	private class ButtonListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e)
@@ -69,9 +69,7 @@ public class GameControlPanel extends JPanel {
 		}
 	}
 
-	
-=======
->>>>>>> b8ba5bc4fd3ad589e4e33b049dcc5ca186cb4d4c
+
 	/**
 	 * Main to test the panel
 	 * 
