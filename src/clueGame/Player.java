@@ -8,7 +8,7 @@ public abstract class Player {
 	private String color;
 	private int row, col;
 	private static final int CARD_AMOUNT = 3;
-	public ArrayList<Card> hand = new ArrayList<Card>(CARD_AMOUNT);
+	private ArrayList<Card> hand = new ArrayList<Card>(CARD_AMOUNT);
 	private Set<Card> seenCards = new HashSet<Card>();
 	private ArrayList<Card> disproveCards;
 	

@@ -9,7 +9,7 @@ public class ComputerAITest {
 	// We make the Board static because we can load it one time and 
 	// then do all the tests. 
 	private static Board board;
-	private static ComputerPlayer player;
+	private static ComputerPlayer player1, player2, player3;
 	private static Solution solution;
 	private static BoardCell cell;
 	private static Card livingroom, bedroom, kitchen, garden, diningroom, atrium, bathroom, office, pool,
@@ -29,7 +29,9 @@ public class ComputerAITest {
 		board.initialize();
 		
 		//player
-		player = new ComputerPlayer("Kenichi Shinoda", "yellow", 2, 17);
+		player1 = new ComputerPlayer("Kenichi Shinoda", "yellow", 2, 17);
+		player2 = new ComputerPlayer("Benjamin Siegel", "Magenta", 2, 17);
+		player3 = new ComputerPlayer("Matteo Denaro", "Red", 2, 17);
 		
 		//room cards
 		livingroom = new Card("Living Room", CardType.ROOM);
@@ -66,36 +68,38 @@ public class ComputerAITest {
 		roomDeck = new ArrayList<Card>();
 		personDeck = new ArrayList<Card>();
 		weaponDeck = new ArrayList<Card>();
-		roomDeck.add(livingroom);
+		
 		roomDeck.add(bedroom);
-		roomDeck.add(kitchen);
-		roomDeck.add(garden);
-		roomDeck.add(diningroom);
-		roomDeck.add(atrium);
-		roomDeck.add(bathroom);
 		roomDeck.add(office);
 		roomDeck.add(pool);
 
 		personDeck.add(alCapone);
-		personDeck.add(kenichiShinoda);
 		personDeck.add(pabloEscobar);
 		personDeck.add(eddieMcGrath);
-		personDeck.add(benjaminSiegel);
-		personDeck.add(matteoDenaro);
 		
 		weaponDeck.add(pistol);
-		weaponDeck.add(poison);
 		weaponDeck.add(katana);
-		weaponDeck.add(throwingStars);
 		weaponDeck.add(wire);
-		weaponDeck.add(golfClub);
 		
-		player.updateSeen(bedroom);
-		player.updateSeen(eddieMcGrath);
-		player.updateSeen(office);
-		player.updateSeen(katana);
-		player.updateSeen(pistol);
-		player.updateSeen(alCapone);
+		player1.updateHand(pabloEscobar);
+		player1.updateHand(pool);
+		player1.updateHand(wire);
+		
+		player1.updateSeen(bedroom);
+		player1.updateSeen(eddieMcGrath);
+		player1.updateSeen(office);
+		player1.updateSeen(katana);
+		player1.updateSeen(pistol);
+		player1.updateSeen(alCapone);
+		
+		player2.updateHand(pabloEscobar);
+		player2.updateHand(katana);
+		player2.updateHand(wire);
+		
+		player2.updateSeen(bedroom);
+		player2.updateSeen(eddieMcGrath);
+		player2.updateSeen(office);
+		player2.updateSeen(pistol);
 		
 		//cell
 		cell = new BoardCell(23, 20);
@@ -103,11 +107,23 @@ public class ComputerAITest {
 	
 	@Test
 	public void selectTargets() {
-		assertEquals(cell, player.selectTarget());
+		assertEquals(cell, player1.selectTarget());
 	}
 	
 	@Test
 	public void createSuggestion() {
-		assertEquals(solution, player.createSuggestion(roomDeck, personDeck, weaponDeck));
+		//check if player location is in room
+		assertTrue(board.getCell(player1.getRow(), player1.getCol()).isRoomCenter());
+		
+		//check suggestion if only one not seen
+		assertEquals(solution.getPerson(), player1.createSuggestion(pool, personDeck, weaponDeck).getPerson());
+		assertEquals(solution.getWeapon(), player1.createSuggestion(pool, personDeck, weaponDeck).getWeapon());
+		
+		//check suggestion if multiple not seen
+		//check that suggested cards were not seen
+		assertFalse(player2.getSeenCards().contains(player2.createSuggestion(pool, personDeck, weaponDeck).getPerson()));
+		assertFalse(player2.getSeenCards().contains(player2.createSuggestion(pool, personDeck, weaponDeck).getWeapon()));
+		//check that one of the cards is in hand
+		assertTrue(player2.getPlayerCards().contains(player2.createSuggestion(pool, personDeck, weaponDeck).getWeapon()));
 	}
 }
