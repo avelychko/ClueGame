@@ -431,7 +431,6 @@ public class Board {
 			if (player.get(indexPLayer).disproveSuggestion(room, person, weapon) != null) 
 				return player.get(indexPLayer).disproveSuggestion(room, person, weapon);
 		
-			
 		}
 		
 	}
