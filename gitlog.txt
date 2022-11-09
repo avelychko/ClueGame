@@ -1,3 +1,393 @@
+commit 0de6c1e6263307d9a3a9334a90ba1e2700193a91
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 7 23:22:03 2022 -0700
+
+    added comments
+
+commit b937aff4351b24ab80698320f4ff77d9aa61dcba
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 7 22:51:57 2022 -0700
+
+    comments
+
+commit 82eed8a35b9f7c413f19266807f516b9c2574b86
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 7 22:43:46 2022 -0700
+
+    passing all tests
+
+commit 90ae0116f605e3dc59b2debb25563c00911c213c
+Merge: 129eeff 3193ca8
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 7 22:37:26 2022 -0700
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit 129eeffd9a3d8dd1726d7c4b51ca4f76176cfab1
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 7 22:36:48 2022 -0700
+
+    modified createSuggestion test
+
+commit 3193ca8ffae12a357d07b6936772ca21cf76fc35
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 7 22:23:14 2022 -0700
+
+    added some comments
+
+commit ed2d1131aef65ddeb3dae6b308eca7760fc48808
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 7 22:13:47 2022 -0700
+
+    passed selectTargets tests
+
+commit 730868e0eb0dc3ba0b411a1e29d8143e3e4a916b
+Merge: 204483b 6b64a2e
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 7 22:06:24 2022 -0700
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit 204483b150151c0dee864f5dce246b8aad02c378
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 7 22:06:17 2022 -0700
+
+    fixing gamesolutiontest
+
+commit 6b64a2e94fa7c5563cbb8858e4e6ac61a2f40657
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 7 22:04:58 2022 -0700
+
+    fixed issue with disprove Suggestion
+
+commit 42da0776c6a5e9ac107bcab97c93baced1b1e137
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 7 21:49:00 2022 -0700
+
+    fixed the actual issue with handle suggestion
+
+commit 14e98983bcfc863f907e1fb666a1aa05127e6dec
+Merge: 96755bf 2d35a34
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 7 21:48:41 2022 -0700
+
+    minor changes
+
+commit 96755bfa904f281d9cbbd5b283490b08b917c3e7
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 7 21:47:18 2022 -0700
+
+    fixed the actual issue with handle suggestion
+
+commit 2d35a343cef4400e27ea407fff04cf8758acdd2e
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 7 21:44:40 2022 -0700
+
+    finished selectTargets tests
+
+commit 2217052ebe767c622ee94d19a31b6a2315604c83
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 7 21:18:37 2022 -0700
+
+    filled in selectTarget
+
+commit a5a247cc06b6b094b9f9313e6b35afa06c2b11e1
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 7 20:11:51 2022 -0700
+
+    got handleSuggestion test to pass by fixing handle suggestion method in board
+
+commit c43787cb2dcd078dac89f0d903b3c4b24e46e0f1
+Merge: ebbbb75 49958f8
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 7 19:22:03 2022 -0700
+
+    minor changes
+
+commit ebbbb75ed8c55955cc981d42057bfa9ba8597245
+Merge: 5b028a1 42044c2
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 7 19:21:33 2022 -0700
+
+    minor changes
+
+commit 49958f8d8fb773ff0fc4374f919e4d0412fdfca6
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 7 19:07:32 2022 -0700
+
+    passed createSuggestion test
+
+commit 5b028a1efe2d95f11176f38804e530d572222131
+Merge: 9ff7294 d985391
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 7 17:51:53 2022 -0700
+
+    minor changes
+
+commit 42044c267263c603353a5ae3fe6d08815633bea7
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 7 17:51:27 2022 -0700
+
+    worked on creating arrays of decks in ComputerAITest
+
+commit 9ff7294ceae155550f3be9eb948507580c55d757
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 7 17:10:12 2022 -0700
+
+    working on createSuggestion
+
+commit d985391d44a284e6b8bd0f95d1a370f56cb4f81c
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 7 17:09:38 2022 -0700
+
+    added array list of players into GameSolutionTest
+
+commit 611631377781bd8caa252b1b81e33e2e85b4b8b3
+Merge: 5ad31f5 34f3b14
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 7 16:30:39 2022 -0700
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit 5ad31f52cd1855312e9f2fed6012b90a86637e2f
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 7 16:30:30 2022 -0700
+
+    worked on ComputerPlayer createSuggestion()
+
+commit 34f3b14978b456c02eacd2ec329a91cf1f1a9bd1
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 7 16:28:57 2022 -0700
+
+    added setters
+
+commit 1d6783013acb1cb21f424ddd4c988377e54ba678
+Merge: baa75b0 0608356
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 7 16:15:04 2022 -0700
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit baa75b0e07986e1ef1552b70c7a14aa95c2f8d6d
+Merge: dee33e6 5e685fd
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 7 16:14:46 2022 -0700
+
+    fixed issues with checkAccuastion and handle suggestion
+
+commit 0608356a76618fa8a1291117558daa89a1f99564
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Sun Nov 6 20:13:12 2022 -0700
+
+    testing null in handleSuggestion
+
+commit dee33e6aeca001656b7961e193ce6334a93e9fc4
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Sun Nov 6 20:10:37 2022 -0700
+
+    minor changes
+
+commit 5e685fd8e9436657f1861b9d1d22e29060c8a5c7
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Sun Nov 6 20:09:33 2022 -0700
+
+    passing GameSolutionTest
+
+commit f4b57df69da167d806c7fed865831d2bda0ae517
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Sun Nov 6 19:48:43 2022 -0700
+
+    passed disproveSuggestion with multiple cards
+
+commit 80e0f957cb493f79f89015278f0364bb0cdca1a3
+Merge: ca19819 f4ef37d
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Sun Nov 6 19:39:17 2022 -0700
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit ca198198f1c40e7cca5d03eb27a093d6e6794bd0
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Sun Nov 6 19:39:13 2022 -0700
+
+    added null test for disproveSuggestion method
+
+commit f4ef37d6ae0b9e8636a49251d9eac179b27e5743
+Merge: faeb8d1 18310f4
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Sun Nov 6 19:38:18 2022 -0700
+
+    passed checkAccusation class
+
+commit faeb8d18a5b109f1fff68f36080a618c8d558de2
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Sun Nov 6 19:20:02 2022 -0700
+
+    working on getting checkAccusation to pass
+
+commit 18310f47b23b309fc283b607693fa3ad137ac2bd
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Sun Nov 6 19:18:52 2022 -0700
+
+    passed displroveSuggestion one card
+
+commit 04e6fff3925d033a56f3ece5a220a696641118a5
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Sun Nov 6 18:45:01 2022 -0700
+
+    added cards to tests
+
+commit bfa8d6b1ab7af9222be60d6bd3930c4ada7e9781
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Sun Nov 6 18:37:56 2022 -0700
+
+    modified failing GameSolutionsTest
+
+commit 3230ed00397bf13e85d9235d718674ad631bd9b5
+Merge: 43c9125 4fa72a2
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Sun Nov 6 18:31:50 2022 -0700
+
+    merge
+
+commit 43c9125725f7c67eda4e78c04ca882c2202c9f43
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Sun Nov 6 18:29:43 2022 -0700
+
+    updated updateSeen
+
+commit 4fa72a2295426a676dc4e73c1d8ceeb9e93e8aa9
+Merge: 0d945da f01ca23
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Sun Nov 6 18:28:58 2022 -0700
+
+    filled in handleSuggestion in board class
+
+commit 0d945da5c800ed078e0dcbad1420d73613ff640b
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Sun Nov 6 18:27:46 2022 -0700
+
+    filled in handleSuggestion in board class
+
+commit f01ca2323305a8cabc726da97841a545372eb605
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Sun Nov 6 18:21:14 2022 -0700
+
+    refactored failing tests
+
+commit 3fad96f97b84dbb599542ed9b7a2a88558f0d077
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Sun Nov 6 18:17:59 2022 -0700
+
+    filled in disproveSuggestion in player class
+
+commit d973e1cf6b902b406e217495fbe91337f10efba9
+Merge: 0711a7f 9a46cbc
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Sun Nov 6 18:11:03 2022 -0700
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit 9a46cbc8d71fc405cdb84707124ade9db4ecbbf9
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Sun Nov 6 18:08:14 2022 -0700
+
+    failing tests
+
+commit 0711a7f5164586db11dbd7c9fd1d008ed9b69a38
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Sun Nov 6 17:41:59 2022 -0700
+
+    filled in checkAccusation
+
+commit a255cdfc4cdde3fce75c052623c32bc88544bc3d
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Sun Nov 6 17:32:52 2022 -0700
+
+    filled in checkAccusation
+
+commit 82ab4cb3653f1cfc65a05195b5cc81cd8855e301
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Sun Nov 6 17:14:13 2022 -0700
+
+    creater GameSolutionTest class
+
+commit 206044656de076893cc5c91b6b7960416ff2a0ee
+Merge: f620049 0236500
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Sun Nov 6 17:09:20 2022 -0700
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit f620049bae2ea5e4a9db103d7711322d31db2de3
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Sun Nov 6 17:09:14 2022 -0700
+
+    created ComputerAITest
+
+commit 0236500f623954c021d3c9e7953059de101f4339
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Sun Nov 6 17:06:59 2022 -0700
+
+    made gamesolutiontest class and its tests
+
+commit ff29ce5e1537c0289ec522a7f17549c43c995723
+Merge: 535b718 91da649
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Sun Nov 6 17:02:11 2022 -0700
+
+    merge
+
+commit 535b718f9aaffbf8d7065a753621feb5a91eddc9
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Sun Nov 6 17:00:39 2022 -0700
+
+    refactor updateHand
+
+commit 91da6492be423dda460b718736fe58901a122dea
+Merge: 0448a80 330fc06
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Sun Nov 6 16:59:22 2022 -0700
+
+    added new methods to board class from UML
+
+commit 330fc069d8b626044a3c5017363dac76a778646c
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Sun Nov 6 16:57:45 2022 -0700
+
+    added UML methods and variables to Player
+
+commit 0448a80219acbc705b3fc4990e8f9dc3f671a7b9
+Merge: bb041fc 730f71d
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Sun Nov 6 16:57:44 2022 -0700
+
+    added new methods to board class from UML
+
+commit ccbcd748ab56c5f3083465d67ef579b21805e25c
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Fri Nov 4 14:42:50 2022 -0600
+
+    minor changes
+
+commit 730f71d3b94a8fa3e07eb6a4775f0234b0071206
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 19:45:10 2022 -0600
+
+    modified equals() method in Card class
+
+commit 7d5f7ad1ba8badfc404d48e368122c75103e9683
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 18:54:43 2022 -0600
+
+    passed tests
+
+commit f42f5afb510ebdbc30c6ea6026996a0f103be641
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 3 18:53:15 2022 -0600
+
+    failed tests
+
 commit bb041fcc3a9648ec88362cc4ec0a68c26c8473c9
 Merge: 5d46982 39a71ec
 Author: FloorismadeoutofFloor <gwdina@gmail.com>
