@@ -11,8 +11,6 @@ import javax.swing.border.*;
 
 public class GameCardPanel extends JPanel {
 	JPanel peoplePanel, roomPanel, weaponPanel;
-	JLabel handLabel, seenLabel;
-	JTextField handText, seenText;
 	
 	public GameCardPanel() {
 		setLayout(new GridLayout(3,0)); //create grid for main panel
@@ -21,16 +19,8 @@ public class GameCardPanel extends JPanel {
 		peoplePanel = new JPanel();
 		roomPanel = new JPanel();
 		weaponPanel = new JPanel();
-		//add each card type panels to card panel
-		add(peoplePanel);
-		add(roomPanel);
-		add(weaponPanel);
 		
-		handLabel = new JLabel("In Hand:"); //create hand label
-		handText = new JTextField(); //create hand text field
-		
-		seenLabel = new JLabel("Seen:"); //create seen label
-		seenText = new JTextField(); //create seen text field
+
 		
 		//title, border and grid for panels
 		peoplePanel.setBorder(new TitledBorder (new EtchedBorder(), "People")); 
@@ -42,14 +32,9 @@ public class GameCardPanel extends JPanel {
 		weaponPanel.setBorder(new TitledBorder (new EtchedBorder(), "Weapons"));
 		weaponPanel.setLayout(new GridLayout(0, 1));
 		
-		//if text field is empty, set it to none
-		if (handText.getText().isEmpty()) handText.setText("None");
-		if (seenText.getText().isEmpty()) seenText.setText("None");
-		
-//		panel.removeAll()
-//		// add the fields to go into the panel using the updated seen card data
-//		add( panel ) ;   // causes swing to either add or readd the entire panel and recalculate it
-		  
+//		//if text field is empty, set it to none
+//		if (handText.getText().isEmpty()) handText.setText("None");
+//		if (seenText.getText().isEmpty()) seenText.setText("None");		  
 	}
 	
 //	private void setPeoplePanel(ArrayList<Card> hand, Set<Card> seenCards) {
@@ -139,6 +124,16 @@ public class GameCardPanel extends JPanel {
 	}
 	
 	private void updatePanel(JPanel panel, CardType cardType) {
+		panel.removeAll();
+		// add the fields to go into the panel using the updated seen card data
+		add(panel);   // causes swing to either add or readd the entire panel and recalculate it
+		
+		JLabel handLabel = new JLabel("In Hand:"); //create hand label
+		JTextField handText = new JTextField(); //create hand text field
+		
+		JLabel seenLabel = new JLabel("Seen:"); //create seen label
+		JTextField seenText = new JTextField(); //create seen text field
+		
 		panel.add(handLabel);
 		panel.add(handText);
 		panel.add(seenLabel);
