@@ -11,11 +11,7 @@ public class GameControlPanel extends JPanel {
 	JButton accusationButton, nextButton;
 
 	public GameControlPanel()  {
-<<<<<<< HEAD
 
-=======
-		//create main grid
->>>>>>> 87c593c79d14fcac098f4e09c998ae28ecbf71aa
 		setLayout(new GridLayout(2, 0)); 
 		//create top and bottom panels
 		topPanel = new JPanel();
@@ -23,8 +19,7 @@ public class GameControlPanel extends JPanel {
 		//add top and bottom panels to main panel
 		add(topPanel);
 		add(bottomPanel);
-<<<<<<< HEAD
-		bottomPanel.setLayout(new GridLayout(0, 2)); 
+
 
 	}
 	
@@ -55,9 +50,9 @@ public class GameControlPanel extends JPanel {
 	}
 
 	private void setTurn(ComputerPlayer computerPlayer, int i) {
-=======
+
 		//set grid of top and bottom panels
->>>>>>> 87c593c79d14fcac098f4e09c998ae28ecbf71aa
+
 		topPanel.setLayout(new GridLayout(1, 4)); 
 		bottomPanel.setLayout(new GridLayout(0, 2)); 
 		
@@ -111,28 +106,9 @@ public class GameControlPanel extends JPanel {
 		topPanel.add(nextButton);
 	}
 	
-	private void setGuessResult(String string) {
-		guessResultText.setText(string); //text for guess result panel
-	}
+	
 
-	private void setGuess(String string) {
-		guessText.setText(string); //text for guess panel
-	}
 
-	private void setTurn(ComputerPlayer computerPlayer, int i) {
-		playerText.setText(computerPlayer.getName()); //text for player panel
-		rollText.setText(String.valueOf(i)); //text for roll panel
-	}
-
-<<<<<<< HEAD
-
-	/**
-	 * Main to test the panel
-	 * 
-	 * @param args
-	 */
-=======
->>>>>>> 87c593c79d14fcac098f4e09c998ae28ecbf71aa
 	public static void main(String[] args) {
 		GameControlPanel panel = new GameControlPanel();  // create the panel
 		JFrame frame = new JFrame();  // create the frame 
