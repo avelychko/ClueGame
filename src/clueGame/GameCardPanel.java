@@ -41,10 +41,10 @@ public class GameCardPanel extends JPanel {
 				handText.setText(hand.get(i).getCardName());
 				peoplePanel.add(handText); //text box colors??
 			}
-			//check if CardType exists in array
-			handText.setText("None");
-			peoplePanel.add(handText);
 		}
+		
+		if (handText.getText().isEmpty()) handText.setText("None");
+		peoplePanel.add(handText);
 		
 		JLabel seenLabel = new JLabel("Seen:");
 		JTextField seenText = new JTextField();
@@ -55,14 +55,10 @@ public class GameCardPanel extends JPanel {
 				seenText.setText(s.getCardName());
 				peoplePanel.add(seenText);
 			}
-			//check if CardType exists in set
-			seenText.setText("None");
-			peoplePanel.add(seenText);
 		}
-		if (seenCards.isEmpty()) {
-			seenText.setText("None");
-			peoplePanel.add(seenText);
-		}
+
+		if (seenText.getText().isEmpty()) seenText.setText("None");
+		peoplePanel.add(seenText);
 	}
 	
 	private void setRoomsPanel(ArrayList<Card> hand, Set<Card> seenCards) {
@@ -79,10 +75,10 @@ public class GameCardPanel extends JPanel {
 				handText.setText(hand.get(i).getCardName());
 				roomsPanel.add(handText);
 			}
-			//check if CardType exists in array
-			handText.setText("None");
-			roomsPanel.add(handText);
 		}
+		
+		if (handText.getText().isEmpty()) handText.setText("None");
+		roomsPanel.add(handText);
 		
 		JLabel seenLabel = new JLabel("Seen:");
 		JTextField seenText = new JTextField();
@@ -93,15 +89,10 @@ public class GameCardPanel extends JPanel {
 				seenText.setText(s.getCardName());
 				roomsPanel.add(seenText);
 			}
-			//check if CardType exists in set
-			seenText.setText("None");
-			roomsPanel.add(seenText);
 		}
 		
-		if (seenCards.isEmpty()) {
-			seenText.setText("None");
-			roomsPanel.add(seenText);
-		}
+		if (seenText.getText().isEmpty()) seenText.setText("None");
+		roomsPanel.add(seenText);
 	}
 	
 	private void setWeaponsPanel(ArrayList<Card> hand, Set<Card> seenCards) {
@@ -118,10 +109,10 @@ public class GameCardPanel extends JPanel {
 				handText.setText(hand.get(i).getCardName());
 				weaponsPanel.add(handText);
 			}
-			//check if CardType exists in array
-			handText.setText("None");
-			weaponsPanel.add(handText);
 		}
+		
+		if (handText.getText().isEmpty()) handText.setText("None");
+		weaponsPanel.add(handText);
 		
 		JLabel seenLabel = new JLabel("Seen:");
 		JTextField seenText = new JTextField();
@@ -132,14 +123,10 @@ public class GameCardPanel extends JPanel {
 				seenText.setText(s.getCardName());
 				weaponsPanel.add(seenText);
 			}
-			//check if CardType exists in set
-			seenText.setText("None");
-			weaponsPanel.add(seenText);
 		}
-		if (seenCards.isEmpty()) {
-			seenText.setText("None");
-			weaponsPanel.add(seenText);
-		}
+
+		if (seenText.getText().isEmpty()) seenText.setText("None");
+		weaponsPanel.add(seenText);
 	}
 	
 	public static void main(String[] args) {
