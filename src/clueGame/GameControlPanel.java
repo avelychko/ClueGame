@@ -6,51 +6,58 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 public class GameControlPanel extends JPanel {
-	JPanel guessResultPanel, guessPanel, turnPanel, accusationPanel;
+	JPanel topPanel, bottomPanel;
 	/**
 	 * Constructor for the panel, it does 90% of the work
 	 */
 	public GameControlPanel()  {
-		setLayout(new GridLayout(2,2));
-		turnPanel = new JPanel();
-		add(turnPanel, BorderLayout.WEST);
-		accusationPanel = new JPanel();
-		add(accusationPanel, BorderLayout.EAST);
-		guessResultPanel = new JPanel();
-		add(guessResultPanel, BorderLayout.WEST);
-		guessPanel = new JPanel();
-		add(guessPanel, BorderLayout.EAST);
+		setLayout(new GridLayout(2, 0)); 
+		topPanel = new JPanel();
+		bottomPanel = new JPanel();
+		add(topPanel);
+		add(bottomPanel);
+		bottomPanel.setLayout(new GridLayout(0, 2)); 
 	}
 	
 	private void setGuessResult(String string) {
-		JTextField guessResultText = new JTextField(32);
+		JPanel guessResultPanel = new JPanel();
+		guessResultPanel.setLayout(new GridLayout(1, 0)); 
+		
+		JTextField guessResultText = new JTextField(15);
 		guessResultText.setText(string);
-		//guessResultText.setSize(32, 15);
-		//guessResultText.setBorder(new LineBorder(Color.RED, 10));
 		guessResultText.setBackground(new Color(238, 238, 238));
+		
 		guessResultPanel.add(guessResultText);
 		guessResultPanel.setBorder(new TitledBorder (new EtchedBorder(), "Guess Result"));
+		bottomPanel.add(guessResultPanel);
 	}
 
 	private void setGuess(String string) {
-		JTextField guessText = new JTextField(32);
+		JPanel guessPanel = new JPanel();
+		guessPanel.setLayout(new GridLayout(1, 0)); 
+		
+		JTextField guessText = new JTextField(15);
 		guessText.setText(string);
 		guessText.setBackground(new Color(238, 238, 238));
 		
 		guessPanel.add(guessText);
 		guessPanel.setBorder(new TitledBorder (new EtchedBorder(), "Guess"));
+		bottomPanel.add(guessPanel);
 	}
 
 	private void setTurn(ComputerPlayer computerPlayer, int i) {
+		topPanel.setLayout(new GridLayout(1, 4)); 
 		JPanel playerPanel = new JPanel();
 		JPanel rollPanel = new JPanel();
+		JButton accusationButton = new JButton("Make Accusation");
+		JButton nextButton = new JButton("NEXT!");
 		
 		JLabel turnLabel = new JLabel("Whose turn?");
 		JTextField playerText = new JTextField(15);
 		playerText.setText(computerPlayer.getName());
-		playerText.setBackground(new Color(248, 228, 115));
-		playerPanel.add(turnLabel, BorderLayout.NORTH);
-		playerPanel.add(playerText, BorderLayout.SOUTH);
+		playerText.setBackground(new Color(250, 218, 94));
+		playerPanel.add(turnLabel);
+		playerPanel.add(playerText);
 		
 		JLabel rollLabel = new JLabel("Roll:");
 		JTextField rollText = new JTextField(5);
@@ -59,24 +66,10 @@ public class GameControlPanel extends JPanel {
 		rollPanel.add(rollLabel);
 		rollPanel.add(rollText);
 		
-		turnPanel.add(playerPanel, BorderLayout.WEST);
-		turnPanel.add(rollPanel, BorderLayout.EAST);
-	}
-	
-	private void setAccusationButton() {
-		JPanel accusationButtonPanel = new JPanel();
-		JPanel nextButtonPanel = new JPanel();
-		
-		JButton accusationButton = new JButton("Make Accusation");
-		JButton nextButton = new JButton("NEXT!");
-		//accusationButton.setSize(50, 50);
-		//nextButton.setSize(50, 50);
-
-		accusationButtonPanel.add(accusationButton);
-		nextButtonPanel.add(nextButton);
-		
-		accusationPanel.add(accusationButtonPanel, BorderLayout.WEST);
-		accusationPanel.add(nextButtonPanel, BorderLayout.WEST);
+		topPanel.add(playerPanel);
+		topPanel.add(rollPanel);
+		topPanel.add(accusationButton);
+		topPanel.add(nextButton);
 	}
 
 	/**
@@ -96,6 +89,5 @@ public class GameControlPanel extends JPanel {
 		panel.setTurn(new ComputerPlayer( "Col. Mustard", "orange", 0, 0), 5);
 		panel.setGuess( "I have no guess!");
 		panel.setGuessResult( "So you have nothing?");
-		panel.setAccusationButton();
 	}
 }
