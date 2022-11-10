@@ -42,24 +42,6 @@ public class GameCardPanel extends JPanel {
 		weaponPanel.setBorder(new TitledBorder (new EtchedBorder(), "Weapons"));
 		weaponPanel.setLayout(new GridLayout(0, 1));
 		
-		//add labels and text field to people panel
-		peoplePanel.add(handLabel);
-		peoplePanel.add(handText);
-		peoplePanel.add(seenLabel);
-		peoplePanel.add(seenText);
-		
-		//add labels and text field to rooms panel
-		roomPanel.add(handLabel);
-		roomPanel.add(handText);
-		roomPanel.add(seenLabel);
-		roomPanel.add(seenText);
-		
-		//add labels and text field to weapons panel
-		weaponPanel.add(handLabel);
-		weaponPanel.add(handText);
-		weaponPanel.add(seenLabel);
-		weaponPanel.add(seenText);
-		
 		//if text field is empty, set it to none
 		if (handText.getText().isEmpty()) handText.setText("None");
 		if (seenText.getText().isEmpty()) seenText.setText("None");
@@ -150,12 +132,19 @@ public class GameCardPanel extends JPanel {
 //		weaponPanel.add(seenText);
 //	}
 	
-	public void updatePanel(JPanel panel, CardType cardType) {
+	public void updatePanels() {
 		updatePanel(peoplePanel, CardType.PERSON);
 		updatePanel(roomPanel, CardType.ROOM);
 		updatePanel(weaponPanel, CardType.WEAPON);
 	}
 	
+	private void updatePanel(JPanel panel, CardType cardType) {
+		panel.add(handLabel);
+		panel.add(handText);
+		panel.add(seenLabel);
+		panel.add(seenText);
+}
+
 	public static void main(String[] args) {
 		GameCardPanel panel = new GameCardPanel();  // create the panel
 		JFrame frame = new JFrame();  // create the frame 
@@ -194,6 +183,8 @@ public class GameCardPanel extends JPanel {
 //		panel.setPeoplePanel(handDuring, seenCardsDuring);
 //		panel.setRoomsPanel(handDuring, seenCardsDuring);
 //		panel.setWeaponsPanel(handDuring, seenCardsDuring);
+		
+		panel.updatePanels();
 		
 		frame.setVisible(true); // make it visible
 	}
