@@ -3,73 +3,76 @@ package clueGame;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.border.*;
 
 public class GameControlPanel extends JPanel {
-	
+	JPanel topPanel, bottomPanel;
 	/**
 	 * Constructor for the panel, it does 90% of the work
 	 */
 	public GameControlPanel()  {
-		// Create a layout with 2 rows
-		setLayout(new GridLayout(1,2));
-		setGuessResult("gggg");
+
+		setLayout(new GridLayout(2, 0)); 
+		topPanel = new JPanel();
+		bottomPanel = new JPanel();
+		add(topPanel);
+		add(bottomPanel);
+		bottomPanel.setLayout(new GridLayout(0, 2)); 
+
 	}
 	
 	private void setGuessResult(String string) {
-		JPanel panel = new JPanel();
-	 	// Use a grid layout, 1 row, 2 elements (label, text)
-		panel.setLayout(new GridLayout(1,2));
-	 	JLabel nameLabel = new JLabel("Guess");
-		panel.add(nameLabel);
-		JTextField textField = new JTextField();
-		textField.setText(string);
-		panel.add(textField);
+		JPanel guessResultPanel = new JPanel();
+		guessResultPanel.setLayout(new GridLayout(1, 0)); 
+		
+		JTextField guessResultText = new JTextField(15);
+		guessResultText.setText(string);
+		guessResultText.setBackground(new Color(238, 238, 238));
+		
+		guessResultPanel.add(guessResultText);
+		guessResultPanel.setBorder(new TitledBorder (new EtchedBorder(), "Guess Result"));
+		bottomPanel.add(guessResultPanel);
 	}
 
 	private void setGuess(String string) {
-		JPanel panel = new JPanel();
-	 	// Use a grid layout, 1 row, 2 elements (label, text)
-		panel.setLayout(new GridLayout(1,2));
-	 	JLabel nameLabel = new JLabel("Guess Result");
-		panel.add(nameLabel);
-		JTextField textField = new JTextField();
-		textField.setText(string);
-		panel.add(textField);
+		JPanel guessPanel = new JPanel();
+		guessPanel.setLayout(new GridLayout(1, 0)); 
+		
+		JTextField guessText = new JTextField(15);
+		guessText.setText(string);
+		guessText.setBackground(new Color(238, 238, 238));
+		
+		guessPanel.add(guessText);
+		guessPanel.setBorder(new TitledBorder (new EtchedBorder(), "Guess"));
+		bottomPanel.add(guessPanel);
 	}
 
 	private void setTurn(ComputerPlayer computerPlayer, int i) {
-		
-		
-	}
-	
-	private void setAccusationButton() {
-		GameControlPanel panel = new GameControlPanel();
+		topPanel.setLayout(new GridLayout(1, 4)); 
+		JPanel playerPanel = new JPanel();
+		JPanel rollPanel = new JPanel();
 		JButton accusationButton = new JButton("Make Accusation");
 		JButton nextButton = new JButton("NEXT!");
-		panel.add(accusationButton);
-		panel.add(nextButton);
+		
+		JLabel turnLabel = new JLabel("Whose turn?");
+		JTextField playerText = new JTextField(15);
+		playerText.setText(computerPlayer.getName());
+		playerText.setBackground(new Color(250, 218, 94));
+		playerPanel.add(turnLabel);
+		playerPanel.add(playerText);
+		
+		JLabel rollLabel = new JLabel("Roll:");
+		JTextField rollText = new JTextField(5);
+		rollText.setText(String.valueOf(i));
+		rollText.setBackground(new Color(238, 238, 238));
+		rollPanel.add(rollLabel);
+		rollPanel.add(rollText);
+		
+		topPanel.add(playerPanel);
+		topPanel.add(rollPanel);
+		topPanel.add(accusationButton);
+		topPanel.add(nextButton);
 	}
-	
-
-/*	private class ButtonListener implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e)
-		{
-			String message = "Hello " + myName.getText(); //input text
-			JOptionPane.showMessageDialog(null, message); //opens window with text
-			String numStr = JOptionPane.showInputDialog("Enter your age"); //window where input text
-			int num = Integer.parseInt(numStr);
-			int yearsLeft = 100 - num;
-			JOptionPane.showMessageDialog(null, 
-					"You have " + yearsLeft + " years left");
-			int ready = JOptionPane.showConfirmDialog(null, 
-					"Are you ready to continue?"); //window with choice buttons
-			if (ready == JOptionPane.YES_OPTION) //if you choose yes
-				JOptionPane.showMessageDialog(gui, "Here we go!");
-			else //if you choose no
-				JOptionPane.showMessageDialog(gui, "OK, we'll wait");
-		}
-	}*/
 
 
 	/**
@@ -89,6 +92,5 @@ public class GameControlPanel extends JPanel {
 		panel.setTurn(new ComputerPlayer( "Col. Mustard", "orange", 0, 0), 5);
 		panel.setGuess( "I have no guess!");
 		panel.setGuessResult( "So you have nothing?");
-		panel.setAccusationButton();
 	}
 }
