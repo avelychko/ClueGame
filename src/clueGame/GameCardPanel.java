@@ -13,25 +13,27 @@ public class GameCardPanel extends JPanel {
 	JPanel cardPanel, peoplePanel, roomsPanel, weaponsPanel;
 	
 	public GameCardPanel() {
-		cardPanel = new JPanel();
-		cardPanel.setLayout(new GridLayout(3,1));
+		cardPanel = new JPanel(); //create card panel
+		cardPanel.setLayout(new GridLayout(3,1)); //create grid for main panel
 		//set Card panel size
-		//cardPanel.setSize(new Dimension(160, 700));
-		cardPanel.setBorder(new TitledBorder (new EtchedBorder(), "Known Cards"));
-		add(cardPanel);
+		cardPanel.setSize(new Dimension(160, 700));
+		cardPanel.setBorder(new TitledBorder (new EtchedBorder(), "Known Cards")); //create border and title for panel
+		add(cardPanel); //add card panel to main panel
+		//create each type card panels
 		peoplePanel = new JPanel();
 		roomsPanel = new JPanel();
 		weaponsPanel = new JPanel();
+		//add each card type panels to card panel
 		cardPanel.add(peoplePanel);
 		cardPanel.add(roomsPanel);
 		cardPanel.add(weaponsPanel);
 	}
 	
 	private void setPeoplePanel(ArrayList<Card> hand, Set<Card> seenCards) {
-		peoplePanel.setBorder(new TitledBorder (new EtchedBorder(), "People"));
-		peoplePanel.setLayout(new GridLayout(4,1));
+		peoplePanel.setBorder(new TitledBorder (new EtchedBorder(), "People")); //create title and border for people panel
+		peoplePanel.setLayout(new GridLayout(4,1)); //create grid for people panel
 		
-		JLabel handLabel = new JLabel("In Hand:");
+		JLabel handLabel = new JLabel("In Hand:"); //create label
 		JTextField handText = new JTextField();
 		peoplePanel.add(handLabel);
 		
