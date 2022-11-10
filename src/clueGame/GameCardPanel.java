@@ -15,6 +15,7 @@ public class GameCardPanel extends JPanel {
 	public GameCardPanel() {
 		cardPanel = new JPanel();
 		cardPanel.setLayout(new GridLayout(3,1));
+		//set Card panel size
 		//cardPanel.setSize(new Dimension(160, 700));
 		cardPanel.setBorder(new TitledBorder (new EtchedBorder(), "Known Cards"));
 		add(cardPanel);
@@ -28,16 +29,17 @@ public class GameCardPanel extends JPanel {
 	
 	private void setPeoplePanel(ArrayList<Card> hand, Set<Card> seenCards) {
 		peoplePanel.setBorder(new TitledBorder (new EtchedBorder(), "People"));
-		peoplePanel.setLayout(new GridLayout(2,1));
+		peoplePanel.setLayout(new GridLayout(4,1));
 		
 		JLabel handLabel = new JLabel("In Hand:");
 		JTextField handText = new JTextField();
 		peoplePanel.add(handLabel);
 		
+		//put each card of type person in text field
 		for (int i = 0; i < hand.size(); i++) {
 			if (hand.get(i).getCardType() == CardType.PERSON) {
 				handText.setText(hand.get(i).getCardName());
-				peoplePanel.add(handText);
+				peoplePanel.add(handText); //text box colors??
 			}
 			//check if CardType exists in array
 			handText.setText("None");
@@ -65,14 +67,15 @@ public class GameCardPanel extends JPanel {
 	
 	private void setRoomsPanel(ArrayList<Card> hand, Set<Card> seenCards) {
 		roomsPanel.setBorder(new TitledBorder (new EtchedBorder(), "Rooms"));
-		roomsPanel.setLayout(new GridLayout(2,1));
+		roomsPanel.setLayout(new GridLayout(4,1));
 		
 		JLabel handLabel = new JLabel("In Hand:");
 		JTextField handText = new JTextField();
 		roomsPanel.add(handLabel);
 		
+		//put each card of type room in text field
 		for (int i = 0; i < hand.size(); i++) {
-			if (hand.get(i).getCardType() == CardType.PERSON) {
+			if (hand.get(i).getCardType() == CardType.ROOM) {
 				handText.setText(hand.get(i).getCardName());
 				roomsPanel.add(handText);
 			}
@@ -86,7 +89,7 @@ public class GameCardPanel extends JPanel {
 		roomsPanel.add(seenLabel);
 		
 		for (Card s: seenCards) {
-			if (s.getCardType() == CardType.PERSON) {
+			if (s.getCardType() == CardType.ROOM) {
 				seenText.setText(s.getCardName());
 				roomsPanel.add(seenText);
 			}
@@ -103,14 +106,15 @@ public class GameCardPanel extends JPanel {
 	
 	private void setWeaponsPanel(ArrayList<Card> hand, Set<Card> seenCards) {
 		weaponsPanel.setBorder(new TitledBorder (new EtchedBorder(), "Weapons"));
-		weaponsPanel.setLayout(new GridLayout(2,1));
+		weaponsPanel.setLayout(new GridLayout(4,1));
 		
 		JLabel handLabel = new JLabel("In Hand:");
 		JTextField handText = new JTextField();
 		weaponsPanel.add(handLabel);
 		
+		//put each card of type weapon in text field
 		for (int i = 0; i < hand.size(); i++) {
-			if (hand.get(i).getCardType() == CardType.PERSON) {
+			if (hand.get(i).getCardType() == CardType.WEAPON) {
 				handText.setText(hand.get(i).getCardName());
 				weaponsPanel.add(handText);
 			}
@@ -124,7 +128,7 @@ public class GameCardPanel extends JPanel {
 		weaponsPanel.add(seenLabel);
 		
 		for (Card s: seenCards) {
-			if (s.getCardType() == CardType.PERSON) {
+			if (s.getCardType() == CardType.WEAPON) {
 				seenText.setText(s.getCardName());
 				weaponsPanel.add(seenText);
 			}
@@ -172,6 +176,7 @@ public class GameCardPanel extends JPanel {
 		panel.setRoomsPanel(handStart, seenCardsStart);
 		panel.setWeaponsPanel(handStart, seenCardsStart);
 		
+		//check both windows
 //		panel.setPeoplePanel(handDuring, seenCardsDuring);
 //		panel.setRoomsPanel(handDuring, seenCardsDuring);
 //		panel.setWeaponsPanel(handDuring, seenCardsDuring);
