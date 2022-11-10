@@ -10,17 +10,15 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 public class GameCardPanel extends JPanel {
-	JPanel cardPanel, peoplePanel, roomPanel, weaponPanel;
+	JPanel peoplePanel, roomPanel, weaponPanel;
 	JLabel handLabel, seenLabel;
 	JTextField handText, seenText;
 	
 	public GameCardPanel() {
-		
+
 		setLayout(new GridLayout(3,0)); //create grid for main panel
-		//set Card panel size
-		//cardPanel.setSize(new Dimension(160, 700));
 		setBorder(new TitledBorder (new EtchedBorder(), "Known Cards")); //create border and title for panel
-	
+
 		//create each type card panels
 		peoplePanel = new JPanel();
 		roomPanel = new JPanel();
@@ -35,7 +33,6 @@ public class GameCardPanel extends JPanel {
 		
 		seenLabel = new JLabel("Seen:"); //create seen label
 		seenText = new JTextField(); //create seen text field
-		
 		
 		//title, border and grid for panels
 		peoplePanel.setBorder(new TitledBorder (new EtchedBorder(), "People")); 
@@ -165,9 +162,9 @@ public class GameCardPanel extends JPanel {
 		GameCardPanel panel = new GameCardPanel();  // create the panel
 		JFrame frame = new JFrame();  // create the frame 
 		frame.setContentPane(panel); // put the panel in the frame
-		frame.setSize(180, 750);  // size the frame
+		frame.setSize(200, 400);  // size the frame
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
-		frame.setVisible(true); // make it visible
+		
 		
 		ArrayList<Card> handStart = new ArrayList<Card>();
 		Set<Card> seenCardsStart = new HashSet<Card>();
@@ -199,5 +196,7 @@ public class GameCardPanel extends JPanel {
 //		panel.setPeoplePanel(handDuring, seenCardsDuring);
 //		panel.setRoomsPanel(handDuring, seenCardsDuring);
 //		panel.setWeaponsPanel(handDuring, seenCardsDuring);
+		
+		frame.setVisible(true); // make it visible
 	}
 }
