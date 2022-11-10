@@ -15,20 +15,20 @@ public class GameCardPanel extends JPanel {
 	JTextField handText, seenText;
 	
 	public GameCardPanel() {
-		cardPanel = new JPanel(); //create card panel
-		cardPanel.setLayout(new GridLayout(3,1)); //create grid for main panel
+		
+		setLayout(new GridLayout(3,0)); //create grid for main panel
 		//set Card panel size
-		cardPanel.setSize(new Dimension(160, 700));
-		cardPanel.setBorder(new TitledBorder (new EtchedBorder(), "Known Cards")); //create border and title for panel
-		add(cardPanel); //add card panel to main panel
+		//cardPanel.setSize(new Dimension(160, 700));
+		setBorder(new TitledBorder (new EtchedBorder(), "Known Cards")); //create border and title for panel
+	
 		//create each type card panels
 		peoplePanel = new JPanel();
 		roomPanel = new JPanel();
 		weaponPanel = new JPanel();
 		//add each card type panels to card panel
-		cardPanel.add(peoplePanel);
-		cardPanel.add(roomPanel);
-		cardPanel.add(weaponPanel);
+		add(peoplePanel);
+		add(roomPanel);
+		add(weaponPanel);
 		
 		handLabel = new JLabel("In Hand:"); //create hand label
 		handText = new JTextField(); //create hand text field
