@@ -10,7 +10,9 @@ public class GameControlPanel extends JPanel {
 	 * Constructor for the panel, it does 90% of the work
 	 */
 	public GameControlPanel()  {
-		gui.this
+		// Create a layout with 2 rows
+		setLayout(new GridLayout(1,2));
+		setGuessResult("gggg");
 	}
 	
 	private void setGuessResult(String string) {
@@ -49,7 +51,7 @@ public class GameControlPanel extends JPanel {
 	}
 	
 
-	private class ButtonListener implements ActionListener
+/*	private class ButtonListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e)
 		{
@@ -67,7 +69,7 @@ public class GameControlPanel extends JPanel {
 			else //if you choose no
 				JOptionPane.showMessageDialog(gui, "OK, we'll wait");
 		}
-	}
+	}*/
 
 
 	/**
