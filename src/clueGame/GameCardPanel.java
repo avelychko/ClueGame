@@ -184,6 +184,7 @@ public class GameCardPanel extends JPanel {
 		
 		Player player1 = new HumanPlayer("Al Capone", "Blue", 0, 0);
 		
+		player1.se
 		player1.setSeenCards(seenCardsDuring);
 		
 		// test filling in the data

@@ -9,6 +9,7 @@ public abstract class Player {
 	private int row, col;
 	private static final int CARD_AMOUNT = 3;
 	private ArrayList<Card> hand = new ArrayList<Card>(CARD_AMOUNT);
+
 	private Set<Card> seenCards = new HashSet<Card>();
 	private ArrayList<Card> disproveCards;
 
@@ -27,6 +28,8 @@ public abstract class Player {
 
 	public void updateHand(Card card) { this.hand.add(card); }
 	public ArrayList<Card> getPlayerCards() { return this.hand; }
+	public void setHand(ArrayList<Card> hand) {this.hand = hand;}
+	
 	public void updateSeen(Card seenCard) { this.seenCards.add(seenCard); }
 	public Set<Card> getSeenCards() { return this.seenCards; }
 	public void setSeenCards(Set<Card> seenCards) { this.seenCards = seenCards; }
