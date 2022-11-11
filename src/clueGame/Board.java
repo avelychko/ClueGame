@@ -379,7 +379,7 @@ public class Board {
 			totalDeck.remove(randomIndexFirstCard);
 
 			player.get(i).updateHand(randomFirstCard);
-			player.get(i).updateSeen(randomFirstCard);
+			
 
 			//second card
 			Random randSecondCard = new Random();
@@ -388,7 +388,7 @@ public class Board {
 			totalDeck.remove(randomIndexSecondCard);
 
 			player.get(i).updateHand(randomSecondCard);
-			player.get(i).updateSeen(randomSecondCard);
+			
 
 			//third card
 			Random randThirdCard = new Random();
@@ -397,7 +397,7 @@ public class Board {
 			totalDeck.remove(randomIndexThirdCard);
 
 			player.get(i).updateHand(randomThirdCard);
-			player.get(i).updateSeen(randomThirdCard);
+			
 		}
 	}
 

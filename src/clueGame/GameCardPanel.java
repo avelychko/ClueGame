@@ -11,6 +11,8 @@ import javax.swing.border.*;
 
 public class GameCardPanel extends JPanel {
 	JPanel peoplePanel, roomPanel, weaponPanel;
+	JTextField generalText;
+	private ArrayList<Card> hand = new ArrayList<Card>();
 	
 	public GameCardPanel() {
 
@@ -120,28 +122,35 @@ public class GameCardPanel extends JPanel {
 //	}
 	
 	public void updatePanels() {
-		updatePanel(peoplePanel, Card.CardType.PERSON);
-		updatePanel(roomPanel, Card.CardType.ROOM);
-		updatePanel(weaponPanel, Card.CardType.WEAPON);
+		//updatePanel(peoplePanel, Card.CardType.PERSON);
+		//updatePanel(roomPanel, Card.CardType.ROOM);
+		//updatePanel(weaponPanel, Card.CardType.WEAPON);
+		updatePanel(peoplePanel);
+		updatePanel(roomPanel);
+		updatePanel(weaponPanel);
 	}
-	
-	private void updatePanel(JPanel panel, Card card) {
+	//Card card
+	private void updatePanel(JPanel panel) {
 		panel.removeAll();
 		// add the fields to go into the panel using the updated seen card data
 		add(panel);   // causes swing to either add or readd the entire panel and recalculate it
 		
 		JLabel handLabel = new JLabel("In Hand:"); //create hand label
 		JTextField handText = new JTextField(); //create hand text field
-		handText.setText(card.getCardName());
+		//handText.setText(card.getCardName());
 		
-//		JLabel seenLabel = new JLabel("Seen:"); //create seen label
-//		JTextField seenText = new JTextField(); //create seen text field
+		JLabel seenLabel = new JLabel("Seen:"); //create seen label
+		JTextField seenText = new JTextField(); //create seen text field
 		
 		panel.add(handLabel);
+		
 		panel.add(handText);
+		
+		
 		panel.add(seenLabel);
 		panel.add(seenText);
 }
+	
 
 	public static void main(String[] args) {
 		GameCardPanel panel = new GameCardPanel();  // create the panel
@@ -151,12 +160,13 @@ public class GameCardPanel extends JPanel {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		
 		
-		ArrayList<Card> handStart = new ArrayList<Card>();
+		/*ArrayList<Card> handStart = new ArrayList<Card>();
 		Set<Card> seenCardsStart = new HashSet<Card>();
+		
 		
 		handStart.add(new Card("Benjamin Siegel", CardType.PERSON));
 		handStart.add(new Card("Eddie McGrath", CardType.PERSON));
-		handStart.add(new Card("Katana", CardType.WEAPON));
+		handStart.add(new Card("Katana", CardType.WEAPON));*/
 		
 		ArrayList<Card> handDuring = new ArrayList<Card>();
 		Set<Card> seenCardsDuring = new HashSet<Card>();
@@ -172,6 +182,10 @@ public class GameCardPanel extends JPanel {
 		seenCardsDuring.add(new Card("Pool", CardType.ROOM));
 		seenCardsDuring.add(new Card("Wire", CardType.WEAPON));
 		
+		Player player1 = new HumanPlayer("Al Capone", "Blue", 0, 0);
+		
+		player1.setSeenCards(seenCardsDuring);
+		
 		// test filling in the data
 //		panel.setPeoplePanel(handStart, seenCardsStart);
 //		panel.setRoomsPanel(handStart, seenCardsStart);
@@ -183,6 +197,7 @@ public class GameCardPanel extends JPanel {
 //		panel.setWeaponsPanel(handDuring, seenCardsDuring);
 		
 		panel.updatePanels();
+		
 		
 		frame.setVisible(true); // make it visible
 	}
