@@ -34,102 +34,17 @@ public class GameCardPanel extends JPanel {
 		roomPanel.setLayout(new GridLayout(0, 1));
 		
 		weaponPanel.setBorder(new TitledBorder (new EtchedBorder(), "Weapons"));
-		weaponPanel.setLayout(new GridLayout(0, 1));
-		
-//		//if text field is empty, set it to none
-//		if (handText.getText().isEmpty()) handText.setText("None");
-//		if (seenText.getText().isEmpty()) seenText.setText("None");		  
+		weaponPanel.setLayout(new GridLayout(0, 1));  
+	}
+
+	
+	public void updatePanels(Player human) {
+		peoplePanel(human);
+		roomPanel(human);
+		weaponPanel(human);
 	}
 	
-//	private void setPeoplePanel(ArrayList<Card> hand, Set<Card> seenCards) {
-//
-//		
-//
-//		
-//		
-//		//put each card of type person in text field
-//		for (int i = 0; i < hand.size(); i++) {
-//			if (hand.get(i).getCardType() == CardType.PERSON) {
-//				handText.setText(hand.get(i).getCardName());
-//				peoplePanel.add(handText); //text box colors??
-//			}
-//		}
-//		
-//		if (handText.getText().isEmpty()) handText.setText("None");
-//		
-//		
-//
-//		
-//		
-//		for (Card s: seenCards) {
-//			if (s.getCardType() == CardType.PERSON) {
-//				seenText.setText(s.getCardName());
-//				peoplePanel.add(seenText);
-//			}
-//		}
-//
-//		if (seenText.getText().isEmpty()) seenText.setText("None");
-//		
-//	}
-//	
-//	private void setRoomsPanel(ArrayList<Card> hand, Set<Card> seenCards) {
-//		
-//		//put each card of type room in text field
-//		for (int i = 0; i < hand.size(); i++) {
-//			if (hand.get(i).getCardType() == CardType.ROOM) {
-//				handText.setText(hand.get(i).getCardName());
-//				roomPanel.add(handText);
-//			}
-//		}
-//		
-//		if (handText.getText().isEmpty()) handText.setText("None");
-//		roomPanel.add(handText);
-//		
-//		
-//		for (Card s: seenCards) {
-//			if (s.getCardType() == CardType.ROOM) {
-//				seenText.setText(s.getCardName());
-//				roomPanel.add(seenText);
-//			}
-//		}
-//		
-//		if (seenText.getText().isEmpty()) seenText.setText("None");
-//		roomPanel.add(seenText);
-//	}
-//	
-//	private void setWeaponsPanel(ArrayList<Card> hand, Set<Card> seenCards) {
-//		
-//		//put each card of type weapon in text field
-//		for (int i = 0; i < hand.size(); i++) {
-//			if (hand.get(i).getCardType() == CardType.WEAPON) {
-//				handText.setText(hand.get(i).getCardName());
-//				weaponPanel.add(handText);
-//			}
-//		}
-//		
-//		if (handText.getText().isEmpty()) handText.setText("None");
-//		weaponPanel.add(handText);
-//		
-//		for (Card s: seenCards) {
-//			if (s.getCardType() == CardType.WEAPON) {
-//				seenText.setText(s.getCardName());
-//				weaponPanel.add(seenText);
-//			}
-//		}
-//
-//		if (seenText.getText().isEmpty()) seenText.setText("None");
-//		weaponPanel.add(seenText);
-//	}
-	
-	/*public void updatePanels() {
-		updatePanel(peoplePanel, CardType.PERSON);
-		updatePanel(roomPanel, CardType.ROOM);
-		updatePanel(weaponPanel, CardType.WEAPON);
-		//updatePanel(peoplePanel);
-		//updatePanel(roomPanel);
-		//updatePanel(weaponPanel);
-	}
-	//Card card
+	/*
 	private void updatePanel(JPanel panel, CardType card) {
 		panel.removeAll();
 		// add the fields to go into the panel using the updated seen card data
@@ -155,22 +70,21 @@ public class GameCardPanel extends JPanel {
 		
 		peoplePanel.removeAll();
 		// add the fields to go into the panel using the updated seen card data
-		add(peoplePanel);   // causes swing to either add or readd the entire panel and recalculate it
+		add(peoplePanel);   // causes swing to either add or read the entire panel and recalculate it
 		
 		JLabel handLabel = new JLabel("In Hand:"); //create hand label
-		//JTextField handText = new JTextField(); //create hand text field
 		
 		JLabel seenLabel = new JLabel("Seen:"); //create seen label
-		//JTextField seenText = new JTextField(); //create seen text field
 		
 		peoplePanel.add(handLabel);
 		
 		boolean contains = false;
 		for (int i = 0; i < human.getPlayerCards().size(); i++) {
-			JTextField handText = new JTextField();
+			JTextField handText = new JTextField(); //create hand text field
 			if (human.getPlayerCards().get(i).getCardType() == CardType.PERSON) {
 				handText.setText(human.getPlayerCards().get(i).getCardName());
-				peoplePanel.add(handText); //text box colors??
+				handText.setBackground(human.getcolor());
+				peoplePanel.add(handText); //text box colors
 				contains = true;
 			}	
 		}
@@ -187,7 +101,7 @@ public class GameCardPanel extends JPanel {
 		contains = false;
 		
 		for (Card s: human.getSeenCards()) {
-			JTextField seenText = new JTextField();
+			JTextField seenText = new JTextField(); //create seen text field
 			if (s.getCardType() == CardType.PERSON) {
 				seenText.setText(s.getCardName());
 				peoplePanel.add(seenText);
@@ -208,11 +122,9 @@ public class GameCardPanel extends JPanel {
 		
 		roomPanel.removeAll();
 		// add the fields to go into the panel using the updated seen card data
-		add(roomPanel);   // causes swing to either add or readd the entire panel and recalculate it
+		add(roomPanel);   // causes swing to either add or read the entire panel and recalculate it
 		
 		JLabel handLabel = new JLabel("In Hand:"); //create hand label
-		//JTextField handText = new JTextField(); //create hand text field
-		//handText.setText(card.getCardName());
 		
 		JLabel seenLabel = new JLabel("Seen:"); //create seen label
 		// JTextField seenText = new JTextField(); //create seen text field
@@ -223,10 +135,11 @@ public class GameCardPanel extends JPanel {
 		boolean contains = false;
 		
 		for (int i = 0; i < human.getPlayerCards().size(); i++) {
-			JTextField handText = new JTextField();
+			JTextField handText = new JTextField(); //create hand text field
 			if (human.getPlayerCards().get(i).getCardType() == CardType.ROOM) {
 				handText.setText(human.getPlayerCards().get(i).getCardName());
-				roomPanel.add(handText); //text box colors??
+				handText.setBackground(human.getcolor());
+				roomPanel.add(handText); //text box colors
 				contains = true;
 			}	
 		}
@@ -243,7 +156,7 @@ public class GameCardPanel extends JPanel {
 		contains = false;
 		
 		for (Card s: human.getSeenCards()) {
-			JTextField seenText = new JTextField();
+			JTextField seenText = new JTextField(); //create seen text field
 			if (s.getCardType() == CardType.ROOM) {
 				seenText.setText(s.getCardName());
 				roomPanel.add(seenText);
@@ -263,23 +176,21 @@ private void weaponPanel(Player human) {
 	
 	weaponPanel.removeAll();
 	// add the fields to go into the panel using the updated seen card data
-	add(weaponPanel);   // causes swing to either add or readd the entire panel and recalculate it
+	add(weaponPanel);   // causes swing to either add or read the entire panel and recalculate it
 	
 	JLabel handLabel = new JLabel("In Hand:"); //create hand label
-	//JTextField handText = new JTextField(); //create hand text field
-	
 	
 	JLabel seenLabel = new JLabel("Seen:"); //create seen label
-	//JTextField seenText = new JTextField(); //create seen text field
 	
 	weaponPanel.add(handLabel);
 	
 	boolean contains = false;
 	for (int i = 0; i < human.getPlayerCards().size(); i++) {
-		JTextField handText = new JTextField();
+		JTextField handText = new JTextField(); //create hand text field
 		if (human.getPlayerCards().get(i).getCardType() == CardType.WEAPON) {
 			handText.setText(human.getPlayerCards().get(i).getCardName());
-			weaponPanel.add(handText); //text box colors??
+			handText.setBackground(human.getcolor());
+			weaponPanel.add(handText); //text box color
 			contains = true;
 		}	
 	}
@@ -296,7 +207,7 @@ private void weaponPanel(Player human) {
 	contains = false;
 	
 	for (Card s: human.getSeenCards()) {
-		JTextField seenText = new JTextField();
+		JTextField seenText = new JTextField(); //create seen text field
 		if (s.getCardType() == CardType.WEAPON) {
 			seenText.setText(s.getCardName());
 			weaponPanel.add(seenText);
@@ -349,21 +260,12 @@ private void weaponPanel(Player human) {
 		player1.setHand(handDuring);
 		player1.setSeenCards(seenCardsDuring);
 		
+
 		
-		// test filling in the data
-//		panel.setPeoplePanel(handStart, seenCardsStart);
-//		panel.setRoomsPanel(handStart, seenCardsStart);
-//		panel.setWeaponsPanel(handStart, seenCardsStart);
-		
-		//check both windows
-//		panel.setPeoplePanel(handDuring, seenCardsDuring);
-//		panel.setRoomsPanel(handDuring, seenCardsDuring);
-//		panel.setWeaponsPanel(handDuring, seenCardsDuring);
-		
-		//panel.updatePanels();
-		panel.peoplePanel(player1);
-		panel.roomPanel(player1);
-		panel.weaponPanel(player1);
+		panel.updatePanels(player1);
+		//panel.peoplePanel(player1);
+		//panel.roomPanel(player1);
+		//panel.weaponPanel(player1);
 		
 		frame.setVisible(true); // make it visible
 	}
