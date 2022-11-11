@@ -11,7 +11,7 @@ public class GameControlPanel extends JPanel {
 	JButton accusationButton, nextButton;
 
 	public GameControlPanel()  {
-
+		//create main grid
 		setLayout(new GridLayout(2, 0)); 
 		//create top and bottom panels
 		topPanel = new JPanel();
@@ -19,40 +19,7 @@ public class GameControlPanel extends JPanel {
 		//add top and bottom panels to main panel
 		add(topPanel);
 		add(bottomPanel);
-
-
-	}
-	
-	private void setGuessResult(String string) {
-		JPanel guessResultPanel = new JPanel();
-		guessResultPanel.setLayout(new GridLayout(1, 0)); 
-		
-		JTextField guessResultText = new JTextField(15);
-		guessResultText.setText(string);
-		guessResultText.setBackground(new Color(238, 238, 238));
-		
-		guessResultPanel.add(guessResultText);
-		guessResultPanel.setBorder(new TitledBorder (new EtchedBorder(), "Guess Result"));
-		bottomPanel.add(guessResultPanel);
-	}
-
-	private void setGuess(String string) {
-		JPanel guessPanel = new JPanel();
-		guessPanel.setLayout(new GridLayout(1, 0)); 
-		
-		JTextField guessText = new JTextField(15);
-		guessText.setText(string);
-		guessText.setBackground(new Color(238, 238, 238));
-		
-		guessPanel.add(guessText);
-		guessPanel.setBorder(new TitledBorder (new EtchedBorder(), "Guess"));
-		bottomPanel.add(guessPanel);
-	}
-
-	private void setTurn(ComputerPlayer computerPlayer, int i) {
-
 		//set grid of top and bottom panels
-
 		topPanel.setLayout(new GridLayout(1, 4)); 
 		bottomPanel.setLayout(new GridLayout(0, 2)); 
 		
@@ -63,6 +30,10 @@ public class GameControlPanel extends JPanel {
 		guessResultText = new JTextField(15); //create text box
 		guessResultText.setBackground(new Color(238, 238, 238)); //change color for text box
 		
+		guessResultPanel.add(guessResultText); //add text box to guess result panel
+		guessResultPanel.setBorder(new TitledBorder (new EtchedBorder(), "Guess Result")); //add title to panel with border
+		bottomPanel.add(guessResultPanel); //add guess result panel to bottom panel
+		
 		//create guess panel
 		guessPanel = new JPanel(); 
 		guessPanel.setLayout(new GridLayout(1, 0)); //set guess panel grid
@@ -70,6 +41,9 @@ public class GameControlPanel extends JPanel {
 		guessText = new JTextField(15); //create text box
 		guessText.setBackground(new Color(238, 238, 238)); //change color of text box
 		
+		guessPanel.add(guessText); //add text box to guess panel
+		guessPanel.setBorder(new TitledBorder (new EtchedBorder(), "Guess")); //add title with border to guess panel
+		bottomPanel.add(guessPanel); //add guess panel to bottom panel
 		
 		//create player and roll panels
 		playerPanel = new JPanel();
@@ -83,8 +57,6 @@ public class GameControlPanel extends JPanel {
 		playerText = new JTextField(15); //text box
 		playerText.setBackground(new Color(250, 218, 94)); //text background change
 		playerPanel.add(turnLabel); //add label to player panel
-		playerText.setText(computerPlayer.getName());
-		//playerText.setText(i);
 		playerPanel.add(playerText); //add text box to player panel
 		
 		//create label and text box for roll panel
@@ -92,7 +64,6 @@ public class GameControlPanel extends JPanel {
 		rollText = new JTextField(5); //text box
 		rollText.setBackground(new Color(238, 238, 238)); //text background change
 		rollPanel.add(rollLabel); //add label to roll panel
-		rollText.setText(String.valueOf(i));
 		rollPanel.add(rollText); //add text box to roll panel
 		
 		//add player, roll panel, and accusation, next buttons to top panel
@@ -102,8 +73,18 @@ public class GameControlPanel extends JPanel {
 		topPanel.add(nextButton);
 	}
 	
-	
+	private void setGuessResult(String string) {
+		guessResultText.setText(string); //text for guess result panel
+	}
 
+	private void setGuess(String string) {
+		guessText.setText(string); //text for guess panel
+	}
+
+	private void setTurn(ComputerPlayer computerPlayer, int i) {
+		playerText.setText(computerPlayer.getName()); //text for player panel
+		rollText.setText(String.valueOf(i)); //text for roll panel
+	}
 
 	public static void main(String[] args) {
 		GameControlPanel panel = new GameControlPanel();  // create the panel
@@ -118,4 +99,5 @@ public class GameControlPanel extends JPanel {
 		panel.setGuess( "I have no guess!");
 		panel.setGuessResult( "So you have nothing?");
 	}
+
 }
