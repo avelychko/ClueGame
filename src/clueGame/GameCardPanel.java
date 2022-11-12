@@ -39,8 +39,11 @@ public class GameCardPanel extends JPanel {
 
 	
 	public void updatePanels(Player human) {
+		//creates the people panel
 		peoplePanel(human);
+		//creates the room panel
 		roomPanel(human);
+		//creates the weapon panel
 		weaponPanel(human);
 	}
 	
@@ -78,30 +81,36 @@ public class GameCardPanel extends JPanel {
 		
 		peoplePanel.add(handLabel);
 		
-		boolean contains = false;
+		boolean contains = false; // used to check if hand/seen contains the type, if not "none" will be used
+		
+	
 		for (int i = 0; i < human.getPlayerCards().size(); i++) {
 			JTextField handText = new JTextField(); //create hand text field
+			//adds hand person cards to panel
 			if (human.getPlayerCards().get(i).getCardType() == CardType.PERSON) {
 				handText.setText(human.getPlayerCards().get(i).getCardName());
-				handText.setBackground(human.getcolor());
-				peoplePanel.add(handText); //text box colors
+				handText.setBackground(human.getcolor()); //text box colors by player set color
+				peoplePanel.add(handText); 
 				contains = true;
 			}	
 		}
 			
-		
+		//only works if there is no person card type in players hand
 		if (!contains) {
 			JTextField none = new JTextField();
 			none.setText("None");
 			peoplePanel.add(none);
 		}
 		
+		
 		peoplePanel.add(seenLabel);
 		
 		contains = false;
 		
+		
 		for (Card s: human.getSeenCards()) {
 			JTextField seenText = new JTextField(); //create seen text field
+			//adds seen person cards to panel
 			if (s.getCardType() == CardType.PERSON) {
 				seenText.setText(s.getCardName());
 				peoplePanel.add(seenText);
@@ -109,7 +118,8 @@ public class GameCardPanel extends JPanel {
 			}
 			
 		}
-
+		
+		//only works if there is no person card type in players seen cards
 		if (!contains) {
 			JTextField seenText = new JTextField();
 			seenText.setText("None");
@@ -127,24 +137,25 @@ public class GameCardPanel extends JPanel {
 		JLabel handLabel = new JLabel("In Hand:"); //create hand label
 		
 		JLabel seenLabel = new JLabel("Seen:"); //create seen label
-		// JTextField seenText = new JTextField(); //create seen text field
 		
 		
 		roomPanel.add(handLabel);
 		
-		boolean contains = false;
+		boolean contains = false; // used to check if hand/seen contains the type, if not "none" will be used
+		
 		
 		for (int i = 0; i < human.getPlayerCards().size(); i++) {
 			JTextField handText = new JTextField(); //create hand text field
+			//adds hand room cards to panel
 			if (human.getPlayerCards().get(i).getCardType() == CardType.ROOM) {
 				handText.setText(human.getPlayerCards().get(i).getCardName());
-				handText.setBackground(human.getcolor());
-				roomPanel.add(handText); //text box colors
+				handText.setBackground(human.getcolor()); //text box colors by player set color
+				roomPanel.add(handText); 
 				contains = true;
 			}	
 		}
 			
-		
+		//only works if there is no room card type in players hand
 		if (!contains) {
 			JTextField none = new JTextField();
 			none.setText("None");
@@ -155,8 +166,10 @@ public class GameCardPanel extends JPanel {
 		
 		contains = false;
 		
+		
 		for (Card s: human.getSeenCards()) {
 			JTextField seenText = new JTextField(); //create seen text field
+			//adds seen room cards to panel
 			if (s.getCardType() == CardType.ROOM) {
 				seenText.setText(s.getCardName());
 				roomPanel.add(seenText);
@@ -164,7 +177,8 @@ public class GameCardPanel extends JPanel {
 			}
 			
 		}
-
+		
+		//only works if there is no room card type in players seen cards
 		if (!contains) {
 			JTextField seenText = new JTextField();
 			seenText.setText("None");
@@ -172,7 +186,7 @@ public class GameCardPanel extends JPanel {
 		}
 	}
 
-private void weaponPanel(Player human) {
+	private void weaponPanel(Player human) {
 	
 	weaponPanel.removeAll();
 	// add the fields to go into the panel using the updated seen card data
@@ -182,20 +196,24 @@ private void weaponPanel(Player human) {
 	
 	JLabel seenLabel = new JLabel("Seen:"); //create seen label
 	
+	
 	weaponPanel.add(handLabel);
 	
-	boolean contains = false;
+	boolean contains = false; // used to check if hand/seen contains the type, if not "none" will be used
+	
+	
 	for (int i = 0; i < human.getPlayerCards().size(); i++) {
 		JTextField handText = new JTextField(); //create hand text field
+		//adds hand weapon cards to panel
 		if (human.getPlayerCards().get(i).getCardType() == CardType.WEAPON) {
 			handText.setText(human.getPlayerCards().get(i).getCardName());
-			handText.setBackground(human.getcolor());
-			weaponPanel.add(handText); //text box color
+			handText.setBackground(human.getcolor()); //text box colors by player set color
+			weaponPanel.add(handText); 
 			contains = true;
 		}	
 	}
 		
-	
+	//only works if there is no weapon card type in players hand
 	if (!contains) {
 		JTextField none = new JTextField();
 		none.setText("None");
@@ -208,6 +226,7 @@ private void weaponPanel(Player human) {
 	
 	for (Card s: human.getSeenCards()) {
 		JTextField seenText = new JTextField(); //create seen text field
+		//adds seen room cards to panel
 		if (s.getCardType() == CardType.WEAPON) {
 			seenText.setText(s.getCardName());
 			weaponPanel.add(seenText);
@@ -216,6 +235,7 @@ private void weaponPanel(Player human) {
 		
 	}
 
+	//only works if there is no weapon card type in players seen cards
 	if (!contains) {
 		JTextField seenText = new JTextField();
 		seenText.setText("None");
@@ -231,14 +251,6 @@ private void weaponPanel(Player human) {
 		frame.setSize(200, 500);  // size the frame
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		
-		
-		/*ArrayList<Card> handStart = new ArrayList<Card>();
-		Set<Card> seenCardsStart = new HashSet<Card>();
-		
-		
-		handStart.add(new Card("Benjamin Siegel", CardType.PERSON));
-		handStart.add(new Card("Eddie McGrath", CardType.PERSON));
-		handStart.add(new Card("Katana", CardType.WEAPON));*/
 		
 		ArrayList<Card> handDuring = new ArrayList<Card>();
 		Set<Card> seenCardsDuring = new HashSet<Card>();
@@ -260,12 +272,9 @@ private void weaponPanel(Player human) {
 		player1.setHand(handDuring);
 		player1.setSeenCards(seenCardsDuring);
 		
-
 		
 		panel.updatePanels(player1);
-		//panel.peoplePanel(player1);
-		//panel.roomPanel(player1);
-		//panel.weaponPanel(player1);
+
 		
 		frame.setVisible(true); // make it visible
 	}
