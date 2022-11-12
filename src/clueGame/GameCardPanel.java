@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 import javax.swing.*;
@@ -12,7 +13,8 @@ import javax.swing.border.*;
 public class GameCardPanel extends JPanel {
 	JPanel peoplePanel, roomPanel, weaponPanel;
 	JTextField generalText;
-	private ArrayList<Card> hand = new ArrayList<Card>();
+	private Color[] otherPlayers = {new Color(255, 108, 108), Color.white, new Color(255, 255, 63), new Color(116, 255, 101), new Color(255, 165, 86)};
+	//red, white, yellow, green, orange 
 	
 	public GameCardPanel() {
 
@@ -107,12 +109,18 @@ public class GameCardPanel extends JPanel {
 		
 		contains = false;
 		
-		
+		/*Random randColor = new Random();
+		int randomIndexColor = randColor.nextInt(otherPlayers.length);
+		Color randomPlayerColor = otherPlayers[randomIndexColor];*/
 		for (Card s: human.getSeenCards()) {
 			JTextField seenText = new JTextField(); //create seen text field
 			//adds seen person cards to panel
 			if (s.getCardType() == CardType.PERSON) {
 				seenText.setText(s.getCardName());
+				Random randColor = new Random();
+				int randomIndexColor = randColor.nextInt(otherPlayers.length);
+				Color randomPlayerColor = otherPlayers[randomIndexColor];
+				seenText.setBackground(randomPlayerColor);
 				peoplePanel.add(seenText);
 				contains = true;
 			}
@@ -166,12 +174,16 @@ public class GameCardPanel extends JPanel {
 		
 		contains = false;
 		
-		
+		//green
 		for (Card s: human.getSeenCards()) {
 			JTextField seenText = new JTextField(); //create seen text field
 			//adds seen room cards to panel
 			if (s.getCardType() == CardType.ROOM) {
 				seenText.setText(s.getCardName());
+				Random randColor = new Random();
+				int randomIndexColor = randColor.nextInt(otherPlayers.length);
+				Color randomPlayerColor = otherPlayers[randomIndexColor];
+				seenText.setBackground(randomPlayerColor);
 				roomPanel.add(seenText);
 				contains = true;
 			}
@@ -224,11 +236,16 @@ public class GameCardPanel extends JPanel {
 	
 	contains = false;
 	
+	//green, yellow, orange
 	for (Card s: human.getSeenCards()) {
 		JTextField seenText = new JTextField(); //create seen text field
 		//adds seen room cards to panel
 		if (s.getCardType() == CardType.WEAPON) {
 			seenText.setText(s.getCardName());
+			Random randColor = new Random();
+			int randomIndexColor = randColor.nextInt(otherPlayers.length);
+			Color randomPlayerColor = otherPlayers[randomIndexColor];
+			seenText.setBackground(randomPlayerColor);
 			weaponPanel.add(seenText);
 			contains = true;
 		}
@@ -248,7 +265,7 @@ public class GameCardPanel extends JPanel {
 		GameCardPanel panel = new GameCardPanel();  // create the panel
 		JFrame frame = new JFrame();  // create the frame 
 		frame.setContentPane(panel); // put the panel in the frame
-		frame.setSize(200, 500);  // size the frame
+		frame.setSize(200, 600);  // size the frame
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		
 		
@@ -260,6 +277,7 @@ public class GameCardPanel extends JPanel {
 		handDuring.add(new Card("Garden", CardType.ROOM));
 		//handDuring.add(new Card("Wire", CardType.WEAPON));
 		
+		//red, yellow, green, white, and orange
 		seenCardsDuring.add(new Card("Benjamin Siegel", CardType.PERSON));
 		seenCardsDuring.add(new Card("Eddie McGrath", CardType.PERSON));
 		seenCardsDuring.add(new Card("Katana", CardType.WEAPON));
