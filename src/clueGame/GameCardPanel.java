@@ -13,11 +13,10 @@ import javax.swing.border.*;
 public class GameCardPanel extends JPanel {
 	JPanel peoplePanel, roomPanel, weaponPanel;
 	JTextField generalText;
-	private Color[] otherPlayers = {new Color(255, 108, 108), Color.white, new Color(255, 255, 63), new Color(116, 255, 101), new Color(255, 165, 86)};
-	//red, white, yellow, green, orange 
+	private Color[] otherPlayers = {new Color(255, 108, 108), Color.white, new Color(255, 255, 63), new Color(116, 255, 101), new Color(255, 165, 86),  Color.lightGray};
+	//red, white, yellow, green, orange, lightgray 
 	
 	public GameCardPanel() {
-
 		setLayout(new GridLayout(3,1)); //create grid for main panel
 		setBorder(new TitledBorder (new EtchedBorder(), "Known Cards")); //create border and title for panel
 
@@ -42,35 +41,89 @@ public class GameCardPanel extends JPanel {
 	
 	public void updatePanels(Player human) {
 		//creates the people panel
-		peoplePanel(human);
+		updatePanel(peoplePanel, human);
 		//creates the room panel
-		roomPanel(human);
+		updatePanel(roomPanel, human);
 		//creates the weapon panel
-		weaponPanel(human);
+		updatePanel(weaponPanel, human);
 	}
 	
-	/*
-	private void updatePanel(JPanel panel, CardType card) {
+	
+	private void updatePanel(JPanel panel, Player human) {
+		CardType typeOfCard = null;
+		if (panel == peoplePanel){
+			typeOfCard = CardType.PERSON;
+		}
+		if (panel == roomPanel){
+			typeOfCard = CardType.ROOM;
+		}
+		if (panel == weaponPanel){
+			typeOfCard = CardType.WEAPON;
+		}
+		
 		panel.removeAll();
 		// add the fields to go into the panel using the updated seen card data
-		add(panel);   // causes swing to either add or readd the entire panel and recalculate it
+		add(panel);   // causes swing to either add or read the entire panel and recalculate it
 		
 		JLabel handLabel = new JLabel("In Hand:"); //create hand label
-		JTextField handText = new JTextField(); //create hand text field
-		//handText.setText(card.getCardName());
-		
 		JLabel seenLabel = new JLabel("Seen:"); //create seen label
-		JTextField seenText = new JTextField(); //create seen text field
 		
 		panel.add(handLabel);
 		
-		panel.add(handText);
+		boolean contains = false; // used to check if hand/seen contains the type, if not "none" will be used
+		
+	
+		for (int i = 0; i < human.getPlayerCards().size(); i++) {
+			JTextField handText = new JTextField(); //create hand text field
+			//adds hand person cards to panel
+			if (human.getPlayerCards().get(i).getCardType() == typeOfCard) {
+				handText.setText(human.getPlayerCards().get(i).getCardName());
+				handText.setBackground(human.getcolor()); //text box colors by player set color
+				panel.add(handText); 
+				contains = true;
+			}	
+		}
+			
+		//only works if there is no person card type in players hand
+		if (!contains) {
+			JTextField none = new JTextField();
+			none.setText("None");
+			panel.add(none);
+		}
 		
 		
 		panel.add(seenLabel);
-		panel.add(seenText);
-}*/
+		
+		contains = false;
+		
 	
+		for (Card s: human.getSeenCards()) {
+			JTextField seenText = new JTextField(); //create seen text field
+			//adds seen person cards to panel
+			if (s.getCardType() == typeOfCard) {
+				seenText.setText(s.getCardName());
+				//colourizes the seen card to another player color
+				Random randColor = new Random();
+				int randomIndexColor = randColor.nextInt(otherPlayers.length);
+				Color randomPlayerColor = otherPlayers[randomIndexColor];
+				
+				seenText.setBackground(randomPlayerColor);
+				panel.add(seenText);
+				contains = true;
+			}
+			
+		}
+		
+		//only works if there is no person card type in players seen cards
+		if (!contains) {
+			JTextField seenText = new JTextField();
+			seenText.setText("None");
+			panel.add(seenText);
+		};
+		
+		
+}
+	/*
 	private void peoplePanel(Player human) {
 		
 		peoplePanel.removeAll();
@@ -78,7 +131,6 @@ public class GameCardPanel extends JPanel {
 		add(peoplePanel);   // causes swing to either add or read the entire panel and recalculate it
 		
 		JLabel handLabel = new JLabel("In Hand:"); //create hand label
-		
 		JLabel seenLabel = new JLabel("Seen:"); //create seen label
 		
 		peoplePanel.add(handLabel);
@@ -109,17 +161,17 @@ public class GameCardPanel extends JPanel {
 		
 		contains = false;
 		
-		/*Random randColor = new Random();
-		int randomIndexColor = randColor.nextInt(otherPlayers.length);
-		Color randomPlayerColor = otherPlayers[randomIndexColor];*/
+	
 		for (Card s: human.getSeenCards()) {
 			JTextField seenText = new JTextField(); //create seen text field
 			//adds seen person cards to panel
 			if (s.getCardType() == CardType.PERSON) {
 				seenText.setText(s.getCardName());
+				//colourizes the seen card to another player color
 				Random randColor = new Random();
 				int randomIndexColor = randColor.nextInt(otherPlayers.length);
 				Color randomPlayerColor = otherPlayers[randomIndexColor];
+				
 				seenText.setBackground(randomPlayerColor);
 				peoplePanel.add(seenText);
 				contains = true;
@@ -143,7 +195,6 @@ public class GameCardPanel extends JPanel {
 		add(roomPanel);   // causes swing to either add or read the entire panel and recalculate it
 		
 		JLabel handLabel = new JLabel("In Hand:"); //create hand label
-		
 		JLabel seenLabel = new JLabel("Seen:"); //create seen label
 		
 		
@@ -174,15 +225,17 @@ public class GameCardPanel extends JPanel {
 		
 		contains = false;
 		
-		//green
+		
 		for (Card s: human.getSeenCards()) {
 			JTextField seenText = new JTextField(); //create seen text field
 			//adds seen room cards to panel
 			if (s.getCardType() == CardType.ROOM) {
 				seenText.setText(s.getCardName());
+				//colourizes the seen card to another player color
 				Random randColor = new Random();
 				int randomIndexColor = randColor.nextInt(otherPlayers.length);
 				Color randomPlayerColor = otherPlayers[randomIndexColor];
+				
 				seenText.setBackground(randomPlayerColor);
 				roomPanel.add(seenText);
 				contains = true;
@@ -205,7 +258,6 @@ public class GameCardPanel extends JPanel {
 	add(weaponPanel);   // causes swing to either add or read the entire panel and recalculate it
 	
 	JLabel handLabel = new JLabel("In Hand:"); //create hand label
-	
 	JLabel seenLabel = new JLabel("Seen:"); //create seen label
 	
 	
@@ -236,15 +288,16 @@ public class GameCardPanel extends JPanel {
 	
 	contains = false;
 	
-	//green, yellow, orange
 	for (Card s: human.getSeenCards()) {
 		JTextField seenText = new JTextField(); //create seen text field
 		//adds seen room cards to panel
 		if (s.getCardType() == CardType.WEAPON) {
 			seenText.setText(s.getCardName());
+			//colourizes the seen card to another player color
 			Random randColor = new Random();
 			int randomIndexColor = randColor.nextInt(otherPlayers.length);
 			Color randomPlayerColor = otherPlayers[randomIndexColor];
+			
 			seenText.setBackground(randomPlayerColor);
 			weaponPanel.add(seenText);
 			contains = true;
@@ -259,7 +312,7 @@ public class GameCardPanel extends JPanel {
 		weaponPanel.add(seenText);
 	}
 	
-}
+}*/
 
 	public static void main(String[] args) {
 		GameCardPanel panel = new GameCardPanel();  // create the panel
@@ -268,16 +321,14 @@ public class GameCardPanel extends JPanel {
 		frame.setSize(200, 600);  // size the frame
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		
-		
+		//cards for testing
 		ArrayList<Card> handDuring = new ArrayList<Card>();
 		Set<Card> seenCardsDuring = new HashSet<Card>();
 		
 		handDuring.add(new Card("Al Capone", CardType.PERSON));
 		handDuring.add(new Card("Bedroom", CardType.ROOM));
-		handDuring.add(new Card("Garden", CardType.ROOM));
-		//handDuring.add(new Card("Wire", CardType.WEAPON));
+		handDuring.add(new Card("Garden", CardType.ROOM));		
 		
-		//red, yellow, green, white, and orange
 		seenCardsDuring.add(new Card("Benjamin Siegel", CardType.PERSON));
 		seenCardsDuring.add(new Card("Eddie McGrath", CardType.PERSON));
 		seenCardsDuring.add(new Card("Katana", CardType.WEAPON));
