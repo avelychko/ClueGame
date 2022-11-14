@@ -159,13 +159,13 @@ public class GameCardPanel extends JPanel {
 		seenCardsDuring.add(new Card("Wire", CardType.WEAPON));
 		
 		// test filling in the data
-		panel.setPeoplePanel(handStart, seenCardsStart);
-		panel.setRoomsPanel(handStart, seenCardsStart);
-		panel.setWeaponsPanel(handStart, seenCardsStart);
+//		panel.setPeoplePanel(handStart, seenCardsStart);
+//		panel.setRoomsPanel(handStart, seenCardsStart);
+//		panel.setWeaponsPanel(handStart, seenCardsStart);
 		
 		//check both windows
-//		panel.setPeoplePanel(handDuring, seenCardsDuring);
-//		panel.setRoomsPanel(handDuring, seenCardsDuring);
-//		panel.setWeaponsPanel(handDuring, seenCardsDuring);
+		panel.setPeoplePanel(handDuring, seenCardsDuring);
+		panel.setRoomsPanel(handDuring, seenCardsDuring);
+		panel.setWeaponsPanel(handDuring, seenCardsDuring);
 	}
 }
