@@ -1,12 +1,7 @@
 package clueGame;
 
 import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
-
+import java.util.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
