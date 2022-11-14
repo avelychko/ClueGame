@@ -1,5 +1,6 @@
 package clueGame;
 
+import java.awt.Color;
 import java.util.*;
 
 //Name, Color, Human/Computer, Starting Location
@@ -11,13 +12,26 @@ public abstract class Player {
 	private ArrayList<Card> hand = new ArrayList<Card>(CARD_AMOUNT);
 	private Set<Card> seenCards = new HashSet<Card>();
 	private ArrayList<Card> disproveCards;
-
+	private Map<String, Color> colorSelection  = new HashMap<>();
+	
+	
 	public Player(String name, String color, int row, int col) {
 		super();
 		this.name = name;
 		this.color = color;
 		this.row = row;
 		this.col = col;
+		colorSelection.put("Blue", new Color(108, 133, 255));
+		colorSelection.put("Cyan", new Color(119, 255, 255));
+		colorSelection.put("Gray", Color.gray);
+		colorSelection.put("LightGray", Color.lightGray);
+		colorSelection.put("Green",  new Color(116, 255, 101));
+		colorSelection.put("Magenta", new Color(218, 112, 255));
+		colorSelection.put("Orange", new Color(255, 165, 86));
+		colorSelection.put("Yellow",  new Color(255, 255, 63));
+		colorSelection.put("Red", new Color(255, 108, 108));
+		colorSelection.put("White", Color.white);
+		colorSelection.put("Pink", new Color(255, 112, 189));
 	}
 
 	public String getName() { return this.name; }
@@ -27,9 +41,13 @@ public abstract class Player {
 
 	public void updateHand(Card card) { this.hand.add(card); }
 	public ArrayList<Card> getPlayerCards() { return this.hand; }
+	public void setHand(ArrayList<Card> hand) {this.hand = hand;}
+	
 	public void updateSeen(Card seenCard) { this.seenCards.add(seenCard); }
 	public Set<Card> getSeenCards() { return this.seenCards; }
 	public void setSeenCards(Set<Card> seenCards) { this.seenCards = seenCards; }
+	
+	public Color getcolor() { return colorSelection.get(color); }
 
 	//checks if the player has the card and will return it in the end, 
 	//if they have multiple then one will be chosen at random

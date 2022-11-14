@@ -4,152 +4,136 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 import javax.swing.*;
 import javax.swing.border.*;
 
 public class GameCardPanel extends JPanel {
-	JPanel cardPanel, peoplePanel, roomsPanel, weaponsPanel;
+	JPanel peoplePanel, roomPanel, weaponPanel;
+	JTextField generalText;
+	private Color[] otherPlayers = {new Color(255, 108, 108), Color.white, new Color(255, 255, 63), new Color(116, 255, 101), new Color(255, 165, 86),  Color.lightGray};
+	// player colors: red, white, yellow, green, orange, light gray.  
 	
 	public GameCardPanel() {
-		cardPanel = new JPanel();
-		cardPanel.setLayout(new GridLayout(3,1));
-		//set Card panel size
-		//cardPanel.setSize(new Dimension(160, 700));
-		cardPanel.setBorder(new TitledBorder (new EtchedBorder(), "Known Cards"));
-		add(cardPanel);
+		setLayout(new GridLayout(3,1)); // create grid for main panel
+		setBorder(new TitledBorder (new EtchedBorder(), "Known Cards")); //create border and title for panel
+
+		// create each type card panels
 		peoplePanel = new JPanel();
-		roomsPanel = new JPanel();
-		weaponsPanel = new JPanel();
-		cardPanel.add(peoplePanel);
-		cardPanel.add(roomsPanel);
-		cardPanel.add(weaponsPanel);
-	}
-	
-	private void setPeoplePanel(ArrayList<Card> hand, Set<Card> seenCards) {
-		peoplePanel.setBorder(new TitledBorder (new EtchedBorder(), "People"));
-		peoplePanel.setLayout(new GridLayout(4,1));
+		roomPanel = new JPanel();
+		weaponPanel = new JPanel();
 		
-		JLabel handLabel = new JLabel("In Hand:");
-		JTextField handText = new JTextField();
-		peoplePanel.add(handLabel);
-		
-		//put each card of type person in text field
-		for (int i = 0; i < hand.size(); i++) {
-			if (hand.get(i).getCardType() == CardType.PERSON) {
-				handText.setText(hand.get(i).getCardName());
-				peoplePanel.add(handText); //text box colors??
-			}
-		}
-		
-		if (handText.getText().isEmpty()) handText.setText("None");
-		peoplePanel.add(handText);
-		
-		JLabel seenLabel = new JLabel("Seen:");
-		JTextField seenText = new JTextField();
-		peoplePanel.add(seenLabel);
-		
-		for (Card s: seenCards) {
-			if (s.getCardType() == CardType.PERSON) {
-				seenText.setText(s.getCardName());
-				peoplePanel.add(seenText);
-			}
-		}
 
-		if (seenText.getText().isEmpty()) seenText.setText("None");
-		peoplePanel.add(seenText);
+		// title, border and grid for panels
+		peoplePanel.setBorder(new TitledBorder (new EtchedBorder(), "People")); 
+		peoplePanel.setLayout(new GridLayout(0, 1)); // create grid for people panel
+		
+		roomPanel.setBorder(new TitledBorder (new EtchedBorder(), "Rooms"));
+		roomPanel.setLayout(new GridLayout(0, 1));
+		
+		weaponPanel.setBorder(new TitledBorder (new EtchedBorder(), "Weapons"));
+		weaponPanel.setLayout(new GridLayout(0, 1));  
 	}
-	
-	private void setRoomsPanel(ArrayList<Card> hand, Set<Card> seenCards) {
-		roomsPanel.setBorder(new TitledBorder (new EtchedBorder(), "Rooms"));
-		roomsPanel.setLayout(new GridLayout(4,1));
-		
-		JLabel handLabel = new JLabel("In Hand:");
-		JTextField handText = new JTextField();
-		roomsPanel.add(handLabel);
-		
-		//put each card of type room in text field
-		for (int i = 0; i < hand.size(); i++) {
-			if (hand.get(i).getCardType() == CardType.ROOM) {
-				handText.setText(hand.get(i).getCardName());
-				roomsPanel.add(handText);
-			}
-		}
-		
-		if (handText.getText().isEmpty()) handText.setText("None");
-		roomsPanel.add(handText);
-		
-		JLabel seenLabel = new JLabel("Seen:");
-		JTextField seenText = new JTextField();
-		roomsPanel.add(seenLabel);
-		
-		for (Card s: seenCards) {
-			if (s.getCardType() == CardType.ROOM) {
-				seenText.setText(s.getCardName());
-				roomsPanel.add(seenText);
-			}
-		}
-		
-		if (seenText.getText().isEmpty()) seenText.setText("None");
-		roomsPanel.add(seenText);
-	}
-	
-	private void setWeaponsPanel(ArrayList<Card> hand, Set<Card> seenCards) {
-		weaponsPanel.setBorder(new TitledBorder (new EtchedBorder(), "Weapons"));
-		weaponsPanel.setLayout(new GridLayout(4,1));
-		
-		JLabel handLabel = new JLabel("In Hand:");
-		JTextField handText = new JTextField();
-		weaponsPanel.add(handLabel);
-		
-		//put each card of type weapon in text field
-		for (int i = 0; i < hand.size(); i++) {
-			if (hand.get(i).getCardType() == CardType.WEAPON) {
-				handText.setText(hand.get(i).getCardName());
-				weaponsPanel.add(handText);
-			}
-		}
-		
-		if (handText.getText().isEmpty()) handText.setText("None");
-		weaponsPanel.add(handText);
-		
-		JLabel seenLabel = new JLabel("Seen:");
-		JTextField seenText = new JTextField();
-		weaponsPanel.add(seenLabel);
-		
-		for (Card s: seenCards) {
-			if (s.getCardType() == CardType.WEAPON) {
-				seenText.setText(s.getCardName());
-				weaponsPanel.add(seenText);
-			}
-		}
 
-		if (seenText.getText().isEmpty()) seenText.setText("None");
-		weaponsPanel.add(seenText);
+	
+	public void updatePanels(Player human) {
+		// creates the people panel
+		updatePanel(peoplePanel, human);
+		
+		// creates the room panel
+		updatePanel(roomPanel, human);
+		
+		// creates the weapon panel
+		updatePanel(weaponPanel, human);
 	}
 	
+	
+	private void updatePanel(JPanel panel, Player human) {
+		CardType typeOfCard = null;
+		// determines what card to look for from the type of panel
+		if (panel == peoplePanel) typeOfCard = CardType.PERSON;
+		if (panel == roomPanel) typeOfCard = CardType.ROOM;
+		if (panel == weaponPanel) typeOfCard = CardType.WEAPON;
+		
+		panel.removeAll();
+		// add the fields to go into the panel using the updated seen card data
+		add(panel);   // causes swing to either add or read the entire panel and recalculate it
+		
+		JLabel handLabel = new JLabel("In Hand:"); // create hand label
+		JLabel seenLabel = new JLabel("Seen:"); // create seen label
+		
+		panel.add(handLabel); // needs to be added first before adding in the text fields
+		
+		boolean contains = false; // used to check if hand/seen contains the type, if not "none" will be used
+		
+		// goes over each card in the players hand
+		for (int i = 0; i < human.getPlayerCards().size(); i++) {
+			JTextField handText = new JTextField(); //create hand text field
+			
+			// adds hand person cards to panel if card is found
+			if (human.getPlayerCards().get(i).getCardType() == typeOfCard) {
+				handText.setText(human.getPlayerCards().get(i).getCardName()); // text for the panel
+				handText.setBackground(human.getcolor()); // text box colors by players set color
+				panel.add(handText); // adds text boxes to panel
+				contains = true;
+			}	
+		}
+			
+		// only works if there is no person card type in players hand
+		if (!contains) {
+			JTextField noneInHand = new JTextField();
+			noneInHand.setText("None"); // text for the panel
+			panel.add(noneInHand); // add text box to panel
+		}
+		
+		
+		panel.add(seenLabel); // needs to be added first before adding in the text fields
+		
+		contains = false;
+		
+		// goes over each card seen by the human player
+		for (Card s: human.getSeenCards()) {
+			JTextField seenText = new JTextField(); // create seen text field
+			// adds seen person cards to panel if card is found
+			if (s.getCardType() == typeOfCard) {
+				seenText.setText(s.getCardName()); // text for the panel
+				
+				// colourizes the seen card to another player color
+				Random randColor = new Random();
+				int randomIndexColor = randColor.nextInt(otherPlayers.length);
+				Color randomPlayerColor = otherPlayers[randomIndexColor];
+				seenText.setBackground(randomPlayerColor);
+				
+				panel.add(seenText); // adds text boxes to panel
+				contains = true;
+			}
+			
+		}
+		
+		// only works if there is no person card type in players seen cards
+		if (!contains) {
+			JTextField noneInSeen = new JTextField(); 
+			noneInSeen.setText("None"); // text for the panel
+			panel.add(noneInSeen); // add text box to panel
+		}
+}
+
 	public static void main(String[] args) {
 		GameCardPanel panel = new GameCardPanel();  // create the panel
 		JFrame frame = new JFrame();  // create the frame 
 		frame.setContentPane(panel); // put the panel in the frame
-		frame.setSize(180, 750);  // size the frame
+		frame.setSize(200, 600);  // size the frame
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
-		frame.setVisible(true); // make it visible
 		
-		ArrayList<Card> handStart = new ArrayList<Card>();
-		Set<Card> seenCardsStart = new HashSet<Card>();
-		
-		handStart.add(new Card("Benjamin Siegel", CardType.PERSON));
-		handStart.add(new Card("Eddie McGrath", CardType.PERSON));
-		handStart.add(new Card("Katana", CardType.WEAPON));
-		
+		//cards for testing
 		ArrayList<Card> handDuring = new ArrayList<Card>();
 		Set<Card> seenCardsDuring = new HashSet<Card>();
 		
 		handDuring.add(new Card("Al Capone", CardType.PERSON));
 		handDuring.add(new Card("Bedroom", CardType.ROOM));
-		handDuring.add(new Card("Garden", CardType.ROOM));
+		handDuring.add(new Card("Garden", CardType.ROOM));		
 		
 		seenCardsDuring.add(new Card("Benjamin Siegel", CardType.PERSON));
 		seenCardsDuring.add(new Card("Eddie McGrath", CardType.PERSON));
@@ -158,14 +142,13 @@ public class GameCardPanel extends JPanel {
 		seenCardsDuring.add(new Card("Pool", CardType.ROOM));
 		seenCardsDuring.add(new Card("Wire", CardType.WEAPON));
 		
-		// test filling in the data
-//		panel.setPeoplePanel(handStart, seenCardsStart);
-//		panel.setRoomsPanel(handStart, seenCardsStart);
-//		panel.setWeaponsPanel(handStart, seenCardsStart);
+		Player player1 = new HumanPlayer("Al Capone", "Blue", 0, 0);
 		
-		//check both windows
-		panel.setPeoplePanel(handDuring, seenCardsDuring);
-		panel.setRoomsPanel(handDuring, seenCardsDuring);
-		panel.setWeaponsPanel(handDuring, seenCardsDuring);
+		player1.setHand(handDuring);
+		player1.setSeenCards(seenCardsDuring);
+
+		panel.updatePanels(player1); // used to form known cards panel
+
+		frame.setVisible(true); // make it visible
 	}
 }

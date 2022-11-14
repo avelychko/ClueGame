@@ -1,3 +1,88 @@
+commit 87c593c79d14fcac098f4e09c998ae28ecbf71aa
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 10 12:59:05 2022 -0700
+
+    added comments and modified GameControlPanel class
+
+commit ae6de9c68e3b4c55295667adcf2294580f8c654d
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 10 00:46:04 2022 -0700
+
+    mosified card Text field in GameCardPanel
+
+commit b211b20352bfc63792aeaf7766fd4a27c3914483
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 9 22:20:17 2022 -0700
+
+    modified GameCardPanel
+
+commit db6f544b53b60caec9e1c6eb7e045141816d4dbd
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 9 22:13:45 2022 -0700
+
+    added GameCardPanel with working main, constructor and visual people, rooms and weapons panels
+
+commit c4ed03cb42ac91b1132c6656181bb2b41dab1e5e
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 9 22:05:01 2022 -0700
+
+    working GameControlPanel
+
+commit 645c028ccfda55b2ec10bd3694acc406956eddfd
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 9 20:31:36 2022 -0700
+
+    created card panels with people, rooms and weapons panels with text fields
+
+commit 39e79056fd252523fb8cb3703535e9115760de47
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 9 13:21:05 2022 -0700
+
+    added buttons and turn panel
+
+commit adfcb73a2025a704e996e96ffc77659b53ee3000
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 9 00:07:19 2022 -0700
+
+    created guess and guess result panels
+
+commit fcc3c31036c1cc84153bc0852b0d2a8050443591
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 8 13:47:15 2022 -0700
+
+    make testing control panel class
+
+commit 10bf7e180904958ccbe504e0dba2c5f2021756f5
+Merge: ec22bdf b8ba5bc
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 8 13:46:25 2022 -0700
+
+    make testing control panel class
+
+commit ec22bdfd4bfcb689665776df070b92438431adb9
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 8 13:45:54 2022 -0700
+
+    make testing control panel class
+
+commit b8ba5bc4fd3ad589e4e33b049dcc5ca186cb4d4c
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Nov 8 13:44:59 2022 -0700
+
+    worked on Guess and Guess Result panels
+
+commit 067b4ff9cfe866ecfc4ea2051c7ae5007e16b90d
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Nov 8 13:25:13 2022 -0700
+
+    created accusatiobButton method and ButtonListener class
+
+commit ac1c66b0a25e1fe989937193397617dccd408d51
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Nov 8 13:09:50 2022 -0700
+
+    created GameControlPanel class
+
 commit 0de6c1e6263307d9a3a9334a90ba1e2700193a91
 Author: Anastasia Velychko <avelychko@mines.edu>
 Date:   Mon Nov 7 23:22:03 2022 -0700
