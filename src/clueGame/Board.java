@@ -428,8 +428,11 @@ public class Board extends JPanel{
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.setColor(Color.blue);
-		g.drawRect(10, 15, 20, 20);
+		
+	
+		grid[1][1].drawCell(g);
+		
+		
 	}
 	
 	

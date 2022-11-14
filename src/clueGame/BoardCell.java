@@ -1,5 +1,8 @@
 package clueGame;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 /**
  * BoardCell Class
  * 
@@ -29,6 +32,11 @@ public class BoardCell {
 	public BoardCell(int row, int col) {
 		this.row = row;
 		this.col = col;
+	}
+	
+	public void drawCell(Graphics cell) {
+		cell.setColor(Color.blue);
+		cell.drawRect(10, 15, 20, 20);
 	}
 	
 	//adjList setter and getter
