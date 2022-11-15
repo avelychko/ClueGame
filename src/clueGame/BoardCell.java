@@ -36,23 +36,23 @@ public class BoardCell {
 		//Graphics2D other = (Graphics2D) cell;
 		//Stroke stroke1 = new BasicStroke(3);
 		
-		//cell.setColor(Color.blue);
+		cell.setColor(Color.black);
 		//cell.fillRect(50, 100, 100, 100);
 		//other.setColor(Color.BLACK);
 		//other.setStroke(stroke1);
 
-		//cell.drawRect(10, 10, width, height);
+		cell.drawRect(x, y, width, height);
 		
 		
 		
 	
 	}
 	
-	public void drawName(Graphics g) {
-		Font font = new Font("Monospaced", Font.BOLD, 12);
+	public void drawName(Graphics g, int width, int height) {
+		Font font = new Font("Century Gothic", Font.BOLD, 15);
 		g.setFont(font);
 		g.setColor(new Color(204, 17, 0));
-		g.drawString(Board.getInstance().getRoom(initial).getName(), this.row, this.col);
+		g.drawString(Board.getInstance().getRoom(initial).getName(), this.col * width, this.row * height + height / 2);
 	}
 	
 	//adjList setter and getter

@@ -30,6 +30,28 @@ public class GameCardPanel extends JPanel {
 
 		weaponPanel.setBorder(new TitledBorder (new EtchedBorder(), "Weapons"));
 		weaponPanel.setLayout(new GridLayout(0, 1));  
+
+
+		ArrayList<Card> handDuring = new ArrayList<Card>();
+		Set<Card> seenCardsDuring = new HashSet<Card>();
+		
+		handDuring.add(new Card("Al Capone", CardType.PERSON));
+		handDuring.add(new Card("Bedroom", CardType.ROOM));
+		handDuring.add(new Card("Garden", CardType.ROOM));		
+		
+		seenCardsDuring.add(new Card("Benjamin Siegel", CardType.PERSON));
+		seenCardsDuring.add(new Card("Eddie McGrath", CardType.PERSON));
+		seenCardsDuring.add(new Card("Katana", CardType.WEAPON));
+		seenCardsDuring.add(new Card("Pistol", CardType.WEAPON));
+		seenCardsDuring.add(new Card("Pool", CardType.ROOM));
+		seenCardsDuring.add(new Card("Wire", CardType.WEAPON));
+		
+		Player player1 = new HumanPlayer("Al Capone", "Blue", 0, 0);
+		
+		player1.setHand(handDuring);
+		player1.setSeenCards(seenCardsDuring);
+		
+		updatePanels(player1);
 	}
 
 

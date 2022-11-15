@@ -36,5 +36,11 @@ public class ClueGame extends JFrame {
 	public static void main(String[] args) {
 		ClueGame gui = new ClueGame();  // create the panel
 		gui.setVisible(true); // make it visible;
+		
+		GraphicsEnvironment e = GraphicsEnvironment.getLocalGraphicsEnvironment();
+	    Font[] fonts = e.getAllFonts(); // Get the fonts
+	    for (Font f : fonts) {
+	      System.out.println(f.getFontName());
+	    }
 	}
 }

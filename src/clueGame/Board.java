@@ -8,9 +8,7 @@ import java.awt.Stroke;
 import java.io.*;
 import java.util.*;
 
-import javax.swing.JPanel;
-
-import experiment.TestBoardCell;
+import javax.swing.*;
 
 /**
  * Board Class
@@ -432,28 +430,22 @@ public class Board extends JPanel{
 		super.paintComponent(g);
 
 
-		int width = getWidth() / 30;
-		int height = getHeight() / 24;
-
-
-
-		/*for ( int i = 0; i <= 700; i += 70 )
-		for ( int j = 0; j <= 700; j += 70 ) 
-		 g.drawRect( i, j, width+2, height+7);*/
-
-		g.drawRect( 0, 0, width+2, height+7);
-		g.drawRect(700, 0, width+2, height+7);
-
-
-		//		for (int row = 0; row < numRows; row++) {
-		//			for (int col = 0; col < numColumns; col++) { 
-		//					grid[row][col].drawCell(g);
-		//			}
-		//		}
+		int width = getWidth() / numColumns;
+		int height = getHeight() / numRows;
+		
+		int y = 0;
+		for (int row = 0; row < numRows; row++) {
+			int x = 0;
+			for (int col = 0; col < numColumns; col++) { 
+					grid[row][col].drawCell(g, 30, 30, x, y);
+					x = x + width;
+			}
+			y = y + height;
+		}
 
 		for (int row = 0; row < numRows; row++) {
 			for (int col = 0; col < numColumns; col++) { 
-				if (getCell(row, col).isLabel()) grid[row][col].drawName(g);
+				if (getCell(row, col).isLabel()) grid[row][col].drawName(g, width, height);
 			}
 		}
 
