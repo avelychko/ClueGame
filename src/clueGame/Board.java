@@ -42,9 +42,9 @@ public class Board extends JPanel{
 	 * variable and methods used for singleton pattern
 	 */
 	private static Board theInstance = new Board();
-	
+
 	Board() { super(); } // constructor is private to ensure only one can be created
-	
+
 	public static Board getInstance() { 
 		if (theInstance == null) theInstance = new Board();
 		return theInstance; 
@@ -387,7 +387,7 @@ public class Board extends JPanel{
 			totalDeck.remove(randomIndexFirstCard);
 
 			player.get(i).updateHand(randomFirstCard);
-			
+
 
 			//second card
 			Random randSecondCard = new Random();
@@ -396,7 +396,7 @@ public class Board extends JPanel{
 			totalDeck.remove(randomIndexSecondCard);
 
 			player.get(i).updateHand(randomSecondCard);
-			
+
 
 			//third card
 			Random randThirdCard = new Random();
@@ -405,7 +405,7 @@ public class Board extends JPanel{
 			totalDeck.remove(randomIndexThirdCard);
 
 			player.get(i).updateHand(randomThirdCard);
-			
+
 		}
 	}
 
@@ -430,40 +430,40 @@ public class Board extends JPanel{
 	//row 25 (0-24), col 31 (0-30)
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
+
 
 		int width = getWidth() / 30;
 		int height = getHeight() / 26;
-		
-		
-		
+
+
+
 		/*for ( int i = 0; i <= 700; i += 70 )
 		for ( int j = 0; j <= 700; j += 70 ) 
 		 g.drawRect( i, j, width+2, height+7);*/
-		
+
 		g.drawRect( 0, 0, width+2, height+7);
 		g.drawRect(700, 0, width+2, height+7);
-		
 
-//		for (int row = 0; row < numRows; row++) {
-//			for (int col = 0; col < numColumns; col++) { 
-//					grid[row][col].drawCell(g);
-//			}
-//		}
-		
+
+		//		for (int row = 0; row < numRows; row++) {
+		//			for (int col = 0; col < numColumns; col++) { 
+		//					grid[row][col].drawCell(g);
+		//			}
+		//		}
+
 		for (int row = 0; row < numRows; row++) {
 			for (int col = 0; col < numColumns; col++) { 
 				if (getCell(row, col).isLabel()) grid[row][col].drawName(g);
 			}
 		}
-		
+
 		for (int i = 0; i < player.size(); i++) {
 			player.get(i).drawPlayer(g, width, height);
 		}
 	}
-	
-	
-	
+
+
+
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); } 
 	public Set<BoardCell> getTargets() { return targets; } //returns the targets last created by calcTargets()
 
