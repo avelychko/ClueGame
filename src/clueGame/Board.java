@@ -8,9 +8,7 @@ import java.awt.Stroke;
 import java.io.*;
 import java.util.*;
 
-import javax.swing.JPanel;
-
-import experiment.TestBoardCell;
+import javax.swing.*;
 
 /**
  * Board Class
@@ -431,9 +429,8 @@ public class Board extends JPanel{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-
-		int width = getWidth() / 30;
-		int height = getHeight() / 24;
+		int width = getWidth() / numColumns;
+		int height = getHeight() / numRows;
 		
 		int y = 1;
 
@@ -445,20 +442,17 @@ public class Board extends JPanel{
 			}
 			y += height-1;
 		}
-		
 
 		for (int row = 0; row < numRows; row++) {
 			for (int col = 0; col < numColumns; col++) { 
-				if (getCell(row, col).isLabel()) grid[row][col].drawName(g);
+				if (getCell(row, col).isLabel()) grid[row][col].drawName(g, width-2, height-1);
 			}
 		}
 
 		for (int i = 0; i < player.size(); i++) {
-			player.get(i).drawPlayer(g, width, height);
+			player.get(i).drawPlayer(g, width-2, height-1);
 		}
 	}
-
-
 
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); } 
 	public Set<BoardCell> getTargets() { return targets; } //returns the targets last created by calcTargets()

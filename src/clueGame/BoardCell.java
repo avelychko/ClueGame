@@ -62,11 +62,11 @@ public class BoardCell {
 	
 	}
 	
-	public void drawName(Graphics g) {
-		Font font = new Font("Monospaced", Font.BOLD, 12);
+	public void drawName(Graphics g, int width, int height) {
+		Font font = new Font("Century Gothic", Font.BOLD, 15);
 		g.setFont(font);
 		g.setColor(new Color(204, 17, 0));
-		g.drawString(Board.getInstance().getRoom(initial).getName(), this.row, this.col);
+		g.drawString(Board.getInstance().getRoom(initial).getName(), this.col * width, this.row * height + height);
 	}
 	
 	//adjList setter and getter
