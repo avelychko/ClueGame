@@ -36,12 +36,12 @@ public class BoardCell {
 		//Graphics2D other = (Graphics2D) cell;
 		//Stroke stroke1 = new BasicStroke(3);
 		
-		//cell.setColor(Color.blue);
+		cell.setColor(Color.black);
 		//cell.fillRect(50, 100, 100, 100);
 		//other.setColor(Color.BLACK);
 		//other.setStroke(stroke1);
 
-		//cell.drawRect(10, 10, width, height);
+		cell.drawRect(x, y, width, height);
 		
 		
 		
