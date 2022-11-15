@@ -433,7 +433,7 @@ public class Board extends JPanel{
 
 
 		int width = getWidth() / 30;
-		int height = getHeight() / 26;
+		int height = getHeight() / 24;
 
 
 
