@@ -7,13 +7,20 @@ public class ClueGame extends JFrame {
 	private ClueGame gui;
 	GameControlPanel controlPanel;
 	GameCardPanel cardsPanel;
-	Board boardPanel;
+	Board board;
 	
 	public ClueGame() {
 		gui = this;
+		board = Board.getInstance();
+		// Board is singleton, get the only instance
+		board = Board.getInstance();
+		// set the file names to use my config files
+		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");		
+		// Initialize will load config files 
+		board.initialize();
+		
 		controlPanel = new GameControlPanel();
 		cardsPanel = new GameCardPanel();
-		boardPanel = Board.getInstance();
 		setTitle("Clue Game - CSCI306");
 		setSize(800, 720);  // size the frame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
@@ -21,7 +28,7 @@ public class ClueGame extends JFrame {
 	}
 	
 	private void createLayout() {
-		add(boardPanel, BorderLayout.CENTER);
+		add(board, BorderLayout.CENTER);
 		add(cardsPanel, BorderLayout.EAST);
 		add(controlPanel, BorderLayout.SOUTH);
 	}
