@@ -433,7 +433,7 @@ public class Board extends JPanel{
 		
 
 		int width = getWidth() / 30;
-		int height = getHeight() /30;
+		int height = getHeight() / 26;
 		
 		
 		
@@ -445,17 +445,21 @@ public class Board extends JPanel{
 		//g.drawRect(700, 0, width+2, height+7);
 		
 
-		/*for (int row = 0; row < numRows; row++) {
-			for (int col = 0; col < numColumns; col++) { 
-					grid[row][col].drawCell(g);
-			}
-		}
+//		for (int row = 0; row < numRows; row++) {
+//			for (int col = 0; col < numColumns; col++) { 
+//					grid[row][col].drawCell(g);
+//			}
+//		}
 		
 		for (int row = 0; row < numRows; row++) {
 			for (int col = 0; col < numColumns; col++) { 
-				if (getCell(row, col).isLabel()) grid[row][col].drawCell(g);
+				if (getCell(row, col).isLabel()) grid[row][col].drawName(g);
 			}
-		}*/
+		}
+		
+		for (int i = 0; i < player.size(); i++) {
+			player.get(i).drawPlayer(g, width, height);
+		}
 	}
 	
 	

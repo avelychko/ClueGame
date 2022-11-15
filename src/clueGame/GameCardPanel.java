@@ -92,7 +92,7 @@ public class GameCardPanel extends JPanel {
 			// adds hand person cards to panel if card is found
 			if (human.getPlayerCards().get(i).getCardType() == typeOfCard) {
 				handText.setText(human.getPlayerCards().get(i).getCardName()); // text for the panel
-				handText.setBackground(human.getcolor()); // text box colors by players set color
+				handText.setBackground(human.getColor()); // text box colors by players set color
 				panel.add(handText); // adds text boxes to panel
 				contains = true;
 			}	
