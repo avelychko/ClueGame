@@ -33,16 +33,30 @@ public class BoardCell {
 	}
 	
 	public void drawCell(Graphics cell, int width, int height, int x, int y) {
-		//Graphics2D other = (Graphics2D) cell;
-		//Stroke stroke1 = new BasicStroke(3);
 		
-		cell.setColor(Color.black);
-		//cell.fillRect(50, 100, 100, 100);
-		//other.setColor(Color.BLACK);
-		//other.setStroke(stroke1);
 
 		cell.drawRect(x, y, width, height);
 		
+		if(getWalkway()) {
+			cell.setColor(Color.yellow);
+			cell.fillRect(x, y, width, height);
+		}
+		if(getUnused()) {
+			cell.setColor(new Color(204, 17, 0));
+			cell.fillRect(x, y, width, height);
+		}
+		/*if(getRoom()) {
+			cell.setColor(Color.blue);
+			cell.fillRect(x, y, width, height);
+		}*/
+		
+		Graphics2D other = (Graphics2D) cell;
+		Stroke stroke1 = new BasicStroke(2);
+		
+		cell.setColor(Color.black);
+		other.setStroke(stroke1);
+
+		cell.drawRect(x, y, width, height);
 		
 		
 	
