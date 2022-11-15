@@ -433,44 +433,20 @@ public class Board extends JPanel{
 
 
 		int width = getWidth() / 30;
-		int height = getHeight() / 26;
-<<<<<<< HEAD
+		int height = getHeight() / 24;
 		
-		
-		
-		/*for ( int i = 0; i <= 800; i += width )
-		for ( int j = 0; j <= 720; j += height ) 
-		 g.drawRect( i, j, width, height);*/
-		int y = 0;
+		int y = 1;
 
 		for (int row = 0; row < numRows; row++) {
-			int x = 0;
+			int x = 1;
 			for (int col = 0; col < numColumns; col++) { 
-					grid[row][col].drawCell(g, 30, 30, x, y);
-					x = x + width;
+					grid[row][col].drawCell(g, width-2, height, x, y);
+					x += width-2;
 			}
-			y = y + height;
+			y += height-1;
 		}
 		
-=======
 
-
-
-		/*for ( int i = 0; i <= 700; i += 70 )
-		for ( int j = 0; j <= 700; j += 70 ) 
-		 g.drawRect( i, j, width+2, height+7);*/
-
-		g.drawRect( 0, 0, width+2, height+7);
-		g.drawRect(700, 0, width+2, height+7);
-
-
-		//		for (int row = 0; row < numRows; row++) {
-		//			for (int col = 0; col < numColumns; col++) { 
-		//					grid[row][col].drawCell(g);
-		//			}
-		//		}
-
->>>>>>> 7589d71dacccf1ecc18924da5c47a4f0dd4d3746
 		for (int row = 0; row < numRows; row++) {
 			for (int col = 0; col < numColumns; col++) { 
 				if (getCell(row, col).isLabel()) grid[row][col].drawName(g);
