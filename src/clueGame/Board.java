@@ -1,8 +1,10 @@
 package clueGame;
 
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Stroke;
 import java.io.*;
 import java.util.*;
 
@@ -429,7 +431,7 @@ public class Board extends JPanel{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-	
+		
 		grid[1][1].drawCell(g);
 		
 		

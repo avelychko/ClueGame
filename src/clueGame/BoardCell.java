@@ -1,7 +1,10 @@
 package clueGame;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Stroke;
 
 /**
  * BoardCell Class
@@ -35,8 +38,18 @@ public class BoardCell {
 	}
 	
 	public void drawCell(Graphics cell) {
+		Graphics2D other = (Graphics2D) cell;
+		Stroke stroke1 = new BasicStroke(3);
+		
 		cell.setColor(Color.blue);
-		cell.drawRect(10, 15, 20, 20);
+		cell.fillRect(2, 1, 49, 49);
+		other.setColor(Color.BLACK);
+		other.setStroke(stroke1);
+
+		other.drawRect(0, 1, 50, 50);
+		
+		
+	
 	}
 	
 	//adjList setter and getter
