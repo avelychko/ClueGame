@@ -20,6 +20,7 @@ public abstract class Player {
 		this.color = color;
 		this.row = row;
 		this.col = col;
+		//set color string to rgb values
 		colorSelection.put("Blue", new Color(108, 133, 255));
 		colorSelection.put("Cyan", new Color(119, 255, 255));
 		colorSelection.put("Gray", Color.gray);
@@ -65,10 +66,11 @@ public abstract class Player {
 		return disproveCards.get(0); 
 	}
 
+	//draw player at starting location
 	public void drawPlayer(Graphics g, int width, int height) {
-		g.setColor(Color.black);
+		g.setColor(Color.black); //outline is black
 		g.drawOval(this.col * width, this.row * height, width, height);
-		g.setColor(getColor());
+		g.setColor(getColor()); //fill is player's color
 		g.fillOval(this.col * width, this.row * height, width, height);
 	}
 }
