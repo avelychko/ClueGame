@@ -429,32 +429,30 @@ public class Board extends JPanel{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-
 		int width = getWidth() / numColumns;
 		int height = getHeight() / numRows;
 		
-		int y = 0;
+		int y = 1;
+
 		for (int row = 0; row < numRows; row++) {
-			int x = 0;
+			int x = 1;
 			for (int col = 0; col < numColumns; col++) { 
-					grid[row][col].drawCell(g, 30, 30, x, y);
-					x = x + width;
+					grid[row][col].drawCell(g, width-2, height, x, y);
+					x += width-2;
 			}
-			y = y + height;
+			y += height-1;
 		}
 
 		for (int row = 0; row < numRows; row++) {
 			for (int col = 0; col < numColumns; col++) { 
-				if (getCell(row, col).isLabel()) grid[row][col].drawName(g, width, height);
+				if (getCell(row, col).isLabel()) grid[row][col].drawName(g, width-2, height-1);
 			}
 		}
 
 		for (int i = 0; i < player.size(); i++) {
-			player.get(i).drawPlayer(g, width, height);
+			player.get(i).drawPlayer(g, width-2, height-1);
 		}
 	}
-
-
 
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); } 
 	public Set<BoardCell> getTargets() { return targets; } //returns the targets last created by calcTargets()

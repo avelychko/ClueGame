@@ -52,7 +52,7 @@ public class BoardCell {
 		Font font = new Font("Century Gothic", Font.BOLD, 15);
 		g.setFont(font);
 		g.setColor(new Color(204, 17, 0));
-		g.drawString(Board.getInstance().getRoom(initial).getName(), this.col * width, this.row * height + height / 2);
+		g.drawString(Board.getInstance().getRoom(initial).getName(), this.col * width, this.row * height + height);
 	}
 	
 	//adjList setter and getter
