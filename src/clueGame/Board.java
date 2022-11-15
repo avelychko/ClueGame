@@ -1,8 +1,14 @@
 package clueGame;
 
+
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Stroke;
 import java.io.*;
 import java.util.*;
+
+import javax.swing.JPanel;
 
 import experiment.TestBoardCell;
 
@@ -14,7 +20,7 @@ import experiment.TestBoardCell;
  *
  */
 
-public class Board {
+public class Board extends JPanel{
 	private BoardCell[][] grid; //2D array of object TestBoardCell
 	private int numColumns; //column size
 	private int numRows; //row size
@@ -36,7 +42,9 @@ public class Board {
 	 * variable and methods used for singleton pattern
 	 */
 	private static Board theInstance = new Board();
-	private Board() { super(); } // constructor is private to ensure only one can be created
+	
+	Board() { super(); } // constructor is private to ensure only one can be created
+	
 	public static Board getInstance() { 
 		if (theInstance == null) theInstance = new Board();
 		return theInstance; 
@@ -419,6 +427,18 @@ public class Board {
 		}
 	}
 
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		
+		
+		grid[1][1].drawCell(g);
+		
+		
+	}
+	
+	
+	
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); } 
 	public Set<BoardCell> getTargets() { return targets; } //returns the targets last created by calcTargets()
 

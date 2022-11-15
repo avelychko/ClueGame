@@ -1,14 +1,152 @@
+commit 160e72ed5e635ed251c60c395f534641bb13788f
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Fri Nov 11 18:47:20 2022 -0700
+
+    added some more comments and cleaned somethings up
+
+commit 9db7e3288ae539e0d4e34d403a020ad52d28dd86
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Fri Nov 11 18:12:17 2022 -0700
+
+    condensed 3 methods into one method for updating the panels
+
+commit 75aaa33188b23e7abc06d7fab5ba2805f532b180
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Fri Nov 11 17:50:29 2022 -0700
+
+    colored player seen text boxes
+
+commit a8a50530168be138a033809119983315630294c4
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Fri Nov 11 17:20:37 2022 -0700
+
+    added some comments to GameCardPanel
+
+commit e61c227fd2f6130ecf71e424230dbfaea18eed9b
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Fri Nov 11 16:48:14 2022 -0700
+
+    colored players hand text box
+
+commit 5c3d9e738d521037f435c9aa614782641ecd9631
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Fri Nov 11 14:53:17 2022 -0700
+
+    got card panel to basic completion, primative but does the job
+
+commit 1e391185f6e457608854d124c238ed2993d274e0
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 10 20:00:02 2022 -0700
+
+    added setter for hand in player and working on GameCardPanel
+
+commit b4592e7d63534edac921fe19e3060fa494797fa7
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 10 19:56:59 2022 -0700
+
+    removed updating seen cards in deal
+
+commit 267f9f62aad73cde61c2c8dfad640b20b1ac6bc2
+Merge: b58d5e8 3a24e47
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 10 13:55:08 2022 -0700
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit b58d5e86600294bb2853099c8d754c61a8554094
+Merge: e4a48e8 4c843a7
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 10 13:55:04 2022 -0700
+
+    minor changes
+
+commit 3a24e47e2f4da907efeee02b8727a3a4df5ba674
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 10 13:53:09 2022 -0700
+
+    modified updatePanel
+
+commit 183383218264bf90785811c82fdaa7d71965df26
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 10 13:50:43 2022 -0700
+
+    modified updatePanel
+
+commit 0bcaa317d30f6152f0dee82b3623d4be54f652b7
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 10 13:46:56 2022 -0700
+
+    created updatePanel
+
+commit e4a48e818a8272fbacefff34792dde37ae67d302
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 10 13:39:59 2022 -0700
+
+    minor changes
+
+commit 4c843a7239343ad5c82c8cbfe7616215908ff506
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 10 13:39:22 2022 -0700
+
+    removed cardPanel from GameCardPanel
+
+commit c386d539b7b8c1903db5d9ab06f0015a1f75ae39
+Merge: 45db677 621fd92
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 10 13:31:39 2022 -0700
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit 45db677f288cb99ca5fb073ec6244541f63e2bdc
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 10 13:31:30 2022 -0700
+
+    fixing errors
+
+commit 621fd9295ee3bf412bc90d3fcc48ad76fa8be80e
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 10 13:30:31 2022 -0700
+
+    modified GameCardPanel constructor
+
+commit 09e4794fcebc0df94ca155fd0800e136e7f2320e
+Merge: dee7354 87c593c
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 10 13:29:30 2022 -0700
+
+    minor changes
+
 commit 87c593c79d14fcac098f4e09c998ae28ecbf71aa
 Author: Anastasia Velychko <avelychko@mines.edu>
 Date:   Thu Nov 10 12:59:05 2022 -0700
 
     added comments and modified GameControlPanel class
 
+commit dee735491dac39fe11ad1956faeefe4078e4369c
+Merge: 70e1e81 ae6de9c
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 10 12:39:23 2022 -0700
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit 70e1e81fbb31d2262a3886a875f3b0daab6ce876
+Merge: a81ba6f b211b20
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 10 12:39:19 2022 -0700
+
+    minor changes
+
 commit ae6de9c68e3b4c55295667adcf2294580f8c654d
 Author: Anastasia Velychko <avelychko@mines.edu>
 Date:   Thu Nov 10 00:46:04 2022 -0700
 
     mosified card Text field in GameCardPanel
+
+commit a81ba6fee6c116720819e31e7ad337dae6887e99
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Nov 9 22:39:50 2022 -0700
+
+    minor changes
 
 commit b211b20352bfc63792aeaf7766fd4a27c3914483
 Author: Anastasia Velychko <avelychko@mines.edu>
