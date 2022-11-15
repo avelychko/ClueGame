@@ -431,33 +431,21 @@ public class Board extends JPanel{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-<<<<<<< HEAD
+
 		int width = getWidth() / 30;
 		int height = getHeight() /30;
 		
-		System.out.println("With: " + width);
-		System.out.println("Height: " + height);
-		System.out.println("Row: " + numRows);
-		System.out.println("Col: " + numColumns);
 		
-		int x =0, y =0;
 		
-		/*for (int row = 0; row < numRows; row++) {
-			for (int col = 0; col < numColumns; col++) {
-				grid[row][col].drawCell(g, width, height, x, y);
-			}
-			}*/
-		
-		//g.drawRect( 30, 30, width, height );
-		//g.fillRect( 30, 60, width, height );
-		
-		for ( int i = 0; i <= 700; i += 70 )
+		/*for ( int i = 0; i <= 700; i += 70 )
 		for ( int j = 0; j <= 700; j += 70 ) 
-		 g.drawRect( i, j, width+2, height+7);
+		 g.drawRect( i, j, width+2, height+7);*/
 		
+		g.drawRect( 0, 0, width+2, height+7);
+		g.drawRect(700, 0, width+2, height+7);
 		
-=======
-		for (int row = 0; row < numRows; row++) {
+
+		/*for (int row = 0; row < numRows; row++) {
 			for (int col = 0; col < numColumns; col++) { 
 					grid[row][col].drawCell(g);
 			}
@@ -467,8 +455,7 @@ public class Board extends JPanel{
 			for (int col = 0; col < numColumns; col++) { 
 				if (getCell(row, col).isLabel()) grid[row][col].drawCell(g);
 			}
-		}
->>>>>>> 8faddc99d8202b2ebc59af06c5c18b3d59011b48
+		}*/
 	}
 	
 	
