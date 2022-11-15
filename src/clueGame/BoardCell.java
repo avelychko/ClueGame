@@ -100,6 +100,7 @@ public class BoardCell {
 	
 	}
 	
+	//draws room at row and col
 	public void drawName(Graphics g, int width, int height) {
 		Font font = new Font("Century Gothic", Font.BOLD, 15);
 		g.setFont(font);

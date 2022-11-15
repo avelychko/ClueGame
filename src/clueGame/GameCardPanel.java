@@ -20,7 +20,6 @@ public class GameCardPanel extends JPanel {
 		roomPanel = new JPanel();
 		weaponPanel = new JPanel();
 
-
 		// title, border and grid for panels
 		peoplePanel.setBorder(new TitledBorder (new EtchedBorder(), "People")); 
 		peoplePanel.setLayout(new GridLayout(0, 1)); // create grid for people panel
@@ -31,7 +30,6 @@ public class GameCardPanel extends JPanel {
 		weaponPanel.setBorder(new TitledBorder (new EtchedBorder(), "Weapons"));
 		weaponPanel.setLayout(new GridLayout(0, 1));  
 
-
 		ArrayList<Card> handDuring = new ArrayList<Card>();
 		Set<Card> seenCardsDuring = new HashSet<Card>();
 		
@@ -39,19 +37,12 @@ public class GameCardPanel extends JPanel {
 		handDuring.add(new Card("Bedroom", CardType.ROOM));
 		handDuring.add(new Card("Garden", CardType.ROOM));		
 		
-		seenCardsDuring.add(new Card("Benjamin Siegel", CardType.PERSON));
-		seenCardsDuring.add(new Card("Eddie McGrath", CardType.PERSON));
-		seenCardsDuring.add(new Card("Katana", CardType.WEAPON));
-		seenCardsDuring.add(new Card("Pistol", CardType.WEAPON));
-		seenCardsDuring.add(new Card("Pool", CardType.ROOM));
-		seenCardsDuring.add(new Card("Wire", CardType.WEAPON));
+		Player player = Board.getInstance().getPlayer().get(0);
 		
-		Player player1 = new HumanPlayer("Al Capone", "Blue", 0, 0);
+		player.setHand(handDuring);
+		player.setSeenCards(seenCardsDuring);
 		
-		player1.setHand(handDuring);
-		player1.setSeenCards(seenCardsDuring);
-		
-		updatePanels(player1);
+		updatePanels(player);
 	}
 
 
@@ -103,7 +94,6 @@ public class GameCardPanel extends JPanel {
 			panel.add(noneInHand); // add text box to panel
 		}
 
-
 		panel.add(seenLabel); // needs to be added first before adding in the text fields
 
 		contains = false;
@@ -124,7 +114,6 @@ public class GameCardPanel extends JPanel {
 				panel.add(seenText); // adds text boxes to panel
 				contains = true;
 			}
-
 		}
 
 		// only works if there is no person card type in players seen cards
@@ -133,37 +122,5 @@ public class GameCardPanel extends JPanel {
 			noneInSeen.setText("None"); // text for the panel
 			panel.add(noneInSeen); // add text box to panel
 		}
-	}
-
-	public static void main(String[] args) {
-		GameCardPanel panel = new GameCardPanel();  // create the panel
-		JFrame frame = new JFrame();  // create the frame 
-		frame.setContentPane(panel); // put the panel in the frame
-		frame.setSize(200, 600);  // size the frame
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
-
-		//cards for testing
-		ArrayList<Card> handDuring = new ArrayList<Card>();
-		Set<Card> seenCardsDuring = new HashSet<Card>();
-
-		handDuring.add(new Card("Al Capone", CardType.PERSON));
-		handDuring.add(new Card("Bedroom", CardType.ROOM));
-		handDuring.add(new Card("Garden", CardType.ROOM));		
-
-		seenCardsDuring.add(new Card("Benjamin Siegel", CardType.PERSON));
-		seenCardsDuring.add(new Card("Eddie McGrath", CardType.PERSON));
-		seenCardsDuring.add(new Card("Katana", CardType.WEAPON));
-		seenCardsDuring.add(new Card("Pistol", CardType.WEAPON));
-		seenCardsDuring.add(new Card("Pool", CardType.ROOM));
-		seenCardsDuring.add(new Card("Wire", CardType.WEAPON));
-
-		Player player1 = new HumanPlayer("Al Capone", "Blue", 0, 0);
-
-		player1.setHand(handDuring);
-		player1.setSeenCards(seenCardsDuring);
-
-		panel.updatePanels(player1); // used to form known cards panel
-
-		frame.setVisible(true); // make it visible
 	}
 }

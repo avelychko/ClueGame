@@ -425,15 +425,16 @@ public class Board extends JPanel{
 		}
 	}
 
-	//row 25 (0-24), col 31 (0-30)
+	//paint board
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
+		//find size of cells
 		int width = getWidth() / numColumns;
 		int height = getHeight() / numRows;
 		
+		//draw each cell
 		int y = 1;
-
 		for (int row = 0; row < numRows; row++) {
 			int x = 1;
 			for (int col = 0; col < numColumns; col++) { 
@@ -443,12 +444,14 @@ public class Board extends JPanel{
 			y += height-1;
 		}
 
+		//draw each room name at label cell
 		for (int row = 0; row < numRows; row++) {
 			for (int col = 0; col < numColumns; col++) { 
 				if (getCell(row, col).isLabel()) grid[row][col].drawName(g, width-2, height-1);
 			}
 		}
 
+		//draw each player
 		for (int i = 0; i < player.size(); i++) {
 			player.get(i).drawPlayer(g, width-2, height-1);
 		}
