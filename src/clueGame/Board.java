@@ -437,12 +437,12 @@ public class Board extends JPanel{
 		
 		
 		
-		/*for ( int i = 0; i <= 700; i += 70 )
-		for ( int j = 0; j <= 700; j += 70 ) 
-		 g.drawRect( i, j, width+2, height+7);*/
+		for ( int i = 0; i <= 800; i += width/2 )
+		for ( int j = 0; j <= 720; j += height ) 
+		 g.drawRect( i, j, width, height);
 		
-		g.drawRect( 0, 0, width+2, height+7);
-		g.drawRect(700, 0, width+2, height+7);
+		//g.drawRect( 0, 0, width+2, height+7);
+		//g.drawRect(700, 0, width+2, height+7);
 		
 
 		/*for (int row = 0; row < numRows; row++) {
