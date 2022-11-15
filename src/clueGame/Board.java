@@ -431,10 +431,17 @@ public class Board extends JPanel{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
+		for (int row = 0; row < numRows; row++) {
+			for (int col = 0; col < numColumns; col++) { 
+					grid[row][col].drawCell(g);
+			}
+		}
 		
-		grid[1][1].drawCell(g);
-		
-		
+		for (int row = 0; row < numRows; row++) {
+			for (int col = 0; col < numColumns; col++) { 
+				if (getCell(row, col).isLabel()) grid[row][col].drawCell(g);
+			}
+		}
 	}
 	
 	

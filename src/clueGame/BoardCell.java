@@ -1,10 +1,8 @@
 package clueGame;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Stroke;
+import java.util.*;
+import java.awt.*;
+import javax.swing.*;
 
 /**
  * BoardCell Class
@@ -13,8 +11,6 @@ import java.awt.Stroke;
  * @author Gordon Dina
  *
  */
-
-import java.util.*;
 
 public class BoardCell {
 	private int row, col; 
@@ -28,7 +24,6 @@ public class BoardCell {
 	private boolean isWalkway = false;
 	private Boolean isOccupied = false; 
 	Set<BoardCell> adjList = new HashSet<BoardCell>(); 
-
 	public BoardCell() { adjList = new HashSet<BoardCell>(); } 
 
 	//a constructor that has passed into it the row and column for that cell
@@ -50,6 +45,12 @@ public class BoardCell {
 		
 		
 	
+	}
+	
+	public void drawName(Graphics g) {
+		Font font = new Font("Monospaced", Font.BOLD, 12);
+		g.setFont(font);
+		g.drawString(Board.getInstance().getRoom(initial).getName(), row, col);
 	}
 	
 	//adjList setter and getter
