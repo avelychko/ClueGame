@@ -8,7 +8,7 @@ public class ClueGame extends JFrame {
 	GameControlPanel controlPanel;
 	GameCardPanel cardsPanel;
 	Board board;
-	
+
 	public ClueGame() {
 		gui = this;
 		board = Board.getInstance();
@@ -18,7 +18,7 @@ public class ClueGame extends JFrame {
 		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");		
 		// Initialize will load config files 
 		board.initialize();
-		
+
 		controlPanel = new GameControlPanel();
 		cardsPanel = new GameCardPanel();
 		setTitle("Clue Game - CSCI306");
@@ -26,7 +26,7 @@ public class ClueGame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		createLayout();
 	}
-	
+
 	private void createLayout() {
 		add(board, BorderLayout.CENTER);
 		add(cardsPanel, BorderLayout.EAST);

@@ -13,8 +13,7 @@ public abstract class Player {
 	private Set<Card> seenCards = new HashSet<Card>();
 	private ArrayList<Card> disproveCards;
 	private Map<String, Color> colorSelection  = new HashMap<>();
-	
-	
+
 	public Player(String name, String color, int row, int col) {
 		super();
 		this.name = name;
@@ -42,7 +41,7 @@ public abstract class Player {
 	public void updateHand(Card card) { this.hand.add(card); }
 	public ArrayList<Card> getPlayerCards() { return this.hand; }
 	public void setHand(ArrayList<Card> hand) {this.hand = hand;}
-	
+
 	public void updateSeen(Card seenCard) { this.seenCards.add(seenCard); }
 	public Set<Card> getSeenCards() { return this.seenCards; }
 	public void setSeenCards(Set<Card> seenCards) { this.seenCards = seenCards; }
@@ -65,9 +64,11 @@ public abstract class Player {
 		}
 		return disproveCards.get(0); 
 	}
-	
+
 	public void drawPlayer(Graphics g, int width, int height) {
-		g.setColor(getColor());
+		g.setColor(Color.black);
 		g.drawOval(this.row, this.col, width, height);
+		g.setColor(getColor());
+		g.fillOval(this.row, this.col, width, height);
 	}
 }
