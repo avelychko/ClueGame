@@ -1,6 +1,6 @@
 package clueGame;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.*;
 
 //Name, Color, Human/Computer, Starting Location
@@ -35,7 +35,7 @@ public abstract class Player {
 	}
 
 	public String getName() { return this.name; }
-	public String getColor() { return this.color; }
+	public Color getColor() { return colorSelection.get(color); }
 	public int getRow() { return this.row; }
 	public int getCol() { return this.col; }
 
@@ -46,8 +46,6 @@ public abstract class Player {
 	public void updateSeen(Card seenCard) { this.seenCards.add(seenCard); }
 	public Set<Card> getSeenCards() { return this.seenCards; }
 	public void setSeenCards(Set<Card> seenCards) { this.seenCards = seenCards; }
-	
-	public Color getcolor() { return colorSelection.get(color); }
 
 	//checks if the player has the card and will return it in the end, 
 	//if they have multiple then one will be chosen at random
@@ -66,5 +64,10 @@ public abstract class Player {
 			return disproveCards.get(randomIndex);
 		}
 		return disproveCards.get(0); 
+	}
+	
+	public void drawPlayer(Graphics g) {
+		g.setColor(getColor());
+		g.drawOval(this.row, this.col, 20, 20);
 	}
 }

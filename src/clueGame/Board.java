@@ -442,6 +442,10 @@ public class Board extends JPanel{
 				if (getCell(row, col).isLabel()) grid[row][col].drawCell(g);
 			}
 		}
+		
+		for (int i = 0; i < player.size(); i++) {
+			player.get(i).drawPlayer(g);
+		}
 	}
 	
 	

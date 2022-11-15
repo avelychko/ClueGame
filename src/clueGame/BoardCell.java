@@ -50,7 +50,8 @@ public class BoardCell {
 	public void drawName(Graphics g) {
 		Font font = new Font("Monospaced", Font.BOLD, 12);
 		g.setFont(font);
-		g.drawString(Board.getInstance().getRoom(initial).getName(), row, col);
+		g.setColor(new Color(204, 17, 0));
+		g.drawString(Board.getInstance().getRoom(initial).getName(), this.row, this.col);
 	}
 	
 	//adjList setter and getter
