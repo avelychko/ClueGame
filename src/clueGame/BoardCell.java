@@ -34,29 +34,67 @@ public class BoardCell {
 	
 	public void drawCell(Graphics cell, int width, int height, int x, int y) {
 		
-
-		cell.drawRect(x, y, width, height);
 		
 		if(getWalkway()) {
-			cell.setColor(Color.yellow);
+			cell.setColor(Color.lightGray);
 			cell.fillRect(x, y, width, height);
+			
+			Graphics2D other = (Graphics2D) cell;
+			Stroke stroke = new BasicStroke(1);
+			cell.setColor(Color.black);
+			other.setStroke(stroke);
+			
+			cell.drawRect(x, y, width, height);
+			
+			if(isDoorway()) {
+				switch (getDoorDirection()) {
+				
+				case UP:
+					Graphics2D lineUp = (Graphics2D) cell;
+					Stroke strokeUp = new BasicStroke(4);
+					lineUp.setColor(Color.black);
+					lineUp.setStroke(strokeUp);
+					lineUp.drawLine(x+2, y, x+width-2, y);
+					break;
+				case DOWN:
+					Graphics2D lineDown = (Graphics2D) cell;
+					Stroke strokeDown = new BasicStroke(4);
+					lineDown.setColor(Color.black);
+					lineDown.setStroke(strokeDown);
+					lineDown.drawLine(x+2, y+height-3, x+width-1, y+height-3);
+					break;
+				case LEFT:
+					Graphics2D lineLeft = (Graphics2D) cell;
+					Stroke strokLeft = new BasicStroke(4);
+					lineLeft.setColor(Color.black);
+					lineLeft.setStroke(strokLeft);
+					lineLeft.drawLine(x, y+1, x, y+height);
+					break;
+				case RIGHT:
+					Graphics2D lineRight = (Graphics2D) cell;
+					Stroke strokeRight = new BasicStroke(4);
+					lineRight.setColor(Color.black);
+					lineRight.setStroke(strokeRight);
+					lineRight.drawLine(x+width-2, y+1, x+width-2, y+height);
+					break;
+				default:
+					
+				}
+			}
+			
 		}
+		
 		if(getUnused()) {
 			cell.setColor(new Color(204, 17, 0));
 			cell.fillRect(x, y, width, height);
 		}
-		/*if(getRoom()) {
-			cell.setColor(Color.blue);
+		
+		if (!(getWalkway() || getUnused())) {
+			cell.setColor(new Color(118, 96, 138));
 			cell.fillRect(x, y, width, height);
-		}*/
+		}
 		
-		Graphics2D other = (Graphics2D) cell;
-		Stroke stroke1 = new BasicStroke(2);
 		
-		cell.setColor(Color.black);
-		other.setStroke(stroke1);
-
-		cell.drawRect(x, y, width, height);
 		
 		
 	
