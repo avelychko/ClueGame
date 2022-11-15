@@ -427,24 +427,38 @@ public class Board extends JPanel{
 		}
 	}
 
-	
+	//row 25 (0-24), col 31 (0-30)
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		for (int row = 0; row < numRows; row++) {
-			for (int col = 0; col < numColumns; col++) { 
-					grid[row][col].drawCell(g);
-			}
-		}
+
+		int width = getWidth() / 30;
+		int height = getHeight() / 26;
+		
+		
+		
+		/*for ( int i = 0; i <= 700; i += 70 )
+		for ( int j = 0; j <= 700; j += 70 ) 
+		 g.drawRect( i, j, width+2, height+7);*/
+		
+		g.drawRect( 0, 0, width+2, height+7);
+		g.drawRect(700, 0, width+2, height+7);
+		
+
+//		for (int row = 0; row < numRows; row++) {
+//			for (int col = 0; col < numColumns; col++) { 
+//					grid[row][col].drawCell(g);
+//			}
+//		}
 		
 		for (int row = 0; row < numRows; row++) {
 			for (int col = 0; col < numColumns; col++) { 
-				if (getCell(row, col).isLabel()) grid[row][col].drawCell(g);
+				if (getCell(row, col).isLabel()) grid[row][col].drawName(g);
 			}
 		}
 		
 		for (int i = 0; i < player.size(); i++) {
-			player.get(i).drawPlayer(g);
+			player.get(i).drawPlayer(g, width, height);
 		}
 	}
 	

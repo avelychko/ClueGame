@@ -66,8 +66,8 @@ public abstract class Player {
 		return disproveCards.get(0); 
 	}
 	
-	public void drawPlayer(Graphics g) {
+	public void drawPlayer(Graphics g, int width, int height) {
 		g.setColor(getColor());
-		g.drawOval(this.row, this.col, 20, 20);
+		g.drawOval(this.row, this.col, width, height);
 	}
 }
