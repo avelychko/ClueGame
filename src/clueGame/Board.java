@@ -431,6 +431,7 @@ public class Board extends JPanel{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
+<<<<<<< HEAD
 		int width = getWidth() / 30;
 		int height = getHeight() /30;
 		
@@ -455,6 +456,19 @@ public class Board extends JPanel{
 		 g.drawRect( i, j, width+2, height+7);
 		
 		
+=======
+		for (int row = 0; row < numRows; row++) {
+			for (int col = 0; col < numColumns; col++) { 
+					grid[row][col].drawCell(g);
+			}
+		}
+		
+		for (int row = 0; row < numRows; row++) {
+			for (int col = 0; col < numColumns; col++) { 
+				if (getCell(row, col).isLabel()) grid[row][col].drawCell(g);
+			}
+		}
+>>>>>>> 8faddc99d8202b2ebc59af06c5c18b3d59011b48
 	}
 	
 	
