@@ -427,7 +427,7 @@ public class Board extends JPanel{
 		}
 	}
 
-	
+	//row 25 (0-24), col 31 (0-30)
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
