@@ -4,7 +4,10 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
-public class GameControlPanel extends JPanel {
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+public class GameControlPanel extends JPanel{
 	JPanel topPanel, bottomPanel, guessResultPanel, guessPanel, playerPanel, rollPanel;
 	JLabel turnLabel, rollLabel;
 	JTextField guessResultText, guessText, playerText, rollText;
@@ -71,6 +74,8 @@ public class GameControlPanel extends JPanel {
 		topPanel.add(rollPanel);
 		topPanel.add(accusationButton);
 		topPanel.add(nextButton);
+		
+		nextButton.addMouseListener(new mouseClicker());
 	}
 	
 	private void setGuessResult(String string) {
@@ -85,4 +90,42 @@ public class GameControlPanel extends JPanel {
 		playerText.setText(computerPlayer.getName()); //text for player panel
 		rollText.setText(String.valueOf(i)); //text for roll panel
 	}
+
+	
+	
+	
+	private class mouseClicker implements MouseListener{
+		
+		public void mouseClicked(MouseEvent e) {
+			System.out.println("Hello");
+			
+		}
+
+		
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+	
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	}
+	
+	
+	
 }
