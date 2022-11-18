@@ -443,7 +443,9 @@ public class Board extends JPanel{
 			for (int col = 0; col < numColumns; col++) { 
 				grid[row][col].setX(x);
 				grid[row][col].setY(y);
-				grid[row][col].drawCell(g, width-2, height);
+				grid[row][col].setWidth(width-2);
+				grid[row][col].setHeight(height);
+				grid[row][col].drawCell(g);
 				x += width-2;
 			}
 			y += height-1;
@@ -485,7 +487,7 @@ public class Board extends JPanel{
 
 				BoardCell targetCell = null;
 				for (BoardCell target : targets) {
-					if (target.getX() == event.getX() && target.getY() == event.getY()) {
+					if (target.containsClick(event.getX(), event.getY())) {
 						targetCell = target;
 						break;
 					}
