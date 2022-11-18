@@ -5,6 +5,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import java.util.Random;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -13,8 +15,12 @@ public class GameControlPanel extends JPanel{
 	JLabel turnLabel, rollLabel;
 	JTextField guessResultText, guessText, playerText, rollText;
 	JButton accusationButton, nextButton;
+	Board board;
+	int currentPlayer = 0;
+	int dieRoll;
 
 	public GameControlPanel()  {
+		board = Board.getInstance();
 		//create main grid
 		setLayout(new GridLayout(2, 0)); 
 		//create top and bottom panels
@@ -76,19 +82,12 @@ public class GameControlPanel extends JPanel{
 		topPanel.add(accusationButton);
 		topPanel.add(nextButton);
 		
-<<<<<<< HEAD
+
 		nextButton.addMouseListener(new mouseClicker());
-=======
-		nextButton.addActionListener(new ButtonListener());
+		
 	}
 	
-	private class ButtonListener implements ActionListener {
-		public void actionPerformed(ActionEvent e)
-		{
-			
-		}
->>>>>>> 0e08bb8f5c332e96b149346c5d4de43157fd07ac
-	}
+
 	
 	private void setGuessResult(String string) {
 		guessResultText.setText(string); //text for guess result panel
@@ -98,7 +97,7 @@ public class GameControlPanel extends JPanel{
 		guessText.setText(string); //text for guess panel
 	}
 
-	private void setTurn(ComputerPlayer computerPlayer, int i) {
+	private void setTurn(Player computerPlayer, int i) {
 		playerText.setText(computerPlayer.getName()); //text for player panel
 		rollText.setText(String.valueOf(i)); //text for roll panel
 	}
@@ -109,35 +108,26 @@ public class GameControlPanel extends JPanel{
 	private class mouseClicker implements MouseListener{
 		
 		public void mouseClicked(MouseEvent e) {
-			System.out.println("Hello");
+			if (currentPlayer == board.getPlayer().size()) {
+				currentPlayer = 0;
+			}
+			Player the = board.getPlayer().get(currentPlayer);
+			
+			Random ranNum = new Random();
+			dieRoll = ranNum.nextInt(6) + 1;
+			
+			setTurn(the, dieRoll);
+			
+			currentPlayer++;
 			
 		}
 
-		
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-	
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+		public void mousePressed(MouseEvent e) {}
+		public void mouseReleased(MouseEvent e) {}
+		public void mouseEntered(MouseEvent e) {}
+		public void mouseExited(MouseEvent e) {}
 	}
 	
-	
+	//add a mouse listner for accusation
 	
 }

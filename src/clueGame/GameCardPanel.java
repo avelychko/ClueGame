@@ -30,17 +30,17 @@ public class GameCardPanel extends JPanel {
 		weaponPanel.setBorder(new TitledBorder (new EtchedBorder(), "Weapons"));
 		weaponPanel.setLayout(new GridLayout(0, 1));  
 
-		ArrayList<Card> handDuring = new ArrayList<Card>();
-		Set<Card> seenCardsDuring = new HashSet<Card>();
+		//ArrayList<Card> handDuring = new ArrayList<Card>();
+		//Set<Card> seenCardsDuring = new HashSet<Card>();
 		
-		handDuring.add(new Card("Al Capone", CardType.PERSON));
+		/*handDuring.add(new Card("Al Capone", CardType.PERSON));
 		handDuring.add(new Card("Bedroom", CardType.ROOM));
-		handDuring.add(new Card("Garden", CardType.ROOM));		
+		handDuring.add(new Card("Garde", CardType.ROOM));*/		
 		
 		Player player = Board.getInstance().getPlayer().get(0);
 		
-		player.setHand(handDuring);
-		player.setSeenCards(seenCardsDuring);
+		//player.setHand(handDuring);
+		//player.setSeenCards(seenCardsDuring);
 		
 		updatePanels(player);
 	}
