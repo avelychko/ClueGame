@@ -5,13 +5,22 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
-public class GameControlPanel extends JPanel {
+import java.util.Random;
+
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+public class GameControlPanel extends JPanel{
 	JPanel topPanel, bottomPanel, guessResultPanel, guessPanel, playerPanel, rollPanel;
 	JLabel turnLabel, rollLabel;
 	JTextField guessResultText, guessText, playerText, rollText;
 	JButton accusationButton, nextButton;
+	Board board;
+	int currentPlayer = 0;
+	int dieRoll;
 
 	public GameControlPanel()  {
+		board = Board.getInstance();
 		//create main grid
 		setLayout(new GridLayout(2, 0)); 
 		//create top and bottom panels
@@ -73,15 +82,12 @@ public class GameControlPanel extends JPanel {
 		topPanel.add(accusationButton);
 		topPanel.add(nextButton);
 		
-		nextButton.addActionListener(new ButtonListener());
+
+		nextButton.addMouseListener(new mouseClicker());
+		
 	}
 	
-	private class ButtonListener implements ActionListener {
-		public void actionPerformed(ActionEvent e)
-		{
-			
-		}
-	}
+
 	
 	private void setGuessResult(String string) {
 		guessResultText.setText(string); //text for guess result panel
@@ -91,8 +97,40 @@ public class GameControlPanel extends JPanel {
 		guessText.setText(string); //text for guess panel
 	}
 
-	private void setTurn(ComputerPlayer computerPlayer, int i) {
+	private void setTurn(Player computerPlayer, int i) {
 		playerText.setText(computerPlayer.getName()); //text for player panel
+		playerText.setBackground(board.getPlayer().get(currentPlayer).getColor());
 		rollText.setText(String.valueOf(i)); //text for roll panel
 	}
+
+	
+	
+	
+	private class mouseClicker implements MouseListener{
+		
+		public void mouseClicked(MouseEvent e) {
+			if (currentPlayer == board.getPlayer().size()) {
+				currentPlayer = 0;
+			}
+			Player player = board.getPlayer().get(currentPlayer);
+			
+			Random ranNum = new Random();
+			dieRoll = ranNum.nextInt(6) + 1;
+			
+			setTurn(player, dieRoll);
+			
+			board.calcTargets(board.getCell(player.getRow(), player.getCol()), dieRoll);
+			
+			currentPlayer++;
+			
+		}
+
+		public void mousePressed(MouseEvent e) {}
+		public void mouseReleased(MouseEvent e) {}
+		public void mouseEntered(MouseEvent e) {}
+		public void mouseExited(MouseEvent e) {}
+	}
+	
+	//add a mouse listner for accusation
+	
 }
