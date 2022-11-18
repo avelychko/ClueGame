@@ -38,6 +38,9 @@ public abstract class Player {
 	public Color getColor() { return colorSelection.get(color); }
 	public int getRow() { return this.row; }
 	public int getCol() { return this.col; }
+	
+	public void updateRow(int row) { this.row = row; }
+	public void updateCol(int col) { this.col = col; }
 
 	public void updateHand(Card card) { this.hand.add(card); }
 	public ArrayList<Card> getPlayerCards() { return this.hand; }
