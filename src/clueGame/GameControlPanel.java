@@ -1,6 +1,7 @@
 package clueGame;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -75,7 +76,18 @@ public class GameControlPanel extends JPanel{
 		topPanel.add(accusationButton);
 		topPanel.add(nextButton);
 		
+<<<<<<< HEAD
 		nextButton.addMouseListener(new mouseClicker());
+=======
+		nextButton.addActionListener(new ButtonListener());
+	}
+	
+	private class ButtonListener implements ActionListener {
+		public void actionPerformed(ActionEvent e)
+		{
+			
+		}
+>>>>>>> 0e08bb8f5c332e96b149346c5d4de43157fd07ac
 	}
 	
 	private void setGuessResult(String string) {

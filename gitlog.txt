@@ -1,3 +1,213 @@
+commit 761cfbe05c4720d89abff43a55142aab0438255c
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 14 22:00:12 2022 -0700
+
+    comments
+
+commit 0aae8d6bef8e1e714308f6971dfee02fe9a29e41
+Merge: 9afbdda 5945778
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 14 21:52:00 2022 -0700
+
+    added door ways colors
+
+commit 5945778d85eac4336f7481845b9f318406aaa363
+Merge: 2856fa0 ecbb0a3
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 14 21:51:03 2022 -0700
+
+    merge
+
+commit 9afbddab7e46844013fc32f13763f4285b677eda
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 14 21:49:37 2022 -0700
+
+    added door ways colors
+
+commit 2856fa0b6cde6afab34ea79399329a7a23e4fd55
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 14 21:11:20 2022 -0700
+
+    updated cards to initial and removed mains from control and cards panel; added comments
+
+commit ecbb0a30ec1b896da85987ffd0730cd4ccde5971
+Merge: 9e1d6be 35c7616
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 14 20:52:24 2022 -0700
+
+    added color to grid
+
+commit 9e1d6be1844e9749a17426594b3c740fefbc6230
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 14 20:51:45 2022 -0700
+
+    added color to grid
+
+commit 35c76166e7a9bd03195d9068422a5bfb5332b11e
+Merge: a34c1cf 48918da
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 14 20:50:59 2022 -0700
+
+    changed width and height of player and room name with fram size change
+
+commit a34c1cf05ef3df19523e2deb2dc034a03f903ae5
+Merge: f87e24f 622fdcc
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 14 20:33:33 2022 -0700
+
+    changed room name font
+
+commit 48918da7789019935b7f73e59a6ee52561f10ba5
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 14 20:31:12 2022 -0700
+
+    got a nice looking grid
+
+commit f87e24f4fcd47dfc80fd9fbecf26a455af04c091
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 14 19:54:34 2022 -0700
+
+    changed height size
+
+commit 622fdccd053e059db556a7eb52db18961d1170eb
+Merge: 95a5d86 7589d71
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 14 19:52:54 2022 -0700
+
+    working on making grid for board
+
+commit 95a5d86364ea3dc7eb3e11649331eccb270509bd
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 14 19:52:26 2022 -0700
+
+    working on making grid for board
+
+commit 7589d71dacccf1ecc18924da5c47a4f0dd4d3746
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 14 19:51:18 2022 -0700
+
+    filled player circles
+
+commit 35164eb2ca713daa22608147f89028fd52dc9542
+Merge: 1db04b8 2b89f02
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 14 19:43:54 2022 -0700
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit 2b89f027a5ec19b250c5c51cbd6e2701ff46ef68
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 14 19:43:45 2022 -0700
+
+    initliazed board in ClueGame
+
+commit 1db04b812ad2bec7ecad68302a5acf147f350391
+Merge: 6b66a66 b8b86f7
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 14 19:21:42 2022 -0700
+
+    got CardPanel to show up in ClueGame, moved things from main to constructor
+
+commit 6b66a66fab9f3d5ea24ef63e7407de32f75e46b5
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 14 19:20:11 2022 -0700
+
+    got CardPanel to show up in ClueGame, moved things from main to constructor
+
+commit b8b86f74c5b5ed6c33e748bdca1997c90833e44c
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 14 19:17:21 2022 -0700
+
+    added card type back
+
+commit 756554f6841038c2ef71f79b71f327ee98384dc0
+Merge: a5430d3 e12298a
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 14 19:16:37 2022 -0700
+
+    added width and height calculations for player
+
+commit a5430d3dadd84884514881223b2d9956fa1bdd67
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 14 18:58:38 2022 -0700
+
+    draw player on board
+
+commit e12298adb0423209290af9d2567274bbbd810cb3
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 14 18:57:38 2022 -0700
+
+    minor changes
+
+commit 5e1cf02021769b394a44110d3b2abc08dc457829
+Merge: 1ba3ff9 8faddc9
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 14 18:38:17 2022 -0700
+
+    minor changes
+
+commit 1ba3ff9ad103d369516374ddb01be745a242ab0f
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 14 18:36:29 2022 -0700
+
+    working on grid board
+
+commit f5a002c0b525de16e11c589a90cd9d52d294517c
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 14 18:35:59 2022 -0700
+
+    working on grid board
+
+commit 8faddc99d8202b2ebc59af06c5c18b3d59011b48
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 14 18:28:08 2022 -0700
+
+    draw name labels on board
+
+commit 722f7ee3af93d58e88933c0f53ed3def3ebb37b2
+Merge: 3de775b 5b9ff8b
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 14 17:22:01 2022 -0700
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit 5b9ff8bee33d77e13b176d62766cc985d3c79b0c
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 14 17:20:12 2022 -0700
+
+    minor changes
+
+commit 451a2df7826f5b7b33a294c943b7caa67225bd66
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 14 16:33:09 2022 -0700
+
+    ClueGame draws from Board class and Board class gets drawing from BoardCell
+
+commit e7b5f2a5e13bd832387ef90c25c5cfe04c98d756
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Mon Nov 14 16:12:20 2022 -0700
+
+    added ClueGame class that will make JFrame for our board, and added printComponent to Board Class
+
+commit 3de775be85938434da76cfba7b3ed42b0af28abb
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 14 01:21:52 2022 -0700
+
+    created ClueGame that shows the whole game layout and an emoty GameBoardPanel class
+
+commit c67a818d73216115bc99932454e12bbe35412866
+Merge: 1db2b0c 160e72e
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 14 00:50:35 2022 -0700
+
+    merge
+
+commit 1db2b0c3c38f8cd2cf20e2eada2d67fb56098910
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Mon Nov 14 00:43:58 2022 -0700
+
+    minor changes
+
 commit 160e72ed5e635ed251c60c395f534641bb13788f
 Author: FloorismadeoutofFloor <gwdina@gmail.com>
 Date:   Fri Nov 11 18:47:20 2022 -0700
