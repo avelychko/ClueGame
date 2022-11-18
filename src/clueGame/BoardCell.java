@@ -15,6 +15,7 @@ import javax.swing.*;
 public class BoardCell {
 	private int row, col; 
 	private int x, y;
+	private int width, height;
 	private char initial; 
 	private DoorDirection doorDirection; 
 	private boolean roomLabel; 
@@ -34,7 +35,7 @@ public class BoardCell {
 	}
 
 	//draws cells 
-	public void drawCell(Graphics cell, int width, int height) {
+	public void drawCell(Graphics cell) {
 		if(getWalkway()) {
 			//draw walkway cell
 			cell.setColor(Color.lightGray); 
@@ -108,11 +109,23 @@ public class BoardCell {
 		g.drawString(Board.getInstance().getRoom(initial).getName(), this.col * width, this.row * height + height);
 	}
 	
+	public boolean containsClick(int mouseX, int mouseY) {
+		Rectangle rect = new Rectangle(x, y, width, height);
+		if (rect.contains(new Point(mouseX, mouseY))) 
+			return true;
+		return false;
+	}
+	
 	//cell location on board
 	public void setX(int x) { this.x = x; }
 	public void setY(int y) { this.y = y; }
 	public int getX() { return x; }
 	public int getY() { return y; }
+	
+	public void setWidth(int width) { this.width = width; }
+	public void setHeight(int height) { this.height = height; }
+	public int getWidth() { return width; }
+	public int getHeight() { return height; }
 	
 	public int getRow() { return row; }
 	public int getCol() { return col; }

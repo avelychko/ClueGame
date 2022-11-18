@@ -37,6 +37,7 @@ public class Board extends JPanel{
 	private ArrayList<Player> player; // array list stores players, human and computer
 	private Solution answer;
 	private Player playerTurn;
+	private boolean turnFinished = false;
 
 	/*
 	 * variable and methods used for singleton pattern
@@ -443,7 +444,9 @@ public class Board extends JPanel{
 			for (int col = 0; col < numColumns; col++) { 
 				grid[row][col].setX(x);
 				grid[row][col].setY(y);
-				grid[row][col].drawCell(g, width-2, height);
+				grid[row][col].setWidth(width-2);
+				grid[row][col].setHeight(height);
+				grid[row][col].drawCell(g);
 				x += width-2;
 			}
 			y += height-1;
@@ -481,11 +484,11 @@ public class Board extends JPanel{
 		public void mouseEntered (MouseEvent event) {}
 		public void mouseExited (MouseEvent event) {}
 		public void mouseClicked (MouseEvent event) {
+			turnFinished = false;
 			if (getPlayerTurn() == player.get(0)) {
-
 				BoardCell targetCell = null;
 				for (BoardCell target : targets) {
-					if (target.getX() == event.getX() && target.getY() == event.getY()) {
+					if (target.containsClick(event.getX(), event.getY())) {
 						targetCell = target;
 						break;
 					}
@@ -507,7 +510,7 @@ public class Board extends JPanel{
 							}
 						}
 					}
-
+					turnFinished = true;
 				}
 				else JOptionPane.showMessageDialog(null, "Not a target!", "Error", JOptionPane.ERROR_MESSAGE);
 			}
@@ -536,4 +539,6 @@ public class Board extends JPanel{
 	
 	public void setPlayerTurn(Player turnPlayer) { this.playerTurn = turnPlayer; }
 	public Player getPlayerTurn() { return playerTurn; }
+	
+	public boolean isTurnFinished() { return turnFinished; }
 }

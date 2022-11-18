@@ -26,7 +26,6 @@ public class ClueGame extends JFrame {
 		setTitle("Clue Game - CSCI306"); //game title
 		setSize(1100, 920);  // size the frame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
-		
 		JOptionPane.showMessageDialog(null, "You are " + board.getPlayer().get(0).getName() 
 				+ ". Can you find the solution before the Computer players?", "Welcome to Clue", JOptionPane.INFORMATION_MESSAGE);
 		createLayout();
