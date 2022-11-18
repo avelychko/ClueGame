@@ -99,6 +99,7 @@ public class GameControlPanel extends JPanel{
 
 	private void setTurn(Player computerPlayer, int i) {
 		playerText.setText(computerPlayer.getName()); //text for player panel
+		playerText.setBackground(board.getPlayer().get(currentPlayer).getColor());
 		rollText.setText(String.valueOf(i)); //text for roll panel
 	}
 
@@ -111,12 +112,14 @@ public class GameControlPanel extends JPanel{
 			if (currentPlayer == board.getPlayer().size()) {
 				currentPlayer = 0;
 			}
-			Player the = board.getPlayer().get(currentPlayer);
+			Player player = board.getPlayer().get(currentPlayer);
 			
 			Random ranNum = new Random();
 			dieRoll = ranNum.nextInt(6) + 1;
 			
-			setTurn(the, dieRoll);
+			setTurn(player, dieRoll);
+			
+			board.calcTargets(board.getCell(player.getRow(), player.getCol()), dieRoll);
 			
 			currentPlayer++;
 			
