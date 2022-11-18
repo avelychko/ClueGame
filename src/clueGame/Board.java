@@ -36,6 +36,7 @@ public class Board extends JPanel{
 	private ArrayList<Card> totalDeck; // array list stores remainding cards
 	private ArrayList<Player> player; // array list stores players, human and computer
 	private Solution answer;
+	private Player playerTurn;
 
 	/*
 	 * variable and methods used for singleton pattern
@@ -470,33 +471,48 @@ public class Board extends JPanel{
 		
 	}
 
-	private class MovePlayerListener implements MouseListener {
+	public class MovePlayerListener implements MouseListener {
+		GameControlPanel gameControlPanel = new GameControlPanel();
 		//check if it is human player's turn
-		
+
 		//  Empty definitions for unused event methods.
 		public void mousePressed (MouseEvent event) {}
 		public void mouseReleased (MouseEvent event) {}
 		public void mouseEntered (MouseEvent event) {}
 		public void mouseExited (MouseEvent event) {}
 		public void mouseClicked (MouseEvent event) {
-			BoardCell targetCell = null;
-			for (BoardCell target : targets) {
-				if (target.getX() == event.getX() && target.getY() == event.getY()) {
-					targetCell = target;
-					break;
+			if (getPlayerTurn() == player.get(0)) {
+
+				BoardCell targetCell = null;
+				for (BoardCell target : targets) {
+					if (target.getX() == event.getX() && target.getY() == event.getY()) {
+						targetCell = target;
+						break;
+					}
 				}
-			}
-			//display message if target is not clicked
-			if (targetCell != null) {
-				player.get(0).updateRow(targetCell.getRow());
-				player.get(0).updateCol(targetCell.getCol());
-				repaint();
-				if (targetCell.isRoomCenter()) {
-					//handleSuggestion(player.get(0), getRoom(targetCell), Card person, Card weapon);
+
+				//display message if target is not clicked
+				if (targetCell != null) {
+					player.get(0).updateRow(targetCell.getRow());
+					player.get(0).updateCol(targetCell.getCol());
+					repaint();
+					if (targetCell.isRoomCenter()) {
+						Card roomCard;
+						for (int i = 0; i < roomDeck.size(); i++) {
+							if (roomDeck.get(i).getCardName() == getRoom(targetCell).getName()) {
+								roomCard = roomDeck.get(i);
+								gameControlPanel.setGuess(roomCard + ", " + personDeck.get(0) + ", " + weaponDeck.get(0));
+								handleSuggestion(player.get(0), roomCard, personDeck.get(0), weaponDeck.get(0));
+								break;
+							}
+						}
+					}
+
 				}
+				else JOptionPane.showMessageDialog(null, "Not a target!", "Error", JOptionPane.ERROR_MESSAGE);
 			}
-			else JOptionPane.showMessageDialog(null, "Not a target!", "Error", JOptionPane.ERROR_MESSAGE);
-		}		
+			else JOptionPane.showMessageDialog(null, "Not your turn!", "Error", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); } 
@@ -517,4 +533,7 @@ public class Board extends JPanel{
 
 	public void setAnswer(Solution answer) { this.answer = answer; } //set answer
 	public void setPlayer(ArrayList<Player> player) { this.player = player; } //set player list
+	
+	public void setPlayerTurn(Player turnPlayer) { this.playerTurn = turnPlayer; }
+	public Player getPlayerTurn() { return playerTurn; }
 }
