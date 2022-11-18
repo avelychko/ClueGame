@@ -123,11 +123,12 @@ public class GameControlPanel extends JPanel{
 				repaint();
 			}
 			
+			
 			currentPlayer++;
 			if (currentPlayer == board.getPlayer().size()) {
 				currentPlayer = 0;
 			}
-			repaint();
+			
 				
 		}
 
