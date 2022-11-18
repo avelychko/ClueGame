@@ -19,6 +19,7 @@ public class GameControlPanel extends JPanel{
 	int currentPlayer = 0;
 	int dieRoll;
 
+
 	public GameControlPanel()  {
 		board = Board.getInstance();
 		//create main grid
@@ -82,11 +83,9 @@ public class GameControlPanel extends JPanel{
 		topPanel.add(accusationButton);
 		topPanel.add(nextButton);
 		
-
+		
 		nextButton.addMouseListener(new mouseClicker());
 		
-		
-		Set<BoardCell> targets = board.getTargets();
 		
 	}
 	
@@ -100,8 +99,8 @@ public class GameControlPanel extends JPanel{
 		guessText.setText(string); //text for guess panel
 	}
 
-	private void setTurn(Player computerPlayer, int i) {
-		playerText.setText(computerPlayer.getName()); //text for player panel
+	private void setTurn(Player player, int i) {
+		playerText.setText(player.getName()); //text for player panel
 		playerText.setBackground(board.getPlayer().get(currentPlayer).getColor());
 		rollText.setText(String.valueOf(i)); //text for roll panel
 	}
@@ -112,9 +111,7 @@ public class GameControlPanel extends JPanel{
 	private class mouseClicker implements MouseListener{
 		
 		public void mouseClicked(MouseEvent e) {
-			if (currentPlayer == board.getPlayer().size()) {
-				currentPlayer = 0;
-			}
+			
 			Player player = board.getPlayer().get(currentPlayer);
 			
 			Random ranNum = new Random();
@@ -124,8 +121,16 @@ public class GameControlPanel extends JPanel{
 			
 			board.calcTargets(board.getCell(player.getRow(), player.getCol()), dieRoll);
 			
-			currentPlayer++;
+			if (currentPlayer == 0) {
+				repaint();
+			}
 			
+			currentPlayer++;
+			if (currentPlayer == board.getPlayer().size()) {
+				currentPlayer = 0;
+			}
+			repaint();
+				
 		}
 
 		public void mousePressed(MouseEvent e) {}

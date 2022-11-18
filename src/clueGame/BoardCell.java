@@ -14,6 +14,7 @@ import javax.swing.*;
 
 public class BoardCell {
 	private int row, col; 
+	private int x, y;
 	private char initial; 
 	private DoorDirection doorDirection; 
 	private boolean roomLabel; 
@@ -31,9 +32,9 @@ public class BoardCell {
 		this.row = row;
 		this.col = col;
 	}
-	
+
 	//draws cells 
-	public void drawCell(Graphics cell, int width, int height, int x, int y) {
+	public void drawCell(Graphics cell, int width, int height) {
 		if(getWalkway()) {
 			//draw walkway cell
 			cell.setColor(Color.lightGray); 
@@ -98,9 +99,6 @@ public class BoardCell {
 		}
 	}
 	
-	public int getRow() {return row;}
-
-	public int getCol() {return col;}
 
 	//draws room at row and col
 	public void drawName(Graphics g, int width, int height) {
@@ -110,6 +108,15 @@ public class BoardCell {
 		g.drawString(Board.getInstance().getRoom(initial).getName(), this.col * width, this.row * height + height);
 	}
 	
+	//cell location on board
+	public void setX(int x) { this.x = x; }
+	public void setY(int y) { this.y = y; }
+	public int getX() { return x; }
+	public int getY() { return y; }
+	
+	public int getRow() { return row; }
+	public int getCol() { return col; }
+
 	//adjList setter and getter
 	public void addAdj(BoardCell adj) { this.adjList.add(adj); } 
 	public Set<BoardCell> grabAdjList() { return adjList; } 

@@ -5,6 +5,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Stroke;
+import java.awt.event.*;
 import java.io.*;
 import java.util.*;
 
@@ -25,8 +26,8 @@ public class Board extends JPanel{
 	private String layoutConfigFile; //board layout
 	private String setupConfigFile; //board setup
 	private Map<Character, Room> roomMap = new HashMap<Character, Room>(); //map for board rooms
-	public List<String[]> layoutFile; //array list stores layout cells 
-	String[] setupFile; //array stores setup lines
+	private List<String[]> layoutFile; //array list stores layout cells 
+	private String[] setupFile; //array stores setup lines
 	private Set<BoardCell> targets; //set of target cells
 	private Set<BoardCell> visited; //set of visited cells
 	private ArrayList<Card> roomDeck; // array list stores room cards
@@ -80,6 +81,7 @@ public class Board extends JPanel{
 		setAdj();
 		setUpSolution();
 		deal();
+		addMouseListener(new MovePlayerListener());
 	}
 
 
@@ -414,7 +416,7 @@ public class Board extends JPanel{
 	}
 
 	//goes through each player to see if they can dispute the suggestion, if they can return the card 
-	public Card handleSuggestion(Player character,Card room, Card person, Card weapon) {
+	public Card handleSuggestion(Player character, Card room, Card person, Card weapon) {
 		int indexPLayer = player.indexOf(character);
 		while(true) {
 			indexPLayer++;
@@ -432,14 +434,16 @@ public class Board extends JPanel{
 		//find size of cells
 		int width = getWidth() / numColumns;
 		int height = getHeight() / numRows;
-		
+
 		//draw each cell
 		int y = 1;
 		for (int row = 0; row < numRows; row++) {
 			int x = 1;
 			for (int col = 0; col < numColumns; col++) { 
-					grid[row][col].drawCell(g, width-2, height, x, y);
-					x += width-2;
+				grid[row][col].setX(x);
+				grid[row][col].setY(y);
+				grid[row][col].drawCell(g, width-2, height);
+				x += width-2;
 			}
 			y += height-1;
 		}
@@ -455,12 +459,44 @@ public class Board extends JPanel{
 		for (int i = 0; i < player.size(); i++) {
 			player.get(i).drawPlayer(g, width-2, height-1);
 		}
-		for (BoardCell the: targets) {
+	
+		
+	for (BoardCell the: targets) {
 			g.setColor(Color.black); //outline is black
-			g.drawOval(the.getCol() , the.getRow(), width-2, height-1);
+			g.drawOval(the.getX(), the.getY(), width-2, height-1);
 			g.setColor(Color.black);
-			g.fillOval(the.getCol(), the.getRow(), width-2, height-1);
+			g.fillOval(the.getX(), the.getY(), width-2, height-1);
 		}
+		
+	}
+
+	private class MovePlayerListener implements MouseListener {
+		//check if it is human player's turn
+		
+		//  Empty definitions for unused event methods.
+		public void mousePressed (MouseEvent event) {}
+		public void mouseReleased (MouseEvent event) {}
+		public void mouseEntered (MouseEvent event) {}
+		public void mouseExited (MouseEvent event) {}
+		public void mouseClicked (MouseEvent event) {
+			BoardCell targetCell = null;
+			for (BoardCell target : targets) {
+				if (target.getX() == event.getX() && target.getY() == event.getY()) {
+					targetCell = target;
+					break;
+				}
+			}
+			//display message if target is not clicked
+			if (targetCell != null) {
+				player.get(0).updateRow(targetCell.getRow());
+				player.get(0).updateCol(targetCell.getCol());
+				repaint();
+				if (targetCell.isRoomCenter()) {
+					//handleSuggestion(player.get(0), getRoom(targetCell), Card person, Card weapon);
+				}
+			}
+			else JOptionPane.showMessageDialog(null, "Not a target!", "Error", JOptionPane.ERROR_MESSAGE);
+		}		
 	}
 
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); } 
