@@ -6,7 +6,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import java.util.Random;
-
+import java.util.Set;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -84,6 +84,9 @@ public class GameControlPanel extends JPanel{
 		
 
 		nextButton.addMouseListener(new mouseClicker());
+		
+		
+		Set<BoardCell> targets = board.getTargets();
 		
 	}
 	

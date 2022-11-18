@@ -455,6 +455,12 @@ public class Board extends JPanel{
 		for (int i = 0; i < player.size(); i++) {
 			player.get(i).drawPlayer(g, width-2, height-1);
 		}
+		for (BoardCell the: targets) {
+			g.setColor(Color.black); //outline is black
+			g.drawOval(the.getCol() , the.getRow(), width-2, height-1);
+			g.setColor(Color.black);
+			g.fillOval(the.getCol(), the.getRow(), width-2, height-1);
+		}
 	}
 
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); } 
