@@ -55,7 +55,7 @@ public class GameControlPanel extends JPanel {
 		//create label and text box for player panel
 		turnLabel = new JLabel("Whose turn?"); //label
 		playerText = new JTextField(15); //text box
-		playerText.setBackground(new Color(250, 218, 94)); //text background change
+		playerText.setBackground(new Color(238, 238, 238)); //text background change
 		playerPanel.add(turnLabel); //add label to player panel
 		playerPanel.add(playerText); //add text box to player panel
 		
