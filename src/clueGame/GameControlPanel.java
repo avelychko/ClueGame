@@ -93,7 +93,7 @@ public class GameControlPanel extends JPanel{
 		guessResultText.setText(string); //text for guess result panel
 	}
 
-	private void setGuess(String string) {
+	public void setGuess(String string) {
 		guessText.setText(string); //text for guess panel
 	}
 
@@ -102,9 +102,6 @@ public class GameControlPanel extends JPanel{
 		playerText.setBackground(board.getPlayer().get(currentPlayer).getColor());
 		rollText.setText(String.valueOf(i)); //text for roll panel
 	}
-
-	
-	
 	
 	private class mouseClicker implements MouseListener{
 		
@@ -113,6 +110,7 @@ public class GameControlPanel extends JPanel{
 				currentPlayer = 0;
 			}
 			Player player = board.getPlayer().get(currentPlayer);
+			board.setPlayerTurn(player);
 			
 			Random ranNum = new Random();
 			dieRoll = ranNum.nextInt(6) + 1;
@@ -130,7 +128,7 @@ public class GameControlPanel extends JPanel{
 		public void mouseEntered(MouseEvent e) {}
 		public void mouseExited(MouseEvent e) {}
 	}
-	
+
 	//add a mouse listner for accusation
 	
 }

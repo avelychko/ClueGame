@@ -3,6 +3,8 @@ package clueGame;
 import java.awt.*;
 import javax.swing.*;
 
+import clueGame.Board.MovePlayerListener;
+
 public class ClueGame extends JFrame {
 	private ClueGame gui;
 	GameControlPanel controlPanel;
