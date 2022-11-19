@@ -458,19 +458,20 @@ public class Board extends JPanel{
 				if (getCell(row, col).isLabel()) grid[row][col].drawName(g, width-2, height-1);
 			}
 		}
+		
+		//draws target for human player
+		for (BoardCell the: targets) {
+			g.setColor(Color.black); //outline is black
+			g.drawOval(the.getX(), the.getY(), width-2, height-1);
+			g.setColor(Color.black);
+			g.fillOval(the.getX(), the.getY(), width-2, height-1);
+		}
 
 		//draw each player
 		for (int i = 0; i < player.size(); i++) {
 			player.get(i).drawPlayer(g, width-2, height-1);
 		}
 	
-		
-	for (BoardCell the: targets) {
-			g.setColor(Color.black); //outline is black
-			g.drawOval(the.getX(), the.getY(), width-2, height-1);
-			g.setColor(Color.black);
-			g.fillOval(the.getX(), the.getY(), width-2, height-1);
-		}
 		
 	}
 
@@ -493,7 +494,7 @@ public class Board extends JPanel{
 						break;
 					}
 				}
-
+				
 				//display message if target is not clicked
 				if (targetCell != null) {
 					player.get(0).updateRow(targetCell.getRow());
@@ -511,7 +512,11 @@ public class Board extends JPanel{
 						}
 					}
 					turnFinished = true;
+					targets.clear();
+					repaint();
 				}
+					
+				
 				else JOptionPane.showMessageDialog(null, "Not a target!", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 			else JOptionPane.showMessageDialog(null, "Not your turn!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -541,4 +546,8 @@ public class Board extends JPanel{
 	public Player getPlayerTurn() { return playerTurn; }
 	
 	public boolean isTurnFinished() { return turnFinished; }
+
+	public void setTurnFinished(boolean turnFinished) {
+		this.turnFinished = turnFinished;
+	}
 }

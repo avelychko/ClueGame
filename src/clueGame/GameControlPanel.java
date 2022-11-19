@@ -134,13 +134,15 @@ public class GameControlPanel extends JPanel{
 				currentPlayer++;
 				if (currentPlayer == board.getPlayer().size()) {
 					currentPlayer = 0;
+					board.setTurnFinished(false);
 				}
 				repaint();
-
 				setPlayer();
 				setRoll();
 				setTurn(player, dieRoll);
 				drawTargets(player, dieRoll);
+				//player.selectTarget(1);
+				
 			}
 
 		}
