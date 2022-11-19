@@ -216,7 +216,7 @@ public class Board extends JPanel{
 				Card personCard = new Card(setupLines[1], CardType.PERSON);
 				personDeck.add(personCard); // adds card to personDeck
 				if (setupLines.length < 6) {
-					Player computer = new ComputerPlayer(setupLines[1], setupLines[2], Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
+					ComputerPlayer computer = new ComputerPlayer(setupLines[1], setupLines[2], Integer.parseInt(setupLines[3]), Integer.parseInt(setupLines[4]));
 					player.add(computer); // adds computer player to player list
 				}
 				else {
@@ -461,11 +461,13 @@ public class Board extends JPanel{
 		
 		//draws target for human player
 		for (BoardCell the: targets) {
-			g.setColor(Color.black); //outline is black
+			g.setColor(Color.black); 
 			g.drawOval(the.getX(), the.getY(), width-2, height-1);
 			g.setColor(Color.black);
 			g.fillOval(the.getX(), the.getY(), width-2, height-1);
 		}
+		repaint(); // adds targets to the board
+		
 
 		//draw each player
 		for (int i = 0; i < player.size(); i++) {
@@ -486,20 +488,23 @@ public class Board extends JPanel{
 		public void mouseExited (MouseEvent event) {}
 		public void mouseClicked (MouseEvent event) {
 			turnFinished = false;
+			// only for the human player
 			if (getPlayerTurn() == player.get(0)) {
 				BoardCell targetCell = null;
 				for (BoardCell target : targets) {
+					//player clicks on valid target
 					if (target.containsClick(event.getX(), event.getY())) {
-						targetCell = target;
+						targetCell = target; //player has chosen a tile
 						break;
 					}
 				}
 				
-				//display message if target is not clicked
+				// if player has chosen valid tile then they will move to it
 				if (targetCell != null) {
 					player.get(0).updateRow(targetCell.getRow());
 					player.get(0).updateCol(targetCell.getCol());
 					repaint();
+					//if the target is a room then the player could do a suggestion
 					if (targetCell.isRoomCenter()) {
 						Card roomCard;
 						for (int i = 0; i < roomDeck.size(); i++) {
@@ -512,13 +517,14 @@ public class Board extends JPanel{
 						}
 					}
 					turnFinished = true;
-					targets.clear();
+					targets.clear(); //gets rid of targets so they don't get repainted
 					repaint();
 				}
 					
-				
+				//display message if target is not clicked
 				else JOptionPane.showMessageDialog(null, "Not a target!", "Error", JOptionPane.ERROR_MESSAGE);
 			}
+			//display message if target is not the human players turn
 			else JOptionPane.showMessageDialog(null, "Not your turn!", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
