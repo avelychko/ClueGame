@@ -99,7 +99,6 @@ public class BoardCell {
 			cell.fillRect(x, y, width, height);
 		}
 	}
-	
 
 	//draws room at row and col
 	public void drawName(Graphics g, int width, int height) {

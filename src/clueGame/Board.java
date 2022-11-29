@@ -556,4 +556,8 @@ public class Board extends JPanel{
 	public void setTurnFinished(boolean turnFinished) {
 		this.turnFinished = turnFinished;
 	}
+	
+	public ArrayList<Card> getRoomDeck() { return roomDeck; }
+	public ArrayList<Card> getPersonDeck() { return personDeck; }
+	public ArrayList<Card> getWeaponDeck() { return weaponDeck; }
 }

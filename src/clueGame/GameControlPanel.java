@@ -17,6 +17,7 @@ public class GameControlPanel extends JPanel {
 	JTextField guessResultText, guessText, playerText, rollText;
 	JButton accusationButton, nextButton;
 	Board board;
+	private Accusation accusation;
 	int currentPlayer = 0; // to see what current player we are on
 	int dieRoll;
 	Player player;
@@ -44,7 +45,7 @@ public class GameControlPanel extends JPanel {
 
 		guessResultPanel.add(guessResultText); // add text box to guess result panel
 		guessResultPanel.setBorder(new TitledBorder(new EtchedBorder(), "Guess Result")); // add title to panel with
-																							// border
+		// border
 		bottomPanel.add(guessResultPanel); // add guess result panel to bottom panel
 
 		// create guess panel
@@ -91,10 +92,28 @@ public class GameControlPanel extends JPanel {
 		setTurn(player, dieRoll);
 		drawTargets(player, dieRoll);
 
+		//suggestion
+		//		for (int i = 0; i < board.getPlayer().size(); i++) {
+		//			int row = board.getPlayer().get(i).getRow(), col = board.getPlayer().get(i).getCol();
+		//			BoardCell cell = board.getCell(row, col);
+		//			boolean isRoom = !(cell.getWalkway() || cell.getUnused());
+		//			if (isRoom) {
+		//				room.addItem(board.getCard(board.getRoom(cell).getName(), CardType.ROOM).getCardName());
+		//			}
+		//		}
+		//		
+		//		for (int i = 0; i < board.getPersonDeck().size(); i++) {
+		//			person.addItem(board.getPersonDeck().get(i).getCardName());
+		//		}
+		//		
+		//		for (int i = 0; i < board.getWeaponDeck().size(); i++) {
+		//			weapon.addItem(board.getWeaponDeck().get(i).getCardName());
+		//		}
+
 		nextButton.addMouseListener(new NextButtonListener());
 		accusationButton.addMouseListener(new AccusationButtonListener());
 	}
-	
+
 	//only for the human player
 	public void drawTargets(Player player, int dieRoll) {
 		board.calcTargets(board.getCell(player.getRow(), player.getCol()), dieRoll);
@@ -108,7 +127,7 @@ public class GameControlPanel extends JPanel {
 		Random ranNum = new Random();
 		dieRoll = ranNum.nextInt(6) + 1;
 	}
-	
+
 	public void setPlayer() {
 		player = board.getPlayer().get(currentPlayer);
 		board.setPlayerTurn(player);
@@ -146,12 +165,12 @@ public class GameControlPanel extends JPanel {
 				setTurn(player, dieRoll);
 				drawTargets(player, dieRoll);
 			}
-			
+
 			//Computers will randomly move
 			if (player != board.getPlayer().get(0)) {
 				BoardCell targetCell = null;
 				boolean turnFinished = false;
-				
+
 				board.calcTargets(board.getCell(player.getRow(), player.getCol()), dieRoll);
 				Set<BoardCell> targets = board.getTargets();
 
@@ -161,7 +180,6 @@ public class GameControlPanel extends JPanel {
 						turnFinished = true;
 						targetCell = location;
 						break;
-
 					}
 				}
 
@@ -195,18 +213,19 @@ public class GameControlPanel extends JPanel {
 			}
 
 		}
-	//  Empty definitions for unused event methods.
+		//  Empty definitions for unused event methods.
 		public void mousePressed(MouseEvent e) {}
 		public void mouseReleased(MouseEvent e) {}
 		public void mouseEntered(MouseEvent e) {}
 		public void mouseExited(MouseEvent e) {}
 	}
-	
+
 	// will be filled in later
 	private class AccusationButtonListener implements MouseListener {
 
 		public void mouseClicked(MouseEvent e) {
-
+				accusation = new Accusation();
+				accusation.setVisible(true);
 		}
 
 		public void mousePressed(MouseEvent e) {
