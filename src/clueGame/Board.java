@@ -510,7 +510,7 @@ public class Board extends JPanel{
 						for (int i = 0; i < roomDeck.size(); i++) {
 							if (roomDeck.get(i).getCardName() == getRoom(targetCell).getName()) {
 								roomCard = roomDeck.get(i);
-								gameControlPanel.setGuess(roomCard + ", " + personDeck.get(0) + ", " + weaponDeck.get(0));
+								gameControlPanel.setGuess(roomCard.getCardName() + ", " + personDeck.get(0).getCardName() + ", " + weaponDeck.get(0).getCardName());
 								handleSuggestion(player.get(0), roomCard, personDeck.get(0), weaponDeck.get(0));
 								break;
 							}
@@ -519,6 +519,7 @@ public class Board extends JPanel{
 					turnFinished = true;
 					targets.clear(); //gets rid of targets so they don't get repainted
 					repaint();
+					
 				}
 					
 				//display message if target is not clicked
