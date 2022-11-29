@@ -399,7 +399,6 @@ public class Board extends JPanel{
 
 			player.get(i).updateHand(randomSecondCard);
 
-
 			//third card
 			Random randThirdCard = new Random();
 			int randomIndexThirdCard = randThirdCard.nextInt(totalDeck.size());
@@ -458,7 +457,7 @@ public class Board extends JPanel{
 				if (getCell(row, col).isLabel()) grid[row][col].drawName(g, width-2, height-1);
 			}
 		}
-		
+
 		//draws target for human player
 		for (BoardCell the: targets) {
 			g.setColor(Color.black); 
@@ -467,14 +466,14 @@ public class Board extends JPanel{
 			g.fillOval(the.getX(), the.getY(), width-2, height-1);
 		}
 		repaint(); // adds targets to the board
-		
+
 
 		//draw each player
 		for (int i = 0; i < player.size(); i++) {
 			player.get(i).drawPlayer(g, width-2, height-1);
 		}
-	
-		
+
+
 	}
 
 	public class MovePlayerListener implements MouseListener {
@@ -489,47 +488,48 @@ public class Board extends JPanel{
 		public void mouseClicked (MouseEvent event) {
 			if(turnFinished == true) {}
 			else {
-			turnFinished = false;
-			// only for the human player
-			if (getPlayerTurn() == player.get(0)) {
-				BoardCell targetCell = null;
-				for (BoardCell target : targets) {
-					//player clicks on valid target
-					if (target.containsClick(event.getX(), event.getY())) {
-						targetCell = target; //player has chosen a tile
-						break;
-					}
-				}
-				
-				// if player has chosen valid tile then they will move to it
-				if (targetCell != null) {
-					player.get(0).updateRow(targetCell.getRow());
-					player.get(0).updateCol(targetCell.getCol());
-					repaint();
-					//if the target is a room then the player could do a suggestion
-					if (targetCell.isRoomCenter()) {
-						Card roomCard;
-						for (int i = 0; i < roomDeck.size(); i++) {
-							if (roomDeck.get(i).getCardName() == getRoom(targetCell).getName()) {
-								roomCard = roomDeck.get(i);
-								gameControlPanel.setGuess(roomCard.getCardName() + ", " + personDeck.get(0).getCardName() + ", " + weaponDeck.get(0).getCardName());
-								handleSuggestion(player.get(0), roomCard, personDeck.get(0), weaponDeck.get(0));
-								break;
-							}
+				turnFinished = false;
+				// only for the human player
+				if (getPlayerTurn() == player.get(0)) {
+					BoardCell targetCell = null;
+					for (BoardCell target : targets) {
+						//player clicks on valid target
+						if (target.containsClick(event.getX(), event.getY())) {
+							targetCell = target; //player has chosen a tile
+							break;
 						}
 					}
-					turnFinished = true;
-					targets.clear(); //gets rid of targets so they don't get repainted
-					repaint();
-					
+
+					// if player has chosen valid tile then they will move to it
+					if (targetCell != null) {
+						player.get(0).updateRow(targetCell.getRow());
+						player.get(0).updateCol(targetCell.getCol());
+						repaint();
+						//if the target is a room then the player could do a suggestion
+						if (targetCell.isRoomCenter()) {
+							Card roomCard;
+							for (int i = 0; i < roomDeck.size(); i++) {
+								if (roomDeck.get(i).getCardName() == getRoom(targetCell).getName()) {
+									roomCard = roomDeck.get(i);
+									Suggestion suggestion = new Suggestion();
+									suggestion.setVisible(true);
+									gameControlPanel.setGuess(roomCard.getCardName() + ", " + personDeck.get(0).getCardName() + ", " + weaponDeck.get(0).getCardName());
+									handleSuggestion(player.get(0), roomCard, personDeck.get(0), weaponDeck.get(0));
+									break;
+								}
+							}
+						}
+						turnFinished = true;
+						targets.clear(); //gets rid of targets so they don't get repainted
+						repaint();
+					}
+
+					//display message if target is not clicked
+					else JOptionPane.showMessageDialog(null, "Not a target!", "Error", JOptionPane.ERROR_MESSAGE);
 				}
-					
-				//display message if target is not clicked
-				else JOptionPane.showMessageDialog(null, "Not a target!", "Error", JOptionPane.ERROR_MESSAGE);
+				//display message if target is not the human players turn
+				else JOptionPane.showMessageDialog(null, "Not your turn!", "Error", JOptionPane.ERROR_MESSAGE);
 			}
-			//display message if target is not the human players turn
-			else JOptionPane.showMessageDialog(null, "Not your turn!", "Error", JOptionPane.ERROR_MESSAGE);
-		}
 		}
 	}
 
@@ -551,16 +551,16 @@ public class Board extends JPanel{
 
 	public void setAnswer(Solution answer) { this.answer = answer; } //set answer
 	public void setPlayer(ArrayList<Player> player) { this.player = player; } //set player list
-	
+
 	public void setPlayerTurn(Player turnPlayer) { this.playerTurn = turnPlayer; }
 	public Player getPlayerTurn() { return playerTurn; }
-	
+
 	public boolean isTurnFinished() { return turnFinished; }
 
 	public void setTurnFinished(boolean turnFinished) {
 		this.turnFinished = turnFinished;
 	}
-	
+
 	public ArrayList<Card> getRoomDeck() { return roomDeck; }
 	public ArrayList<Card> getPersonDeck() { return personDeck; }
 	public ArrayList<Card> getWeaponDeck() { return weaponDeck; }

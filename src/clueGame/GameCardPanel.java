@@ -7,7 +7,6 @@ import javax.swing.border.*;
 
 public class GameCardPanel extends JPanel {
 	JPanel peoplePanel, roomPanel, weaponPanel;
-	JTextField generalText;
 	private Color[] otherPlayers = {new Color(255, 108, 108), Color.white, new Color(255, 255, 63), new Color(116, 255, 101), new Color(255, 165, 86),  Color.lightGray};
 	// player colors: red, white, yellow, green, orange, light gray.  
 
@@ -30,11 +29,7 @@ public class GameCardPanel extends JPanel {
 		weaponPanel.setBorder(new TitledBorder (new EtchedBorder(), "Weapons"));
 		weaponPanel.setLayout(new GridLayout(0, 1));  
 
-		
 		Player player = Board.getInstance().getPlayer().get(0);
-		
-		//player.setHand(handDuring);
-		//player.setSeenCards(seenCardsDuring);
 		
 		updatePanels(player);
 	}
@@ -71,6 +66,7 @@ public class GameCardPanel extends JPanel {
 		// goes over each card in the players hand
 		for (int i = 0; i < human.getPlayerCards().size(); i++) {
 			JTextField handText = new JTextField(); //create hand text field
+			handText.setEditable(false);
 
 			// adds hand person cards to panel if card is found
 			if (human.getPlayerCards().get(i).getCardType() == typeOfCard) {
@@ -85,11 +81,11 @@ public class GameCardPanel extends JPanel {
 		if (!contains) {
 			JTextField noneInHand = new JTextField();
 			noneInHand.setText("None"); // text for the panel
+			noneInHand.setEditable(false);
 			panel.add(noneInHand); // add text box to panel
 		}
 
 		panel.add(seenLabel); // needs to be added first before adding in the text fields
-
 		contains = false;
 
 		// goes over each card seen by the human player
@@ -114,6 +110,7 @@ public class GameCardPanel extends JPanel {
 		if (!contains) {
 			JTextField noneInSeen = new JTextField(); 
 			noneInSeen.setText("None"); // text for the panel
+			noneInSeen.setEditable(false);
 			panel.add(noneInSeen); // add text box to panel
 		}
 	}
