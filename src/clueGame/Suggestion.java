@@ -27,6 +27,8 @@ public class Suggestion extends JDialog{
 		submitButton = new JButton("Submit");
 		cancelButton = new JButton("Cancel");
 		
+		roomBox.setEditable(false);
+		
 		addRoomCard();
 		addPersonCard();
 		addWeaponCard();

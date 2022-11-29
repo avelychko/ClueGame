@@ -18,7 +18,6 @@ public class GameControlPanel extends JPanel {
 	JButton accusationButton, nextButton;
 	Board board;
 	private Accusation accusation;
-	private Suggestion suggestion;
 	int currentPlayer = 0; // to see what current player we are on
 	int dieRoll;
 	Player player;
@@ -42,7 +41,7 @@ public class GameControlPanel extends JPanel {
 		guessResultPanel.setLayout(new GridLayout(1, 0)); // set grid for guess result panel
 
 		guessResultText = new JTextField(15); // create text box
-		guessResultText.setBackground(new Color(238, 238, 238)); // change color for text box
+		guessResultText.setEditable(false);
 
 		guessResultPanel.add(guessResultText); // add text box to guess result panel
 		guessResultPanel.setBorder(new TitledBorder(new EtchedBorder(), "Guess Result")); // add title to panel with
@@ -54,7 +53,7 @@ public class GameControlPanel extends JPanel {
 		guessPanel.setLayout(new GridLayout(1, 0)); // set guess panel grid
 
 		guessText = new JTextField(15); // create text box
-		guessText.setBackground(new Color(238, 238, 238)); // change color of text box
+		guessText.setEditable(false);
 
 		guessPanel.add(guessText); // add text box to guess panel
 		guessPanel.setBorder(new TitledBorder(new EtchedBorder(), "Guess")); // add title with border to guess panel
@@ -70,14 +69,14 @@ public class GameControlPanel extends JPanel {
 		// create label and text box for player panel
 		turnLabel = new JLabel("Whose turn?"); // label
 		playerText = new JTextField(15); // text box
-		playerText.setBackground(new Color(238, 238, 238)); // text background change
+		playerText.setEditable(false);
 		playerPanel.add(turnLabel); // add label to player panel
 		playerPanel.add(playerText); // add text box to player panel
 
 		// create label and text box for roll panel
 		rollLabel = new JLabel("Roll:"); // label
 		rollText = new JTextField(5); // text box
-		rollText.setBackground(new Color(238, 238, 238)); // text background change
+		rollText.setEditable(false);
 		rollPanel.add(rollLabel); // add label to roll panel
 		rollPanel.add(rollText); // add text box to roll panel
 
@@ -213,9 +212,6 @@ public class GameControlPanel extends JPanel {
 		public void mouseClicked(MouseEvent e) {
 				accusation = new Accusation();
 				accusation.setVisible(true);
-				
-				suggestion = new Suggestion();
-				suggestion.setVisible(true);
 		}
 
 		public void mousePressed(MouseEvent e) {
