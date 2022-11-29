@@ -122,6 +122,7 @@ public class GameControlPanel extends JPanel {
 
 	public void setGuess(String string) {
 		guessText.setText(string); // text for guess panel
+		guessText.setBackground(board.getPlayer().get(currentPlayer).getColor()); //color of the guess panel
 	}
 
 	private void setTurn(Player player, int i) {
@@ -179,17 +180,20 @@ public class GameControlPanel extends JPanel {
 				if (targetCell != null) {
 					player.updateRow(targetCell.getRow());
 					player.updateCol(targetCell.getCol());
-					/*if (targetCell.isRoomCenter()) {
+					
+					if (targetCell.isRoomCenter()) {
+						
 						Card roomCard;
-						for (int i = 0; i < board.roomDeck.size(); i++) {
-							if (roomDeck.get(i).getCardName() == getRoom(targetCell).getName()) {
-								roomCard = roomDeck.get(i);
-								gameControlPanel.setGuess(roomCard + ", " + personDeck.get(0) + ", " + weaponDeck.get(0));
+						
+						for (int i = 0; i < board.getRoomDeck().size(); i++) {
+							if (board.getRoomDeck().get(i).getCardName() == board.getRoom(targetCell).getName()) {
+								roomCard = board.getRoomDeck().get(i);
+								setGuess(roomCard + ", " + personDeck.get(0) + ", " + weaponDeck.get(0));
 								handleSuggestion(player.get(0), roomCard, personDeck.get(0), weaponDeck.get(0));
 								break;
 							}
 						}
-					}*/
+					}
 					repaint();
 					targets.clear();
 				}
