@@ -18,6 +18,7 @@ public class GameControlPanel extends JPanel {
 	JButton accusationButton, nextButton;
 	Board board;
 	private Accusation accusation;
+	private Suggestion suggestion;
 	int currentPlayer = 0; // to see what current player we are on
 	int dieRoll;
 	Player player;
@@ -91,24 +92,6 @@ public class GameControlPanel extends JPanel {
 		setRoll();
 		setTurn(player, dieRoll);
 		drawTargets(player, dieRoll);
-
-		//suggestion
-		//		for (int i = 0; i < board.getPlayer().size(); i++) {
-		//			int row = board.getPlayer().get(i).getRow(), col = board.getPlayer().get(i).getCol();
-		//			BoardCell cell = board.getCell(row, col);
-		//			boolean isRoom = !(cell.getWalkway() || cell.getUnused());
-		//			if (isRoom) {
-		//				room.addItem(board.getCard(board.getRoom(cell).getName(), CardType.ROOM).getCardName());
-		//			}
-		//		}
-		//		
-		//		for (int i = 0; i < board.getPersonDeck().size(); i++) {
-		//			person.addItem(board.getPersonDeck().get(i).getCardName());
-		//		}
-		//		
-		//		for (int i = 0; i < board.getWeaponDeck().size(); i++) {
-		//			weapon.addItem(board.getWeaponDeck().get(i).getCardName());
-		//		}
 
 		nextButton.addMouseListener(new NextButtonListener());
 		accusationButton.addMouseListener(new AccusationButtonListener());
@@ -226,6 +209,9 @@ public class GameControlPanel extends JPanel {
 		public void mouseClicked(MouseEvent e) {
 				accusation = new Accusation();
 				accusation.setVisible(true);
+				
+				suggestion = new Suggestion();
+				suggestion.setVisible(true);
 		}
 
 		public void mousePressed(MouseEvent e) {
