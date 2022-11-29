@@ -1,3 +1,128 @@
+commit 464bdacc8e8217645a46c2ba857f9736c90e9879
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Fri Nov 18 21:59:48 2022 -0700
+
+    add comments
+
+commit 9e639203f0f3678562a2b66892193f8fce496934
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Fri Nov 18 17:10:59 2022 -0700
+
+    target ovals for human player will disapper once clicked on and fix issue of player turn being able to be skipped
+
+commit 48111e00fd928d6044b4c86b646be6f7080f70ff
+Merge: 4190a35 c0ce1c7
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Fri Nov 18 16:40:04 2022 -0700
+
+    minor changes
+
+commit 4190a3507a3fd917753c0dac694a204129d97cfa
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Fri Nov 18 01:47:31 2022 -0700
+
+    minor changes
+
+commit c0ce1c7d01580cc09ef5d601b750a5fef4d56e5b
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Fri Nov 18 00:21:15 2022 -0700
+
+    refactored NextButtonListener
+
+commit aa1a12bf25ee31a977b1564717eb91a0dba7cfa9
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 17 22:03:11 2022 -0700
+
+    Player moves to target cell if target cell is clicked
+
+commit 6c87c5ff942a19d9f2fd1ece1e0148a30e0f8291
+Merge: 9d0a1a2 d9d1531
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 17 21:35:52 2022 -0700
+
+    draws ovals for targets, works for all players and window needs to be resized
+
+commit 9d0a1a20c8d5e6bc6641b8cfc08cb5175e210066
+Merge: a658a07 900e26d
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 17 21:33:15 2022 -0700
+
+    draws ovals of targets, works for all players
+
+commit d9d1531e9b2bba511d850124cd9d697f0c96630c
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 17 21:23:14 2022 -0700
+
+    MovePlayerListener checks if current player is human, writes to guess in ControlPanel and handles suggestion
+
+commit a658a0733d16f8194e681579a687a288b1e87e54
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 17 20:21:14 2022 -0700
+
+    minor changes
+
+commit 900e26d9386d379add5cbb9dfe36a248435dcfd1
+Merge: ab2ef2a bb51be3
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 17 20:13:04 2022 -0700
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit ab2ef2a114bd80ac4e1c96ac2be0403bebcf05ff
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 17 20:13:00 2022 -0700
+
+    update player location if clicked on target (MovePlayerListener)
+
+commit bb51be3bbf909bc4347f1271b06c5caef930b1aa
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 17 20:06:11 2022 -0700
+
+    add getters for row/com for BoardCell
+
+commit 5a8641a137b446b8f7503e15dd2f3771c0905be5
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 17 19:43:06 2022 -0700
+
+    who's turn? will display the color of the player and added calcTargets
+
+commit f52deddc312fac14ea1b0a331d756769b0eb90f6
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 17 19:23:04 2022 -0700
+
+    next button now cycles through players and gives new dice rolls, and did some cleaning
+
+commit 16c2e0eecd216064af4750787996f753034c3db6
+Merge: 9644d73 0e08bb8
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 17 18:47:39 2022 -0700
+
+    add mouse listener to GameControlPanel
+
+commit 9644d73e482b1e4954ec17257ff11e0553bba787
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 17 18:47:30 2022 -0700
+
+    add mouse listener to GameControlPanel
+
+commit 0e08bb8f5c332e96b149346c5d4de43157fd07ac
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Nov 17 18:22:09 2022 -0700
+
+    Created Splash Screen message
+
+commit b653bdbffcf664311b37db213e468560a0be613a
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Thu Nov 17 18:11:31 2022 -0700
+
+    changed 'who's turn?' text box color to grey
+
+commit fae32d2b67effacf951605d3ca075f5e429f9048
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Nov 15 14:24:36 2022 -0700
+
+    created button listener class in control panel
+
 commit 761cfbe05c4720d89abff43a55142aab0438255c
 Author: Anastasia Velychko <avelychko@mines.edu>
 Date:   Mon Nov 14 22:00:12 2022 -0700

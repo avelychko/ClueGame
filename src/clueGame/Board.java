@@ -487,6 +487,8 @@ public class Board extends JPanel{
 		public void mouseEntered (MouseEvent event) {}
 		public void mouseExited (MouseEvent event) {}
 		public void mouseClicked (MouseEvent event) {
+			if(turnFinished == true) {}
+			else {
 			turnFinished = false;
 			// only for the human player
 			if (getPlayerTurn() == player.get(0)) {
@@ -527,6 +529,7 @@ public class Board extends JPanel{
 			}
 			//display message if target is not the human players turn
 			else JOptionPane.showMessageDialog(null, "Not your turn!", "Error", JOptionPane.ERROR_MESSAGE);
+		}
 		}
 	}
 
