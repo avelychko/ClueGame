@@ -36,6 +36,17 @@ public class GameControlPanel extends JPanel {
 		topPanel.setLayout(new GridLayout(1, 4));
 		bottomPanel.setLayout(new GridLayout(0, 2));
 
+		// create guess panel
+		guessPanel = new JPanel();
+		guessPanel.setLayout(new GridLayout(1, 0)); // set guess panel grid
+
+		guessText = new JTextField(15); // create text box
+		guessText.setEditable(false);
+
+		guessPanel.add(guessText); // add text box to guess panel
+		guessPanel.setBorder(new TitledBorder(new EtchedBorder(), "Guess")); // add title with border to guess panel
+		bottomPanel.add(guessPanel); // add guess panel to bottom panel
+
 		// create guess result panel
 		guessResultPanel = new JPanel();
 		guessResultPanel.setLayout(new GridLayout(1, 0)); // set grid for guess result panel
@@ -47,17 +58,6 @@ public class GameControlPanel extends JPanel {
 		guessResultPanel.setBorder(new TitledBorder(new EtchedBorder(), "Guess Result")); // add title to panel with
 		// border
 		bottomPanel.add(guessResultPanel); // add guess result panel to bottom panel
-
-		// create guess panel
-		guessPanel = new JPanel();
-		guessPanel.setLayout(new GridLayout(1, 0)); // set guess panel grid
-
-		guessText = new JTextField(15); // create text box
-		guessText.setEditable(false);
-
-		guessPanel.add(guessText); // add text box to guess panel
-		guessPanel.setBorder(new TitledBorder(new EtchedBorder(), "Guess")); // add title with border to guess panel
-		bottomPanel.add(guessPanel); // add guess panel to bottom panel
 
 		// create player and roll panels
 		playerPanel = new JPanel();
@@ -115,7 +115,7 @@ public class GameControlPanel extends JPanel {
 		board.setPlayerTurn(player);
 	}
 
-	private void setGuessResult(String string, Color disprovePlayerColor) {
+	public void setGuessResult(String string, Color disprovePlayerColor) {
 		guessResultText.setText(string); // text for guess result panel
 		guessResultText.setBackground(disprovePlayerColor); //color of the guess result panel
 	}
@@ -153,7 +153,7 @@ public class GameControlPanel extends JPanel {
 			//Computers will randomly move
 			if (player != board.getPlayer().get(0)) {
 				BoardCell targetCell = null;
-				
+
 				//method in computer player
 				targetCell = player.selectTarget(dieRoll);
 
@@ -165,17 +165,26 @@ public class GameControlPanel extends JPanel {
 					// computer player will make a suggestion if they are in room
 					if (targetCell.isRoomCenter()) {
 						Card roomCard;
-						
+
+						//						for (int i = 0; i < board.getRoomDeck().size(); i++) {
+						//							if (board.getRoomDeck().get(i).getCardName() == board.getRoom(targetCell).getName()) {
+						//								roomCard = board.getRoomDeck().get(i);
+						//								setGuess(roomCard + ", " + personDeck.get(0) + ", " + weaponDeck.get(0));
+						//								handleSuggestion(player.get(0), roomCard, personDeck.get(0), weaponDeck.get(0));
+						//								break;
+						//							}
+						//						}
 						for (int i = 0; i < board.getRoomDeck().size(); i++) {
 							
 							if (board.getRoomDeck().get(i).getCardName() == board.getRoom(targetCell).getName()) {
 								roomCard = board.getRoomDeck().get(i);
-								
+
 								Solution suggestion = player.createSuggestion(roomCard, board.getPersonDeck(), board.getWeaponDeck());
 								
 								//setting guess text field
 								setGuess(suggestion.getRoom().getCardName() +  ", " + suggestion.getPerson().getCardName() +  ", " + suggestion.getWeapon().getCardName());
 								
+
 								// moves suggested player to the room
 								for(Player k: board.getPlayer()) {
 									if(k.getName() == suggestion.getPerson().getCardName()) {
@@ -184,6 +193,7 @@ public class GameControlPanel extends JPanel {
 									}
 								}
 								
+
 								Card result = board.handleSuggestion(player, suggestion); // seeing of suggestion holds true
 								if(result != null) {
 									player.updateSeen(result); // add card shown to the computer players seen card set for future use
@@ -202,7 +212,7 @@ public class GameControlPanel extends JPanel {
 						}
 					}
 					repaint();
-					
+
 				}
 			}
 
@@ -218,8 +228,8 @@ public class GameControlPanel extends JPanel {
 	private class AccusationButtonListener implements MouseListener {
 
 		public void mouseClicked(MouseEvent e) {
-				accusation = new Accusation();
-				accusation.setVisible(true);
+			accusation = new Accusation();
+			accusation.setVisible(true);
 		}
 
 		public void mousePressed(MouseEvent e) {
