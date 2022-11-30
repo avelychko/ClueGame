@@ -153,14 +153,10 @@ public class GameControlPanel extends JPanel {
 			//Computers will randomly move
 			if (player != board.getPlayer().get(0)) {
 				
-				
-				
 				if (player.getSeenCards().size() == 17) {
-					board.getSolution();
 					
-					
-					board.checkAccusation(null, null, null);
 				}
+				else {
 				
 				
 				BoardCell targetCell = null;
@@ -222,7 +218,7 @@ public class GameControlPanel extends JPanel {
 
 				}
 			}
-
+			}
 		}
 		//  Empty definitions for unused event methods.
 		public void mousePressed(MouseEvent e) {}
