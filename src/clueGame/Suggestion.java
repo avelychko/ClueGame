@@ -12,7 +12,7 @@ public class Suggestion extends JDialog{
 	
 	public Suggestion() {
 		setTitle("Make a Suggestion");
-		setSize(250, 150);
+		setSize(260, 150);
 		setLayout(new GridLayout(4, 2));
 		board = Board.getInstance();
 		

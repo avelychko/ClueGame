@@ -11,7 +11,7 @@ public class Accusation extends JDialog{
 	
 	public Accusation() {
 		setTitle("Make an Accusation");
-		setSize(250, 150);
+		setSize(260, 150);
 		setLayout(new GridLayout(4, 2));
 		board = Board.getInstance();
 		
