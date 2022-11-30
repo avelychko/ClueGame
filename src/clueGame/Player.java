@@ -76,4 +76,8 @@ public abstract class Player {
 		g.setColor(getColor()); //fill is player's color
 		g.fillOval(this.col * width, this.row * height, width, height);
 	}
+
+	protected abstract Solution createSuggestion(Card room, ArrayList<Card> personDeck, ArrayList<Card> weaponDeck);
+
+	protected abstract BoardCell selectTarget(int dieRoll);
 }

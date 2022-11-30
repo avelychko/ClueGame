@@ -418,14 +418,15 @@ public class Board extends JPanel{
 	}
 
 	//goes through each player to see if they can dispute the suggestion, if they can return the card 
-	public Card handleSuggestion(Player character, Card room, Card person, Card weapon) {
+	//Card room, Card person, Card weapon
+	public Card handleSuggestion(Player character, Solution suggestion) {
 		int indexPLayer = player.indexOf(character);
 		while(true) {
 			indexPLayer++;
 			if (indexPLayer == player.size()) indexPLayer = 0;
 			if (indexPLayer == player.indexOf(character)) return null; //reaches back to the player
-			if (player.get(indexPLayer).disproveSuggestion(room, person, weapon) != null) 
-				return player.get(indexPLayer).disproveSuggestion(room, person, weapon);
+			if (player.get(indexPLayer).disproveSuggestion(suggestion.getRoom(), suggestion.getPerson(), suggestion.getWeapon()) != null) 
+				return player.get(indexPLayer).disproveSuggestion(suggestion.getRoom(), suggestion.getPerson(), suggestion.getWeapon());
 		}
 	}
 
@@ -478,7 +479,6 @@ public class Board extends JPanel{
 	}
 
 	public class MovePlayerListener implements MouseListener {
-		GameControlPanel gameControlPanel = new GameControlPanel();
 		//check if it is human player's turn
 
 		//  Empty definitions for unused event methods.
@@ -513,8 +513,7 @@ public class Board extends JPanel{
 									roomCard = roomDeck.get(i);
 									Suggestion suggestion = new Suggestion();
 									suggestion.setVisible(true);
-									gameControlPanel.setGuess(roomCard.getCardName() + ", " + personDeck.get(0).getCardName() + ", " + weaponDeck.get(0).getCardName());
-									handleSuggestion(player.get(0), roomCard, personDeck.get(0), weaponDeck.get(0));
+									//handleSuggestion(player.get(0), roomCard, personDeck.get(0), weaponDeck.get(0));
 									break;
 								}
 							}

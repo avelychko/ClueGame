@@ -1,6 +1,9 @@
 package clueGame;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 public class Suggestion extends JDialog{
@@ -9,12 +12,14 @@ public class Suggestion extends JDialog{
 	JLabel roomLabel, personLabel, weaponLabel;
 	JButton submitButton, cancelButton;
 	Board board;
+	GameControlPanel gameControlPanel;
 	
 	public Suggestion() {
 		setTitle("Make a Suggestion");
 		setSize(260, 150);
 		setLayout(new GridLayout(4, 2));
 		board = Board.getInstance();
+		gameControlPanel = new GameControlPanel();
 		
 		roomLabel = new JLabel("Room");
 		personLabel = new JLabel("Person");
@@ -40,8 +45,15 @@ public class Suggestion extends JDialog{
 		add(weaponLabel);
 		add(weaponBox);
 		
-		submitButton.addActionListener(e -> setVisible(false));
 		cancelButton.addActionListener(e -> setVisible(false));
+		
+		submitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				gameControlPanel.setGuess(roomBox.getText() + ", " + personBox.getSelectedItem().toString() + ", " + weaponBox.getSelectedItem().toString());
+				setVisible(false);
+			}
+		});
 		
 		add(submitButton);
 		add(cancelButton);
@@ -60,14 +72,6 @@ public class Suggestion extends JDialog{
 	}
 
 	private void addRoomCard() {
-//		for (int i = 0; i < board.getPlayer().size(); i++) {
-//			int row = board.getPlayer().get(i).getRow(), col = board.getPlayer().get(i).getCol();
-//			BoardCell cell = board.getCell(row, col);
-//			boolean isRoom = !(cell.getWalkway() || cell.getUnused());
-//			if (isRoom) {
-//				roomBox.setText(board.getCard(board.getRoom(cell).getName(), CardType.ROOM).getCardName());
-//			}
-//		}
 		roomBox.setText(board.getRoomCard().getCardName());
 	}
 }

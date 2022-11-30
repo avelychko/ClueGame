@@ -36,6 +36,17 @@ public class GameControlPanel extends JPanel {
 		topPanel.setLayout(new GridLayout(1, 4));
 		bottomPanel.setLayout(new GridLayout(0, 2));
 
+		// create guess panel
+		guessPanel = new JPanel();
+		guessPanel.setLayout(new GridLayout(1, 0)); // set guess panel grid
+
+		guessText = new JTextField(15); // create text box
+		guessText.setEditable(false);
+
+		guessPanel.add(guessText); // add text box to guess panel
+		guessPanel.setBorder(new TitledBorder(new EtchedBorder(), "Guess")); // add title with border to guess panel
+		bottomPanel.add(guessPanel); // add guess panel to bottom panel
+
 		// create guess result panel
 		guessResultPanel = new JPanel();
 		guessResultPanel.setLayout(new GridLayout(1, 0)); // set grid for guess result panel
@@ -47,17 +58,6 @@ public class GameControlPanel extends JPanel {
 		guessResultPanel.setBorder(new TitledBorder(new EtchedBorder(), "Guess Result")); // add title to panel with
 		// border
 		bottomPanel.add(guessResultPanel); // add guess result panel to bottom panel
-
-		// create guess panel
-		guessPanel = new JPanel();
-		guessPanel.setLayout(new GridLayout(1, 0)); // set guess panel grid
-
-		guessText = new JTextField(15); // create text box
-		guessText.setEditable(false);
-
-		guessPanel.add(guessText); // add text box to guess panel
-		guessPanel.setBorder(new TitledBorder(new EtchedBorder(), "Guess")); // add title with border to guess panel
-		bottomPanel.add(guessPanel); // add guess panel to bottom panel
 
 		// create player and roll panels
 		playerPanel = new JPanel();
@@ -116,6 +116,9 @@ public class GameControlPanel extends JPanel {
 	}
 
 	private void setGuessResult(String string) {
+		//		If the player making the suggestion was human, show the disproving card and the player it came from.
+		//		If the player making the suggestion was computer, show that the suggestion was disproven (don’t show the card) and the player it came from.
+		//		If the suggestion was not disproven, show that.
 		guessResultText.setText(string); // text for guess result panel
 	}
 
@@ -152,49 +155,38 @@ public class GameControlPanel extends JPanel {
 			//Computers will randomly move
 			if (player != board.getPlayer().get(0)) {
 				BoardCell targetCell = null;
-				boolean turnFinished = false;
 
-				board.calcTargets(board.getCell(player.getRow(), player.getCol()), dieRoll);
-				Set<BoardCell> targets = board.getTargets();
-
-				for (BoardCell location : targets) {
-					// if target is a room and not seen in players seen cards, then go to that location
-					if (location.isRoomCenter() && !player.getSeenCards().contains(location)) {
-						turnFinished = true;
-						targetCell = location;
-						break;
-					}
-				}
-
-				if (!turnFinished) {
-					// if no room can be found then a random target will be chosen
-					BoardCell[] randomTarget = targets.toArray(new BoardCell[0]);
-					Random randLocation = new Random();
-					int randomIndexLocation = randLocation.nextInt(randomTarget.length);
-
-					targetCell = randomTarget[randomIndexLocation];
-				}
+				//method in computer player
+				targetCell = player.selectTarget(dieRoll);
 
 				// computer player will move to target 
 				if (targetCell != null) {
 					player.updateRow(targetCell.getRow());
 					player.updateCol(targetCell.getCol());
-					
+
+
 					if (targetCell.isRoomCenter()) {
-						
 						Card roomCard;
-						
-//						for (int i = 0; i < board.getRoomDeck().size(); i++) {
-//							if (board.getRoomDeck().get(i).getCardName() == board.getRoom(targetCell).getName()) {
-//								roomCard = board.getRoomDeck().get(i);
-//								setGuess(roomCard + ", " + personDeck.get(0) + ", " + weaponDeck.get(0));
-//								handleSuggestion(player.get(0), roomCard, personDeck.get(0), weaponDeck.get(0));
-//								break;
-//							}
-//						}
+
+						//						for (int i = 0; i < board.getRoomDeck().size(); i++) {
+						//							if (board.getRoomDeck().get(i).getCardName() == board.getRoom(targetCell).getName()) {
+						//								roomCard = board.getRoomDeck().get(i);
+						//								setGuess(roomCard + ", " + personDeck.get(0) + ", " + weaponDeck.get(0));
+						//								handleSuggestion(player.get(0), roomCard, personDeck.get(0), weaponDeck.get(0));
+						//								break;
+						//							}
+						//						}
+						for (int i = 0; i < board.getRoomDeck().size(); i++) {
+							if (board.getRoomDeck().get(i).getCardName() == board.getRoom(targetCell).getName()) {
+								roomCard = board.getRoomDeck().get(i);
+
+								Solution suggestion = player.createSuggestion(roomCard, board.getPersonDeck(), board.getWeaponDeck());
+
+							}
+						}
 					}
 					repaint();
-					targets.clear();
+
 				}
 			}
 
@@ -210,8 +202,8 @@ public class GameControlPanel extends JPanel {
 	private class AccusationButtonListener implements MouseListener {
 
 		public void mouseClicked(MouseEvent e) {
-				accusation = new Accusation();
-				accusation.setVisible(true);
+			accusation = new Accusation();
+			accusation.setVisible(true);
 		}
 
 		public void mousePressed(MouseEvent e) {

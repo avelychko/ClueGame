@@ -44,6 +44,7 @@ public class ComputerPlayer extends Player {
 		for (BoardCell location: targets) {
 			//if room and not seen, then go to location
 			if(location.isRoomCenter() && !getSeenCards().contains(location)) {
+				targets.clear();
 				return location;
 			}
 		}
@@ -52,8 +53,12 @@ public class ComputerPlayer extends Player {
 		BoardCell[] randomTarget = targets.toArray(new BoardCell[0]);
 		Random randLocation = new Random();
 		int randomIndexLocation = randLocation.nextInt(randomTarget.length);
-		
+		targets.clear();
 		return randomTarget[randomIndexLocation];
 	}
+
+	
+
+	
 }
 
