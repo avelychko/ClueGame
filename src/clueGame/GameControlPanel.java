@@ -176,6 +176,13 @@ public class GameControlPanel extends JPanel {
 								//setting guess text field
 								setGuess(suggestion.getRoom().getCardName() +  ", " + suggestion.getPerson().getCardName() +  ", " + suggestion.getWeapon().getCardName());
 								
+								// moves suggested player to the room
+								for(Player k: board.getPlayer()) {
+									if(k.getName() == suggestion.getPerson().getCardName()) {
+										k.updateRow(targetCell.getRow());
+										k.updateCol(targetCell.getCol());
+									}
+								}
 								
 								Card result = board.handleSuggestion(player, suggestion); // seeing of suggestion holds true
 								if(result != null) {
