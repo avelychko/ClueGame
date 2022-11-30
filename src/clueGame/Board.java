@@ -38,7 +38,8 @@ public class Board extends JPanel{
 	private Solution answer;
 	private Player playerTurn;
 	private boolean turnFinished = false;
-	private Card roomCard;;
+	private Card roomCard;
+	GameControlPanel controlPanel;
 
 	/*
 	 * variable and methods used for singleton pattern
@@ -525,10 +526,8 @@ public class Board extends JPanel{
 								if (roomDeck.get(i).getCardName() == getRoom(targetCell).getName()) {
 									roomCard = roomDeck.get(i);
 									Suggestion suggestion = new Suggestion();
+									suggestion.setControlPanel(controlPanel);
 									suggestion.setVisible(true);
-
-									//gameControlPanel.setGuess(roomCard.getCardName() + ", " + personDeck.get(0).getCardName() + ", " + weaponDeck.get(0).getCardName());
-									//handleSuggestion(player.get(0), roomCard, personDeck.get(0), weaponDeck.get(0));
 									break;
 								}
 							}
@@ -597,4 +596,8 @@ public class Board extends JPanel{
 	public ArrayList<Card> getWeaponDeck() { return weaponDeck; }
 
 	public Card getRoomCard() { return roomCard; }
+	
+	public void setControlPanel(GameControlPanel controlPanel) { 
+		this.controlPanel = controlPanel;
+	}
 }

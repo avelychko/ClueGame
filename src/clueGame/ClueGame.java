@@ -23,6 +23,7 @@ public class ClueGame extends JFrame {
 
 		controlPanel = new GameControlPanel();
 		cardsPanel = new GameCardPanel();
+		board.setControlPanel(controlPanel);
 		setTitle("Clue Game - CSCI306"); //game title
 		setSize(1100, 920);  // size the frame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
