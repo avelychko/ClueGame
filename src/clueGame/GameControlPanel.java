@@ -152,8 +152,8 @@ public class GameControlPanel extends JPanel {
 			//Computers will randomly move
 			if (player != board.getPlayer().get(0)) {
 				BoardCell targetCell = null;
-				boolean turnFinished = false;
-
+				//boolean turnFinished = false;
+				/*
 				board.calcTargets(board.getCell(player.getRow(), player.getCol()), dieRoll);
 				Set<BoardCell> targets = board.getTargets();
 
@@ -173,28 +173,51 @@ public class GameControlPanel extends JPanel {
 					int randomIndexLocation = randLocation.nextInt(randomTarget.length);
 
 					targetCell = randomTarget[randomIndexLocation];
-				}
+				}*/
+				
+				targetCell = player.selectTarget(dieRoll);
 
 				// computer player will move to target 
 				if (targetCell != null) {
 					player.updateRow(targetCell.getRow());
 					player.updateCol(targetCell.getCol());
 					
+					
 					if (targetCell.isRoomCenter()) {
 						
+						player.createSuggestion(board.getRoomDeck().get(0), board.getPersonDeck(), board.getWeaponDeck());
+						
+						/*
 						Card roomCard;
 						
 						for (int i = 0; i < board.getRoomDeck().size(); i++) {
 							if (board.getRoomDeck().get(i).getCardName() == board.getRoom(targetCell).getName()) {
 								roomCard = board.getRoomDeck().get(i);
+								
+								Card personCard;
+								Card weaponCard;
+								for (Card k: board.getPersonDeck()) {
+									
+								}
+								if(player.getSeenCards().contains(weaponCard)) {
+									
+								}								
+								
+								Random randCard = new Random();
+								int randomIndexFirstCard = randCard.nextInt(totalDeck.size());
+								Card randomFirstCard = totalDeck.get(randomIndexFirstCard);
+								
+								
+								
 								setGuess(roomCard + ", " + personDeck.get(0) + ", " + weaponDeck.get(0));
-								handleSuggestion(player.get(0), roomCard, personDeck.get(0), weaponDeck.get(0));
+								handleSuggestion(board.player.get(0), roomCard, personDeck.get(0), weaponDeck.get(0));
+								player.updateSeen();
 								break;
 							}
-						}
+						}*/
 					}
 					repaint();
-					targets.clear();
+					
 				}
 			}
 
