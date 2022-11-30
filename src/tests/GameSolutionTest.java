@@ -131,16 +131,16 @@ public class GameSolutionTest {
 	@Test
 	public void handleSuggestion() {
 		//Suggestion only human can disprove returns answer
-		assertEquals(solution.getPerson(), board.handleSuggestion(player1, atrium, pabloEscobar, throwingStars));
+		assertEquals(solution.getPerson(), board.handleSuggestion(player1, new Solution(atrium, pabloEscobar, throwingStars)));
 		
 		//Suggestion that two players can disprove, correct player returns answer
-		assertEquals(solution.getRoom(), board.handleSuggestion(player2, pool, kenichiShinoda, throwingStars));
-		assertEquals(solution.getWeapon(), board.handleSuggestion(player3, atrium, kenichiShinoda, wire));
+		assertEquals(solution.getRoom(), board.handleSuggestion(player2, new Solution(pool, kenichiShinoda, throwingStars)));
+		assertEquals(solution.getWeapon(), board.handleSuggestion(player3, new Solution(atrium, kenichiShinoda, wire)));
 		
 		//Suggestion no one can disprove returns null
-		assertEquals(null, board.handleSuggestion(player4, bedroom, benjaminSiegel, golfClub));
+		assertEquals(null, board.handleSuggestion(player4, new Solution(bedroom, benjaminSiegel, golfClub)));
 		
 		//Suggestion only suggesting player can disprove returns null
-		assertEquals(null, board.handleSuggestion(player6, office, eddieMcGrath, poison));
+		assertEquals(null, board.handleSuggestion(player6, new Solution(office, eddieMcGrath, poison)));
 	}
 }
