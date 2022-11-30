@@ -377,6 +377,16 @@ public class Board extends JPanel{
 		for (Card i: roomDeck) totalDeck.add(i);
 		for (Card i: personDeck) totalDeck.add(i);
 		for (Card i: weaponDeck) totalDeck.add(i);
+		
+		//adds back the soln cards so that the players can make suggestions/accusations
+		roomDeck.add(randomRoomCard);
+		personDeck.add(randomPersonCard);
+		weaponDeck.add(randomWeaponCard);
+		
+		Collections.shuffle(roomDeck);
+		Collections.shuffle(personDeck);
+		Collections.shuffle(weaponDeck);
+		
 		Collections.shuffle(totalDeck);//Create complete deck of cards (weapons, people and rooms)
 	}
 
