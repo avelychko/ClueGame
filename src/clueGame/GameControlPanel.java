@@ -115,8 +115,9 @@ public class GameControlPanel extends JPanel {
 		board.setPlayerTurn(player);
 	}
 
-	private void setGuessResult(String string) {
+	private void setGuessResult(String string, Color disprovePlayerColor) {
 		guessResultText.setText(string); // text for guess result panel
+		guessResultText.setBackground(disprovePlayerColor);
 	}
 
 	public void setGuess(String string) {
@@ -176,8 +177,16 @@ public class GameControlPanel extends JPanel {
 								Card result = board.handleSuggestion(player, suggestion);
 								if(result != null) {
 									player.updateSeen(result);
-									setGuessResult("Suggestion was disproven");
+									//setGuessResult("Suggestion was disproven");
+				
+									Color disprovePlayerColor = null;
+									
+									for(Player k: board.getPlayer()) {
+										if(k.getPlayerCards().contains(result)) disprovePlayer = k.getColor();
+									}
+									setGuessResult("Suggestion was disproven", disprovePlayerColor);
 								}
+								else setGuessResult("Suggestion was not disproven", null);
 							}
 						}
 					}
