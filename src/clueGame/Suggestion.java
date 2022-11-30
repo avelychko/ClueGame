@@ -52,32 +52,30 @@ public class Suggestion extends JDialog{
 		submitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-//				System.out.println(roomBox.getText() + ", " + personBox.getSelectedItem().toString() + ", " + weaponBox.getSelectedItem().toString());
-//				gameControlPanel.setGuess(roomBox.getText() + ", " + personBox.getSelectedItem().toString() + ", " + weaponBox.getSelectedItem().toString());
+				gameControlPanel.setGuess(roomBox.getText() + ", " + personBox.getSelectedItem().toString() + ", " + weaponBox.getSelectedItem().toString());
 				
 				Card roomCard = board.getCard(roomBox.getText(), CardType.ROOM);
 				Card personCard = board.getCard(personBox.getSelectedItem().toString(), CardType.PERSON);
 				Card weaponCard = board.getCard(weaponBox.getSelectedItem().toString(), CardType.WEAPON);
 				
+				//System.out.print(roomCard.getCardName() + "," + personCard.getCardName())
+				
 				Solution suggestion = new Solution(roomCard, personCard, weaponCard);
 				
-				//setting guess text field
-				gameControlPanel.setGuess(roomCard.getCardName() +  ", " + personCard.getCardName() +  ", " + weaponCard.getCardName());
-				
-//				Card result = board.handleSuggestion(player, suggestion); // seeing of suggestion holds true
-//				if(result != null) {
-//					player.updateSeen(result); // add card shown to the computer players seen card set for future use
-//	
-//					Color disprovePlayerColor = null; // for setting the background color for GuessResult
-//					
-//					// looks at each player's hand to see which one disproved the suggestion in order to get their color
-//					for(Player k: board.getPlayer()) {
-//						if(k.getPlayerCards().contains(result)) disprovePlayerColor = k.getColor();
-//					}
-//					
-//					gameControlPanel.setGuessResult("Suggestion was disproven", disprovePlayerColor);
-//				}
-//				else gameControlPanel.setGuessResult("Suggestion was not disproven", null); 
+				Card result = board.handleSuggestion(player, suggestion); // seeing of suggestion holds true
+				if(result != null) {
+					player.updateSeen(result); // add card shown to the computer players seen card set for future use
+	
+					Color disprovePlayerColor = null; // for setting the background color for GuessResult
+					
+					// looks at each player's hand to see which one disproved the suggestion in order to get their color
+					for(Player k: board.getPlayer()) {
+						if(k.getPlayerCards().contains(result)) disprovePlayerColor = k.getColor();
+					}
+					
+					gameControlPanel.setGuessResult(result.getCardName(), disprovePlayerColor);
+				}
+				else gameControlPanel.setGuessResult("Suggestion was not disproven", null); 
 				
 				setVisible(false);
 			}
