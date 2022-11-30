@@ -152,29 +152,8 @@ public class GameControlPanel extends JPanel {
 			//Computers will randomly move
 			if (player != board.getPlayer().get(0)) {
 				BoardCell targetCell = null;
-				//boolean turnFinished = false;
-				/*
-				board.calcTargets(board.getCell(player.getRow(), player.getCol()), dieRoll);
-				Set<BoardCell> targets = board.getTargets();
-
-				for (BoardCell location : targets) {
-					// if target is a room and not seen in players seen cards, then go to that location
-					if (location.isRoomCenter() && !player.getSeenCards().contains(location)) {
-						turnFinished = true;
-						targetCell = location;
-						break;
-					}
-				}
-
-				if (!turnFinished) {
-					// if no room can be found then a random target will be chosen
-					BoardCell[] randomTarget = targets.toArray(new BoardCell[0]);
-					Random randLocation = new Random();
-					int randomIndexLocation = randLocation.nextInt(randomTarget.length);
-
-					targetCell = randomTarget[randomIndexLocation];
-				}*/
 				
+				//method in computer player
 				targetCell = player.selectTarget(dieRoll);
 
 				// computer player will move to target 
@@ -184,37 +163,16 @@ public class GameControlPanel extends JPanel {
 					
 					
 					if (targetCell.isRoomCenter()) {
-						
-						player.createSuggestion(board.getRoomDeck().get(0), board.getPersonDeck(), board.getWeaponDeck());
-						
-						/*
 						Card roomCard;
 						
 						for (int i = 0; i < board.getRoomDeck().size(); i++) {
 							if (board.getRoomDeck().get(i).getCardName() == board.getRoom(targetCell).getName()) {
 								roomCard = board.getRoomDeck().get(i);
 								
-								Card personCard;
-								Card weaponCard;
-								for (Card k: board.getPersonDeck()) {
-									
-								}
-								if(player.getSeenCards().contains(weaponCard)) {
-									
-								}								
+								Solution suggestion = player.createSuggestion(roomCard, board.getPersonDeck(), board.getWeaponDeck());
 								
-								Random randCard = new Random();
-								int randomIndexFirstCard = randCard.nextInt(totalDeck.size());
-								Card randomFirstCard = totalDeck.get(randomIndexFirstCard);
-								
-								
-								
-								setGuess(roomCard + ", " + personDeck.get(0) + ", " + weaponDeck.get(0));
-								handleSuggestion(board.player.get(0), roomCard, personDeck.get(0), weaponDeck.get(0));
-								player.updateSeen();
-								break;
 							}
-						}*/
+						}
 					}
 					repaint();
 					

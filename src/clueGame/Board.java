@@ -417,14 +417,15 @@ public class Board extends JPanel{
 	}
 
 	//goes through each player to see if they can dispute the suggestion, if they can return the card 
-	public Card handleSuggestion(Player character, Card room, Card person, Card weapon) {
+	//Card room, Card person, Card weapon
+	public Card handleSuggestion(Player character, Solution suggestion) {
 		int indexPLayer = player.indexOf(character);
 		while(true) {
 			indexPLayer++;
 			if (indexPLayer == player.size()) indexPLayer = 0;
 			if (indexPLayer == player.indexOf(character)) return null; //reaches back to the player
-			if (player.get(indexPLayer).disproveSuggestion(room, person, weapon) != null) 
-				return player.get(indexPLayer).disproveSuggestion(room, person, weapon);
+			if (player.get(indexPLayer).disproveSuggestion(suggestion.getRoom(), suggestion.getPerson(), suggestion.getWeapon()) != null) 
+				return player.get(indexPLayer).disproveSuggestion(suggestion.getRoom(), suggestion.getPerson(), suggestion.getWeapon());
 		}
 	}
 
