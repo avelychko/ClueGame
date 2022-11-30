@@ -152,6 +152,17 @@ public class GameControlPanel extends JPanel {
 
 			//Computers will randomly move
 			if (player != board.getPlayer().get(0)) {
+				
+				
+				
+				if (player.getSeenCards().size() == 17) {
+					board.getSolution();
+					
+					
+					board.checkAccusation(null, null, null);
+				}
+				
+				
 				BoardCell targetCell = null;
 
 				//method in computer player
@@ -166,14 +177,6 @@ public class GameControlPanel extends JPanel {
 					if (targetCell.isRoomCenter()) {
 						Card roomCard;
 
-						//						for (int i = 0; i < board.getRoomDeck().size(); i++) {
-						//							if (board.getRoomDeck().get(i).getCardName() == board.getRoom(targetCell).getName()) {
-						//								roomCard = board.getRoomDeck().get(i);
-						//								setGuess(roomCard + ", " + personDeck.get(0) + ", " + weaponDeck.get(0));
-						//								handleSuggestion(player.get(0), roomCard, personDeck.get(0), weaponDeck.get(0));
-						//								break;
-						//							}
-						//						}
 						for (int i = 0; i < board.getRoomDeck().size(); i++) {
 							
 							if (board.getRoomDeck().get(i).getCardName() == board.getRoom(targetCell).getName()) {
@@ -187,6 +190,10 @@ public class GameControlPanel extends JPanel {
 
 								// moves suggested player to the room
 								for(Player k: board.getPlayer()) {
+									/*if () {
+										break
+									}*/
+									// fix issue if player suggests themselves
 									if(k.getName() == suggestion.getPerson().getCardName()) {
 										k.updateRow(targetCell.getRow());
 										k.updateCol(targetCell.getCol());

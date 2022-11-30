@@ -372,13 +372,23 @@ public class Board extends JPanel{
 		weaponDeck.remove(randomIndexWeapon);
 
 		answer = new Solution(randomRoomCard, randomPersonCard, randomWeaponCard); //Deal cards to the Answer
-		
+
 		System.out.println(randomRoomCard.getCardName() + ", " + randomPersonCard.getCardName() + "," + randomWeaponCard.getCardName());
 
 		//adds all cards to total deck to be given to players
 		for (Card i: roomDeck) totalDeck.add(i);
 		for (Card i: personDeck) totalDeck.add(i);
 		for (Card i: weaponDeck) totalDeck.add(i);
+
+		//adds back the soln cards so that the players can make suggestions/accusations
+		roomDeck.add(randomRoomCard);
+		personDeck.add(randomPersonCard);
+		weaponDeck.add(randomWeaponCard);
+
+		Collections.shuffle(roomDeck);
+		Collections.shuffle(personDeck);
+		Collections.shuffle(weaponDeck);
+
 		Collections.shuffle(totalDeck);//Create complete deck of cards (weapons, people and rooms)
 	}
 
@@ -548,11 +558,31 @@ public class Board extends JPanel{
 	public Room getRoom(BoardCell cell) { return roomMap.get(cell.getInitial()); } //return room at cell 
 
 	public Card getCard(String name, CardType cardType) { 
-		return new Card(name, cardType); 
-//		for (int i = 0; i < totalDeck.size(); i++) {
-//			if ((totalDeck.get(i).getCardName() == name) && (totalDeck.get(i).getCardType() == cardType)) return totalDeck.get(i);
-//		}
-//		return null;
+		if (cardType == CardType.ROOM) {
+			for (int i = 0; i < roomDeck.size(); i++) {
+				if (roomDeck.get(i).getCardName() == name) return roomDeck.get(i);
+			}
+		}
+		
+		else if (cardType == CardType.PERSON) {
+			for (int i = 0; i < personDeck.size(); i++) {
+				if (personDeck.get(i).getCardName() == name) return personDeck.get(i);
+			}
+		}
+		
+		else if (cardType == CardType.WEAPON) {
+			for (int i = 0; i < weaponDeck.size(); i++) {
+				if (weaponDeck.get(i).getCardName() == name) return weaponDeck.get(i);
+			}
+		}
+
+		return null; 
+		//		for (int i = 0; i < totalDeck.size(); i++) {
+		//			if ((totalDeck.get(i).getCardName() == name) && (totalDeck.get(i).getCardType() == cardType)) return totalDeck.get(i);
+		//		}
+		//		return null;
+
+
 	} //return card
 
 	public ArrayList<Player> getPlayer() { return player; } //return player list

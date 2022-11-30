@@ -58,6 +58,8 @@ public class Suggestion extends JDialog{
 				Card personCard = board.getCard(personBox.getSelectedItem().toString(), CardType.PERSON);
 				Card weaponCard = board.getCard(weaponBox.getSelectedItem().toString(), CardType.WEAPON);
 				
+				//System.out.print(roomCard.getCardName() + "," + personCard.getCardName())
+				
 				Solution suggestion = new Solution(roomCard, personCard, weaponCard);
 				
 				Card result = board.handleSuggestion(player, suggestion); // seeing of suggestion holds true
