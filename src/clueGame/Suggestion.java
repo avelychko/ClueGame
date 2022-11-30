@@ -60,13 +60,14 @@ public class Suggestion extends JDialog{
 	}
 
 	private void addRoomCard() {
-		for (int i = 0; i < board.getPlayer().size(); i++) {
-			int row = board.getPlayer().get(i).getRow(), col = board.getPlayer().get(i).getCol();
-			BoardCell cell = board.getCell(row, col);
-			boolean isRoom = !(cell.getWalkway() || cell.getUnused());
-			if (isRoom) {
-				roomBox.setText(board.getCard(board.getRoom(cell).getName(), CardType.ROOM).getCardName());
-			}
-		}
+//		for (int i = 0; i < board.getPlayer().size(); i++) {
+//			int row = board.getPlayer().get(i).getRow(), col = board.getPlayer().get(i).getCol();
+//			BoardCell cell = board.getCell(row, col);
+//			boolean isRoom = !(cell.getWalkway() || cell.getUnused());
+//			if (isRoom) {
+//				roomBox.setText(board.getCard(board.getRoom(cell).getName(), CardType.ROOM).getCardName());
+//			}
+//		}
+		roomBox.setText(board.getRoomCard().getCardName());
 	}
 }

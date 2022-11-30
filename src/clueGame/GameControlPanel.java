@@ -184,14 +184,14 @@ public class GameControlPanel extends JPanel {
 						
 						Card roomCard;
 						
-						for (int i = 0; i < board.getRoomDeck().size(); i++) {
-							if (board.getRoomDeck().get(i).getCardName() == board.getRoom(targetCell).getName()) {
-								roomCard = board.getRoomDeck().get(i);
-								setGuess(roomCard + ", " + personDeck.get(0) + ", " + weaponDeck.get(0));
-								handleSuggestion(player.get(0), roomCard, personDeck.get(0), weaponDeck.get(0));
-								break;
-							}
-						}
+//						for (int i = 0; i < board.getRoomDeck().size(); i++) {
+//							if (board.getRoomDeck().get(i).getCardName() == board.getRoom(targetCell).getName()) {
+//								roomCard = board.getRoomDeck().get(i);
+//								setGuess(roomCard + ", " + personDeck.get(0) + ", " + weaponDeck.get(0));
+//								handleSuggestion(player.get(0), roomCard, personDeck.get(0), weaponDeck.get(0));
+//								break;
+//							}
+//						}
 					}
 					repaint();
 					targets.clear();

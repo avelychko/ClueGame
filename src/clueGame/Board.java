@@ -38,6 +38,7 @@ public class Board extends JPanel{
 	private Solution answer;
 	private Player playerTurn;
 	private boolean turnFinished = false;
+	private Card roomCard;;
 
 	/*
 	 * variable and methods used for singleton pattern
@@ -507,7 +508,6 @@ public class Board extends JPanel{
 						repaint();
 						//if the target is a room then the player could do a suggestion
 						if (targetCell.isRoomCenter()) {
-							Card roomCard;
 							for (int i = 0; i < roomDeck.size(); i++) {
 								if (roomDeck.get(i).getCardName() == getRoom(targetCell).getName()) {
 									roomCard = roomDeck.get(i);
@@ -564,4 +564,6 @@ public class Board extends JPanel{
 	public ArrayList<Card> getRoomDeck() { return roomDeck; }
 	public ArrayList<Card> getPersonDeck() { return personDeck; }
 	public ArrayList<Card> getWeaponDeck() { return weaponDeck; }
+	
+	public Card getRoomCard() { return roomCard; }
 }
