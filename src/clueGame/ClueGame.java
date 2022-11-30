@@ -8,7 +8,7 @@ import clueGame.Board.MovePlayerListener;
 public class ClueGame extends JFrame {
 	private ClueGame gui;
 	GameControlPanel controlPanel;
-	GameCardPanel cardsPanel;
+	GameCardPanel cardPanel;
 	Board board;
 
 	public ClueGame() {
@@ -22,8 +22,9 @@ public class ClueGame extends JFrame {
 		board.initialize();
 
 		controlPanel = new GameControlPanel();
-		cardsPanel = new GameCardPanel();
+		cardPanel = new GameCardPanel();
 		board.setControlPanel(controlPanel);
+		board.setCardPanel(cardPanel);
 		setTitle("Clue Game - CSCI306"); //game title
 		setSize(1100, 920);  // size the frame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
@@ -35,7 +36,7 @@ public class ClueGame extends JFrame {
 	//draw each panel
 	private void createLayout() {
 		add(board, BorderLayout.CENTER);
-		add(cardsPanel, BorderLayout.EAST);
+		add(cardPanel, BorderLayout.EAST);
 		add(controlPanel, BorderLayout.SOUTH);
 	}
 

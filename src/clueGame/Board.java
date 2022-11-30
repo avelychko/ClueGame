@@ -40,6 +40,7 @@ public class Board extends JPanel{
 	private boolean turnFinished = false;
 	private Card roomCard;
 	GameControlPanel controlPanel;
+	GameCardPanel cardPanel;
 
 	/*
 	 * variable and methods used for singleton pattern
@@ -527,6 +528,7 @@ public class Board extends JPanel{
 									roomCard = roomDeck.get(i);
 									Suggestion suggestion = new Suggestion();
 									suggestion.setControlPanel(controlPanel);
+									suggestion.setCardPanel(cardPanel);
 									suggestion.setVisible(true);
 									break;
 								}
@@ -599,5 +601,9 @@ public class Board extends JPanel{
 	
 	public void setControlPanel(GameControlPanel controlPanel) { 
 		this.controlPanel = controlPanel;
+	}
+	
+	public void setCardPanel(GameCardPanel cardPanel) { 
+		this.cardPanel = cardPanel;
 	}
 }

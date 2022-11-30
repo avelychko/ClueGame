@@ -13,6 +13,7 @@ public class Suggestion extends JDialog{
 	JButton submitButton, cancelButton;
 	Board board;
 	GameControlPanel controlPanel;
+	GameCardPanel cardPanel;
 	Player player;
 	String room, person, weapon;
 	
@@ -76,6 +77,7 @@ public class Suggestion extends JDialog{
 				else controlPanel.setGuessResult("Suggestion was not disproven", null); 
 				
 				controlPanel.repaint();
+				cardPanel.updatePanels(player);
 				setVisible(false);
 			}
 		});
@@ -102,5 +104,9 @@ public class Suggestion extends JDialog{
 	
 	public void setControlPanel(GameControlPanel controlPanel) { 
 		this.controlPanel = controlPanel;
+	}
+	
+	public void setCardPanel(GameCardPanel cardPanel) { 
+		this.cardPanel = cardPanel;
 	}
 }
