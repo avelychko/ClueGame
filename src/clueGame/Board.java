@@ -513,6 +513,8 @@ public class Board extends JPanel{
 									roomCard = roomDeck.get(i);
 									Suggestion suggestion = new Suggestion();
 									suggestion.setVisible(true);
+
+									//gameControlPanel.setGuess(roomCard.getCardName() + ", " + personDeck.get(0).getCardName() + ", " + weaponDeck.get(0).getCardName());
 									//handleSuggestion(player.get(0), roomCard, personDeck.get(0), weaponDeck.get(0));
 									break;
 								}
@@ -563,6 +565,6 @@ public class Board extends JPanel{
 	public ArrayList<Card> getRoomDeck() { return roomDeck; }
 	public ArrayList<Card> getPersonDeck() { return personDeck; }
 	public ArrayList<Card> getWeaponDeck() { return weaponDeck; }
-	
+
 	public Card getRoomCard() { return roomCard; }
 }

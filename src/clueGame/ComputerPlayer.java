@@ -9,6 +9,9 @@ public class ComputerPlayer extends Player {
 
 	public ComputerPlayer(String name, String color, int row, int col) {
 		super(name, color, row, col);
+		for(Card i: getPlayerCards()) {
+			updateSeen(i);
+		}
 	}
 
 	//Given a room, the computer player will create a suggestion composed of that room, 
