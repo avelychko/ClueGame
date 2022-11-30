@@ -372,6 +372,8 @@ public class Board extends JPanel{
 		weaponDeck.remove(randomIndexWeapon);
 
 		answer = new Solution(randomRoomCard, randomPersonCard, randomWeaponCard); //Deal cards to the Answer
+		
+		System.out.println(randomRoomCard.getCardName() + ", " + randomPersonCard.getCardName() + "," + randomWeaponCard.getCardName());
 
 		//adds all cards to total deck to be given to players
 		for (Card i: roomDeck) totalDeck.add(i);
@@ -545,7 +547,13 @@ public class Board extends JPanel{
 	public Room getRoom(char room) { return roomMap.get(room); } //returns room at char
 	public Room getRoom(BoardCell cell) { return roomMap.get(cell.getInitial()); } //return room at cell 
 
-	public Card getCard(String name, CardType cardType) { return new Card(name, cardType); } //return card
+	public Card getCard(String name, CardType cardType) { 
+		return new Card(name, cardType); 
+//		for (int i = 0; i < totalDeck.size(); i++) {
+//			if ((totalDeck.get(i).getCardName() == name) && (totalDeck.get(i).getCardType() == cardType)) return totalDeck.get(i);
+//		}
+//		return null;
+	} //return card
 
 	public ArrayList<Player> getPlayer() { return player; } //return player list
 	public Solution getSolution() { return answer; } //return answer

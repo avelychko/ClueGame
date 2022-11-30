@@ -215,7 +215,6 @@ public class GameControlPanel extends JPanel {
 
 				}
 			}
-
 		}
 		//  Empty definitions for unused event methods.
 		public void mousePressed(MouseEvent e) {}

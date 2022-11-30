@@ -1,6 +1,9 @@
 package clueGame;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 public class Accusation extends JDialog{
@@ -37,8 +40,24 @@ public class Accusation extends JDialog{
 		add(weaponLabel);
 		add(weaponBox);
 		
-		submitButton.addActionListener(e -> setVisible(false));
 		cancelButton.addActionListener(e -> setVisible(false));
+		
+		submitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				boolean accusation = board.checkAccusation(board.getCard(roomBox.getSelectedItem().toString(), CardType.ROOM), 
+						board.getCard(personBox.getSelectedItem().toString(), CardType.PERSON), 
+						board.getCard(weaponBox.getSelectedItem().toString(), CardType.WEAPON));
+				if (accusation == true) {
+					JOptionPane.showMessageDialog(null, "Correct. You win!", "Game end", JOptionPane.INFORMATION_MESSAGE);
+					System.exit(0);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "WRONG. You lose.", "Game end", JOptionPane.ERROR_MESSAGE);
+					System.exit(0);
+				}
+			}
+		});
 		
 		add(submitButton);
 		add(cancelButton);
