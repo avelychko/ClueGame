@@ -171,6 +171,13 @@ public class GameControlPanel extends JPanel {
 								
 								Solution suggestion = player.createSuggestion(roomCard, board.getPersonDeck(), board.getWeaponDeck());
 								
+								setGuess(suggestion.getRoom().getCardName() +  ", " + suggestion.getPerson().getCardName() +  ", " + suggestion.getWeapon().getCardName());
+								
+								Card result = board.handleSuggestion(player, suggestion);
+								if(result != null) {
+									player.updateSeen(result);
+									setGuessResult("Suggestion was disproven");
+								}
 							}
 						}
 					}

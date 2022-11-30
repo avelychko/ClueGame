@@ -515,7 +515,7 @@ public class Board extends JPanel{
 									Suggestion suggestion = new Suggestion();
 									suggestion.setVisible(true);
 									gameControlPanel.setGuess(roomCard.getCardName() + ", " + personDeck.get(0).getCardName() + ", " + weaponDeck.get(0).getCardName());
-									handleSuggestion(player.get(0), roomCard, personDeck.get(0), weaponDeck.get(0));
+									//handleSuggestion(player.get(0), roomCard, personDeck.get(0), weaponDeck.get(0));
 									break;
 								}
 							}
