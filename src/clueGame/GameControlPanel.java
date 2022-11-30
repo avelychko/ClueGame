@@ -177,12 +177,12 @@ public class GameControlPanel extends JPanel {
 								Card result = board.handleSuggestion(player, suggestion);
 								if(result != null) {
 									player.updateSeen(result);
-									//setGuessResult("Suggestion was disproven");
+					
 				
 									Color disprovePlayerColor = null;
 									
 									for(Player k: board.getPlayer()) {
-										if(k.getPlayerCards().contains(result)) disprovePlayer = k.getColor();
+										if(k.getPlayerCards().contains(result)) disprovePlayerColor = k.getColor();
 									}
 									setGuessResult("Suggestion was disproven", disprovePlayerColor);
 								}
