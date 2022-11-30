@@ -30,23 +30,22 @@ public class Board extends JPanel{
 	private String[] setupFile; //array stores setup lines
 	private Set<BoardCell> targets; //set of target cells
 	private Set<BoardCell> visited; //set of visited cells
-	private ArrayList<Card> roomDeck; // array list stores room cards
-	private ArrayList<Card> personDeck; // array list stores person cards
-	private ArrayList<Card> weaponDeck; // array list stores weapon cards
-	private ArrayList<Card> totalDeck; // array list stores remainding cards
-	private ArrayList<Player> player; // array list stores players, human and computer
+	private ArrayList<Card> roomDeck = new ArrayList<Card>(); // array list stores room cards
+	private ArrayList<Card> personDeck = new ArrayList<Card>(); // array list stores person cards
+	private ArrayList<Card> weaponDeck = new ArrayList<Card>(); // array list stores weapon cards
+	private ArrayList<Card> totalDeck = new ArrayList<Card>(); // array list stores remainding cards
+	private ArrayList<Player> player = new ArrayList<Player>(); // array list stores players, human and computer
 	private Solution answer;
 	private Player playerTurn;
 	private boolean turnFinished = false;
 	private Card roomCard;
-	GameControlPanel controlPanel;
-	GameCardPanel cardPanel;
+	private GameControlPanel controlPanel;
+	private GameCardPanel cardPanel;
 
 	/*
 	 * variable and methods used for singleton pattern
 	 */
 	private static Board theInstance = new Board();
-
 	Board() { super(); } // constructor is private to ensure only one can be created
 
 	public static Board getInstance() { 
@@ -58,13 +57,9 @@ public class Board extends JPanel{
 	 * initialize the board (since we are using singleton pattern)
 	 */
 	public void initialize() { 
-		roomMap = new HashMap<Character, Room>(); 
 		targets = new HashSet<BoardCell>();
 		visited = new HashSet<BoardCell>();
-		roomDeck = new ArrayList<Card>();
-		personDeck = new ArrayList<Card>();
-		weaponDeck = new ArrayList<Card>();
-		totalDeck = new ArrayList<Card>();
+		roomMap = new HashMap<Character, Room>(); 
 		player = new ArrayList<Player>();
 
 		//load setup and layout
@@ -88,7 +83,6 @@ public class Board extends JPanel{
 		deal();
 		addMouseListener(new MovePlayerListener());
 	}
-
 
 	private void setAdj() {
 		for (int row = 0; row < numRows; row++) {
@@ -199,7 +193,7 @@ public class Board extends JPanel{
 	}
 
 	//reads board setup
-	private void readSetupConfig(Scanner in) throws BadConfigFormatException, Exception {
+	private void readSetupConfig(Scanner in) throws BadConfigFormatException, Exception { 
 		String[] setupLines = in.nextLine().split(", "); //adds split line to array
 
 		//check if line is a comment or line in empty
@@ -598,11 +592,11 @@ public class Board extends JPanel{
 	public ArrayList<Card> getWeaponDeck() { return weaponDeck; }
 
 	public Card getRoomCard() { return roomCard; }
-	
+
 	public void setControlPanel(GameControlPanel controlPanel) { 
 		this.controlPanel = controlPanel;
 	}
-	
+
 	public void setCardPanel(GameCardPanel cardPanel) { 
 		this.cardPanel = cardPanel;
 	}
