@@ -137,7 +137,8 @@ public class GameControlPanel extends JPanel {
 			//makes sure the human player finishes their turn
 			if (!board.isTurnFinished() && currentPlayer == 0) {
 				JOptionPane.showMessageDialog(null, "Finish your turn!", "Error", JOptionPane.ERROR_MESSAGE);
-			} else {
+			} 
+			else {
 				currentPlayer++;
 				if (currentPlayer == board.getPlayer().size()) {
 					currentPlayer = 0;
@@ -168,21 +169,21 @@ public class GameControlPanel extends JPanel {
 				if (targetCell != null) {
 					player.updateRow(targetCell.getRow());
 					player.updateCol(targetCell.getCol());
-					
+
 					// computer player will make a suggestion if they are in room
 					if (targetCell.isRoomCenter()) {
 						Card roomCard;
 
 						for (int i = 0; i < board.getRoomDeck().size(); i++) {
-							
+
 							if (board.getRoomDeck().get(i).getCardName() == board.getRoom(targetCell).getName()) {
 								roomCard = board.getRoomDeck().get(i);
 
 								Solution suggestion = player.createSuggestion(roomCard, board.getPersonDeck(), board.getWeaponDeck());
-								
+
 								//setting guess text field
 								setGuess(suggestion.getRoom().getCardName() +  ", " + suggestion.getPerson().getCardName() +  ", " + suggestion.getWeapon().getCardName());
-								
+
 
 								// moves suggested player to the room
 								for(Player k: board.getPlayer()) {
@@ -195,19 +196,19 @@ public class GameControlPanel extends JPanel {
 										k.updateCol(targetCell.getCol());
 									}
 								}
-								
+
 
 								Card result = board.handleSuggestion(player, suggestion); // seeing of suggestion holds true
 								if(result != null) {
 									player.updateSeen(result); // add card shown to the computer players seen card set for future use
-					
+
 									Color disprovePlayerColor = null; // for setting the background color for GuessResult
-									
+
 									// looks at each player's hand to see which one disproved the suggestion in order to get their color
 									for(Player k: board.getPlayer()) {
 										if(k.getPlayerCards().contains(result)) disprovePlayerColor = k.getColor();
 									}
-									
+
 									setGuessResult("Suggestion was disproven", disprovePlayerColor);
 								}
 								else setGuessResult("Suggestion was not disproven", null); 
@@ -233,8 +234,13 @@ public class GameControlPanel extends JPanel {
 	private class AccusationButtonListener implements MouseListener {
 
 		public void mouseClicked(MouseEvent e) {
-			accusation = new Accusation();
-			accusation.setVisible(true);
+			if (!board.isTurnFinished() && currentPlayer == 0) {
+				accusation = new Accusation();
+				accusation.setVisible(true);
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Wait your turn.", "Error", JOptionPane.ERROR_MESSAGE);
+			}
 		}
 
 		public void mousePressed(MouseEvent e) {
