@@ -7,7 +7,10 @@ import javax.swing.border.*;
 
 public class GameCardPanel extends JPanel {
 	JPanel peoplePanel, roomPanel, weaponPanel;
-	private Color[] otherPlayers = {new Color(255, 108, 108), Color.white, new Color(255, 255, 63), new Color(116, 255, 101), new Color(255, 165, 86),  Color.lightGray};
+	Color color;
+	private Map<Card, Color> seenCardsText = new HashMap<Card, Color>();
+	private Color[] otherPlayers = {new Color(255, 108, 108), Color.white, new Color(255, 255, 63), 
+			new Color(116, 255, 101), new Color(255, 165, 86),  Color.lightGray};
 	// player colors: red, white, yellow, green, orange, light gray.  
 
 	public GameCardPanel() {
@@ -29,9 +32,9 @@ public class GameCardPanel extends JPanel {
 		weaponPanel.setBorder(new TitledBorder (new EtchedBorder(), "Weapons"));
 		weaponPanel.setLayout(new GridLayout(0, 1));  
 
-		Player player = Board.getInstance().getPlayer().get(0);
+		Player human = Board.getInstance().getPlayer().get(0);
 		
-		updatePanels(player);
+		updatePanels(human);
 	}
 
 	public void updatePanels(Player human) {
@@ -65,7 +68,7 @@ public class GameCardPanel extends JPanel {
 		for (int i = 0; i < human.getPlayerCards().size(); i++) {
 			JTextField handText = new JTextField(); //create hand text field
 			handText.setEditable(false);
-
+			
 			// adds hand person cards to panel if card is found
 			if (human.getPlayerCards().get(i).getCardType() == typeOfCard) {
 				handText.setText(human.getPlayerCards().get(i).getCardName()); // text for the panel
@@ -92,14 +95,14 @@ public class GameCardPanel extends JPanel {
 			// adds seen person cards to panel if card is found
 			if (s.getCardType() == typeOfCard) {
 				seenText.setText(s.getCardName()); // text for the panel
-
 				// colourizes the seen card to another player color
-				Random randColor = new Random();
-				int randomIndexColor = randColor.nextInt(otherPlayers.length);
-				Color randomPlayerColor = otherPlayers[randomIndexColor];
-				seenText.setBackground(randomPlayerColor);
+				if (!seenCardsText.containsKey(s)) {
+					seenCardsText.put(s, color);
+				}
 
+				seenText.setBackground(seenCardsText.get(s));
 				panel.add(seenText); // adds text boxes to panel
+				//panel.repaint();
 				contains = true;
 			}
 		}
@@ -111,5 +114,8 @@ public class GameCardPanel extends JPanel {
 			noneInSeen.setEditable(false);
 			panel.add(noneInSeen); // add text box to panel
 		}
+	}
+	public void setColor(Color color) {
+		this.color = color;
 	}
 }
