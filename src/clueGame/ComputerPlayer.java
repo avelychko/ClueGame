@@ -59,9 +59,5 @@ public class ComputerPlayer extends Player {
 		targets.clear();
 		return randomTarget[randomIndexLocation];
 	}
-
-	
-
-	
 }
 

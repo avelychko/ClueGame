@@ -71,12 +71,13 @@ public class Suggestion extends JDialog{
 					// looks at each player's hand to see which one disproved the suggestion in order to get their color
 					for(Player k: board.getPlayer()) {
 						if(k.getPlayerCards().contains(result)) disprovePlayerColor = k.getColor();
+						cardPanel.setColor(disprovePlayerColor);
 					}
-					
 					controlPanel.setGuessResult(result.getCardName(), disprovePlayerColor);
+					cardPanel.updatePanels(player);
 				}
 				else controlPanel.setGuessResult("Suggestion was not disproven", null); 
-	
+
 				setVisible(false);
 				
 			}
