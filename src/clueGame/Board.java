@@ -42,7 +42,6 @@ public class Board extends JPanel{
 	private GameControlPanel controlPanel;
 	private GameCardPanel cardPanel;
 
-
 	/*
 	 * variable and methods used for singleton pattern
 	 */
@@ -509,8 +508,15 @@ public class Board extends JPanel{
 
 					// if player has chosen valid tile then they will move to it
 					if (targetCell != null) {
+						grid[player.get(0).getRow()][player.get(0).getCol()].setOccupied(false);
+
 						player.get(0).updateRow(targetCell.getRow());
 						player.get(0).updateCol(targetCell.getCol());
+
+						if (targetCell.getWalkway() || targetCell.getUnused()) {
+							grid[player.get(0).getRow()][player.get(0).getCol()].setOccupied(true);
+						}
+
 						repaint();
 						//if the target is a room then the player could do a suggestion
 						if (!(targetCell.getWalkway() || targetCell.getUnused())) {
@@ -538,6 +544,7 @@ public class Board extends JPanel{
 			}
 		}
 	}
+
 
 	public Set<BoardCell> getAdjList(int row, int col) { return grid[row][col].grabAdjList(); } 
 	public Set<BoardCell> getTargets() { return targets; } //returns the targets last created by calcTargets()

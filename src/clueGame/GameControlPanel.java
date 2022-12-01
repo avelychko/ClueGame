@@ -153,77 +153,68 @@ public class GameControlPanel extends JPanel {
 
 			//Computers will randomly move
 			if (player != board.getPlayer().get(0)) {
-				
+
 				if (player.getSeenCards().size() == 17) {
 					JOptionPane.showMessageDialog(null, "Computer Player wins", "Game end", JOptionPane.INFORMATION_MESSAGE);
 					System.exit(0);
 				}
 				else {
-				
-				
-				BoardCell targetCell = null;
+					BoardCell targetCell = null;
+					//method in computer player
+					targetCell = player.selectTarget(dieRoll);
 
-				//method in computer player
-				targetCell = player.selectTarget(dieRoll);
+					// computer player will move to target 
+					if (targetCell != null) {
+						board.getCell(player.getRow(), player.getCol()).setOccupied(false);
+						player.updateRow(targetCell.getRow());
+						player.updateCol(targetCell.getCol());
+						if (targetCell.getWalkway() || targetCell.getUnused()) {
+							board.getCell(player.getRow(), player.getCol()).setOccupied(true);
+						}
 
-				// computer player will move to target 
-				if (targetCell != null) {
-					player.updateRow(targetCell.getRow());
-					player.updateCol(targetCell.getCol());
+						// computer player will make a suggestion if they are in room
+						if (!(targetCell.getWalkway() || targetCell.getUnused())) {
+							Card roomCard;
 
-					// computer player will make a suggestion if they are in room
-					if (targetCell.isRoomCenter()) {
-						Card roomCard;
+							for (int i = 0; i < board.getRoomDeck().size(); i++) {
+								if (board.getRoomDeck().get(i).getCardName() == board.getRoom(targetCell).getName()) {
+									roomCard = board.getRoomDeck().get(i);
+									Solution suggestion = player.createSuggestion(roomCard, board.getPersonDeck(), board.getWeaponDeck());
 
-						for (int i = 0; i < board.getRoomDeck().size(); i++) {
+									//setting guess text field
+									setGuess(suggestion.getRoom().getCardName() +  ", " + suggestion.getPerson().getCardName() +  
+											", " + suggestion.getWeapon().getCardName());
 
-							if (board.getRoomDeck().get(i).getCardName() == board.getRoom(targetCell).getName()) {
-								roomCard = board.getRoomDeck().get(i);
-
-								Solution suggestion = player.createSuggestion(roomCard, board.getPersonDeck(), board.getWeaponDeck());
-
-								//setting guess text field
-								setGuess(suggestion.getRoom().getCardName() +  ", " + suggestion.getPerson().getCardName() +  ", " + suggestion.getWeapon().getCardName());
-
-
-								// moves suggested player to the room
-								for(Player k: board.getPlayer()) {
-									/*if () {
-										break
-									}*/
-									// fix issue if player suggests themselves
-									if(k.getName() == suggestion.getPerson().getCardName()) {
-										k.updateRow(targetCell.getRow());
-										k.updateCol(targetCell.getCol());
-										k.setDragged(true);
-									}
-								}
-
-
-								Card result = board.handleSuggestion(player, suggestion); // seeing of suggestion holds true
-								if(result != null) {
-									player.updateSeen(result); // add card shown to the computer players seen card set for future use
-
-									Color disprovePlayerColor = null; // for setting the background color for GuessResult
-
-									// looks at each player's hand to see which one disproved the suggestion in order to get their color
+									// moves suggested player to the room
 									for(Player k: board.getPlayer()) {
-										if(k.getPlayerCards().contains(result)) disprovePlayerColor = k.getColor();
+										// fix issue if player suggests themselves
+										if(k.getName() == suggestion.getPerson().getCardName()) {
+											k.updateRow(targetCell.getRow());
+											k.updateCol(targetCell.getCol());
+											k.setDragged(true);
+										}
 									}
 
-									setGuessResult("Suggestion was disproven", disprovePlayerColor);
+									Card result = board.handleSuggestion(player, suggestion); // seeing of suggestion holds true
+									if(result != null) {
+										player.updateSeen(result); // add card shown to the computer players seen card set for future use
+
+										Color disprovePlayerColor = null; // for setting the background color for GuessResult
+
+										// looks at each player's hand to see which one disproved the suggestion in order to get their color
+										for(Player k: board.getPlayer()) {
+											if(k.getPlayerCards().contains(result)) disprovePlayerColor = k.getColor();
+										}
+										setGuessResult("Suggestion was disproven", disprovePlayerColor);
+									}
+									else setGuessResult("Suggestion was not disproven", null); 
 								}
-								else setGuessResult("Suggestion was not disproven", null); 
 							}
 						}
+						repaint();
 					}
-					repaint();
-
 				}
 			}
-
-			}
-
 		}
 		//  Empty definitions for unused event methods.
 		public void mousePressed(MouseEvent e) {}
