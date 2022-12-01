@@ -91,11 +91,7 @@ public abstract class Player {
 
 	protected abstract BoardCell selectTarget(int dieRoll);
 	
-	public boolean isDragged() {
-		return dragged;
-	}
+	public boolean isDragged() { return dragged; }
 
-	public void setDragged(boolean dragged) {
-		this.dragged = dragged;
-	}
+	public void setDragged(boolean dragged) { this.dragged = dragged; }
 }

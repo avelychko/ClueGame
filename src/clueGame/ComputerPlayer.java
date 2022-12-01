@@ -20,7 +20,7 @@ public class ComputerPlayer extends Player {
 		Card person = null, weapon = null;
 		BoardCell cell = board.getCell(super.getRow(), super.getCol());
 
-		if (cell.isRoomCenter()) {
+		if (!(cell.getWalkway() || cell.getUnused())) {
 			//will randomly grab a person card not in seen cards
 			while (getSeenCards().contains(person) || person == null) {
 				Random randPerson = new Random();
@@ -46,7 +46,7 @@ public class ComputerPlayer extends Player {
 		
 		for (BoardCell location: targets) {
 			//if room and not seen, then go to location
-			if(location.isRoomCenter() && !getSeenCards().contains(location)) {
+			if(!(location.getWalkway() || location.getUnused()) && !getSeenCards().contains(location)) {
 				targets.clear();
 				return location;
 			}
