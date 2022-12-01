@@ -337,7 +337,8 @@ public class Board extends JPanel{
 	}
 
 	private void findAllTargets(BoardCell thisCell, int numSteps) {
-		//if (thisCell.isRoomCenter()) targets.add(thisCell);
+		boolean dragged = !(thisCell.getWalkway() || thisCell.getUnused());
+		if (dragged) targets.add(thisCell);
 		for (BoardCell adjCell: thisCell.adjList) {
 			boolean isRoom = !(adjCell.getWalkway() || adjCell.getUnused());
 			//checks if adjacency cell has been visited, or is occupied but not room
