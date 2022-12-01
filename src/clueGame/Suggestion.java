@@ -64,7 +64,6 @@ public class Suggestion extends JDialog{
 				Card result = board.handleSuggestion(player, suggestion); // seeing of suggestion holds true
 				if(result != null) {
 					player.updateSeen(result); // add card shown to the computer players seen card set for future use
-					cardPanel.updatePanels(player);
 
 					Color disprovePlayerColor = null; // for setting the background color for GuessResult
 					
