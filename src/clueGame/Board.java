@@ -421,7 +421,10 @@ public class Board extends JPanel{
 
 	// if player makes an accusation and is correct then they will win, if not they will kick from the game
 	public boolean checkAccusation(Card room, Card person, Card weapon) {
-		if ((room == answer.getRoom()) && (person == answer.getPerson()) && (weapon == answer.getWeapon())) return true;
+		boolean correctRoom = room == answer.getRoom();
+		boolean correctPerson = person == answer.getPerson();
+		boolean correctWeapon = weapon == answer.getWeapon();
+		if (correctRoom && correctPerson && correctWeapon) return true;
 		return false; // if the accusation is wrong
 	}
 
@@ -433,8 +436,11 @@ public class Board extends JPanel{
 			indexPLayer++;
 			if (indexPLayer == player.size()) indexPLayer = 0;
 			if (indexPLayer == player.indexOf(character)) return null; //reaches back to the player
-			if (player.get(indexPLayer).disproveSuggestion(suggestion.getRoom(), suggestion.getPerson(), suggestion.getWeapon()) != null) 
-				return player.get(indexPLayer).disproveSuggestion(suggestion.getRoom(), suggestion.getPerson(), suggestion.getWeapon());
+			Card room = suggestion.getRoom();
+			Card person = suggestion.getPerson();
+			Card weapon = suggestion.getWeapon();
+			if (player.get(indexPLayer).disproveSuggestion(room, person, weapon) != null) 
+				return player.get(indexPLayer).disproveSuggestion(room, person, weapon);
 		}
 	}
 
@@ -447,6 +453,40 @@ public class Board extends JPanel{
 		int height = getHeight() / numRows;
 
 		//draw each cell
+		drawCell(g, width, height);
+		//draw each room name at label cell
+		drawRoom(g, width, height);
+		//draws target for human player
+		drawTargets(g, width, height);
+		repaint(); // adds targets to the board
+		//draw each player
+		drawPlayer(g, width, height);
+	}
+
+	private void drawPlayer(Graphics g, int width, int height) {
+		for (int i = 0; i < player.size(); i++) {
+			player.get(i).drawPlayer(g, width-2, height-1);
+		}
+	}
+
+	private void drawTargets(Graphics g, int width, int height) {
+		for (BoardCell moves: targets) {
+			g.setColor(Color.black); 
+			g.drawRect(moves.getX(), moves.getY(), width-2, height-1);
+			g.setColor(Color.black);
+			g.fillRect(moves.getX(), moves.getY(), width-2, height-1);
+		}
+	}
+
+	private void drawRoom(Graphics g, int width, int height) {
+		for (int row = 0; row < numRows; row++) {
+			for (int col = 0; col < numColumns; col++) { 
+				if (getCell(row, col).isLabel()) grid[row][col].drawName(g, width-2, height-1);
+			}
+		}
+	}
+
+	private void drawCell(Graphics g, int width, int height) {
 		int y = 1;
 		for (int row = 0; row < numRows; row++) {
 			int x = 1;
@@ -460,27 +500,6 @@ public class Board extends JPanel{
 			}
 			y += height-1;
 		}
-
-		//draw each room name at label cell
-		for (int row = 0; row < numRows; row++) {
-			for (int col = 0; col < numColumns; col++) { 
-				if (getCell(row, col).isLabel()) grid[row][col].drawName(g, width-2, height-1);
-			}
-		}
-
-		//draws target for human player
-		for (BoardCell moves: targets) {
-			g.setColor(Color.black); 
-			g.drawRect(moves.getX(), moves.getY(), width-2, height-1);
-			g.setColor(Color.black);
-			g.fillRect(moves.getX(), moves.getY(), width-2, height-1);
-		}
-		repaint(); // adds targets to the board
-
-		//draw each player
-		for (int i = 0; i < player.size(); i++) {
-			player.get(i).drawPlayer(g, width-2, height-1);
-		}
 	}
 
 	public class MovePlayerListener implements MouseListener {
@@ -492,9 +511,7 @@ public class Board extends JPanel{
 		public void mouseEntered (MouseEvent event) {}
 		public void mouseExited (MouseEvent event) {}
 		public void mouseClicked (MouseEvent event) {
-			if(turnFinished == true) {}
-			else {
-				turnFinished = false;
+			if(turnFinished == false) {
 				// only for the human player
 				if (getPlayerTurn() == player.get(0)) {
 					BoardCell targetCell = null;
@@ -508,29 +525,20 @@ public class Board extends JPanel{
 
 					// if player has chosen valid tile then they will move to it
 					if (targetCell != null) {
-						grid[player.get(0).getRow()][player.get(0).getCol()].setOccupied(false);
+						int row = player.get(0).getRow();
+						int col = player.get(0).getCol();
+						grid[row][col].setOccupied(false);
 
 						player.get(0).updateRow(targetCell.getRow());
 						player.get(0).updateCol(targetCell.getCol());
 
 						if (targetCell.getWalkway() || targetCell.getUnused()) {
-							grid[player.get(0).getRow()][player.get(0).getCol()].setOccupied(true);
+							grid[row][col].setOccupied(true);
 						}
 
 						repaint();
 						//if the target is a room then the player could do a suggestion
-						if (!(targetCell.getWalkway() || targetCell.getUnused())) {
-							for (int i = 0; i < roomDeck.size(); i++) {
-								if (roomDeck.get(i).getCardName() == getRoom(targetCell).getName()) {
-									roomCard = roomDeck.get(i);
-									Suggestion suggestion = new Suggestion();
-									suggestion.setControlPanel(controlPanel);
-									suggestion.setCardPanel(cardPanel);
-									suggestion.setVisible(true);
-									break;
-								}
-							}
-						}
+						suggest(targetCell);
 						turnFinished = true;
 						targets.clear(); //gets rid of targets so they don't get repainted
 						repaint();
@@ -541,6 +549,21 @@ public class Board extends JPanel{
 				}
 				//display message if target is not the human players turn
 				else JOptionPane.showMessageDialog(null, "Not your turn!", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+		
+		private void suggest(BoardCell targetCell) {
+			if (!(targetCell.getWalkway() || targetCell.getUnused())) {
+				for (int i = 0; i < roomDeck.size(); i++) {
+					if (roomDeck.get(i).getCardName() == getRoom(targetCell).getName()) {
+						roomCard = roomDeck.get(i);
+						Suggestion suggestion = new Suggestion();
+						suggestion.setControlPanel(controlPanel);
+						suggestion.setCardPanel(cardPanel);
+						suggestion.setVisible(true);
+						break;
+					}
+				}
 			}
 		}
 	}

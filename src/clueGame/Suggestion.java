@@ -61,10 +61,14 @@ public class Suggestion extends JDialog{
 				
 				Solution suggestion = new Solution(roomCard, personCard, weaponCard);
 				
+				notPlayer(suggestion);
+				Card result = board.handleSuggestion(player, suggestion); // seeing of suggestion holds true
+				setResult(result); 
+				setVisible(false);
+			}
+
+			private void notPlayer(Solution suggestion) {
 				for(Player k: board.getPlayer()) {
-					/*if () {
-						break
-					}*/
 					// fix issue if player suggests themselves
 					if(k.getName() == suggestion.getPerson().getCardName()) {
 						k.updateRow(player.getRow());
@@ -72,8 +76,9 @@ public class Suggestion extends JDialog{
 						k.setDragged(true);
 					}
 				}
-				
-				Card result = board.handleSuggestion(player, suggestion); // seeing of suggestion holds true
+			}
+
+			private void setResult(Card result) {
 				if(result != null) {
 					player.updateSeen(result); // add card shown to the computer players seen card set for future use
 
@@ -87,9 +92,7 @@ public class Suggestion extends JDialog{
 					controlPanel.setGuessResult(result.getCardName(), disprovePlayerColor);
 					cardPanel.updatePanels(player);
 				}
-				else controlPanel.setGuessResult("Suggestion was not disproven", null); 
-
-				setVisible(false);
+				else controlPanel.setGuessResult("Suggestion was not disproven", null);
 			}
 		});
 		add(submitButton);

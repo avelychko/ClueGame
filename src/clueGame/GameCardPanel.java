@@ -33,7 +33,7 @@ public class GameCardPanel extends JPanel {
 		weaponPanel.setLayout(new GridLayout(0, 1));  
 
 		Player human = Board.getInstance().getPlayer().get(0);
-		
+
 		updatePanels(human);
 	}
 
@@ -66,31 +66,20 @@ public class GameCardPanel extends JPanel {
 		boolean contains = false; // used to check if hand/seen contains the type, if not "none" will be used
 
 		// goes over each card in the players hand
-		for (int i = 0; i < human.getPlayerCards().size(); i++) {
-			JTextField handText = new JTextField(); //create hand text field
-			handText.setEditable(false);
-			
-			// adds hand person cards to panel if card is found
-			if (human.getPlayerCards().get(i).getCardType() == typeOfCard) {
-				handText.setText(human.getPlayerCards().get(i).getCardName()); // text for the panel
-				handText.setBackground(human.getColor()); // text box colors by players set color
-				panel.add(handText); // adds text boxes to panel
-				contains = true;
-			}	
-		}
+		contains = getHand(panel, human, typeOfCard, contains);
 
 		// only works if there is no person card type in players hand
-		if (!contains) {
-			JTextField noneInHand = new JTextField();
-			noneInHand.setText("None"); // text for the panel
-			noneInHand.setEditable(false);
-			panel.add(noneInHand); // add text box to panel
-		}
+		noneInHand(panel, contains);
 
 		panel.add(seenLabel); // needs to be added first before adding in the text fields
 		contains = false;
 
 		// goes over each card seen by the human player
+		contains = getSeen(panel, human, typeOfCard, contains);
+		noneInHand(panel, contains);
+	}
+
+	private boolean getSeen(JPanel panel, Player human, CardType typeOfCard, boolean contains) {
 		for (Card s: human.getSeenCards()) {
 			JTextField seenText = new JTextField(); // create seen text field
 			// adds seen person cards to panel if card is found
@@ -107,14 +96,32 @@ public class GameCardPanel extends JPanel {
 				contains = true;
 			}
 		}
+		return contains;
+	}
 
-		// only works if there is no person card type in players seen cards
+	private void noneInHand(JPanel panel, boolean contains) {
 		if (!contains) {
-			JTextField noneInSeen = new JTextField(); 
-			noneInSeen.setText("None"); // text for the panel
-			noneInSeen.setEditable(false);
-			panel.add(noneInSeen); // add text box to panel
+			JTextField noneInHand = new JTextField();
+			noneInHand.setText("None"); // text for the panel
+			noneInHand.setEditable(false);
+			panel.add(noneInHand); // add text box to panel
 		}
+	}
+
+	private boolean getHand(JPanel panel, Player human, CardType typeOfCard, boolean contains) {
+		for (int i = 0; i < human.getPlayerCards().size(); i++) {
+			JTextField handText = new JTextField(); //create hand text field
+			handText.setEditable(false);
+
+			// adds hand person cards to panel if card is found
+			if (human.getPlayerCards().get(i).getCardType() == typeOfCard) {
+				handText.setText(human.getPlayerCards().get(i).getCardName()); // text for the panel
+				handText.setBackground(human.getColor()); // text box colors by players set color
+				panel.add(handText); // adds text boxes to panel
+				contains = true;
+			}	
+		}
+		return contains;
 	}
 	public void setColor(Color color) {
 		this.color = color;

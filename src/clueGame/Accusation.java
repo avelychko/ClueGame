@@ -3,6 +3,8 @@ package clueGame;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 import javax.swing.*;
 
@@ -41,10 +43,8 @@ public class Accusation extends JDialog{
 		add(weaponBox);
 		
 		cancelButton.addActionListener(e -> setVisible(false));
-		
 		submitButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
+			public void actionPerformed(ActionEvent e) {
 				boolean accusation = board.checkAccusation(board.getCard(roomBox.getSelectedItem().toString(), CardType.ROOM), 
 						board.getCard(personBox.getSelectedItem().toString(), CardType.PERSON), 
 						board.getCard(weaponBox.getSelectedItem().toString(), CardType.WEAPON));
@@ -58,7 +58,6 @@ public class Accusation extends JDialog{
 				}
 			}
 		});
-		
 		add(submitButton);
 		add(cancelButton);
 	}

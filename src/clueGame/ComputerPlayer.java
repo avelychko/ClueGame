@@ -22,20 +22,21 @@ public class ComputerPlayer extends Player {
 
 		if (!(cell.getWalkway() || cell.getUnused())) {
 			//will randomly grab a person card not in seen cards
-			while (getSeenCards().contains(person) || person == null) {
-				Random randPerson = new Random();
-				int randomIndexPerson = randPerson.nextInt(personDeck.size());
-				person = personDeck.get(randomIndexPerson);
-			}
+			person = getCard(personDeck, person);
 			//will randomly grab a weapon card not in seen cards
-			while (getSeenCards().contains(weapon) || weapon == null) {
-				Random randWeapon = new Random();
-				int randomIndexWeapon = randWeapon.nextInt(weaponDeck.size());
-				weapon = weaponDeck.get(randomIndexWeapon);
-			}
+			weapon = getCard(weaponDeck, weapon);
 			return new Solution(room, person, weapon); 
 		}
 		return null;
+	}
+
+	private Card getCard(ArrayList<Card> personDeck, Card person) {
+		while (getSeenCards().contains(person) || person == null) {
+			Random randPerson = new Random();
+			int randomIndexPerson = randPerson.nextInt(personDeck.size());
+			person = personDeck.get(randomIndexPerson);
+		}
+		return person;
 	}
 
 	// This is another simplified (i.e. read brain dead) AI, in which the computer 
@@ -43,7 +44,8 @@ public class ComputerPlayer extends Player {
 	public BoardCell selectTarget(int movement) { 
 		board.calcTargets(board.getCell(super.getRow(), super.getCol()), movement);
 		Set<BoardCell> targets= board.getTargets();
-		
+		if (targets.size() == 0) return null;
+
 		for (BoardCell location: targets) {
 			//if room and not seen, then go to location
 			if(!(location.getWalkway() || location.getUnused()) && !getSeenCards().contains(location)) {
@@ -51,7 +53,7 @@ public class ComputerPlayer extends Player {
 				return location;
 			}
 		}
-		
+
 		//if no room can be found then a random target will be chosen
 		BoardCell[] randomTarget = targets.toArray(new BoardCell[0]);
 		Random randLocation = new Random();

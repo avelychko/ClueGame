@@ -135,21 +135,7 @@ public class GameControlPanel extends JPanel {
 
 		public void mouseClicked(MouseEvent e) {
 			//makes sure the human player finishes their turn
-			if (!board.isTurnFinished() && currentPlayer == 0) {
-				JOptionPane.showMessageDialog(null, "Finish your turn!", "Error", JOptionPane.ERROR_MESSAGE);
-			} 
-			else {
-				currentPlayer++;
-				if (currentPlayer == board.getPlayer().size()) {
-					currentPlayer = 0;
-					board.setTurnFinished(false); // makes sure the human player plays their turn and doesn't skip them
-				}
-				repaint();
-				setPlayer();
-				setRoll();
-				setTurn(player, dieRoll);
-				drawTargets(player, dieRoll);
-			}
+			isTurnFinished();
 
 			//Computers will randomly move
 			if (player != board.getPlayer().get(0)) {
@@ -173,47 +159,72 @@ public class GameControlPanel extends JPanel {
 						}
 
 						// computer player will make a suggestion if they are in room
-						if (!(targetCell.getWalkway() || targetCell.getUnused())) {
-							Card roomCard;
-
-							for (int i = 0; i < board.getRoomDeck().size(); i++) {
-								if (board.getRoomDeck().get(i).getCardName() == board.getRoom(targetCell).getName()) {
-									roomCard = board.getRoomDeck().get(i);
-									Solution suggestion = player.createSuggestion(roomCard, board.getPersonDeck(), board.getWeaponDeck());
-
-									//setting guess text field
-									setGuess(suggestion.getRoom().getCardName() +  ", " + suggestion.getPerson().getCardName() +  
-											", " + suggestion.getWeapon().getCardName());
-
-									// moves suggested player to the room
-									for(Player k: board.getPlayer()) {
-										// fix issue if player suggests themselves
-										if(k.getName() == suggestion.getPerson().getCardName()) {
-											k.updateRow(targetCell.getRow());
-											k.updateCol(targetCell.getCol());
-											k.setDragged(true);
-										}
-									}
-
-									Card result = board.handleSuggestion(player, suggestion); // seeing of suggestion holds true
-									if(result != null) {
-										player.updateSeen(result); // add card shown to the computer players seen card set for future use
-
-										Color disprovePlayerColor = null; // for setting the background color for GuessResult
-
-										// looks at each player's hand to see which one disproved the suggestion in order to get their color
-										for(Player k: board.getPlayer()) {
-											if(k.getPlayerCards().contains(result)) disprovePlayerColor = k.getColor();
-										}
-										setGuessResult("Suggestion was disproven", disprovePlayerColor);
-									}
-									else setGuessResult("Suggestion was not disproven", null); 
-								}
-							}
-						}
+						makeSuggestion(targetCell);
 						repaint();
 					}
 				}
+			}
+		}
+		private void makeSuggestion(BoardCell targetCell) {
+			if (!(targetCell.getWalkway() || targetCell.getUnused())) {
+				Card roomCard;
+
+				for (int i = 0; i < board.getRoomDeck().size(); i++) {
+					if (board.getRoomDeck().get(i).getCardName() == board.getRoom(targetCell).getName()) {
+						roomCard = board.getRoomDeck().get(i);
+						Solution suggestion = player.createSuggestion(roomCard, board.getPersonDeck(), board.getWeaponDeck());
+
+						//setting guess text field
+						setGuess(suggestion.getRoom().getCardName() +  ", " + suggestion.getPerson().getCardName() +  
+								", " + suggestion.getWeapon().getCardName());
+
+						// moves suggested player to the room
+						suggestedPlayer(targetCell, suggestion);
+						Card result = board.handleSuggestion(player, suggestion); // seeing of suggestion holds true
+						setResult(result); 
+					}
+				}
+			}
+		}
+		private void suggestedPlayer(BoardCell targetCell, Solution suggestion) {
+			for(Player k: board.getPlayer()) {
+				// fix issue if player suggests themselves
+				if(k.getName() == suggestion.getPerson().getCardName()) {
+					k.updateRow(targetCell.getRow());
+					k.updateCol(targetCell.getCol());
+					k.setDragged(true);
+				}
+			}
+		}
+		private void setResult(Card result) {
+			if(result != null) {
+				player.updateSeen(result); // add card shown to the computer players seen card set for future use
+
+				Color disprovePlayerColor = null; // for setting the background color for GuessResult
+
+				// looks at each player's hand to see which one disproved the suggestion in order to get their color
+				for(Player k: board.getPlayer()) {
+					if(k.getPlayerCards().contains(result)) disprovePlayerColor = k.getColor();
+				}
+				setGuessResult("Suggestion was disproven", disprovePlayerColor);
+			}
+			else setGuessResult("Suggestion was not disproven", null);
+		}
+		private void isTurnFinished() {
+			if (!board.isTurnFinished() && currentPlayer == 0) {
+				JOptionPane.showMessageDialog(null, "Finish your turn!", "Error", JOptionPane.ERROR_MESSAGE);
+			} 
+			else {
+				currentPlayer++;
+				if (currentPlayer == board.getPlayer().size()) {
+					currentPlayer = 0;
+					board.setTurnFinished(false); // makes sure the human player plays their turn and doesn't skip them
+				}
+				repaint();
+				setPlayer();
+				setRoll();
+				setTurn(player, dieRoll);
+				drawTargets(player, dieRoll);
 			}
 		}
 		//  Empty definitions for unused event methods.
@@ -235,17 +246,9 @@ public class GameControlPanel extends JPanel {
 				JOptionPane.showMessageDialog(null, "Wait your turn.", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}
-
-		public void mousePressed(MouseEvent e) {
-		}
-
-		public void mouseReleased(MouseEvent e) {
-		}
-
-		public void mouseEntered(MouseEvent e) {
-		}
-
-		public void mouseExited(MouseEvent e) {
-		}
+		public void mousePressed(MouseEvent e) {}
+		public void mouseReleased(MouseEvent e) {}
+		public void mouseEntered(MouseEvent e) {}
+		public void mouseExited(MouseEvent e) {}
 	}
 }
