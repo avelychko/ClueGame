@@ -370,10 +370,7 @@ public class Board extends JPanel{
 		int randomIndexWeapon = randWeapon.nextInt(weaponDeck.size());
 		Card randomWeaponCard = weaponDeck.get(randomIndexWeapon);
 		weaponDeck.remove(randomIndexWeapon);
-
 		answer = new Solution(randomRoomCard, randomPersonCard, randomWeaponCard); //Deal cards to the Answer
-
-		System.out.println(randomRoomCard.getCardName() + "," + randomPersonCard.getCardName() + "," + randomWeaponCard.getCardName());
 
 		//adds all cards to total deck to be given to players
 		for (Card i: roomDeck) totalDeck.add(i);
@@ -516,7 +513,7 @@ public class Board extends JPanel{
 						player.get(0).updateCol(targetCell.getCol());
 						repaint();
 						//if the target is a room then the player could do a suggestion
-						if (targetCell.isRoomCenter()) {
+						if (!(targetCell.getWalkway() || targetCell.getUnused())) {
 							for (int i = 0; i < roomDeck.size(); i++) {
 								if (roomDeck.get(i).getCardName() == getRoom(targetCell).getName()) {
 									roomCard = roomDeck.get(i);

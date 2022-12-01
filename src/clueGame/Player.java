@@ -72,13 +72,13 @@ public abstract class Player {
 
 	//draw player at starting location
 	public void drawPlayer(Graphics g, int width, int height) {
-		ArrayList<Player> players = Board.getInstance().getPlayer();
-		
-		for (int i = 0; i < players.size(); i++) {
-			if ((this.col == players.get(i).getCol()) && (this.row == players.get(i).getRow()) && !(players.get(i).getName().equals(name))) {
-				this.col++;
-			}
-		}
+//		ArrayList<Player> players = Board.getInstance().getPlayer();
+//		
+//		for (int i = 0; i < players.size(); i++) {
+//			if ((this.col == players.get(i).getCol()) && (this.row == players.get(i).getRow()) && !(players.get(i).getName().equals(name))) {
+//				this.col++;
+//			}
+//		}
 		
 		g.setColor(Color.black); //outline is black
 		g.drawOval(this.col * width, this.row * height, width, height);
