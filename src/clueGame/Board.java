@@ -41,7 +41,7 @@ public class Board extends JPanel{
 	private Card roomCard;
 	private GameControlPanel controlPanel;
 	private GameCardPanel cardPanel;
-	
+
 
 	/*
 	 * variable and methods used for singleton pattern
@@ -475,19 +475,16 @@ public class Board extends JPanel{
 		//draws target for human player
 		for (BoardCell moves: targets) {
 			g.setColor(Color.black); 
-			g.drawOval(moves.getX(), moves.getY(), width-2, height-1);
+			g.drawRect(moves.getX(), moves.getY(), width-2, height-1);
 			g.setColor(Color.black);
-			g.fillOval(moves.getX(), moves.getY(), width-2, height-1);
+			g.fillRect(moves.getX(), moves.getY(), width-2, height-1);
 		}
 		repaint(); // adds targets to the board
-
 
 		//draw each player
 		for (int i = 0; i < player.size(); i++) {
 			player.get(i).drawPlayer(g, width-2, height-1);
 		}
-
-
 	}
 
 	public class MovePlayerListener implements MouseListener {
@@ -586,9 +583,7 @@ public class Board extends JPanel{
 
 	public boolean isTurnFinished() { return turnFinished; }
 
-	public void setTurnFinished(boolean turnFinished) {
-		this.turnFinished = turnFinished;
-	}
+	public void setTurnFinished(boolean turnFinished) { this.turnFinished = turnFinished; }
 
 	public ArrayList<Card> getRoomDeck() { return roomDeck; }
 	public ArrayList<Card> getPersonDeck() { return personDeck; }
@@ -596,13 +591,6 @@ public class Board extends JPanel{
 
 	public Card getRoomCard() { return roomCard; }
 
-	public void setControlPanel(GameControlPanel controlPanel) { 
-		this.controlPanel = controlPanel;
-	}
-
-	public void setCardPanel(GameCardPanel cardPanel) { 
-		this.cardPanel = cardPanel;
-	}
-	
-	
+	public void setControlPanel(GameControlPanel controlPanel) { this.controlPanel = controlPanel; }
+	public void setCardPanel(GameCardPanel cardPanel) { this.cardPanel = cardPanel; }
 }

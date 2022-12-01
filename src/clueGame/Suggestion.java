@@ -78,7 +78,6 @@ public class Suggestion extends JDialog{
 				else controlPanel.setGuessResult("Suggestion was not disproven", null); 
 
 				setVisible(false);
-				
 			}
 		});
 		add(submitButton);

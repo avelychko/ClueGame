@@ -25,7 +25,7 @@ public class BoardCell {
 	private boolean isUnused = false;
 	private boolean isWalkway = false;
 	private Boolean isOccupied = false; 
-	Set<BoardCell> adjList = new HashSet<BoardCell>(); 
+	protected Set<BoardCell> adjList = new HashSet<BoardCell>(); 
 	public BoardCell() { adjList = new HashSet<BoardCell>(); } 
 
 	//a constructor that has passed into it the row and column for that cell
@@ -48,64 +48,74 @@ public class BoardCell {
 			other.setStroke(stroke);
 			
 			cell.drawRect(x, y, width, height);
+			drawDoors(cell);
+		}
+		
+		drawUnusedCell(cell);
+		drawRoom(cell);
+	}
+
+	//draw doors
+	private void drawDoors(Graphics door) {
+		if(isDoorway()) {
+			switch (getDoorDirection()) {
 			
-			//draw doors
-			if(isDoorway()) {
-				switch (getDoorDirection()) {
-				
-				case UP: //draw up door
-					Graphics2D lineUp = (Graphics2D) cell;
-					Stroke strokeUp = new BasicStroke(4);
-					lineUp.setColor(Color.black);
-					lineUp.setStroke(strokeUp);
-					lineUp.drawLine(x+2, y, x+width-2, y);
-					break;
-				case DOWN: //draw down door
-					Graphics2D lineDown = (Graphics2D) cell;
-					Stroke strokeDown = new BasicStroke(4);
-					lineDown.setColor(Color.black);
-					lineDown.setStroke(strokeDown);
-					lineDown.drawLine(x+2, y+height-3, x+width-1, y+height-3);
-					break;
-				case LEFT: //draw left door
-					Graphics2D lineLeft = (Graphics2D) cell;
-					Stroke strokLeft = new BasicStroke(4);
-					lineLeft.setColor(Color.black);
-					lineLeft.setStroke(strokLeft);
-					lineLeft.drawLine(x, y+1, x, y+height);
-					break;
-				case RIGHT: //draw right door
-					Graphics2D lineRight = (Graphics2D) cell;
-					Stroke strokeRight = new BasicStroke(4);
-					lineRight.setColor(Color.black);
-					lineRight.setStroke(strokeRight);
-					lineRight.drawLine(x+width-2, y+1, x+width-2, y+height);
-					break;
-				default:
-					//don't do anything
-				}
+			case UP: //draw up door
+				Graphics2D lineUp = (Graphics2D) door;
+				Stroke strokeUp = new BasicStroke(4);
+				lineUp.setColor(Color.black);
+				lineUp.setStroke(strokeUp);
+				lineUp.drawLine(x+2, y, x+width-2, y);
+				break;
+			case DOWN: //draw down door
+				Graphics2D lineDown = (Graphics2D) door;
+				Stroke strokeDown = new BasicStroke(4);
+				lineDown.setColor(Color.black);
+				lineDown.setStroke(strokeDown);
+				lineDown.drawLine(x+2, y+height-3, x+width-1, y+height-3);
+				break;
+			case LEFT: //draw left door
+				Graphics2D lineLeft = (Graphics2D) door;
+				Stroke strokLeft = new BasicStroke(4);
+				lineLeft.setColor(Color.black);
+				lineLeft.setStroke(strokLeft);
+				lineLeft.drawLine(x, y+1, x, y+height);
+				break;
+			case RIGHT: //draw right door
+				Graphics2D lineRight = (Graphics2D) door;
+				Stroke strokeRight = new BasicStroke(4);
+				lineRight.setColor(Color.black);
+				lineRight.setStroke(strokeRight);
+				lineRight.drawLine(x+width-2, y+1, x+width-2, y+height);
+				break;
+			default:
+				//don't do anything
 			}
-		}
-		
-		//draw unused cell
-		if(getUnused()) {
-			cell.setColor(new Color(204, 17, 0));
-			cell.fillRect(x, y, width, height);
-		}
-		
-		//draw rooms
-		if (!(getWalkway() || getUnused())) {
-			cell.setColor(new Color(118, 96, 138));
-			cell.fillRect(x, y, width, height);
 		}
 	}
 
-	//draws room at row and col
-	public void drawName(Graphics g, int width, int height) {
+	//draw room
+	private void drawRoom(Graphics room) {
+		if (!(getWalkway() || getUnused())) {
+			room.setColor(new Color(118, 96, 138));
+			room.fillRect(x, y, width, height);
+		}
+	}
+
+	//draw unused cell
+	private void drawUnusedCell(Graphics unusedCell) {
+		if(getUnused()) {
+			unusedCell.setColor(new Color(204, 17, 0));
+			unusedCell.fillRect(x, y, width, height);
+		}
+	}
+
+	//draws room name at row and col
+	public void drawName(Graphics name, int width, int height) {
 		Font font = new Font("Century Gothic", Font.BOLD, 15);
-		g.setFont(font);
-		g.setColor(new Color(204, 17, 0));
-		g.drawString(Board.getInstance().getRoom(initial).getName(), this.col * width, this.row * height + height);
+		name.setFont(font);
+		name.setColor(new Color(204, 17, 0));
+		name.drawString(Board.getInstance().getRoom(initial).getName(), this.col * width, this.row * height + height);
 	}
 	
 	public boolean containsClick(int mouseX, int mouseY) {
