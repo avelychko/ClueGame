@@ -75,16 +75,21 @@ public abstract class Player {
 		ArrayList<Player> players = Board.getInstance().getPlayer();
 		int movePlayer = 0;
 		
-		/*for (int i = 0; i < players.size(); i++) {
+		for (int i = 0; i < players.size(); i++) {
 			if ((this.col == players.get(i).getCol()) && (this.row == players.get(i).getRow()) && !(players.get(i).getName().equals(name))) {
 				movePlayer++;
 			}
-		}*/
-		
+			g.setColor(Color.black); //outline is black
+			g.drawOval((this.col+movePlayer) * width, this.row * height, width, height);
+			g.setColor(getColor()); //fill is player's color
+			g.fillOval((this.col+movePlayer) * width, this.row * height, width, height);
+		}
+		movePlayer = 0;
+		/*
 		g.setColor(Color.black); //outline is black
 		g.drawOval((this.col+movePlayer) * width, this.row * height, width, height);
 		g.setColor(getColor()); //fill is player's color
-		g.fillOval((this.col+movePlayer) * width, this.row * height, width, height);
+		g.fillOval((this.col+movePlayer) * width, this.row * height, width, height);*/
 	}
 
 	protected abstract Solution createSuggestion(Card room, ArrayList<Card> personDeck, ArrayList<Card> weaponDeck);

@@ -171,7 +171,8 @@ public class GameControlPanel extends JPanel {
 						if (targetCell.getWalkway() || targetCell.getUnused()) {
 							board.getCell(player.getRow(), player.getCol()).setOccupied(true);
 						}
-
+						
+						repaint();
 						// computer player will make a suggestion if they are in room
 						if (!(targetCell.getWalkway() || targetCell.getUnused())) {
 							Card roomCard;
@@ -185,15 +186,17 @@ public class GameControlPanel extends JPanel {
 									setGuess(suggestion.getRoom().getCardName() +  ", " + suggestion.getPerson().getCardName() +  
 											", " + suggestion.getWeapon().getCardName());
 
-
+									
 									for(Player k: board.getPlayer()) {
 										if(k.getName() == suggestion.getPerson().getCardName()) {
 											k.updateRow(targetCell.getRow());
 											k.updateCol(targetCell.getCol());
 											k.setDragged(true);
+											repaint();
 										}
 									}
-
+				
+									repaint();
 									Card result = board.handleSuggestion(player, suggestion); // seeing of suggestion holds true
 									if(result != null) {
 										player.updateSeen(result); // add card shown to the computer players seen card set for future use

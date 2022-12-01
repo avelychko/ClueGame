@@ -8,6 +8,7 @@ import javax.swing.border.*;
 public class GameCardPanel extends JPanel {
 	JPanel peoplePanel, roomPanel, weaponPanel;
 	Color color;
+	Board board;
 	private Map<Card, Color> seenCardsText = new HashMap<Card, Color>();
 	private Color[] otherPlayers = {new Color(255, 108, 108), Color.white, new Color(255, 255, 63), 
 			new Color(116, 255, 101), new Color(255, 165, 86),  Color.lightGray};
@@ -16,7 +17,7 @@ public class GameCardPanel extends JPanel {
 	public GameCardPanel() {
 		setLayout(new GridLayout(3,1)); // create grid for main panel
 		setBorder(new TitledBorder (new EtchedBorder(), "Known Cards")); //create border and title for panel
-
+		board = Board.getInstance();
 		// create each type card panels
 		peoplePanel = new JPanel();
 		roomPanel = new JPanel();
@@ -89,14 +90,19 @@ public class GameCardPanel extends JPanel {
 
 		panel.add(seenLabel); // needs to be added first before adding in the text fields
 		contains = false;
-
+		
+		Color disprovePlayerColor = null;
+		
+		
+		for(Player k: board.getPlayer()) {
 		// goes over each card seen by the human player
 		for (Card s: human.getSeenCards()) {
 			JTextField seenText = new JTextField(); // create seen text field
 			// adds seen person cards to panel if card is found
-			if (s.getCardType() == typeOfCard) {
+			if ((k.getPlayerCards().contains(s)) && (s.getCardType() == typeOfCard)) {
 				seenText.setText(s.getCardName()); // text for the panel
 				// colourizes the seen card to another player color
+				disprovePlayerColor = k.getColor();
 				if (!seenCardsText.containsKey(s)) {
 					seenCardsText.put(s, color);
 				}
@@ -106,6 +112,7 @@ public class GameCardPanel extends JPanel {
 				//panel.repaint();
 				contains = true;
 			}
+		}
 		}
 
 		// only works if there is no person card type in players seen cards
