@@ -12,15 +12,16 @@ public class Suggestion extends JDialog{
 	JLabel roomLabel, personLabel, weaponLabel;
 	JButton submitButton, cancelButton;
 	Board board;
-	GameControlPanel gameControlPanel;
+	GameControlPanel controlPanel;
+	GameCardPanel cardPanel;
 	Player player;
+	String room, person, weapon;
 	
 	public Suggestion() {
 		setTitle("Make a Suggestion");
 		setSize(260, 150);
 		setLayout(new GridLayout(4, 2));
 		board = Board.getInstance();
-		gameControlPanel = new GameControlPanel();
 		player = board.getPlayer().get(0);
 		
 		roomLabel = new JLabel("Room");
@@ -52,7 +53,7 @@ public class Suggestion extends JDialog{
 		submitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				gameControlPanel.setGuess(roomBox.getText() + ", " + personBox.getSelectedItem().toString() + ", " + weaponBox.getSelectedItem().toString());
+				controlPanel.setGuess(roomBox.getText() + ", " + personBox.getSelectedItem().toString() + ", " + weaponBox.getSelectedItem().toString());
 				
 				Card roomCard = board.getCard(roomBox.getText(), CardType.ROOM);
 				Card personCard = board.getCard(personBox.getSelectedItem().toString(), CardType.PERSON);
@@ -71,10 +72,12 @@ public class Suggestion extends JDialog{
 						if(k.getPlayerCards().contains(result)) disprovePlayerColor = k.getColor();
 					}
 					
-					gameControlPanel.setGuessResult(result.getCardName(), disprovePlayerColor);
+					controlPanel.setGuessResult(result.getCardName(), disprovePlayerColor);
 				}
-				else gameControlPanel.setGuessResult("Suggestion was not disproven", null); 
+				else controlPanel.setGuessResult("Suggestion was not disproven", null); 
 				
+				controlPanel.repaint();
+				cardPanel.updatePanels(player);
 				setVisible(false);
 			}
 		});
@@ -97,5 +100,13 @@ public class Suggestion extends JDialog{
 
 	private void addRoomCard() {
 		roomBox.setText(board.getRoomCard().getCardName());
+	}
+	
+	public void setControlPanel(GameControlPanel controlPanel) { 
+		this.controlPanel = controlPanel;
+	}
+	
+	public void setCardPanel(GameCardPanel cardPanel) { 
+		this.cardPanel = cardPanel;
 	}
 }

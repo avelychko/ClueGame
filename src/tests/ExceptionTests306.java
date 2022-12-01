@@ -25,7 +25,6 @@ public class ExceptionTests306 {
 			board.setConfigFiles("ClueLayoutBadColumns306.csv", "ClueSetup306.txt");
 			// Instead of initialize, we call the two load functions directly.
 			// This is necessary because initialize contains a try-catch.
-			board.initialize();
 			board.loadSetupConfig();
 			// This one should throw an exception
 			board.loadLayoutConfig();

@@ -34,7 +34,6 @@ public class GameCardPanel extends JPanel {
 		updatePanels(player);
 	}
 
-
 	public void updatePanels(Player human) {
 		// creates the people panel
 		updatePanel(peoplePanel, human);
@@ -44,13 +43,12 @@ public class GameCardPanel extends JPanel {
 		updatePanel(weaponPanel, human);
 	}
 
-
 	private void updatePanel(JPanel panel, Player human) {
 		CardType typeOfCard = null;
 		// determines what card to look for from the type of panel
 		if (panel == peoplePanel) typeOfCard = CardType.PERSON;
-		if (panel == roomPanel) typeOfCard = CardType.ROOM;
-		if (panel == weaponPanel) typeOfCard = CardType.WEAPON;
+		else if (panel == roomPanel) typeOfCard = CardType.ROOM;
+		else if (panel == weaponPanel) typeOfCard = CardType.WEAPON;
 
 		panel.removeAll();
 		// add the fields to go into the panel using the updated seen card data

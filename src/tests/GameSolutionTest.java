@@ -142,6 +142,5 @@ public class GameSolutionTest {
 		
 		//Suggestion only suggesting player can disprove returns null
 		assertEquals(null, board.handleSuggestion(player6, new Solution(office, eddieMcGrath, poison)));
-
 	}
 }
