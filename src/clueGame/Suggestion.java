@@ -61,6 +61,18 @@ public class Suggestion extends JDialog{
 				
 				Solution suggestion = new Solution(roomCard, personCard, weaponCard);
 				
+				for(Player k: board.getPlayer()) {
+					/*if () {
+						break
+					}*/
+					// fix issue if player suggests themselves
+					if(k.getName() == suggestion.getPerson().getCardName()) {
+						k.updateRow(player.getRow());
+						k.updateCol(player.getCol());
+						k.setDragged(true);
+					}
+				}
+				
 				Card result = board.handleSuggestion(player, suggestion); // seeing of suggestion holds true
 				if(result != null) {
 					player.updateSeen(result); // add card shown to the computer players seen card set for future use
