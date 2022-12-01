@@ -64,7 +64,8 @@ public class Suggestion extends JDialog{
 				Card result = board.handleSuggestion(player, suggestion); // seeing of suggestion holds true
 				if(result != null) {
 					player.updateSeen(result); // add card shown to the computer players seen card set for future use
-	
+					cardPanel.updatePanels(player);
+
 					Color disprovePlayerColor = null; // for setting the background color for GuessResult
 					
 					// looks at each player's hand to see which one disproved the suggestion in order to get their color
@@ -75,13 +76,11 @@ public class Suggestion extends JDialog{
 					controlPanel.setGuessResult(result.getCardName(), disprovePlayerColor);
 				}
 				else controlPanel.setGuessResult("Suggestion was not disproven", null); 
-				
-				controlPanel.repaint();
-				cardPanel.updatePanels(player);
+	
 				setVisible(false);
+				
 			}
 		});
-		
 		add(submitButton);
 		add(cancelButton);
 	}

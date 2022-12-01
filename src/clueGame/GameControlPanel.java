@@ -194,6 +194,7 @@ public class GameControlPanel extends JPanel {
 									if(k.getName() == suggestion.getPerson().getCardName()) {
 										k.updateRow(targetCell.getRow());
 										k.updateCol(targetCell.getCol());
+										k.setDragged(true);
 									}
 								}
 

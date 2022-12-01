@@ -13,6 +13,7 @@ public abstract class Player {
 	private Set<Card> seenCards = new HashSet<Card>();
 	private ArrayList<Card> disproveCards;
 	private Map<String, Color> colorSelection  = new HashMap<>();
+	private boolean dragged = false;
 
 	public Player(String name, String color, int row, int col) {
 		super();
@@ -80,4 +81,12 @@ public abstract class Player {
 	protected abstract Solution createSuggestion(Card room, ArrayList<Card> personDeck, ArrayList<Card> weaponDeck);
 
 	protected abstract BoardCell selectTarget(int dieRoll);
+	
+	public boolean isDragged() {
+		return dragged;
+	}
+
+	public void setDragged(boolean dragged) {
+		this.dragged = dragged;
+	}
 }

@@ -41,6 +41,7 @@ public class GameCardPanel extends JPanel {
 		updatePanel(roomPanel, human);
 		// creates the weapon panel
 		updatePanel(weaponPanel, human);
+		revalidate(); // refreshes card panel
 	}
 
 	private void updatePanel(JPanel panel, Player human) {

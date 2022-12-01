@@ -41,6 +41,7 @@ public class Board extends JPanel{
 	private Card roomCard;
 	private GameControlPanel controlPanel;
 	private GameCardPanel cardPanel;
+	
 
 	/*
 	 * variable and methods used for singleton pattern
@@ -333,8 +334,7 @@ public class Board extends JPanel{
 	}
 
 	private void findAllTargets(BoardCell thisCell, int numSteps) {
-		boolean dragged = !(thisCell.getWalkway() || thisCell.getUnused());
-		if (dragged) targets.add(thisCell);
+		if (playerTurn.isDragged()) targets.add(thisCell);
 		for (BoardCell adjCell: thisCell.adjList) {
 			boolean isRoom = !(adjCell.getWalkway() || adjCell.getUnused());
 			//checks if adjacency cell has been visited, or is occupied but not room
@@ -350,7 +350,9 @@ public class Board extends JPanel{
 			else findAllTargets(adjCell, numSteps - 1);  //else call adj cell recursively
 			visited.remove(adjCell); //remove visited adj cell
 		}
+		playerTurn.setDragged(false);
 	}
+
 
 	//grabs three random cards from each deck and puts it into solution, and removes it so it's not given to players, and makes the deck used to deal to players
 	public void setUpSolution() {
@@ -471,11 +473,11 @@ public class Board extends JPanel{
 		}
 
 		//draws target for human player
-		for (BoardCell the: targets) {
+		for (BoardCell moves: targets) {
 			g.setColor(Color.black); 
-			g.drawOval(the.getX(), the.getY(), width-2, height-1);
+			g.drawOval(moves.getX(), moves.getY(), width-2, height-1);
 			g.setColor(Color.black);
-			g.fillOval(the.getX(), the.getY(), width-2, height-1);
+			g.fillOval(moves.getX(), moves.getY(), width-2, height-1);
 		}
 		repaint(); // adds targets to the board
 
@@ -601,4 +603,6 @@ public class Board extends JPanel{
 	public void setCardPanel(GameCardPanel cardPanel) { 
 		this.cardPanel = cardPanel;
 	}
+	
+	
 }
