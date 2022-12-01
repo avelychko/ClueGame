@@ -155,7 +155,8 @@ public class GameControlPanel extends JPanel {
 			if (player != board.getPlayer().get(0)) {
 				
 				if (player.getSeenCards().size() == 17) {
-					
+					JOptionPane.showMessageDialog(null, "Computer Player wins", "Game end", JOptionPane.INFORMATION_MESSAGE);
+					System.exit(0);
 				}
 				else {
 				
