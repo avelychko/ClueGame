@@ -188,10 +188,6 @@ public class GameControlPanel extends JPanel {
 
 								// moves suggested player to the room
 								for(Player k: board.getPlayer()) {
-									/*if () {
-										break
-									}*/
-									// fix issue if player suggests themselves
 									if(k.getName() == suggestion.getPerson().getCardName()) {
 										k.updateRow(targetCell.getRow());
 										k.updateCol(targetCell.getCol());
