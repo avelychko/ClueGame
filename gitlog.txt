@@ -1,3 +1,297 @@
+commit 531c98350fbe0e5c278275cea5317d6c1ea67a41
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 30 23:45:48 2022 -0700
+
+    refactored
+
+commit d7676adf32ce7a1534aab6baef53394ba63eb536
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 30 22:21:59 2022 -0700
+
+    set occupied cells as occupied
+
+commit c983a35e5180cac190f9ecff5f409c34c5a92763
+Merge: 638f5e7 c4fb828
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 30 21:10:33 2022 -0700
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit 638f5e72c93f4abd3c82607a12ea0c7d44f4364c
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 30 21:10:27 2022 -0700
+
+    minor changes
+
+commit c4fb82842905057cdc9ac62ec0b88402326c9d8d
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Nov 30 21:07:42 2022 -0700
+
+    human player suggestion will pull in other players
+
+commit e591e22e2298cea4550f8b8b38db5221e08e6e6c
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 30 20:47:51 2022 -0700
+
+    players don't draw on each other
+
+commit d1393f931ce1b46bd792a30edb2cfdc9c959ad0d
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 30 19:57:51 2022 -0700
+
+    working seen cards color
+
+commit 27564decf0ee66471035ef9cf9593201e66055c1
+Merge: 5c8234c f81e14d
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Nov 30 19:41:30 2022 -0700
+
+    fix merge issue
+
+commit 5c8234c03826ee67d3bacea2e53a11ac75c7002c
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Nov 30 19:39:30 2022 -0700
+
+    will display win for computer player
+
+commit f81e14d10c2a35b1d3394063e62deb66b7bbcc26
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 30 19:33:31 2022 -0700
+
+    fixed seen card color
+
+commit 4007588c2b3a164cd8aa09fab48752e053b8aacc
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Nov 30 19:20:53 2022 -0700
+
+    seen cards will update after player suggestion
+
+commit 80893043258f4bb057417ef6177265b71b507208
+Merge: df6afde 69800f1
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Nov 30 17:52:17 2022 -0700
+
+    minor changes
+
+commit df6afde1fbb67257c774ea094f82bb4c5764d9eb
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Nov 30 17:48:29 2022 -0700
+
+    minor changes
+
+commit 69800f100ccb3f6c29fc949974e9d29f53cb6bf6
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 30 16:24:22 2022 -0700
+
+    passing exception tests
+
+commit b383bd0bb37b20834d00f3ede46db71f09fa0762
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 30 14:42:52 2022 -0700
+
+    update cardspanel
+
+commit 14ccd0a1b06ff5670f5c7c21ca48f614c5d62786
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Wed Nov 30 13:22:18 2022 -0700
+
+    working guess and guessresult for human player
+
+commit 5e0e93d83c8d0cb406331787eaa6435aa086a90c
+Merge: f0f09e0 b817c1c
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 29 21:50:06 2022 -0700
+
+    fixed error in gamesolutiontest
+
+commit f0f09e0499b90eec828097a825cd494f71a16c24
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 29 21:49:21 2022 -0700
+
+    fixed error in gamesolutiontest
+
+commit b817c1caa17b118294449f949c2886f152c28d5e
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Nov 29 21:49:04 2022 -0700
+
+    working accusation check
+
+commit 0acb8d69760fbbab1590575b8f95efc80ca4fd72
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 29 21:40:07 2022 -0700
+
+    fixed error in gamesolutiontest
+
+commit fb0d3e41f1dabb108b1e8d0ca594ba796526efd4
+Merge: ea1ab8d 5d18165
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 29 21:07:09 2022 -0700
+
+    minor changes
+
+commit ea1ab8daeef8e56b378853c3a31e7c39ef607b84
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 29 21:06:53 2022 -0700
+
+    minor changes
+
+commit 5d181658af14785e5b670b778da4d493313dbb68
+Merge: 7fa46bb d358c86
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Nov 29 21:06:09 2022 -0700
+
+    changed getCard() in board
+
+commit 7fa46bb65d349e108e9b67bb8c0e4e156790c4d7
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Nov 29 20:55:56 2022 -0700
+
+    check human accusation
+
+commit d358c86d33709369dd7a478f57accd8b61e876b0
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 29 20:55:43 2022 -0700
+
+    re-added soln cards back to their decks
+
+commit 590e662b2febdc8dd4c277cfcbf4a94213bf38da
+Merge: ae9cdc8 523d25c
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 29 19:41:04 2022 -0700
+
+    minor changes
+
+commit ae9cdc8c744ca26644ab4ace917c2382a5739338
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 29 19:40:20 2022 -0700
+
+    add some comments
+
+commit 523d25c99916972471ea8a278fde136fadeef2fc
+Merge: 1b5eb62 e5dd513
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Nov 29 19:40:02 2022 -0700
+
+    worked on setGuess with submit button
+
+commit 1b5eb62be32ba4a8921e551d38d2278cd96ecbc0
+Merge: 66a06f4 77087ca
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Nov 29 19:06:21 2022 -0700
+
+    submit button suggestion action listener
+
+commit e5dd5131dd835de58c2f4da9aae617946b66994d
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 29 19:01:49 2022 -0700
+
+    add some comments
+
+commit 2126df8f174567434ca545a0e92545f25323eb31
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 29 18:53:46 2022 -0700
+
+    minor fix
+
+commit 08b21a824adcac47c23ebdb8e964d86dfe66f52e
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 29 18:53:08 2022 -0700
+
+    color will indicate what player disproved the suggestion done by a computer player
+
+commit fee258f680bed6c5f4f9bf004d85eb8d17a2efff
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 29 18:43:41 2022 -0700
+
+    computer player's hand will be added to their seen cards
+
+commit 66a06f400ea06ca68f154dc7035eb112ba00cd4d
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Nov 29 18:22:42 2022 -0700
+
+    added current room setter
+
+commit 77087ca3f766fa57dc0ec4d44371f746a3d151b2
+Merge: 1caeae1 ef7846d
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 29 18:22:18 2022 -0700
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit 1caeae10a63465019556d4bd1c859701fec2005f
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 29 18:22:04 2022 -0700
+
+    working on computer suggestion
+
+commit 6576a5136347d4a3856d9b0d43c5355f9cc87368
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 29 18:12:13 2022 -0700
+
+    switch to using selectTarget method from computer player class for computer movement
+
+commit ef7846da0c0e67c752bda13d08605c7b1c85214b
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Nov 29 18:08:34 2022 -0700
+
+    changed size of suggestion and accusation windows
+
+commit 094ea90167188fcff327e9254350a8770031356f
+Merge: dfdb9a8 fd99261
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 29 13:37:16 2022 -0700
+
+    working on suggestion for computer players
+
+commit dfdb9a8c40e4b296521994a7ced804e9074473b8
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 29 13:36:41 2022 -0700
+
+    working on suggestion for computer players
+
+commit fd992616af0204a1a708454920444a202407fbbb
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Nov 29 13:36:19 2022 -0700
+
+    fixed: user edits text fields
+
+commit fa6bdc560c6fdb677d8ddbad97216272a8a2fe83
+Merge: b185dbc f1fa3f9
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Nov 29 13:08:22 2022 -0700
+
+    Merge branch 'main' of https://github.com/avelychko/ClueGame
+
+commit b185dbc904aaaae4c11add1f6509087cd5764073
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Nov 29 13:08:13 2022 -0700
+
+    added string to guess panel
+
+commit f1fa3f92da2599b0af88dd2a93dbb52168758396
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Tue Nov 29 13:04:35 2022 -0700
+
+    fixed bug where player would be stuck in indefinitely if they moved first then click on another space
+
+commit 2455c462f5ad86dd1beab880b785802ab73666bb
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Nov 29 12:53:54 2022 -0700
+
+    added suggestion class
+
+commit 65a8d280035286cf20d387378c94ec89fc31512f
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Nov 29 12:52:59 2022 -0700
+
+    added suggestion window with boxes
+
+commit 60a82314e1e476066d744186b1c6006ddcf98b60
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Tue Nov 29 01:02:22 2022 -0700
+
+    added accusation window with boxes
+
 commit 464bdacc8e8217645a46c2ba857f9736c90e9879
 Author: FloorismadeoutofFloor <gwdina@gmail.com>
 Date:   Fri Nov 18 21:59:48 2022 -0700

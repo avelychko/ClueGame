@@ -157,7 +157,8 @@ public class GameControlPanel extends JPanel {
 						if (targetCell.getWalkway() || targetCell.getUnused()) {
 							board.getCell(player.getRow(), player.getCol()).setOccupied(true);
 						}
-
+						
+						repaint();
 						// computer player will make a suggestion if they are in room
 						makeSuggestion(targetCell);
 						repaint();

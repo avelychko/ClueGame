@@ -53,14 +53,14 @@ public class Suggestion extends JDialog{
 		submitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				controlPanel.setGuess(roomBox.getText() + ", " + personBox.getSelectedItem().toString() + ", " + weaponBox.getSelectedItem().toString());
+				controlPanel.setGuess(roomBox.getText() + ", " + personBox.getSelectedItem().toString() + 
+						", " + weaponBox.getSelectedItem().toString());
 				
 				Card roomCard = board.getCard(roomBox.getText(), CardType.ROOM);
 				Card personCard = board.getCard(personBox.getSelectedItem().toString(), CardType.PERSON);
 				Card weaponCard = board.getCard(weaponBox.getSelectedItem().toString(), CardType.WEAPON);
 				
 				Solution suggestion = new Solution(roomCard, personCard, weaponCard);
-				
 				notPlayer(suggestion);
 				Card result = board.handleSuggestion(player, suggestion); // seeing of suggestion holds true
 				setResult(result); 
