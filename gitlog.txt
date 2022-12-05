@@ -1,8 +1,34 @@
+commit 9304adb6007248534bf3a59f3231d3ca299efb4f
+Merge: 531c983 c878c6f
+Author: Anastasia Velychko <avelychko@mines.edu>
+Date:   Thu Dec 1 19:44:31 2022 -0700
+
+    merge
+
 commit 531c98350fbe0e5c278275cea5317d6c1ea67a41
 Author: Anastasia Velychko <avelychko@mines.edu>
 Date:   Wed Nov 30 23:45:48 2022 -0700
 
     refactored
+
+commit c878c6f711548f428c690eab6ca8fa1cbd7b2af3
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Nov 30 23:44:59 2022 -0700
+
+    correct color for seen card for known cards
+
+commit 882788b0019857d419b6bd68d54bd40747fa53fb
+Merge: d9f94c0 d7676ad
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Nov 30 22:29:39 2022 -0700
+
+    fixed merge error
+
+commit d9f94c0327c1963eb727c5e69682c23aa82db035
+Author: FloorismadeoutofFloor <gwdina@gmail.com>
+Date:   Wed Nov 30 22:22:36 2022 -0700
+
+    minor changes
 
 commit d7676adf32ce7a1534aab6baef53394ba63eb536
 Author: Anastasia Velychko <avelychko@mines.edu>
